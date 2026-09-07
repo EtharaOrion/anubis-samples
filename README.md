@@ -22,7 +22,7 @@
 
 # ANUBIS: 3-Task Terminal Evaluation Sample
 
-**ANUBIS measures agentic capability on sealed terminal tasks — problems whose governing
+**ANUBIS measures agentic capability on sealed terminal tasks - problems whose governing
 parameters are deliberately withheld and must be recovered from the shipped evidence before any
 answer can be produced.**
 
@@ -36,10 +36,10 @@ This sample is narrow and deep: **3 tasks × 2 models × 8 runs = 48 graded roll
 goes on repetition rather than breadth, so difficulty is a measured rate over eight attempts rather
 than a single observation.
 
-The three tasks are one per tier — one `medium`, one `hard`, one `expert` — selected so that each
+The three tasks are one per tier - one `medium`, one `hard`, one `expert` - selected so that each
 occupies a different band of opus-5's measured rate.
 
-**Exactly one of the 48 runs turned every required test green** — `fb2f26ec` under `claude-opus-5`
+**Exactly one of the 48 runs turned every required test green** - `fb2f26ec` under `claude-opus-5`
 on run 1, which scored 100% on the pytest channel and 97.5% on the rubric for a `final_reward` of
 98.75. Every other run fell short, so an all-or-nothing metric would report 1/24 for opus-5 and
 0/24 for glm-5.3 and separate almost nothing. Throughout this document the headline number is
@@ -64,7 +64,7 @@ pass_rate(task, model) = 100 × mean( final_reward over that model's 8 runs on t
 | Runs & grid      | 8 per model per task = **48 total**; full 2 × 8 grid, no gaps                |
 | Difficulty tiers | Banded on the mean `final_reward` of `claude-opus-5` over its 8 runs         |
 | Judge            | `gpt-5.6-sol`, sole judge on all 48 runs                                     |
-| Score            | `final_reward` ∈ [-1, 1] — mean of the pytest and rubric channels            |
+| Score            | `final_reward` ∈ [-1, 1] - mean of the pytest and rubric channels            |
 | Language         | Python 3, standard library only                                              |
 | Environment      | Verifier runs in a separate container after the agent rollout                |
 
@@ -99,7 +99,7 @@ anubis-samples/
 
 ## Difficulty tiers
 
-A tier is a **band on a measured score** — the mean `final_reward` over eight runs, computed on
+A tier is a **band on a measured score** - the mean `final_reward` over eight runs, computed on
 `claude-opus-5` and used as the single calibration axis so tiers stay comparable across models:
 
 | band | mean `final_reward` |
@@ -111,7 +111,7 @@ A tier is a **band on a measured score** — the mean `final_reward` over eight 
 | `expert` | < 25% |
 
 `difficulty` in `task.toml` is the only label each bundle ships. Re-deriving all three from the
-shipped scores reproduces all three exactly — see [Reproduction](#reproduction).
+shipped scores reproduces all three exactly - see [Reproduction](#reproduction).
 
 | tier | tasks | opus-5 pass rate |
 |---|--:|--:|
@@ -139,13 +139,13 @@ No task lands in `trivial` or `easy` under either model.
 </picture>
 
 **opus-5 falls monotonically across the three tiers; glm-5.3 does not.** opus-5 goes
-43.48 → 35.39 → 14.44, which is what banding on its own measured rate means — a tier *is* a band on
+43.48 → 35.39 → 14.44, which is what banding on its own measured rate means - a tier *is* a band on
 that number. glm-5.3 goes 48.41 → 16.89 → 13.69: it leads on `medium`, then collapses on `hard`
 where it earns less than half of opus-5's rate. Tiers are cut on opus-5 only, so glm-5.3's ordering
 is an observation, not a definition.
 
 **The two channels rank the corpus in opposite directions.** On `expert`, glm-5.3 posts the highest
-pytest score in the whole sample (31.77%) while its rubric channel goes **negative** (−4.39%) — it
+pytest score in the whole sample (31.77%) while its rubric channel goes **negative** (−4.39%) - it
 produced output files that satisfy a good share of the deterministic checks while the judge actively
 penalised the reasoning that produced them. On `hard`, the reverse: opus-5's rubric (54.69%) is more
 than three times its pytest (16.10%). Reading either channel alone gives a different ranking of the
@@ -153,7 +153,7 @@ three tasks.
 
 **Cost does not track the tier.** The `hard` task is by far the most expensive to attempt
 ($15.77 opus-5 / $19.29 glm-5.3) while the `expert` task is the cheapest in the sample
-($0.53 / $0.56) — roughly a 30× spread driven by task shape and agent time budget, not by
+($0.53 / $0.56) - roughly a 30× spread driven by task shape and agent time budget, not by
 difficulty. Across the sample, 48 runs consumed **$394.56**, 3,932 steps.
 
 ## Analysis
@@ -169,14 +169,14 @@ difficulties exactly, so the ladder is falsifiable against the bytes in this rep
 
 **Two independent channels catch different failures.** The pytest channel grades the delivered
 artifacts; the rubric channel grades the recorded trajectory. The `expert` task shows why both are
-needed — a submission can bank pytest credit while earning a negative rubric score, and averaging
+needed - a submission can bank pytest credit while earning a negative rubric score, and averaging
 the two is what stops that from reading as competence.
 
 The separations hold because the grading resists gaming. The agent image contains only
 `/app/data`: no test source, no reference solution, no expected outputs. Verification runs in a
 separate container built from a different Dockerfile, after the rollout has finished, with `/tests`
 stripped of group and world permissions. Every bundle carries negative-weight detectors that
-subtract credit when a submission exhibits a cheat pattern, and those detectors fire — a stub
+subtract credit when a submission exhibits a cheat pattern, and those detectors fire - a stub
 submission on the `expert` task scores **below zero**.
 
 ## Coverage
@@ -187,8 +187,8 @@ submission on the `expert` task scores **below zero**.
   <img alt="Tasks by category" src="images/tasks_by_category-light.png" width="880">
 </picture>
 
-Three tasks across three distinct categories — Debugging, Machine Learning and Software
-Engineering — with no shared verifier between them. Each ships its own `tests/test_output.py`,
+Three tasks across three distinct categories - Debugging, Machine Learning and Software
+Engineering - with no shared verifier between them. Each ships its own `tests/test_output.py`,
 its own weight table and its own reference solution. Every task is Python 3, standard library only,
 with no network access required at solve time.
 
@@ -207,12 +207,12 @@ Tier is anchored on opus-5; the glm-5.3 column is that model's score on the iden
 ```
 <uuid>/
 ├── task.toml               # schema_version, artifacts, task, metadata, verifier, agent, environment
-├── instruction.md          # the brief handed to the agent — the only prose it receives
+├── instruction.md          # the brief handed to the agent - the only prose it receives
 ├── environment/
 │   ├── Dockerfile          # agent image: base + apt + COPY data /app/data. Nothing else.
 │   └── data/               # the sealed corpus, mounted read-only at /app/data
 ├── solution/
-│   ├── solve.py            # reference implementation — verifier-only, never in the agent image
+│   ├── solve.py            # reference implementation - verifier-only, never in the agent image
 │   ├── solve.sh            # oracle entrypoint
 │   └── TRUTH.md            # answer key and derivation notes
 └── tests/
@@ -223,7 +223,7 @@ Tier is anchored on opus-5; the glm-5.3 column is that model's score on the iden
     └── test.sh             # grader entrypoint; writes reward.json
 ```
 
-The agent sees `instruction.md` and `/app/data`. It never sees `tests/` or `solution/` — neither is
+The agent sees `instruction.md` and `/app/data`. It never sees `tests/` or `solution/` - neither is
 referenced by any agent `Dockerfile`. `task.toml` declares `environment_mode = "separate"`, so the
 verifier runs in its own container after the rollout completes.
 
@@ -273,7 +273,7 @@ flowchart LR
 ### What "pass rate" means here
 
 `test_weights_percentage` reaches 100 on exactly one of the 48 runs, so a conventional
-all-or-nothing pass rate reports 1/24 for opus-5 and 0/24 for glm-5.3 — it separates the two models
+all-or-nothing pass rate reports 1/24 for opus-5 and 0/24 for glm-5.3 - it separates the two models
 but collapses all three tasks and both failure modes into a single bit. The rate used throughout is:
 
 ```
@@ -291,7 +291,7 @@ only when it passes. Positive weights sum to `positive_total`; the reward is
 `clamp(raw / positive_total, -1, 1)`.
 
 Negative weights are **cheat detectors**, written to pass when a submission exhibits the pattern
-they hunt — hardcoded sample answers, filename-dependent behaviour, fabricated transcripts,
+they hunt - hardcoded sample answers, filename-dependent behaviour, fabricated transcripts,
 nondeterministic output. On an honest submission they stay silent and cost nothing; on a faked one
 they subtract. This is why a stub can score below zero.
 
@@ -299,7 +299,7 @@ they subtract. This is why a stub can score below zero.
 
 `tests/rubric.json` grades the recorded trajectory rather than the delivered files, judged by
 `gpt-5.6-sol` on every run. It is the channel that catches a submission which produced acceptable
-artifacts by an unacceptable route — and on the `expert` task it returns a negative mean for
+artifacts by an unacceptable route - and on the `expert` task it returns a negative mean for
 glm-5.3 while that model's pytest channel is the highest in the sample.
 
 ## Reproduction
@@ -349,7 +349,7 @@ print({'runs':len(rs),'solved':sum(r['test_weights_percentage']>=100 for r in rs
 **Verify the composition `final_reward = (pytest + rubric) / 2`:**
 
 All three score fields ship rounded to two decimal places, so the composition is checked at `0.01`
-rather than exactly. The largest deviation observed across the corpus is `0.005` — exactly the
+rather than exactly. The largest deviation observed across the corpus is `0.005` - exactly the
 half-cent rounding boundary.
 
 ```bash
@@ -415,7 +415,7 @@ grep -rIl -e 'crash-cohort' -e 'inference-scorer' -e 'registry-service' */ | wc 
 python3 scripts/generate_charts.py
 ```
 
-The script is stdlib-only and hand-writes SVG. It emits SVG only — the matching `.png` fallbacks are
+The script is stdlib-only and hand-writes SVG. It emits SVG only - the matching `.png` fallbacks are
 browser-rendered exports of those exact files, not output of this script. It also prints a plain-text
 summary; diff those numbers against this document and they are the same numbers, computed the same
 way, from the same files.
@@ -429,7 +429,7 @@ process behind them. Per-task rates rest on 8 runs each; the corpus aggregate re
 internal QA review, so aggregate statistics should not be read as an estimate of the wider corpus.
 
 **The ceiling is reached once, on one task.** `fb2f26ec` under opus-5 run 1 scored 100% pytest and
-97.5% rubric, so a real model — not just the oracle — has demonstrated the top of the scale on that
+97.5% rubric, so a real model - not just the oracle - has demonstrated the top of the scale on that
 task. The other two tasks were never fully solved by either model, so their ceilings rest on the
 reference solution alone, which reaches `1.0` on all three.
 
