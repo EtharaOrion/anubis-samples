@@ -1,0 +1,559 @@
+{
+  "attribution_settlement": {
+    "closed_sets": [
+      [
+        "BLZ",
+        "CDR",
+        "DVN"
+      ]
+    ],
+    "effective_owners": {
+      "CDR": "BLZ",
+      "DVN": "BLZ",
+      "GRT": "FLX",
+      "HVN": "FLX",
+      "IBX": "FLX",
+      "JDE": "FLX",
+      "UMB": "FLX",
+      "VLC": "BLZ"
+    },
+    "handovers": {
+      "BLZ": "CDR",
+      "CDR": "DVN",
+      "DVN": "BLZ",
+      "GRT": "FLX",
+      "HVN": "GRT",
+      "IBX": "HVN",
+      "JDE": "IBX",
+      "UMB": "JDE",
+      "VLC": "BLZ"
+    },
+    "sweeps": 6
+  },
+  "bracket": {
+    "best_satisfied_constraint_count": 9,
+    "candidate_space": 816,
+    "constraints": [
+      {
+        "name": "prominence",
+        "satisfied": true,
+        "text": "at least one member sits in a division whose ladder weight reaches the prominence figure"
+      },
+      {
+        "name": "segments",
+        "satisfied": true,
+        "text": "both entrant segments appear among the members"
+      },
+      {
+        "name": "standing_floor",
+        "satisfied": true,
+        "text": "every member holds at least the standing points floor"
+      },
+      {
+        "name": "conferences",
+        "satisfied": true,
+        "text": "no two members share a conference"
+      },
+      {
+        "name": "ranked",
+        "satisfied": true,
+        "text": "at least one member is a ranked entrant"
+      },
+      {
+        "name": "weight_floor",
+        "satisfied": true,
+        "text": "the ladder weights of the members sum to at least the combined ladder weight floor"
+      },
+      {
+        "name": "no_overflow",
+        "satisfied": false,
+        "text": "no member carries any overflow upkeep"
+      },
+      {
+        "name": "champion",
+        "satisfied": true,
+        "text": "at least one member holds the champion tier"
+      },
+      {
+        "name": "gross_floor",
+        "satisfied": true,
+        "text": "the gross output of the members sums to at least the combined gross output floor"
+      },
+      {
+        "name": "no_handover",
+        "satisfied": true,
+        "text": "no member has handed its entry to another squad"
+      }
+    ],
+    "elected_members": [
+      "FLX",
+      "KRN",
+      "LMX"
+    ],
+    "tie_break": "fewest charged upkeep in total, then the bracket whose member keys sort first"
+  },
+  "calibration": [
+    {
+      "agree": true,
+      "figure": "C1",
+      "label": "matches opened",
+      "published": 5,
+      "reproduced": 5
+    },
+    {
+      "agree": true,
+      "figure": "C2",
+      "label": "records recovered",
+      "published": 238,
+      "reproduced": 238
+    },
+    {
+      "agree": true,
+      "figure": "C3",
+      "label": "distinct squads",
+      "published": 16,
+      "reproduced": 16
+    },
+    {
+      "agree": true,
+      "figure": "C4",
+      "label": "gross output",
+      "published": 6228,
+      "reproduced": 6228
+    },
+    {
+      "agree": true,
+      "figure": "C5",
+      "label": "voided output",
+      "published": 1703,
+      "reproduced": 1703
+    },
+    {
+      "agree": true,
+      "figure": "C6",
+      "label": "raw upkeep",
+      "published": 8166,
+      "reproduced": 8166
+    },
+    {
+      "agree": true,
+      "figure": "C7",
+      "label": "charged upkeep",
+      "published": 7939,
+      "reproduced": 7939
+    },
+    {
+      "agree": true,
+      "figure": "C8",
+      "label": "overflow upkeep",
+      "published": 227,
+      "reproduced": 227
+    },
+    {
+      "agree": true,
+      "figure": "C9",
+      "label": "champion entrants",
+      "published": 1,
+      "reproduced": 1
+    },
+    {
+      "agree": true,
+      "figure": "C10",
+      "label": "qualifier entrants",
+      "published": 1,
+      "reproduced": 1
+    },
+    {
+      "agree": true,
+      "figure": "C11",
+      "label": "provisional entrants",
+      "published": 14,
+      "reproduced": 14
+    }
+  ],
+  "calibration_all_agree": true,
+  "method": "Every unstated quantity is drawn from its published roster and tested against the control figures published with the control slice. A reading that reproduces every published figure is accepted; every other candidate carries the control figure that killed it.",
+  "resolved": {
+    "engine_tag": "tessel-drift",
+    "promotion_threshold": 700,
+    "season_budget": 860,
+    "sentinel": "0x1D",
+    "window_depth": 6
+  },
+  "unstated_quantities": [
+    {
+      "candidate_space": [
+        "orion-fold",
+        "wren-cadence",
+        "tessel-drift",
+        "halcyon-mark",
+        "vector-plume",
+        "umbral-stack",
+        "quill-lattice",
+        "nimbus-gable"
+      ],
+      "candidates": [
+        {
+          "falsifier": "C1 matches opened",
+          "falsifier_detail": {
+            "figure": "C1",
+            "label": "matches opened",
+            "note": "unknown event kind 56",
+            "published": 5,
+            "reproduced": null
+          },
+          "value": "orion-fold",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C1 matches opened",
+          "falsifier_detail": {
+            "figure": "C1",
+            "label": "matches opened",
+            "note": "unknown event kind 51",
+            "published": 5,
+            "reproduced": null
+          },
+          "value": "wren-cadence",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "falsifier_detail": null,
+          "value": "tessel-drift",
+          "verdict": "accepted"
+        },
+        {
+          "falsifier": "C1 matches opened",
+          "falsifier_detail": {
+            "figure": "C1",
+            "label": "matches opened",
+            "note": "unknown event kind 135",
+            "published": 5,
+            "reproduced": null
+          },
+          "value": "halcyon-mark",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C1 matches opened",
+          "falsifier_detail": {
+            "figure": "C1",
+            "label": "matches opened",
+            "note": "unknown event kind 87",
+            "published": 5,
+            "reproduced": null
+          },
+          "value": "vector-plume",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C1 matches opened",
+          "falsifier_detail": {
+            "figure": "C1",
+            "label": "matches opened",
+            "note": "unknown event kind 79",
+            "published": 5,
+            "reproduced": null
+          },
+          "value": "umbral-stack",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C1 matches opened",
+          "falsifier_detail": {
+            "figure": "C1",
+            "label": "matches opened",
+            "note": "unknown event kind 220",
+            "published": 5,
+            "reproduced": null
+          },
+          "value": "quill-lattice",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C1 matches opened",
+          "falsifier_detail": {
+            "figure": "C1",
+            "label": "matches opened",
+            "note": "unknown event kind 162",
+            "published": 5,
+            "reproduced": null
+          },
+          "value": "nimbus-gable",
+          "verdict": "rejected"
+        }
+      ],
+      "drawn_from": "the engine tag roster published in replay-guards.md",
+      "name": "engine_tag"
+    },
+    {
+      "candidate_space": [
+        4,
+        6,
+        8,
+        10
+      ],
+      "candidates": [
+        {
+          "falsifier": "C1 matches opened",
+          "falsifier_detail": {
+            "figure": "C1",
+            "label": "matches opened",
+            "note": "unknown event kind 56",
+            "published": 5,
+            "reproduced": null
+          },
+          "value": 4,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "falsifier_detail": null,
+          "value": 6,
+          "verdict": "accepted"
+        },
+        {
+          "falsifier": "C4 gross output",
+          "falsifier_detail": {
+            "figure": "C4",
+            "label": "gross output",
+            "note": null,
+            "published": 6228,
+            "reproduced": 6644
+          },
+          "value": 8,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C4 gross output",
+          "falsifier_detail": {
+            "figure": "C4",
+            "label": "gross output",
+            "note": null,
+            "published": 6228,
+            "reproduced": 6922
+          },
+          "value": 10,
+          "verdict": "rejected"
+        }
+      ],
+      "drawn_from": "the window depth roster published in replay-guards.md",
+      "name": "window_depth"
+    },
+    {
+      "candidate_space": [
+        "0x1A",
+        "0x1D",
+        "0x20",
+        "0x7F"
+      ],
+      "candidates": [
+        {
+          "falsifier": "C1 matches opened",
+          "falsifier_detail": {
+            "figure": "C1",
+            "label": "matches opened",
+            "note": "unknown event kind 56",
+            "published": 5,
+            "reproduced": null
+          },
+          "value": "0x1A",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "falsifier_detail": null,
+          "value": "0x1D",
+          "verdict": "accepted"
+        },
+        {
+          "falsifier": "C1 matches opened",
+          "falsifier_detail": {
+            "figure": "C1",
+            "label": "matches opened",
+            "note": "unknown event kind 56",
+            "published": 5,
+            "reproduced": null
+          },
+          "value": "0x20",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C1 matches opened",
+          "falsifier_detail": {
+            "figure": "C1",
+            "label": "matches opened",
+            "note": "unknown event kind 56",
+            "published": 5,
+            "reproduced": null
+          },
+          "value": "0x7F",
+          "verdict": "rejected"
+        }
+      ],
+      "drawn_from": "the sentinel roster published in replay-guards.md",
+      "name": "sentinel"
+    },
+    {
+      "candidate_space": [
+        20,
+        220,
+        440,
+        640,
+        860,
+        1060
+      ],
+      "candidates": [
+        {
+          "falsifier": "C7 charged upkeep",
+          "falsifier_detail": {
+            "figure": "C7",
+            "label": "charged upkeep",
+            "note": null,
+            "published": 7939,
+            "reproduced": 300
+          },
+          "value": 20,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C7 charged upkeep",
+          "falsifier_detail": {
+            "figure": "C7",
+            "label": "charged upkeep",
+            "note": null,
+            "published": 7939,
+            "reproduced": 3278
+          },
+          "value": 220,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C7 charged upkeep",
+          "falsifier_detail": {
+            "figure": "C7",
+            "label": "charged upkeep",
+            "note": null,
+            "published": 7939,
+            "reproduced": 5769
+          },
+          "value": 440,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C7 charged upkeep",
+          "falsifier_detail": {
+            "figure": "C7",
+            "label": "charged upkeep",
+            "note": null,
+            "published": 7939,
+            "reproduced": 7230
+          },
+          "value": 640,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "falsifier_detail": null,
+          "value": 860,
+          "verdict": "accepted"
+        },
+        {
+          "falsifier": "C7 charged upkeep",
+          "falsifier_detail": {
+            "figure": "C7",
+            "label": "charged upkeep",
+            "note": null,
+            "published": 7939,
+            "reproduced": 8159
+          },
+          "value": 1060,
+          "verdict": "rejected"
+        }
+      ],
+      "drawn_from": "the budget cap roster published in upkeep-policy.md",
+      "name": "season_budget"
+    },
+    {
+      "candidate_space": [
+        20,
+        140,
+        200,
+        360,
+        700,
+        1300
+      ],
+      "candidates": [
+        {
+          "falsifier": "C9 champion entrants",
+          "falsifier_detail": {
+            "figure": "C9",
+            "label": "champion entrants",
+            "note": null,
+            "published": 1,
+            "reproduced": 7
+          },
+          "value": 20,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C9 champion entrants",
+          "falsifier_detail": {
+            "figure": "C9",
+            "label": "champion entrants",
+            "note": null,
+            "published": 1,
+            "reproduced": 4
+          },
+          "value": 140,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C9 champion entrants",
+          "falsifier_detail": {
+            "figure": "C9",
+            "label": "champion entrants",
+            "note": null,
+            "published": 1,
+            "reproduced": 3
+          },
+          "value": 200,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C10 qualifier entrants",
+          "falsifier_detail": {
+            "figure": "C10",
+            "label": "qualifier entrants",
+            "note": null,
+            "published": 1,
+            "reproduced": 2
+          },
+          "value": 360,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "falsifier_detail": null,
+          "value": 700,
+          "verdict": "accepted"
+        },
+        {
+          "falsifier": "C9 champion entrants",
+          "falsifier_detail": {
+            "figure": "C9",
+            "label": "champion entrants",
+            "note": null,
+            "published": 1,
+            "reproduced": 0
+          },
+          "value": 1300,
+          "verdict": "rejected"
+        }
+      ],
+      "drawn_from": "the promotion threshold roster published in standings-policy.md",
+      "name": "promotion_threshold"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "id": "8f2595ec-c163-4b63-9309-327af3d07e4a",
+  "task_name": "terminal-bench/cffe140f-0908-5df7-b27f-c3983c2df17c",
+  "trial_name": "cffe140f-0908-5df7-b27f-c3983c2df17c__FihQXs5",
+  "trial_uri": "file://cffe140f-0908-5df7-b27f-c3983c2df17c/trajectories/glm-5.3/run_4",
+  "task_id": {
+    "path": "cffe140f-0908-5df7-b27f-c3983c2df17c"
+  },
+  "source": null,
+  "task_checksum": "b1454690737c24c61ac38bbe4786e6e5d6f933d9bd0331930031e114fc32e541",
+  "config": {
+    "task": {
+      "path": "cffe140f-0908-5df7-b27f-c3983c2df17c",
+      "git_url": null,
+      "git_commit_id": null,
+      "name": null,
+      "ref": null,
+      "overwrite": false,
+      "download_dir": null,
+      "source": null
+    },
+    "trial_name": "cffe140f-0908-5df7-b27f-c3983c2df17c__FihQXs5",
+    "trials_dir": "cffe140f-0908-5df7-b27f-c3983c2df17c/trajectories/glm-5.3",
+    "install_only": false,
+    "timeout_multiplier": 1.0,
+    "agent_timeout_multiplier": null,
+    "verifier_timeout_multiplier": null,
+    "agent_setup_timeout_multiplier": 3.0,
+    "environment_build_timeout_multiplier": null,
+    "agent": {
+      "name": "claude-code",
+      "import_path": null,
+      "model_name": "glm-5.3",
+      "n_concurrent": null,
+      "concurrency_group": null,
+      "skills": [],
+      "override_timeout_sec": null,
+      "override_setup_timeout_sec": null,
+      "max_timeout_sec": null,
+      "resume_trajectory": false,
+      "load_trajectory": null,
+      "extra_allowed_hosts": [],
+      "kwargs": {},
+      "mcp_servers": []
+    },
+    "environment": {
+      "type": "docker",
+      "import_path": null,
+      "force_build": false,
+      "delete": true,
+      "cpu_enforcement_policy": "auto",
+      "memory_enforcement_policy": "auto",
+      "override_cpus": null,
+      "override_memory_mb": null,
+      "override_storage_mb": null,
+      "override_gpus": null,
+      "override_tpu": null,
+      "mounts": null,
+      "extra_docker_compose": [],
+      "kwargs": {},
+      "extra_allowed_hosts": []
+    },
+    "verifier": {
+      "override_timeout_sec": null,
+      "max_timeout_sec": null,
+      "env": {
+        "REWARDKIT_JUDGE": "gpt-5.6-sol",
+        "OPENAI_API_BASE": "http://host.docker.internal:52998",
+        "OPENAI_BASE_URL": "http://host.docker.internal:52998",
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+      },
+      "disable": false
+    },
+    "artifacts": [],
+    "extra_instruction_paths": [],
+    "job_id": "b7875c47-6461-4d3c-a852-591b0a7c151f"
+  },
+  "agent_info": {
+    "name": "claude-code",
+    "version": "2.1.261",
+    "model_info": {
+      "name": "glm-5.3",
+      "provider": null
+    }
+  },
+  "agent_result": {
+    "n_input_tokens": 10326307,
+    "n_cache_tokens": 9967104,
+    "n_output_tokens": 144705,
+    "cost_usd": 10.644056,
+    "rollout_details": null,
+    "metadata": null
+  },
+  "verifier_result": {
+    "rewards": {
+      "reward": 0.005649717514124294
+    }
+  },
+  "verifier_environment_mode": "separate",
+  "exception_info": null,
+  "started_at": "2026-09-05T09:56:25.684471Z",
+  "finished_at": "2026-09-05T10:49:13.035058Z",
+  "environment_setup": {
+    "started_at": "2026-09-05T09:56:25.740339Z",
+    "finished_at": "2026-09-05T09:56:29.274540Z"
+  },
+  "agent_setup": {
+    "started_at": "2026-09-05T09:56:29.274839Z",
+    "finished_at": "2026-09-05T10:01:15.903291Z"
+  },
+  "agent_execution": {
+    "started_at": "2026-09-05T10:01:15.904035Z",
+    "finished_at": "2026-09-05T10:48:16.581157Z"
+  },
+  "verifier": {
+    "started_at": "2026-09-05T10:48:32.067187Z",
+    "finished_at": "2026-09-05T10:49:13.034888Z"
+  },
+  "step_results": null
+}

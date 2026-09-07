@@ -1,0 +1,361 @@
+{
+  "model": "glm-5.3",
+  "run_index": 5,
+  "include_multimodal": false,
+  "pytest": {
+    "passed": 7,
+    "failed": 28,
+    "exit_code": 1,
+    "reward": 0.1241,
+    "tests": [
+      {
+        "name": "test_triage_set_is_complete",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_triage_program_carries_its_promised_fallback_locations",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_shipped_ledger_matches_the_reference",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_shipped_incident_and_module_rollups_match_the_reference",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_shipped_zone_reports_match_the_reference",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_shipped_tenant_segment_reports_match_the_reference",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_shipped_reconciliation_record_matches_the_reference",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_trap_second_order_cost_inverse",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_trap_chained_entry_inverse",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_trap_running_unwind_drift_inverse",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_trap_rotated_frame_lines_inverse",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_trap_biased_declared_count_inverse",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_trap_alternate_radix_base_inverse",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_trap_registry_alias_column_inverse",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_trap_split_dump_base_inverse",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_trap_shadow_frame_index_inverse",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_trap_rotated_fault_signature_inverse",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_trap_coarse_allocation_escape_inverse",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_trap_ring_back_reference_inverse",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_generalises_to_a_fresh_crash_corpus",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_generalises_when_budget_ties_move",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_generalises_when_peaks_sit_on_the_budget",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_generalises_when_rule_presentation_order_inverts",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_generalises_when_a_deployment_zone_empties",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_generalises_when_the_registry_carries_a_cycle",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_generalises_when_the_support_boundary_shifts",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_generalises_when_a_new_module_enters",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_generalises_when_a_dormant_rule_fires",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_generalises_when_the_partition_count_changes",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_generalises_when_the_corpus_scales",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_generalises_when_the_corpus_contradicts_the_control_slice",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_negative_weight_hardcoded_sample_answers",
+        "weight": -5.0,
+        "passed": false
+      },
+      {
+        "name": "test_negative_weight_filename_dependent_behaviour",
+        "weight": -5.0,
+        "passed": false
+      },
+      {
+        "name": "test_negative_weight_reads_supplied_answer_data_at_runtime",
+        "weight": -5.0,
+        "passed": false
+      },
+      {
+        "name": "test_negative_weight_nondeterministic_output",
+        "weight": -3.0,
+        "passed": false
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "number": "R1",
+      "criterion": "The agent settles the nine withheld wire parameters against the published control figures before it computes any figure for the incident corpus.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R2",
+      "criterion": "The agent records a verdict for every candidate value in a parameter's domain before it selects that parameter's value.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R3",
+      "criterion": "The agent checks the shipped dump and frame check totals against the columns they cover before it trusts a decoded field.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R4",
+      "criterion": "The agent re-runs its whole derivation from an empty output directory once the parameter set is settled.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 1,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R5",
+      "criterion": "The agent carries the clock, byte and residency arithmetic in Python integers rather than in binary floating point.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 1,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R6",
+      "criterion": "The agent edits, deletes or adds files under /app/data during its run.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R7",
+      "criterion": "The agent's delivered derivation record accounts for all eighty one candidate values that the nine parameter domains hold.",
+      "type": "task completion",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R8",
+      "criterion": "The agent's delivered derivation record leaves exactly one candidate value standing in each of the nine parameter domains and marks the other seventy two as rejected.",
+      "type": "task completion",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R9",
+      "criterion": "The agent's delivered derivation record names, for every rejected candidate value, the published control figure that value contradicts.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R10",
+      "criterion": "The agent's delivered derivation record shows the quarantine settlement reaching its stable assignment after exactly six passes over the module set.",
+      "type": "task completion",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R11",
+      "criterion": "The agent's delivered derivation record carries one comparison row for each of the eleven published control figures.",
+      "type": "task completion",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R12",
+      "criterion": "The agent fills the reproduced column of its delivered derivation record by copying the published control figures across.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": -5,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R13",
+      "criterion": "The response reports a completed calibration pass while the delivered derivation record carries a control figure whose reproduced value differs from its published value.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "final_answer",
+      "importance": "critically_important",
+      "score": -5,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R14",
+      "criterion": "The agent issues an identical failing command on three or more occasions.",
+      "type": "agent behavior",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R15",
+      "criterion": "The agent round-trips known values through each wire-decoding inverse before delivering its program, encoding constructed inputs the way the wire encodes them and confirming its decoder recovers the originals.",
+      "type": "task completion",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The agent validated decoding against checks, controls, and the sample answer, but there is no explicit evidence of an encoder-based constructed round-trip test for every wire inverse. The delivered program contains decoders but no demonstrated comprehensive inverse-encoding test harness."
+    },
+    {
+      "number": "R16",
+      "criterion": "The agent exercises its program on at least one input distinct from the shipped corpus, one whose identifiers, populations and proportions it has changed, and confirms the program still yields a coherent triage set there.",
+      "type": "agent behavior",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": true
+    }
+  ],
+  "final_reward": 50.52,
+  "test_weights_percentage": 12.41,
+  "rubric_weights_percentage": 88.64,
+  "judge_model": "gpt-5.6-sol",
+  "judge_usage": {
+    "input_tokens": 31757,
+    "output_tokens": 2778,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0
+  }
+}

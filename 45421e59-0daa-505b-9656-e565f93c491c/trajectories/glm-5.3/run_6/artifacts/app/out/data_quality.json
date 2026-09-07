@@ -1,0 +1,449 @@
+{
+  "accepted_count": 151,
+  "calibration_comparison": [
+    {
+      "control": "CTRL-A",
+      "published": 90,
+      "reproduced": 90
+    },
+    {
+      "control": "CTRL-B",
+      "published": 166630258011,
+      "reproduced": 166630258011
+    },
+    {
+      "control": "CTRL-C",
+      "published": 5756400,
+      "reproduced": 5756400
+    },
+    {
+      "control": "CTRL-D",
+      "published": 13590884764,
+      "reproduced": 13590884764
+    },
+    {
+      "control": "CTRL-E",
+      "published": 13589534764,
+      "reproduced": 13589534764
+    },
+    {
+      "control": "CTRL-F",
+      "published": 4699859,
+      "reproduced": 4699859
+    },
+    {
+      "control": "CTRL-G",
+      "published": 421025155,
+      "reproduced": 421025155
+    },
+    {
+      "control": "CTRL-H",
+      "published": 44442,
+      "reproduced": 44442
+    },
+    {
+      "control": "CTRL-I",
+      "published": 56,
+      "reproduced": 56
+    },
+    {
+      "control": "CTRL-J",
+      "published": 5,
+      "reproduced": 5
+    },
+    {
+      "control": "CTRL-K",
+      "published": 12490,
+      "reproduced": 12490
+    }
+  ],
+  "candidate_search": {
+    "evaluations": 81,
+    "parameters": [
+      {
+        "candidates": 13,
+        "control": "CTRL-D",
+        "name": "entry clock modulus",
+        "rejected": [
+          {
+            "control": "CTRL-D",
+            "value": 4194304
+          },
+          {
+            "control": "CTRL-D",
+            "value": 8388608
+          },
+          {
+            "control": "CTRL-D",
+            "value": 16777216
+          },
+          {
+            "control": "CTRL-D",
+            "value": 33554432
+          },
+          {
+            "control": "CTRL-D",
+            "value": 67108864
+          },
+          {
+            "control": "CTRL-D",
+            "value": 134217728
+          },
+          {
+            "control": "CTRL-D",
+            "value": 536870912
+          },
+          {
+            "control": "CTRL-D",
+            "value": 1073741824
+          },
+          {
+            "control": "CTRL-D",
+            "value": 2147483648
+          },
+          {
+            "control": "CTRL-D",
+            "value": 4294967296
+          },
+          {
+            "control": "CTRL-D",
+            "value": 8589934592
+          },
+          {
+            "control": "CTRL-D",
+            "value": 17179869184
+          }
+        ],
+        "selected": 268435456
+      },
+      {
+        "candidates": 5,
+        "control": "CTRL-E",
+        "name": "drift period",
+        "rejected": [
+          {
+            "control": "CTRL-E",
+            "value": 48
+          },
+          {
+            "control": "CTRL-E",
+            "value": 96
+          },
+          {
+            "control": "CTRL-E",
+            "value": 384
+          },
+          {
+            "control": "CTRL-E",
+            "value": 768
+          }
+        ],
+        "selected": 192
+      },
+      {
+        "candidates": 8,
+        "control": "CTRL-C",
+        "name": "rotation offset",
+        "rejected": [
+          {
+            "control": "CTRL-C",
+            "value": 0
+          },
+          {
+            "control": "CTRL-C",
+            "value": 1
+          },
+          {
+            "control": "CTRL-C",
+            "value": 2
+          },
+          {
+            "control": "CTRL-C",
+            "value": 3
+          },
+          {
+            "control": "CTRL-C",
+            "value": 4
+          },
+          {
+            "control": "CTRL-C",
+            "value": 6
+          },
+          {
+            "control": "CTRL-C",
+            "value": 7
+          }
+        ],
+        "selected": 5
+      },
+      {
+        "candidates": 9,
+        "control": "CTRL-A",
+        "name": "count multiplier",
+        "rejected": [
+          {
+            "control": "CTRL-A",
+            "value": 0
+          },
+          {
+            "control": "CTRL-A",
+            "value": 1
+          },
+          {
+            "control": "CTRL-A",
+            "value": 2
+          },
+          {
+            "control": "CTRL-A",
+            "value": 3
+          },
+          {
+            "control": "CTRL-A",
+            "value": 4
+          },
+          {
+            "control": "CTRL-A",
+            "value": 5
+          },
+          {
+            "control": "CTRL-A",
+            "value": 6
+          },
+          {
+            "control": "CTRL-A",
+            "value": 8
+          }
+        ],
+        "selected": 7
+      },
+      {
+        "candidates": 25,
+        "control": "CTRL-B",
+        "name": "alternate radix",
+        "rejected": [
+          {
+            "control": "CTRL-B",
+            "value": 11
+          },
+          {
+            "control": "CTRL-B",
+            "value": 12
+          },
+          {
+            "control": "CTRL-B",
+            "value": 13
+          },
+          {
+            "control": "CTRL-B",
+            "value": 14
+          },
+          {
+            "control": "CTRL-B",
+            "value": 15
+          },
+          {
+            "control": "CTRL-B",
+            "value": 16
+          },
+          {
+            "control": "CTRL-B",
+            "value": 17
+          },
+          {
+            "control": "CTRL-B",
+            "value": 18
+          },
+          {
+            "control": "CTRL-B",
+            "value": 19
+          },
+          {
+            "control": "CTRL-B",
+            "value": 20
+          },
+          {
+            "control": "CTRL-B",
+            "value": 21
+          },
+          {
+            "control": "CTRL-B",
+            "value": 22
+          },
+          {
+            "control": "CTRL-B",
+            "value": 23
+          },
+          {
+            "control": "CTRL-B",
+            "value": 24
+          },
+          {
+            "control": "CTRL-B",
+            "value": 25
+          },
+          {
+            "control": "CTRL-B",
+            "value": 26
+          },
+          {
+            "control": "CTRL-B",
+            "value": 27
+          },
+          {
+            "control": "CTRL-B",
+            "value": 28
+          },
+          {
+            "control": "CTRL-B",
+            "value": 30
+          },
+          {
+            "control": "CTRL-B",
+            "value": 31
+          },
+          {
+            "control": "CTRL-B",
+            "value": 32
+          },
+          {
+            "control": "CTRL-B",
+            "value": 33
+          },
+          {
+            "control": "CTRL-B",
+            "value": 34
+          },
+          {
+            "control": "CTRL-B",
+            "value": 35
+          }
+        ],
+        "selected": 29
+      },
+      {
+        "candidates": 4,
+        "control": "CTRL-B",
+        "name": "base shift width",
+        "rejected": [
+          {
+            "control": "CTRL-B",
+            "value": 8
+          },
+          {
+            "control": "CTRL-B",
+            "value": 10
+          },
+          {
+            "control": "CTRL-B",
+            "value": 16
+          }
+        ],
+        "selected": 12
+      },
+      {
+        "candidates": 8,
+        "control": "CTRL-G",
+        "name": "signature offset",
+        "rejected": [
+          {
+            "control": "CTRL-G",
+            "value": 0
+          },
+          {
+            "control": "CTRL-G",
+            "value": 1
+          },
+          {
+            "control": "CTRL-G",
+            "value": 2
+          },
+          {
+            "control": "CTRL-G",
+            "value": 4
+          },
+          {
+            "control": "CTRL-G",
+            "value": 5
+          },
+          {
+            "control": "CTRL-G",
+            "value": 6
+          },
+          {
+            "control": "CTRL-G",
+            "value": 7
+          }
+        ],
+        "selected": 3
+      },
+      {
+        "candidates": 5,
+        "control": "CTRL-F",
+        "name": "coarse unit",
+        "rejected": [
+          {
+            "control": "CTRL-F",
+            "value": 64
+          },
+          {
+            "control": "CTRL-F",
+            "value": 128
+          },
+          {
+            "control": "CTRL-F",
+            "value": 512
+          },
+          {
+            "control": "CTRL-F",
+            "value": 1024
+          }
+        ],
+        "selected": 256
+      },
+      {
+        "candidates": 4,
+        "control": "CTRL-G",
+        "name": "ring width",
+        "rejected": [
+          {
+            "control": "CTRL-G",
+            "value": 4
+          },
+          {
+            "control": "CTRL-G",
+            "value": 12
+          },
+          {
+            "control": "CTRL-G",
+            "value": 16
+          }
+        ],
+        "selected": 8
+      }
+    ]
+  },
+  "frame_count": 222,
+  "reconciliation": {
+    "allocated_bytes": 7257908,
+    "residual_bytes": 10409,
+    "uploaded_bytes": 7247499
+  },
+  "rejections": {
+    "outside_support": 39,
+    "retired_build": 10,
+    "unprobed_frame": 8,
+    "unreported_dump": 7,
+    "unresolved_module": 10
+  },
+  "settlement": {
+    "passes": 6,
+    "quarantined_modules": [
+      "AURORA-V2",
+      "AURORA-V3",
+      "CIPHER-V1",
+      "CIPHER-V3",
+      "DYNAMO-V2",
+      "DYNAMO-V3"
+    ]
+  }
+}

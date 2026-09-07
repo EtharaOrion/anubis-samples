@@ -1,0 +1,83 @@
+{
+  "artifact_dir": "/app/out",
+  "artifacts": [
+    {
+      "bytes": 230,
+      "name": "config.json",
+      "present": true,
+      "sha256": "bbe1a6374f00390f8cdbe6e12873719fd67534a56654629ccc8a40173ff467d0",
+      "within_size_limit": true
+    },
+    {
+      "bytes": 8585,
+      "name": "report.json",
+      "present": true,
+      "sha256": "5f41cda8db027f7438f2f30cb9310a0e825f8d4e97218b30e01ee25450fc03b1",
+      "within_size_limit": true
+    },
+    {
+      "bytes": 5499,
+      "name": "tool.zip",
+      "present": true,
+      "sha256": "aee6c1458beacdaefa191d9470d09ce2fe925dfe37a7baa367a0df82c776c87a",
+      "within_size_limit": true
+    },
+    {
+      "bytes": 229,
+      "name": "profile_dev.json",
+      "present": true,
+      "sha256": "fc8bfde3f49b625de6e599f2dce79a2d2608d758049097becf3b925506301ef0",
+      "within_size_limit": true
+    },
+    {
+      "bytes": 230,
+      "name": "profile_prod.json",
+      "present": true,
+      "sha256": "68ed2dd18dbc1479bb7c23a70489206cbc76b2f5cf02f50eaa88fdee080fe01c",
+      "within_size_limit": true
+    },
+    {
+      "bytes": 3979,
+      "name": "validation_report.json",
+      "present": true,
+      "sha256": "be6dc11d7cee0eef064d59b498da36afc6ee33f1cdaef5c42bdcc78b0fbbc8ba",
+      "within_size_limit": true
+    },
+    {
+      "name": "summary.json",
+      "note": "written by this command",
+      "present": true,
+      "self": true
+    }
+  ],
+  "missing_artifacts": [],
+  "ok": true,
+  "oversized_artifacts": [],
+  "tool": "task-ctl",
+  "tool_version": "1.0.0",
+  "validation": {
+    "ok": true,
+    "report": "/app/out/validation_report.json",
+    "results": [
+      {
+        "checks_run": 8,
+        "config": "/app/out/config.json",
+        "errors": [],
+        "ok": true
+      },
+      {
+        "checks_run": 8,
+        "config": "/app/out/profile_dev.json",
+        "errors": [],
+        "ok": true
+      },
+      {
+        "checks_run": 8,
+        "config": "/app/out/profile_prod.json",
+        "errors": [],
+        "ok": true
+      }
+    ],
+    "targets_validated": 3
+  }
+}

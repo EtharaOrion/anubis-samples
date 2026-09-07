@@ -1,0 +1,1803 @@
+{
+  "absent_entrants": [
+    "RVN",
+    "TDR"
+  ],
+  "attribution_settlement_passes": 6,
+  "capture": {
+    "capture_id": 83,
+    "capture_nonce": 1798263208,
+    "envelope_version": 2,
+    "guard_register": 4095,
+    "guards_active": [
+      "alias",
+      "backref",
+      "chain",
+      "countbias",
+      "delta2",
+      "driftkey",
+      "endian",
+      "escape",
+      "keystream",
+      "rotate",
+      "segperm",
+      "shadow"
+    ],
+    "matches": 18,
+    "records": 1016,
+    "role_digit": 3,
+    "season_base_tick": 3000,
+    "segment_step": 5,
+    "source": "season-capture.rjnl"
+  },
+  "conference_totals": {
+    "East": {
+      "entrants": 5,
+      "gross_output": 4342,
+      "season_score": 12412
+    },
+    "North": {
+      "entrants": 6,
+      "gross_output": 6448,
+      "season_score": 2216
+    },
+    "South": {
+      "entrants": 5,
+      "gross_output": 5964,
+      "season_score": 6676
+    },
+    "West": {
+      "entrants": 6,
+      "gross_output": 5948,
+      "season_score": 5657
+    }
+  },
+  "effective_owners": {
+    "CDR": "BLZ",
+    "DVN": "BLZ",
+    "GRT": "FLX",
+    "HVN": "FLX",
+    "IBX": "FLX",
+    "JDE": "FLX",
+    "UMB": "FLX",
+    "VLC": "BLZ"
+  },
+  "entry_transfers": [
+    {
+      "from": "BLZ",
+      "match_id": 500,
+      "tick": 49,
+      "to": "CDR"
+    },
+    {
+      "from": "CDR",
+      "match_id": 500,
+      "tick": 63,
+      "to": "DVN"
+    },
+    {
+      "from": "DVN",
+      "match_id": 500,
+      "tick": 94,
+      "to": "BLZ"
+    },
+    {
+      "from": "GRT",
+      "match_id": 501,
+      "tick": 84,
+      "to": "FLX"
+    },
+    {
+      "from": "IBX",
+      "match_id": 502,
+      "tick": 25,
+      "to": "HVN"
+    },
+    {
+      "from": "HVN",
+      "match_id": 502,
+      "tick": 35,
+      "to": "GRT"
+    },
+    {
+      "from": "JDE",
+      "match_id": 502,
+      "tick": 108,
+      "to": "IBX"
+    },
+    {
+      "from": "UMB",
+      "match_id": 505,
+      "tick": 42,
+      "to": "JDE"
+    },
+    {
+      "from": "VLC",
+      "match_id": 505,
+      "tick": 56,
+      "to": "BLZ"
+    }
+  ],
+  "finals_bracket": {
+    "best_satisfied_constraint_count": 9,
+    "bracket_size": 3,
+    "candidate_brackets": 816,
+    "combined_charged_upkeep": 2580,
+    "combined_gross_output": 3188,
+    "combined_ladder_weight": 9,
+    "constraints": [
+      {
+        "constraint": "at least one member sits in a division whose ladder weight reaches the prominence figure",
+        "satisfied": true,
+        "short_name": "prominent division"
+      },
+      {
+        "constraint": "both entrant segments appear among the members",
+        "satisfied": true,
+        "short_name": "both segments"
+      },
+      {
+        "constraint": "every member holds at least the standing points floor",
+        "satisfied": true,
+        "short_name": "standing points floor"
+      },
+      {
+        "constraint": "no two members share a conference",
+        "satisfied": true,
+        "short_name": "distinct conferences"
+      },
+      {
+        "constraint": "at least one member is a ranked entrant",
+        "satisfied": true,
+        "short_name": "a ranked entrant"
+      },
+      {
+        "constraint": "the ladder weights of the members sum to at least the combined ladder weight floor",
+        "satisfied": true,
+        "short_name": "combined ladder weight"
+      },
+      {
+        "constraint": "no member carries any overflow upkeep",
+        "satisfied": false,
+        "short_name": "no overflow upkeep"
+      },
+      {
+        "constraint": "at least one member holds the champion tier",
+        "satisfied": true,
+        "short_name": "a champion member"
+      },
+      {
+        "constraint": "the gross output of the members sums to at least the combined gross output floor",
+        "satisfied": true,
+        "short_name": "combined gross output"
+      },
+      {
+        "constraint": "no member has handed its entry to another squad",
+        "satisfied": true,
+        "short_name": "no member handed its entry away"
+      }
+    ],
+    "eligible_pool": [
+      "AKR",
+      "AXL",
+      "BLZ",
+      "BQT",
+      "EMB",
+      "FLX",
+      "KRN",
+      "LMX",
+      "MRA",
+      "NVL",
+      "ORC",
+      "PYX",
+      "QRM",
+      "SLT",
+      "WRN",
+      "XCT",
+      "YRD",
+      "ZPH"
+    ],
+    "member_detail": [
+      {
+        "charged_upkeep": 860,
+        "conference": "South",
+        "division": "D6",
+        "gross_output": 1038,
+        "is_ranked": true,
+        "ladder_weight": 3,
+        "overflow_upkeep": 384,
+        "segment": "public",
+        "squad_key": "FLX",
+        "standing_points": 3,
+        "tier": "qualifier"
+      },
+      {
+        "charged_upkeep": 860,
+        "conference": "West",
+        "division": "D3",
+        "gross_output": 1363,
+        "is_ranked": false,
+        "ladder_weight": 4,
+        "overflow_upkeep": 834,
+        "segment": "commercial",
+        "squad_key": "KRN",
+        "standing_points": 3,
+        "tier": "champion"
+      },
+      {
+        "charged_upkeep": 860,
+        "conference": "East",
+        "division": "D4",
+        "gross_output": 787,
+        "is_ranked": true,
+        "ladder_weight": 2,
+        "overflow_upkeep": 321,
+        "segment": "public",
+        "squad_key": "LMX",
+        "standing_points": 3,
+        "tier": "qualifier"
+      }
+    ],
+    "members": [
+      "FLX",
+      "KRN",
+      "LMX"
+    ],
+    "pool_size": 18,
+    "satisfied_constraints": 9
+  },
+  "matches": [
+    {
+      "close_tick": 104,
+      "conceded": [],
+      "conference": "East",
+      "escape_records": 2,
+      "gross_output": 1383,
+      "logical_position": 0,
+      "match_id": 500,
+      "outright_winner": "DVN",
+      "participants": [
+        "AKR",
+        "BLZ",
+        "CDR",
+        "DVN",
+        "GRT"
+      ],
+      "records": 67,
+      "review_index": 415,
+      "scores": {
+        "AKR": 75,
+        "BLZ": -54,
+        "CDR": -802,
+        "DVN": 577,
+        "GRT": 52
+      },
+      "top_score": 577,
+      "voided_output": 365,
+      "winners": [
+        "DVN"
+      ]
+    },
+    {
+      "close_tick": 102,
+      "conceded": [],
+      "conference": "North",
+      "escape_records": 2,
+      "gross_output": 1358,
+      "logical_position": 1,
+      "match_id": 501,
+      "outright_winner": "FLX",
+      "participants": [
+        "DVN",
+        "EMB",
+        "FLX",
+        "GRT",
+        "JDE",
+        "KRN"
+      ],
+      "records": 51,
+      "review_index": 132,
+      "scores": {
+        "DVN": 25,
+        "EMB": -164,
+        "FLX": 146,
+        "GRT": -607,
+        "JDE": 100,
+        "KRN": 68
+      },
+      "top_score": 146,
+      "voided_output": 82,
+      "winners": [
+        "FLX"
+      ]
+    },
+    {
+      "close_tick": 133,
+      "conceded": [
+        "IBX"
+      ],
+      "conference": "West",
+      "escape_records": 2,
+      "gross_output": 1307,
+      "logical_position": 2,
+      "match_id": 502,
+      "outright_winner": "HVN",
+      "participants": [
+        "GRT",
+        "HVN",
+        "IBX",
+        "JDE",
+        "LMX"
+      ],
+      "records": 59,
+      "review_index": 367,
+      "scores": {
+        "GRT": -135,
+        "HVN": 825,
+        "IBX": -335,
+        "JDE": -642,
+        "LMX": 88
+      },
+      "top_score": 825,
+      "voided_output": 317,
+      "winners": [
+        "HVN"
+      ]
+    },
+    {
+      "close_tick": 123,
+      "conceded": [],
+      "conference": "West",
+      "escape_records": 2,
+      "gross_output": 1378,
+      "logical_position": 3,
+      "match_id": 503,
+      "outright_winner": "LMX",
+      "participants": [
+        "BLZ",
+        "JDE",
+        "KRN",
+        "LMX",
+        "MRA"
+      ],
+      "records": 54,
+      "review_index": 499,
+      "scores": {
+        "BLZ": 44,
+        "JDE": -28,
+        "KRN": -121,
+        "LMX": 251,
+        "MRA": -803
+      },
+      "top_score": 251,
+      "voided_output": 449,
+      "winners": [
+        "LMX"
+      ]
+    },
+    {
+      "close_tick": 98,
+      "conceded": [],
+      "conference": "South",
+      "escape_records": 2,
+      "gross_output": 809,
+      "logical_position": 4,
+      "match_id": 504,
+      "outright_winner": "NVL",
+      "participants": [
+        "AKR",
+        "MRA",
+        "NVL",
+        "ORC"
+      ],
+      "records": 30,
+      "review_index": 50,
+      "scores": {
+        "AKR": 93,
+        "MRA": -122,
+        "NVL": 208,
+        "ORC": 39
+      },
+      "top_score": 208,
+      "voided_output": 0,
+      "winners": [
+        "NVL"
+      ]
+    },
+    {
+      "close_tick": 93,
+      "conceded": [
+        "VLC"
+      ],
+      "conference": "East",
+      "escape_records": 2,
+      "gross_output": 2048,
+      "logical_position": 5,
+      "match_id": 505,
+      "outright_winner": "PYX",
+      "participants": [
+        "AKR",
+        "EMB",
+        "PYX",
+        "QRM",
+        "SLT",
+        "UMB",
+        "VLC"
+      ],
+      "records": 72,
+      "review_index": 464,
+      "scores": {
+        "AKR": 132,
+        "EMB": 65,
+        "PYX": 2148,
+        "QRM": 278,
+        "SLT": 1352,
+        "UMB": -126,
+        "VLC": -237
+      },
+      "top_score": 2148,
+      "voided_output": 414,
+      "winners": [
+        "PYX"
+      ]
+    },
+    {
+      "close_tick": 165,
+      "conceded": [],
+      "conference": "South",
+      "escape_records": 2,
+      "gross_output": 1534,
+      "logical_position": 6,
+      "match_id": 506,
+      "outright_winner": "XCT",
+      "participants": [
+        "GRT",
+        "MRA",
+        "UMB",
+        "VLC",
+        "WRN",
+        "XCT"
+      ],
+      "records": 51,
+      "review_index": 299,
+      "scores": {
+        "GRT": 56,
+        "MRA": 89,
+        "UMB": -1043,
+        "VLC": 935,
+        "WRN": -1290,
+        "XCT": 1095
+      },
+      "top_score": 1095,
+      "voided_output": 249,
+      "winners": [
+        "XCT"
+      ]
+    },
+    {
+      "close_tick": 162,
+      "conceded": [],
+      "conference": "East",
+      "escape_records": 2,
+      "gross_output": 989,
+      "logical_position": 7,
+      "match_id": 507,
+      "outright_winner": "HVN",
+      "participants": [
+        "HVN",
+        "JDE",
+        "XCT",
+        "YRD",
+        "ZPH"
+      ],
+      "records": 37,
+      "review_index": 489,
+      "scores": {
+        "HVN": 445,
+        "JDE": 32,
+        "XCT": 0,
+        "YRD": -414,
+        "ZPH": -207
+      },
+      "top_score": 445,
+      "voided_output": 439,
+      "winners": [
+        "HVN"
+      ]
+    },
+    {
+      "close_tick": 158,
+      "conceded": [],
+      "conference": "South",
+      "escape_records": 2,
+      "gross_output": 921,
+      "logical_position": 8,
+      "match_id": 508,
+      "outright_winner": "BLZ",
+      "participants": [
+        "AKR",
+        "AXL",
+        "BLZ",
+        "BQT",
+        "HVN",
+        "KRN"
+      ],
+      "records": 46,
+      "review_index": 480,
+      "scores": {
+        "AKR": 74,
+        "AXL": -294,
+        "BLZ": 220,
+        "BQT": -758,
+        "HVN": 80,
+        "KRN": 56
+      },
+      "top_score": 220,
+      "voided_output": 430,
+      "winners": [
+        "BLZ"
+      ]
+    },
+    {
+      "close_tick": 130,
+      "conceded": [],
+      "conference": "South",
+      "escape_records": 2,
+      "gross_output": 756,
+      "logical_position": 9,
+      "match_id": 509,
+      "outright_winner": "BLZ",
+      "participants": [
+        "BLZ",
+        "CDR",
+        "DVN",
+        "GRT",
+        "IBX"
+      ],
+      "records": 42,
+      "review_index": 663,
+      "scores": {
+        "BLZ": 672,
+        "CDR": -416,
+        "DVN": 296,
+        "GRT": 112,
+        "IBX": 78
+      },
+      "top_score": 672,
+      "voided_output": 613,
+      "winners": [
+        "BLZ"
+      ]
+    },
+    {
+      "close_tick": 143,
+      "conceded": [],
+      "conference": "South",
+      "escape_records": 2,
+      "gross_output": 2079,
+      "logical_position": 10,
+      "match_id": 510,
+      "outright_winner": "HVN",
+      "participants": [
+        "EMB",
+        "FLX",
+        "GRT",
+        "HVN",
+        "IBX",
+        "KRN"
+      ],
+      "records": 84,
+      "review_index": 606,
+      "scores": {
+        "EMB": -618,
+        "FLX": 798,
+        "GRT": 538,
+        "HVN": 1405,
+        "IBX": 148,
+        "KRN": 76
+      },
+      "top_score": 1405,
+      "voided_output": 556,
+      "winners": [
+        "HVN"
+      ]
+    },
+    {
+      "close_tick": 146,
+      "conceded": [],
+      "conference": "North",
+      "escape_records": 2,
+      "gross_output": 1892,
+      "logical_position": 11,
+      "match_id": 511,
+      "outright_winner": "HVN",
+      "participants": [
+        "BLZ",
+        "HVN",
+        "IBX",
+        "JDE",
+        "KRN",
+        "LMX"
+      ],
+      "records": 69,
+      "review_index": 390,
+      "scores": {
+        "BLZ": 168,
+        "HVN": 2610,
+        "IBX": 1677,
+        "JDE": 464,
+        "KRN": 1021,
+        "LMX": -176
+      },
+      "top_score": 2610,
+      "voided_output": 340,
+      "winners": [
+        "HVN"
+      ]
+    },
+    {
+      "close_tick": 157,
+      "conceded": [],
+      "conference": "North",
+      "escape_records": 2,
+      "gross_output": 1853,
+      "logical_position": 12,
+      "match_id": 512,
+      "outright_winner": "KRN",
+      "participants": [
+        "AKR",
+        "KRN",
+        "LMX",
+        "MRA",
+        "NVL",
+        "PYX"
+      ],
+      "records": 56,
+      "review_index": 180,
+      "scores": {
+        "AKR": 69,
+        "KRN": 1244,
+        "LMX": 527,
+        "MRA": 362,
+        "NVL": 769,
+        "PYX": 155
+      },
+      "top_score": 1244,
+      "voided_output": 130,
+      "winners": [
+        "KRN"
+      ]
+    },
+    {
+      "close_tick": 149,
+      "conceded": [],
+      "conference": "West",
+      "escape_records": 2,
+      "gross_output": 1848,
+      "logical_position": 13,
+      "match_id": 513,
+      "outright_winner": "PYX",
+      "participants": [
+        "FLX",
+        "KRN",
+        "NVL",
+        "ORC",
+        "PYX",
+        "QRM",
+        "SLT"
+      ],
+      "records": 76,
+      "review_index": 631,
+      "scores": {
+        "FLX": 189,
+        "KRN": 176,
+        "NVL": 633,
+        "ORC": -26,
+        "PYX": 1707,
+        "QRM": -292,
+        "SLT": 1224
+      },
+      "top_score": 1707,
+      "voided_output": 581,
+      "winners": [
+        "PYX"
+      ]
+    },
+    {
+      "close_tick": 167,
+      "conceded": [],
+      "conference": "North",
+      "escape_records": 2,
+      "gross_output": 1166,
+      "logical_position": 14,
+      "match_id": 514,
+      "outright_winner": "QRM",
+      "participants": [
+        "LMX",
+        "MRA",
+        "QRM",
+        "SLT",
+        "UMB"
+      ],
+      "records": 50,
+      "review_index": 371,
+      "scores": {
+        "LMX": 24,
+        "MRA": 57,
+        "QRM": 1123,
+        "SLT": 532,
+        "UMB": 547
+      },
+      "top_score": 1123,
+      "voided_output": 321,
+      "winners": [
+        "QRM"
+      ]
+    },
+    {
+      "close_tick": 159,
+      "conceded": [],
+      "conference": "South",
+      "escape_records": 2,
+      "gross_output": 1067,
+      "logical_position": 15,
+      "match_id": 515,
+      "outright_winner": "VLC",
+      "participants": [
+        "GRT",
+        "NVL",
+        "VLC",
+        "WRN",
+        "XCT",
+        "YRD"
+      ],
+      "records": 61,
+      "review_index": 711,
+      "scores": {
+        "GRT": 100,
+        "NVL": 177,
+        "VLC": 1005,
+        "WRN": -522,
+        "XCT": 225,
+        "YRD": 434
+      },
+      "top_score": 1005,
+      "voided_output": 661,
+      "winners": [
+        "VLC"
+      ]
+    },
+    {
+      "close_tick": 118,
+      "conceded": [],
+      "conference": "West",
+      "escape_records": 2,
+      "gross_output": 1803,
+      "logical_position": 16,
+      "match_id": 516,
+      "outright_winner": "YRD",
+      "participants": [
+        "AXL",
+        "FLX",
+        "KRN",
+        "YRD",
+        "ZPH"
+      ],
+      "records": 52,
+      "review_index": 370,
+      "scores": {
+        "AXL": 251,
+        "FLX": 261,
+        "KRN": 352,
+        "YRD": 477,
+        "ZPH": 220
+      },
+      "top_score": 477,
+      "voided_output": 320,
+      "winners": [
+        "YRD"
+      ]
+    },
+    {
+      "close_tick": 128,
+      "conceded": [
+        "BQT"
+      ],
+      "conference": "West",
+      "escape_records": 2,
+      "gross_output": 1760,
+      "logical_position": 17,
+      "match_id": 517,
+      "outright_winner": "CDR",
+      "participants": [
+        "AKR",
+        "BLZ",
+        "BQT",
+        "CDR",
+        "HVN",
+        "ORC"
+      ],
+      "records": 59,
+      "review_index": 295,
+      "scores": {
+        "AKR": 852,
+        "BLZ": 816,
+        "BQT": 100,
+        "CDR": 2434,
+        "HVN": 105,
+        "ORC": 144
+      },
+      "top_score": 2434,
+      "voided_output": 245,
+      "winners": [
+        "CDR"
+      ]
+    }
+  ],
+  "policy": {
+    "combined_gross_output_floor": 900,
+    "combined_ladder_weight_floor": 7,
+    "count_bias": 6,
+    "docket_conference_cap": 2,
+    "docket_size": 5,
+    "eligibility_match_floor": 2,
+    "engine_tag": "tessel-drift",
+    "ladder_weight_prominence": 4,
+    "promotion_threshold": 700,
+    "review_weight": 25,
+    "roster_dictionary": [
+      "AKR",
+      "CDR",
+      "BLZ",
+      "DVN",
+      "FLX",
+      "EMB",
+      "GRT",
+      "HVN",
+      "IBX",
+      "JDE",
+      "KRN",
+      "LMX",
+      "ORC",
+      "MRA",
+      "NVL",
+      "PYX"
+    ],
+    "season_budget": 860,
+    "sentinel": "0x1D",
+    "standing_points_floor": 3,
+    "window_depth": 6
+  },
+  "review_docket": {
+    "candidate_pool": [
+      503,
+      505,
+      507,
+      509,
+      511,
+      513,
+      514,
+      515
+    ],
+    "conference_cap": 2,
+    "conference_spread": {
+      "East": 1,
+      "South": 2,
+      "West": 2
+    },
+    "docket_size": 5,
+    "matches": [
+      {
+        "conference": "West",
+        "deciding_squad": "KRN",
+        "escape_records": 2,
+        "match_id": 503,
+        "review_index": 499,
+        "voided_output": 449
+      },
+      {
+        "conference": "East",
+        "deciding_squad": "HVN",
+        "escape_records": 2,
+        "match_id": 507,
+        "review_index": 489,
+        "voided_output": 439
+      },
+      {
+        "conference": "South",
+        "deciding_squad": "BLZ",
+        "escape_records": 2,
+        "match_id": 509,
+        "review_index": 663,
+        "voided_output": 613
+      },
+      {
+        "conference": "West",
+        "deciding_squad": "SLT",
+        "escape_records": 2,
+        "match_id": 513,
+        "review_index": 631,
+        "voided_output": 581
+      },
+      {
+        "conference": "South",
+        "deciding_squad": "VLC",
+        "escape_records": 2,
+        "match_id": 515,
+        "review_index": 711,
+        "voided_output": 661
+      }
+    ],
+    "review_weight": 25,
+    "total_review_index": 2993
+  },
+  "segment_totals": {
+    "commercial": {
+      "entrants": 12,
+      "gross_output": 12396,
+      "season_score": 7873
+    },
+    "public": {
+      "entrants": 10,
+      "gross_output": 10306,
+      "season_score": 19088
+    }
+  },
+  "standings": [
+    {
+      "charged_upkeep": 860,
+      "conference": "East",
+      "division": "D8",
+      "effective_owner": "FLX",
+      "entrant_id": "E008",
+      "gross_output": 1266,
+      "handed_over": true,
+      "is_ranked": false,
+      "ladder_weight": 5,
+      "levy_rate": 1,
+      "licence_class": "LC2",
+      "match_awards": 12,
+      "matches": 6,
+      "overflow_upkeep": 727,
+      "rank": 1,
+      "raw_upkeep": 1587,
+      "registered": true,
+      "results": [
+        "win",
+        "win",
+        "loss",
+        "win",
+        "win",
+        "loss"
+      ],
+      "season_score": 5470,
+      "segment": "public",
+      "squad_key": "HVN",
+      "standing_points": 16,
+      "streak_credit": 4,
+      "tier": "champion",
+      "voided_output": 104
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "East",
+      "division": "D8",
+      "effective_owner": "PYX",
+      "entrant_id": "E016",
+      "gross_output": 974,
+      "handed_over": false,
+      "is_ranked": true,
+      "ladder_weight": 5,
+      "levy_rate": 1,
+      "licence_class": "LC2",
+      "match_awards": 6,
+      "matches": 3,
+      "overflow_upkeep": 794,
+      "rank": 2,
+      "raw_upkeep": 1654,
+      "registered": true,
+      "results": [
+        "win",
+        "loss",
+        "win"
+      ],
+      "season_score": 4010,
+      "segment": "public",
+      "squad_key": "PYX",
+      "standing_points": 6,
+      "streak_credit": 0,
+      "tier": "champion",
+      "voided_output": 203
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "West",
+      "division": "D3",
+      "effective_owner": "SLT",
+      "entrant_id": "E019",
+      "gross_output": 1422,
+      "handed_over": false,
+      "is_ranked": true,
+      "ladder_weight": 4,
+      "levy_rate": 3,
+      "licence_class": "LC3",
+      "match_awards": 0,
+      "matches": 3,
+      "overflow_upkeep": 867,
+      "rank": 3,
+      "raw_upkeep": 1727,
+      "registered": true,
+      "results": [
+        "loss",
+        "loss",
+        "loss"
+      ],
+      "season_score": 3108,
+      "segment": "commercial",
+      "squad_key": "SLT",
+      "standing_points": 0,
+      "streak_credit": 0,
+      "tier": "champion",
+      "voided_output": 0
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "West",
+      "division": "D3",
+      "effective_owner": "KRN",
+      "entrant_id": "E011",
+      "gross_output": 1363,
+      "handed_over": false,
+      "is_ranked": false,
+      "ladder_weight": 4,
+      "levy_rate": 3,
+      "licence_class": "LC3",
+      "match_awards": 3,
+      "matches": 8,
+      "overflow_upkeep": 834,
+      "rank": 4,
+      "raw_upkeep": 1694,
+      "registered": true,
+      "results": [
+        "loss",
+        "loss",
+        "loss",
+        "loss",
+        "loss",
+        "win",
+        "loss",
+        "loss"
+      ],
+      "season_score": 2872,
+      "segment": "commercial",
+      "squad_key": "KRN",
+      "standing_points": 3,
+      "streak_credit": 0,
+      "tier": "champion",
+      "voided_output": 126
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "South",
+      "division": "D2",
+      "effective_owner": "BLZ",
+      "entrant_id": "E002",
+      "gross_output": 1793,
+      "handed_over": true,
+      "is_ranked": false,
+      "ladder_weight": 2,
+      "levy_rate": 2,
+      "licence_class": "LC4",
+      "match_awards": 6,
+      "matches": 6,
+      "overflow_upkeep": 2002,
+      "rank": 5,
+      "raw_upkeep": 2862,
+      "registered": true,
+      "results": [
+        "loss",
+        "loss",
+        "win",
+        "win",
+        "loss",
+        "loss"
+      ],
+      "season_score": 1866,
+      "segment": "public",
+      "squad_key": "BLZ",
+      "standing_points": 8,
+      "streak_credit": 2,
+      "tier": "contender",
+      "voided_output": 540
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "South",
+      "division": "D6",
+      "effective_owner": "NVL",
+      "entrant_id": "E014",
+      "gross_output": 1169,
+      "handed_over": false,
+      "is_ranked": false,
+      "ladder_weight": 3,
+      "levy_rate": 2,
+      "licence_class": "LC4",
+      "match_awards": 3,
+      "matches": 4,
+      "overflow_upkeep": 1279,
+      "rank": 6,
+      "raw_upkeep": 2139,
+      "registered": true,
+      "results": [
+        "win",
+        "loss",
+        "loss",
+        "loss"
+      ],
+      "season_score": 1787,
+      "segment": "public",
+      "squad_key": "NVL",
+      "standing_points": 3,
+      "streak_credit": 0,
+      "tier": "contender",
+      "voided_output": 301
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "South",
+      "division": "D6",
+      "effective_owner": "BLZ",
+      "entrant_id": "E022",
+      "gross_output": 1141,
+      "handed_over": true,
+      "is_ranked": true,
+      "ladder_weight": 3,
+      "levy_rate": 2,
+      "licence_class": "LC4",
+      "match_awards": 3,
+      "matches": 3,
+      "overflow_upkeep": 1107,
+      "rank": 7,
+      "raw_upkeep": 1967,
+      "registered": true,
+      "results": [
+        "conceded",
+        "loss",
+        "win"
+      ],
+      "season_score": 1703,
+      "segment": "public",
+      "squad_key": "VLC",
+      "standing_points": 3,
+      "streak_credit": 0,
+      "tier": "contender",
+      "voided_output": 235
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "North",
+      "division": "D1",
+      "effective_owner": "FLX",
+      "entrant_id": "E009",
+      "gross_output": 1096,
+      "handed_over": true,
+      "is_ranked": true,
+      "ladder_weight": 3,
+      "levy_rate": 2,
+      "licence_class": "LC1",
+      "match_awards": 0,
+      "matches": 4,
+      "overflow_upkeep": 1121,
+      "rank": 8,
+      "raw_upkeep": 1981,
+      "registered": true,
+      "results": [
+        "conceded",
+        "loss",
+        "loss",
+        "loss"
+      ],
+      "season_score": 1568,
+      "segment": "commercial",
+      "squad_key": "IBX",
+      "standing_points": 0,
+      "streak_credit": 0,
+      "tier": "contender",
+      "voided_output": 430
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "South",
+      "division": "D6",
+      "effective_owner": "FLX",
+      "entrant_id": "E006",
+      "gross_output": 1038,
+      "handed_over": false,
+      "is_ranked": true,
+      "ladder_weight": 3,
+      "levy_rate": 2,
+      "licence_class": "LC4",
+      "match_awards": 3,
+      "matches": 4,
+      "overflow_upkeep": 384,
+      "rank": 9,
+      "raw_upkeep": 1244,
+      "registered": true,
+      "results": [
+        "win",
+        "loss",
+        "loss",
+        "loss"
+      ],
+      "season_score": 1394,
+      "segment": "public",
+      "squad_key": "FLX",
+      "standing_points": 3,
+      "streak_credit": 0,
+      "tier": "qualifier",
+      "voided_output": 233
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "East",
+      "division": "D8",
+      "effective_owner": "XCT",
+      "entrant_id": "E024",
+      "gross_output": 436,
+      "handed_over": false,
+      "is_ranked": true,
+      "ladder_weight": 5,
+      "levy_rate": 1,
+      "licence_class": "LC2",
+      "match_awards": 3,
+      "matches": 3,
+      "overflow_upkeep": 1420,
+      "rank": 10,
+      "raw_upkeep": 2280,
+      "registered": true,
+      "results": [
+        "win",
+        "loss",
+        "loss"
+      ],
+      "season_score": 1320,
+      "segment": "public",
+      "squad_key": "XCT",
+      "standing_points": 3,
+      "streak_credit": 0,
+      "tier": "qualifier",
+      "voided_output": 716
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "North",
+      "division": "D1",
+      "effective_owner": "AKR",
+      "entrant_id": "E001",
+      "gross_output": 1005,
+      "handed_over": false,
+      "is_ranked": true,
+      "ladder_weight": 3,
+      "levy_rate": 2,
+      "licence_class": "LC1",
+      "match_awards": 0,
+      "matches": 6,
+      "overflow_upkeep": 298,
+      "rank": 11,
+      "raw_upkeep": 1158,
+      "registered": true,
+      "results": [
+        "loss",
+        "loss",
+        "loss",
+        "loss",
+        "loss",
+        "loss"
+      ],
+      "season_score": 1295,
+      "segment": "commercial",
+      "squad_key": "AKR",
+      "standing_points": 0,
+      "streak_credit": 0,
+      "tier": "qualifier",
+      "voided_output": 79
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "West",
+      "division": "D3",
+      "effective_owner": "BLZ",
+      "entrant_id": "E003",
+      "gross_output": 949,
+      "handed_over": true,
+      "is_ranked": true,
+      "ladder_weight": 4,
+      "levy_rate": 3,
+      "licence_class": "LC3",
+      "match_awards": 3,
+      "matches": 3,
+      "overflow_upkeep": 1104,
+      "rank": 12,
+      "raw_upkeep": 1964,
+      "registered": true,
+      "results": [
+        "loss",
+        "loss",
+        "win"
+      ],
+      "season_score": 1216,
+      "segment": "commercial",
+      "squad_key": "CDR",
+      "standing_points": 3,
+      "streak_credit": 0,
+      "tier": "qualifier",
+      "voided_output": 172
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "North",
+      "division": "D1",
+      "effective_owner": "QRM",
+      "entrant_id": "E017",
+      "gross_output": 943,
+      "handed_over": false,
+      "is_ranked": false,
+      "ladder_weight": 3,
+      "levy_rate": 2,
+      "licence_class": "LC1",
+      "match_awards": 3,
+      "matches": 3,
+      "overflow_upkeep": 901,
+      "rank": 13,
+      "raw_upkeep": 1761,
+      "registered": true,
+      "results": [
+        "loss",
+        "loss",
+        "win"
+      ],
+      "season_score": 1109,
+      "segment": "commercial",
+      "squad_key": "QRM",
+      "standing_points": 3,
+      "streak_credit": 0,
+      "tier": "qualifier",
+      "voided_output": 254
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "East",
+      "division": "D4",
+      "effective_owner": "BLZ",
+      "entrant_id": "E004",
+      "gross_output": 879,
+      "handed_over": true,
+      "is_ranked": true,
+      "ladder_weight": 2,
+      "levy_rate": 1,
+      "licence_class": "LC2",
+      "match_awards": 3,
+      "matches": 3,
+      "overflow_upkeep": 662,
+      "rank": 14,
+      "raw_upkeep": 1522,
+      "registered": true,
+      "results": [
+        "win",
+        "loss",
+        "loss"
+      ],
+      "season_score": 898,
+      "segment": "public",
+      "squad_key": "DVN",
+      "standing_points": 3,
+      "streak_credit": 0,
+      "tier": "qualifier",
+      "voided_output": 425
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "East",
+      "division": "D4",
+      "effective_owner": "LMX",
+      "entrant_id": "E012",
+      "gross_output": 787,
+      "handed_over": false,
+      "is_ranked": true,
+      "ladder_weight": 2,
+      "levy_rate": 1,
+      "licence_class": "LC2",
+      "match_awards": 3,
+      "matches": 5,
+      "overflow_upkeep": 321,
+      "rank": 15,
+      "raw_upkeep": 1181,
+      "registered": true,
+      "results": [
+        "loss",
+        "win",
+        "loss",
+        "loss",
+        "loss"
+      ],
+      "season_score": 714,
+      "segment": "public",
+      "squad_key": "LMX",
+      "standing_points": 3,
+      "streak_credit": 0,
+      "tier": "qualifier",
+      "voided_output": 286
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": null,
+      "division": null,
+      "effective_owner": "YRD",
+      "entrant_id": null,
+      "gross_output": 1357,
+      "handed_over": false,
+      "is_ranked": false,
+      "ladder_weight": 1,
+      "levy_rate": 1,
+      "licence_class": null,
+      "match_awards": 3,
+      "matches": 3,
+      "overflow_upkeep": 1435,
+      "rank": 16,
+      "raw_upkeep": 2295,
+      "registered": false,
+      "results": [
+        "loss",
+        "loss",
+        "win"
+      ],
+      "season_score": 497,
+      "segment": null,
+      "squad_key": "YRD",
+      "standing_points": 3,
+      "streak_credit": 0,
+      "tier": "provisional",
+      "voided_output": 275
+    },
+    {
+      "charged_upkeep": 269,
+      "conference": "West",
+      "division": "D7",
+      "effective_owner": "ORC",
+      "entrant_id": "E015",
+      "gross_output": 482,
+      "handed_over": false,
+      "is_ranked": true,
+      "ladder_weight": 2,
+      "levy_rate": 3,
+      "licence_class": "LC3",
+      "match_awards": 0,
+      "matches": 3,
+      "overflow_upkeep": 0,
+      "rank": 17,
+      "raw_upkeep": 269,
+      "registered": true,
+      "results": [
+        "loss",
+        "loss",
+        "loss"
+      ],
+      "season_score": 157,
+      "segment": "commercial",
+      "squad_key": "ORC",
+      "standing_points": 0,
+      "streak_credit": 0,
+      "tier": "provisional",
+      "voided_output": 224
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "West",
+      "division": "D7",
+      "effective_owner": "FLX",
+      "entrant_id": "E007",
+      "gross_output": 1348,
+      "handed_over": true,
+      "is_ranked": true,
+      "ladder_weight": 2,
+      "levy_rate": 3,
+      "licence_class": "LC3",
+      "match_awards": 0,
+      "matches": 7,
+      "overflow_upkeep": 1129,
+      "rank": 18,
+      "raw_upkeep": 1989,
+      "registered": true,
+      "results": [
+        "loss",
+        "loss",
+        "loss",
+        "loss",
+        "loss",
+        "loss",
+        "loss"
+      ],
+      "season_score": 116,
+      "segment": "commercial",
+      "squad_key": "GRT",
+      "standing_points": 0,
+      "streak_credit": 0,
+      "tier": "provisional",
+      "voided_output": 57
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": null,
+      "division": null,
+      "effective_owner": "ZPH",
+      "entrant_id": null,
+      "gross_output": 873,
+      "handed_over": false,
+      "is_ranked": false,
+      "ladder_weight": 1,
+      "levy_rate": 1,
+      "licence_class": null,
+      "match_awards": 0,
+      "matches": 2,
+      "overflow_upkeep": 430,
+      "rank": 19,
+      "raw_upkeep": 1290,
+      "registered": false,
+      "results": [
+        "loss",
+        "loss"
+      ],
+      "season_score": 13,
+      "segment": null,
+      "squad_key": "ZPH",
+      "standing_points": 0,
+      "streak_credit": 0,
+      "tier": "provisional",
+      "voided_output": 73
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": null,
+      "division": null,
+      "effective_owner": "AXL",
+      "entrant_id": null,
+      "gross_output": 817,
+      "handed_over": false,
+      "is_ranked": false,
+      "ladder_weight": 1,
+      "levy_rate": 1,
+      "licence_class": null,
+      "match_awards": 0,
+      "matches": 2,
+      "overflow_upkeep": 47,
+      "rank": 20,
+      "raw_upkeep": 907,
+      "registered": false,
+      "results": [
+        "loss",
+        "loss"
+      ],
+      "season_score": -43,
+      "segment": null,
+      "squad_key": "AXL",
+      "standing_points": 0,
+      "streak_credit": 0,
+      "tier": "provisional",
+      "voided_output": 397
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "South",
+      "division": "D2",
+      "effective_owner": "FLX",
+      "entrant_id": "E010",
+      "gross_output": 823,
+      "handed_over": true,
+      "is_ranked": true,
+      "ladder_weight": 2,
+      "levy_rate": 2,
+      "licence_class": "LC4",
+      "match_awards": 0,
+      "matches": 5,
+      "overflow_upkeep": 396,
+      "rank": 21,
+      "raw_upkeep": 1256,
+      "registered": true,
+      "results": [
+        "loss",
+        "loss",
+        "loss",
+        "loss",
+        "loss"
+      ],
+      "season_score": -74,
+      "segment": "public",
+      "squad_key": "JDE",
+      "standing_points": 0,
+      "streak_credit": 0,
+      "tier": "provisional",
+      "voided_output": 219
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "North",
+      "division": "D5",
+      "effective_owner": "MRA",
+      "entrant_id": "E013",
+      "gross_output": 1303,
+      "handed_over": false,
+      "is_ranked": true,
+      "ladder_weight": 1,
+      "levy_rate": 2,
+      "licence_class": "LC1",
+      "match_awards": 0,
+      "matches": 5,
+      "overflow_upkeep": 1123,
+      "rank": 22,
+      "raw_upkeep": 1983,
+      "registered": true,
+      "results": [
+        "loss",
+        "loss",
+        "loss",
+        "loss",
+        "loss"
+      ],
+      "season_score": -417,
+      "segment": "commercial",
+      "squad_key": "MRA",
+      "standing_points": 0,
+      "streak_credit": 0,
+      "tier": "provisional",
+      "voided_output": 204
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "North",
+      "division": "D5",
+      "effective_owner": "FLX",
+      "entrant_id": "E021",
+      "gross_output": 1098,
+      "handed_over": true,
+      "is_ranked": true,
+      "ladder_weight": 1,
+      "levy_rate": 2,
+      "licence_class": "LC1",
+      "match_awards": 0,
+      "matches": 3,
+      "overflow_upkeep": 1509,
+      "rank": 23,
+      "raw_upkeep": 2369,
+      "registered": true,
+      "results": [
+        "loss",
+        "loss",
+        "loss"
+      ],
+      "season_score": -622,
+      "segment": "commercial",
+      "squad_key": "UMB",
+      "standing_points": 0,
+      "streak_credit": 0,
+      "tier": "provisional",
+      "voided_output": 490
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": null,
+      "division": null,
+      "effective_owner": "BQT",
+      "entrant_id": null,
+      "gross_output": 202,
+      "handed_over": false,
+      "is_ranked": false,
+      "ladder_weight": 1,
+      "levy_rate": 1,
+      "licence_class": null,
+      "match_awards": 0,
+      "matches": 2,
+      "overflow_upkeep": 121,
+      "rank": 24,
+      "raw_upkeep": 981,
+      "registered": false,
+      "results": [
+        "loss",
+        "conceded"
+      ],
+      "season_score": -658,
+      "segment": null,
+      "squad_key": "BQT",
+      "standing_points": 0,
+      "streak_credit": 0,
+      "tier": "provisional",
+      "voided_output": 258
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "North",
+      "division": "D5",
+      "effective_owner": "EMB",
+      "entrant_id": "E005",
+      "gross_output": 1003,
+      "handed_over": false,
+      "is_ranked": false,
+      "ladder_weight": 1,
+      "levy_rate": 2,
+      "licence_class": "LC1",
+      "match_awards": 0,
+      "matches": 3,
+      "overflow_upkeep": 355,
+      "rank": 25,
+      "raw_upkeep": 1215,
+      "registered": true,
+      "results": [
+        "loss",
+        "loss",
+        "loss"
+      ],
+      "season_score": -717,
+      "segment": "commercial",
+      "squad_key": "EMB",
+      "standing_points": 0,
+      "streak_credit": 0,
+      "tier": "provisional",
+      "voided_output": 73
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "West",
+      "division": "D7",
+      "effective_owner": "WRN",
+      "entrant_id": "E023",
+      "gross_output": 384,
+      "handed_over": false,
+      "is_ranked": false,
+      "ladder_weight": 2,
+      "levy_rate": 3,
+      "licence_class": "LC3",
+      "match_awards": 0,
+      "matches": 2,
+      "overflow_upkeep": 332,
+      "rank": 26,
+      "raw_upkeep": 1192,
+      "registered": true,
+      "results": [
+        "loss",
+        "loss"
+      ],
+      "season_score": -1812,
+      "segment": "commercial",
+      "squad_key": "WRN",
+      "standing_points": 0,
+      "streak_credit": 0,
+      "tier": "provisional",
+      "voided_output": 138
+    }
+  ],
+  "tier_counts": {
+    "champion": 4,
+    "contender": 4,
+    "provisional": 11,
+    "qualifier": 7
+  },
+  "totals": {
+    "charged_upkeep": 21769,
+    "gross_output": 25951,
+    "matches": 18,
+    "overflow_upkeep": 20698,
+    "raw_upkeep": 42467,
+    "registered_squads": 22,
+    "reported_output": 32463,
+    "season_score": 26770,
+    "squads": 26,
+    "standing_points": 60,
+    "unregistered_squads": 4,
+    "voided_output": 6512
+  },
+  "unregistered_squads": [
+    "AXL",
+    "BQT",
+    "YRD",
+    "ZPH"
+  ]
+}

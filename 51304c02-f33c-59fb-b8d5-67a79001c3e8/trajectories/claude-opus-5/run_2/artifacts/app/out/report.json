@@ -1,0 +1,213 @@
+{
+  "archive": {
+    "extracted_to": "/app/tool",
+    "input": "/app/data/tool.zip",
+    "repaired": "/app/out/tool.zip"
+  },
+  "config": {
+    "checksum": "crc32",
+    "container": "",
+    "max_records": 145,
+    "mode": "strict-local",
+    "producer": "",
+    "profile": "TASK",
+    "retry_limit": 3,
+    "timeout_ms": 1771,
+    "trailer": "harbor:cli-config:TASK:0000000000016384"
+  },
+  "config_path": "/app/out/config.json",
+  "derived_profiles": {
+    "dev": {
+      "config": {
+        "checksum": "crc32",
+        "container": "",
+        "max_records": 135,
+        "mode": "strict-local",
+        "producer": "",
+        "profile": "dev",
+        "retry_limit": 4,
+        "timeout_ms": 1646,
+        "trailer": "harbor:cli-config:TASK:0000000000016384"
+      },
+      "path": "/app/out/profile_dev.json"
+    },
+    "prod": {
+      "config": {
+        "checksum": "crc32",
+        "container": "",
+        "max_records": 170,
+        "mode": "strict-local",
+        "producer": "",
+        "profile": "prod",
+        "retry_limit": 3,
+        "timeout_ms": 2021,
+        "trailer": "harbor:cli-config:TASK:0000000000016384"
+      },
+      "path": "/app/out/profile_prod.json"
+    }
+  },
+  "key_count": 9,
+  "ok": true,
+  "repair": {
+    "fault_count": 11,
+    "faults": [
+      {
+        "evidence": "AttributeError: 'Namespace' object has no attribute 'config'",
+        "fault": "init read args.config, an argument the init subparser never defines, so every invocation raised AttributeError.",
+        "fix": "Read args.schema, the argument the subparser actually declares.",
+        "id": 1,
+        "location": "cli.py:cmd_init",
+        "severity": "fatal"
+      },
+      {
+        "evidence": "config_schema.json declares \"scalar_only\": true",
+        "fault": "init wrote checksum inside a nested 'settings' object, breaking the scalar_only/flat contract in config_schema.json.",
+        "fix": "All values are written as top-level scalars; init refuses non-scalar values.",
+        "id": 2,
+        "location": "cli.py:cmd_init",
+        "severity": "contract"
+      },
+      {
+        "evidence": "required_keys has 9 entries; init produced profile, producer, container, checksum",
+        "fault": "init could only emit 4 of the 9 required keys and had no way to read defaults.json, so a valid config was unreachable.",
+        "fix": "Added --defaults, which merges scalar defaults plus base_config.",
+        "id": 3,
+        "location": "cli.py:cmd_init",
+        "severity": "contract"
+      },
+      {
+        "evidence": "required_keys are lower case",
+        "fault": "set stored data[args.key.upper()], producing keys such as MAX_RECORDS that the schema never declares.",
+        "fix": "The key is used verbatim; keys are case sensitive.",
+        "id": 4,
+        "location": "cli.py:cmd_set",
+        "severity": "contract"
+      },
+      {
+        "evidence": "defaults.json base_config values are JSON numbers",
+        "fault": "set stored every value as a string, so numeric keys such as max_records became \"145\" instead of 145.",
+        "fix": "Values are coerced to the scalar they denote, with an explicit --type escape hatch; objects and arrays are rejected.",
+        "id": 5,
+        "location": "cli.py:cmd_set",
+        "severity": "contract"
+      },
+      {
+        "evidence": "AttributeError: 'list' object has no attribute 'split'",
+        "fault": "validate called schema['required_keys'].split(','), which crashes on the list form used by config_schema.json.",
+        "fix": "required_keys() accepts both the list form and the legacy comma-separated string form.",
+        "id": 6,
+        "location": "cli.py:cmd_validate",
+        "severity": "fatal"
+      },
+      {
+        "evidence": "validation_rules.json was unreferenced by the tool",
+        "fault": "validate ignored scalar_only, the schema's declared values and validation_rules.json entirely (forbidden keys, allowed profiles, artifact size limit), and could only print 'ok'.",
+        "fix": "All of those checks are implemented and validate can emit a machine readable report via --report/--json.",
+        "id": 7,
+        "location": "cli.py:cmd_validate",
+        "severity": "contract"
+      },
+      {
+        "evidence": "hard-coded placeholder string",
+        "fault": "export-report emitted \"commands\": \"unknown\"; the tool kept no record of what it had done, so the transcript was unusable.",
+        "fix": "Mutating commands append to a deterministic sidecar transcript (<config>.transcript.json) that export-report reads back.",
+        "id": 8,
+        "location": "cli.py:cmd_report",
+        "severity": "contract"
+      },
+      {
+        "evidence": "AttributeError: 'Namespace' object has no attribute 'func'",
+        "fault": "add_subparsers was not required, so running task-ctl with no subcommand raised AttributeError instead of printing usage.",
+        "fix": "The subcommand is required; bare invocation prints usage.",
+        "id": 9,
+        "location": "cli.py:main",
+        "severity": "fatal"
+      },
+      {
+        "evidence": "max_records_delta, retry_limit_delta, timeout_ms_delta",
+        "fault": "Nothing in the tool understood the '<key>_delta' overlay entries used by sample_config_*.json and env_overrides.json, so the environment profiles could not be derived with the tool.",
+        "fix": "Added the apply-profile subcommand: overlays set scalars, *_delta entries are applied numerically and removed from the output.",
+        "id": 10,
+        "location": "cli.py (missing capability)",
+        "severity": "contract"
+      },
+      {
+        "evidence": "compared against /app/data/config_schema.json",
+        "fault": "The schema bundled in the archive had drifted from the contract: required_keys was a comma-separated string and scalar_only was absent.",
+        "fix": "schema.json now matches config_schema.json; the parser still accepts the legacy string form.",
+        "id": 11,
+        "location": "schema.json",
+        "severity": "drift"
+      }
+    ],
+    "files_changed": [
+      "cli.py",
+      "schema.json",
+      "README.md"
+    ],
+    "verification": [
+      "bare `task-ctl` prints usage instead of crashing",
+      "init/set/apply-profile/validate/export-report all exercised",
+      "set rejects non-scalar values (exit 1)",
+      "validate fails with exit 1 on an incomplete config",
+      "validate still accepts the legacy comma-separated required_keys form"
+    ]
+  },
+  "run": {
+    "command_count": 7,
+    "commands": [
+      "python3 /app/tool/cli.py init --schema /app/data/config_schema.json --defaults /app/data/defaults.json --out /app/out/config.json",
+      "python3 /app/tool/cli.py validate --schema /app/data/config_schema.json --config /app/out/config.json --rules /app/data/validation_rules.json --report /app/out/validation_report.json",
+      "python3 /app/tool/cli.py apply-profile --config /app/out/config.json --profile /app/data/sample_config_dev.json --overrides /app/data/env_overrides.json --env dev --out /app/out/profile_dev.json",
+      "python3 /app/tool/cli.py apply-profile --config /app/out/config.json --profile /app/data/sample_config_prod.json --overrides /app/data/env_overrides.json --env prod --out /app/out/profile_prod.json",
+      "python3 /app/tool/cli.py validate --schema /app/data/config_schema.json --config /app/out/profile_dev.json --rules /app/data/validation_rules.json --report /app/out/validation_dev.json",
+      "python3 /app/tool/cli.py validate --schema /app/data/config_schema.json --config /app/out/profile_prod.json --rules /app/data/validation_rules.json --report /app/out/validation_prod.json",
+      "python3 /app/tool/cli.py export-report --config /app/out/config.json --out /app/out/report.json"
+    ],
+    "cwd": "/app/out",
+    "inputs": [
+      "/app/data/config_schema.json",
+      "/app/data/defaults.json",
+      "/app/data/env_overrides.json",
+      "/app/data/sample_config_dev.json",
+      "/app/data/sample_config_prod.json",
+      "/app/data/validation_rules.json"
+    ],
+    "network_used": false,
+    "stdlib_only": true
+  },
+  "tool": "task-ctl",
+  "tool_source": "/app/tool/cli.py",
+  "transcript": [
+    {
+      "command": "init",
+      "defaults": "/app/data/defaults.json",
+      "keys": [
+        "checksum",
+        "container",
+        "max_records",
+        "mode",
+        "producer",
+        "profile",
+        "retry_limit",
+        "timeout_ms",
+        "trailer"
+      ],
+      "out": "/app/out/config.json",
+      "schema": "/app/data/config_schema.json"
+    },
+    {
+      "command": "validate",
+      "config": "/app/out/config.json",
+      "errors": [],
+      "ok": true,
+      "rules": "/app/data/validation_rules.json",
+      "schema": "/app/data/config_schema.json",
+      "warnings": [
+        "non_empty_values: declared empty by the schema: container,producer",
+        "profile_allowed: profile 'TASK' is not one of ['dev', 'prod'] (schema placeholder, not an environment profile)"
+      ]
+    }
+  ],
+  "validated": true
+}

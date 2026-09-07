@@ -1,0 +1,665 @@
+{
+  "attribution_settlement_passes": 6,
+  "bracket_candidate_space": {
+    "best_satisfied_constraint_count": 9,
+    "bracket_size": 3,
+    "candidate_brackets": 816,
+    "constraint_verdicts": [
+      {
+        "constraint": "at least one member sits in a division whose ladder weight reaches the prominence figure",
+        "satisfied": true,
+        "short_name": "prominent division"
+      },
+      {
+        "constraint": "both entrant segments appear among the members",
+        "satisfied": true,
+        "short_name": "both segments"
+      },
+      {
+        "constraint": "every member holds at least the standing points floor",
+        "satisfied": true,
+        "short_name": "standing points floor"
+      },
+      {
+        "constraint": "no two members share a conference",
+        "satisfied": true,
+        "short_name": "distinct conferences"
+      },
+      {
+        "constraint": "at least one member is a ranked entrant",
+        "satisfied": true,
+        "short_name": "a ranked entrant"
+      },
+      {
+        "constraint": "the ladder weights of the members sum to at least the combined ladder weight floor",
+        "satisfied": true,
+        "short_name": "combined ladder weight"
+      },
+      {
+        "constraint": "no member carries any overflow upkeep",
+        "satisfied": false,
+        "short_name": "no overflow upkeep"
+      },
+      {
+        "constraint": "at least one member holds the champion tier",
+        "satisfied": true,
+        "short_name": "a champion member"
+      },
+      {
+        "constraint": "the gross output of the members sums to at least the combined gross output floor",
+        "satisfied": true,
+        "short_name": "combined gross output"
+      },
+      {
+        "constraint": "no member has handed its entry to another squad",
+        "satisfied": true,
+        "short_name": "no member handed its entry away"
+      }
+    ],
+    "constraints_published": 10,
+    "elected_bracket": [
+      "FLX",
+      "KRN",
+      "LMX"
+    ],
+    "elected_satisfied_constraints": 9,
+    "eligibility_match_floor": 2,
+    "eligible_pool": [
+      "AKR",
+      "AXL",
+      "BLZ",
+      "BQT",
+      "EMB",
+      "FLX",
+      "KRN",
+      "LMX",
+      "MRA",
+      "NVL",
+      "ORC",
+      "PYX",
+      "QRM",
+      "SLT",
+      "WRN",
+      "XCT",
+      "YRD",
+      "ZPH"
+    ],
+    "eligible_pool_size": 18,
+    "tie_break_combined_charged_upkeep": 2580
+  },
+  "calibration_all_agree": true,
+  "calibration_table": [
+    {
+      "agrees": true,
+      "control": "C1",
+      "figure": "matches opened",
+      "published": 5,
+      "reproduced": 5
+    },
+    {
+      "agrees": true,
+      "control": "C2",
+      "figure": "records recovered",
+      "published": 238,
+      "reproduced": 238
+    },
+    {
+      "agrees": true,
+      "control": "C3",
+      "figure": "distinct squads",
+      "published": 16,
+      "reproduced": 16
+    },
+    {
+      "agrees": true,
+      "control": "C4",
+      "figure": "gross output",
+      "published": 6228,
+      "reproduced": 6228
+    },
+    {
+      "agrees": true,
+      "control": "C5",
+      "figure": "voided output",
+      "published": 1703,
+      "reproduced": 1703
+    },
+    {
+      "agrees": true,
+      "control": "C6",
+      "figure": "raw upkeep",
+      "published": 8166,
+      "reproduced": 8166
+    },
+    {
+      "agrees": true,
+      "control": "C7",
+      "figure": "charged upkeep",
+      "published": 7939,
+      "reproduced": 7939
+    },
+    {
+      "agrees": true,
+      "control": "C8",
+      "figure": "overflow upkeep",
+      "published": 227,
+      "reproduced": 227
+    },
+    {
+      "agrees": true,
+      "control": "C9",
+      "figure": "champion entrants",
+      "published": 1,
+      "reproduced": 1
+    },
+    {
+      "agrees": true,
+      "control": "C10",
+      "figure": "qualifier entrants",
+      "published": 1,
+      "reproduced": 1
+    },
+    {
+      "agrees": true,
+      "control": "C11",
+      "figure": "provisional entrants",
+      "published": 14,
+      "reproduced": 14
+    }
+  ],
+  "candidate_spaces": [
+    {
+      "candidates": [
+        {
+          "candidate": "orion-fold",
+          "falsifier": "C2",
+          "held_at": {
+            "engine_tag": "tessel-drift",
+            "sentinel": "0x1D",
+            "window_depth": 6
+          },
+          "note": "the capture will not decode under this reading (unknown event kind 56)",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "wren-cadence",
+          "falsifier": "C2",
+          "held_at": {
+            "engine_tag": "tessel-drift",
+            "sentinel": "0x1D",
+            "window_depth": 6
+          },
+          "note": "the capture will not decode under this reading (unknown event kind 51)",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "tessel-drift",
+          "falsifier": null,
+          "note": "reproduces every guard stage control figure",
+          "verdict": "accepted"
+        },
+        {
+          "candidate": "halcyon-mark",
+          "falsifier": "C2",
+          "held_at": {
+            "engine_tag": "tessel-drift",
+            "sentinel": "0x1D",
+            "window_depth": 6
+          },
+          "note": "the capture will not decode under this reading (unknown event kind 135)",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "vector-plume",
+          "falsifier": "C2",
+          "held_at": {
+            "engine_tag": "tessel-drift",
+            "sentinel": "0x1D",
+            "window_depth": 6
+          },
+          "note": "the capture will not decode under this reading (unknown event kind 87)",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "umbral-stack",
+          "falsifier": "C2",
+          "held_at": {
+            "engine_tag": "tessel-drift",
+            "sentinel": "0x1D",
+            "window_depth": 6
+          },
+          "note": "the capture will not decode under this reading (unknown event kind 79)",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "quill-lattice",
+          "falsifier": "C2",
+          "held_at": {
+            "engine_tag": "tessel-drift",
+            "sentinel": "0x1D",
+            "window_depth": 6
+          },
+          "note": "the capture will not decode under this reading (unknown event kind 220)",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "nimbus-gable",
+          "falsifier": "C2",
+          "held_at": {
+            "engine_tag": "tessel-drift",
+            "sentinel": "0x1D",
+            "window_depth": 6
+          },
+          "note": "the capture will not decode under this reading (unknown event kind 162)",
+          "verdict": "rejected"
+        }
+      ],
+      "quantity": "engine tag",
+      "roster": [
+        "orion-fold",
+        "wren-cadence",
+        "tessel-drift",
+        "halcyon-mark",
+        "vector-plume",
+        "umbral-stack",
+        "quill-lattice",
+        "nimbus-gable"
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "4",
+          "falsifier": "C2",
+          "held_at": {
+            "engine_tag": "tessel-drift",
+            "sentinel": "0x1D",
+            "window_depth": 6
+          },
+          "note": "the capture will not decode under this reading (back reference 4 beyond window)",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "6",
+          "falsifier": null,
+          "note": "reproduces every guard stage control figure",
+          "verdict": "accepted"
+        },
+        {
+          "candidate": "8",
+          "falsifier": "C4",
+          "held_at": {
+            "engine_tag": "tessel-drift",
+            "sentinel": "0x1D",
+            "window_depth": 6
+          },
+          "note": "C4 gross output: published 6228, reproduced 6644",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "10",
+          "falsifier": "C4",
+          "held_at": {
+            "engine_tag": "tessel-drift",
+            "sentinel": "0x1D",
+            "window_depth": 6
+          },
+          "note": "C4 gross output: published 6228, reproduced 6922",
+          "verdict": "rejected"
+        }
+      ],
+      "quantity": "window depth",
+      "roster": [
+        "4",
+        "6",
+        "8",
+        "10"
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "0x1A",
+          "falsifier": "C2",
+          "held_at": {
+            "engine_tag": "tessel-drift",
+            "sentinel": "0x1D",
+            "window_depth": 6
+          },
+          "note": "the capture will not decode under this reading (unknown event kind 29)",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "0x1D",
+          "falsifier": null,
+          "note": "reproduces every guard stage control figure",
+          "verdict": "accepted"
+        },
+        {
+          "candidate": "0x20",
+          "falsifier": "C2",
+          "held_at": {
+            "engine_tag": "tessel-drift",
+            "sentinel": "0x1D",
+            "window_depth": 6
+          },
+          "note": "the capture will not decode under this reading (unknown event kind 29)",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "0x7F",
+          "falsifier": "C2",
+          "held_at": {
+            "engine_tag": "tessel-drift",
+            "sentinel": "0x1D",
+            "window_depth": 6
+          },
+          "note": "the capture will not decode under this reading (unknown event kind 29)",
+          "verdict": "rejected"
+        }
+      ],
+      "quantity": "sentinel",
+      "roster": [
+        "0x1A",
+        "0x1D",
+        "0x20",
+        "0x7F"
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "20",
+          "falsifier": "C7",
+          "note": "C7 charged upkeep: published 7939, reproduced 300",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "220",
+          "falsifier": "C7",
+          "note": "C7 charged upkeep: published 7939, reproduced 3278",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "440",
+          "falsifier": "C7",
+          "note": "C7 charged upkeep: published 7939, reproduced 5769",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "640",
+          "falsifier": "C7",
+          "note": "C7 charged upkeep: published 7939, reproduced 7230",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "860",
+          "falsifier": null,
+          "note": "reproduces every budget stage control figure",
+          "verdict": "accepted"
+        },
+        {
+          "candidate": "1060",
+          "falsifier": "C7",
+          "note": "C7 charged upkeep: published 7939, reproduced 8159",
+          "verdict": "rejected"
+        }
+      ],
+      "quantity": "season budget",
+      "roster": [
+        "20",
+        "220",
+        "440",
+        "640",
+        "860",
+        "1060"
+      ]
+    },
+    {
+      "candidates": [
+        {
+          "candidate": "20",
+          "falsifier": "C9",
+          "note": "C9 champion entrants: published 1, reproduced 7",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "140",
+          "falsifier": "C9",
+          "note": "C9 champion entrants: published 1, reproduced 4",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "200",
+          "falsifier": "C9",
+          "note": "C9 champion entrants: published 1, reproduced 3",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "360",
+          "falsifier": "C10",
+          "note": "C10 qualifier entrants: published 1, reproduced 2",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "700",
+          "falsifier": null,
+          "note": "reproduces every threshold stage control figure",
+          "verdict": "accepted"
+        },
+        {
+          "candidate": "1300",
+          "falsifier": "C9",
+          "note": "C9 champion entrants: published 1, reproduced 0",
+          "verdict": "rejected"
+        }
+      ],
+      "quantity": "promotion threshold",
+      "roster": [
+        "20",
+        "140",
+        "200",
+        "360",
+        "700",
+        "1300"
+      ]
+    }
+  ],
+  "control_attribution_settlement_passes": 4,
+  "docket_candidate_space": {
+    "candidate_pool": [
+      503,
+      505,
+      507,
+      509,
+      511,
+      513,
+      514,
+      515
+    ],
+    "conference_cap": 2,
+    "docket_size": 5,
+    "elected": [
+      503,
+      507,
+      509,
+      513,
+      515
+    ],
+    "match_review_index": [
+      {
+        "conference": "East",
+        "deciding_squad": "DVN",
+        "escape_records": 2,
+        "logical_position": 0,
+        "match_id": 500,
+        "review_index": 415,
+        "voided_output": 365
+      },
+      {
+        "conference": "North",
+        "deciding_squad": "EMB",
+        "escape_records": 2,
+        "logical_position": 1,
+        "match_id": 501,
+        "review_index": 132,
+        "voided_output": 82
+      },
+      {
+        "conference": "West",
+        "deciding_squad": "GRT",
+        "escape_records": 2,
+        "logical_position": 2,
+        "match_id": 502,
+        "review_index": 367,
+        "voided_output": 317
+      },
+      {
+        "conference": "West",
+        "deciding_squad": "KRN",
+        "escape_records": 2,
+        "logical_position": 3,
+        "match_id": 503,
+        "review_index": 499,
+        "voided_output": 449
+      },
+      {
+        "conference": "South",
+        "deciding_squad": "NVL",
+        "escape_records": 2,
+        "logical_position": 4,
+        "match_id": 504,
+        "review_index": 50,
+        "voided_output": 0
+      },
+      {
+        "conference": "East",
+        "deciding_squad": "PYX",
+        "escape_records": 2,
+        "logical_position": 5,
+        "match_id": 505,
+        "review_index": 464,
+        "voided_output": 414
+      },
+      {
+        "conference": "South",
+        "deciding_squad": "VLC",
+        "escape_records": 2,
+        "logical_position": 6,
+        "match_id": 506,
+        "review_index": 299,
+        "voided_output": 249
+      },
+      {
+        "conference": "East",
+        "deciding_squad": "HVN",
+        "escape_records": 2,
+        "logical_position": 7,
+        "match_id": 507,
+        "review_index": 489,
+        "voided_output": 439
+      },
+      {
+        "conference": "South",
+        "deciding_squad": "BLZ",
+        "escape_records": 2,
+        "logical_position": 8,
+        "match_id": 508,
+        "review_index": 480,
+        "voided_output": 430
+      },
+      {
+        "conference": "South",
+        "deciding_squad": "BLZ",
+        "escape_records": 2,
+        "logical_position": 9,
+        "match_id": 509,
+        "review_index": 663,
+        "voided_output": 613
+      },
+      {
+        "conference": "South",
+        "deciding_squad": "FLX",
+        "escape_records": 2,
+        "logical_position": 10,
+        "match_id": 510,
+        "review_index": 606,
+        "voided_output": 556
+      },
+      {
+        "conference": "North",
+        "deciding_squad": "IBX",
+        "escape_records": 2,
+        "logical_position": 11,
+        "match_id": 511,
+        "review_index": 390,
+        "voided_output": 340
+      },
+      {
+        "conference": "North",
+        "deciding_squad": "MRA",
+        "escape_records": 2,
+        "logical_position": 12,
+        "match_id": 512,
+        "review_index": 180,
+        "voided_output": 130
+      },
+      {
+        "conference": "West",
+        "deciding_squad": "SLT",
+        "escape_records": 2,
+        "logical_position": 13,
+        "match_id": 513,
+        "review_index": 631,
+        "voided_output": 581
+      },
+      {
+        "conference": "North",
+        "deciding_squad": "UMB",
+        "escape_records": 2,
+        "logical_position": 14,
+        "match_id": 514,
+        "review_index": 371,
+        "voided_output": 321
+      },
+      {
+        "conference": "South",
+        "deciding_squad": "VLC",
+        "escape_records": 2,
+        "logical_position": 15,
+        "match_id": 515,
+        "review_index": 711,
+        "voided_output": 661
+      },
+      {
+        "conference": "West",
+        "deciding_squad": "KRN",
+        "escape_records": 2,
+        "logical_position": 16,
+        "match_id": 516,
+        "review_index": 370,
+        "voided_output": 320
+      },
+      {
+        "conference": "West",
+        "deciding_squad": "CDR",
+        "escape_records": 2,
+        "logical_position": 17,
+        "match_id": 517,
+        "review_index": 295,
+        "voided_output": 245
+      }
+    ],
+    "matches_considered": 18,
+    "total_review_index": 2993
+  },
+  "guard_combinations_searched": 128,
+  "resolved": {
+    "count_bias": 6,
+    "engine_tag": "tessel-drift",
+    "promotion_threshold": 700,
+    "season_budget": 860,
+    "sentinel": "0x1D",
+    "window_depth": 6
+  }
+}

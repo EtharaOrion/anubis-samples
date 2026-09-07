@@ -1,0 +1,196 @@
+{
+  "checks_failed": 0,
+  "checks_total": 27,
+  "errors": [],
+  "ok": true,
+  "rules": "/app/data/validation_rules.json",
+  "schema": "/app/data/config_schema.json",
+  "source": "output of `task-ctl validate --report`, verbatim",
+  "tool": "task-ctl",
+  "validations": [
+    {
+      "checks": [
+        {
+          "check": "required_keys",
+          "detail": "all 9 required keys present",
+          "status": "pass"
+        },
+        {
+          "check": "scalar_only",
+          "detail": "configuration is flat",
+          "status": "pass"
+        },
+        {
+          "check": "non_empty_values",
+          "detail": "declared empty by the schema: container,producer",
+          "status": "warn"
+        },
+        {
+          "check": "schema_value:checksum",
+          "detail": "checksum == 'crc32'",
+          "status": "pass"
+        },
+        {
+          "check": "schema_value:producer",
+          "detail": "producer == ''",
+          "status": "pass"
+        },
+        {
+          "check": "schema_value:container",
+          "detail": "container == ''",
+          "status": "pass"
+        },
+        {
+          "check": "forbidden_keys",
+          "detail": "no forbidden keys",
+          "status": "pass"
+        },
+        {
+          "check": "profile_allowed",
+          "detail": "profile 'TASK' is not one of ['dev', 'prod'] (schema placeholder, not an environment profile)",
+          "status": "warn"
+        },
+        {
+          "check": "max_artifact_bytes",
+          "detail": "230 bytes <= 1048576",
+          "status": "pass"
+        }
+      ],
+      "command": "validate",
+      "config": "/app/out/config.json",
+      "errors": [],
+      "ok": true,
+      "rules": "/app/data/validation_rules.json",
+      "schema": "/app/data/config_schema.json",
+      "tool": "task-ctl",
+      "warnings": [
+        "non_empty_values: declared empty by the schema: container,producer",
+        "profile_allowed: profile 'TASK' is not one of ['dev', 'prod'] (schema placeholder, not an environment profile)"
+      ]
+    },
+    {
+      "checks": [
+        {
+          "check": "required_keys",
+          "detail": "all 9 required keys present",
+          "status": "pass"
+        },
+        {
+          "check": "scalar_only",
+          "detail": "configuration is flat",
+          "status": "pass"
+        },
+        {
+          "check": "non_empty_values",
+          "detail": "declared empty by the schema: container,producer",
+          "status": "warn"
+        },
+        {
+          "check": "schema_value:checksum",
+          "detail": "checksum == 'crc32'",
+          "status": "pass"
+        },
+        {
+          "check": "schema_value:producer",
+          "detail": "producer == ''",
+          "status": "pass"
+        },
+        {
+          "check": "schema_value:container",
+          "detail": "container == ''",
+          "status": "pass"
+        },
+        {
+          "check": "forbidden_keys",
+          "detail": "no forbidden keys",
+          "status": "pass"
+        },
+        {
+          "check": "profile_allowed",
+          "detail": "profile 'dev' is an allowed environment profile",
+          "status": "pass"
+        },
+        {
+          "check": "max_artifact_bytes",
+          "detail": "229 bytes <= 1048576",
+          "status": "pass"
+        }
+      ],
+      "command": "validate",
+      "config": "/app/out/profile_dev.json",
+      "errors": [],
+      "ok": true,
+      "rules": "/app/data/validation_rules.json",
+      "schema": "/app/data/config_schema.json",
+      "tool": "task-ctl",
+      "warnings": [
+        "non_empty_values: declared empty by the schema: container,producer"
+      ]
+    },
+    {
+      "checks": [
+        {
+          "check": "required_keys",
+          "detail": "all 9 required keys present",
+          "status": "pass"
+        },
+        {
+          "check": "scalar_only",
+          "detail": "configuration is flat",
+          "status": "pass"
+        },
+        {
+          "check": "non_empty_values",
+          "detail": "declared empty by the schema: container,producer",
+          "status": "warn"
+        },
+        {
+          "check": "schema_value:checksum",
+          "detail": "checksum == 'crc32'",
+          "status": "pass"
+        },
+        {
+          "check": "schema_value:producer",
+          "detail": "producer == ''",
+          "status": "pass"
+        },
+        {
+          "check": "schema_value:container",
+          "detail": "container == ''",
+          "status": "pass"
+        },
+        {
+          "check": "forbidden_keys",
+          "detail": "no forbidden keys",
+          "status": "pass"
+        },
+        {
+          "check": "profile_allowed",
+          "detail": "profile 'prod' is an allowed environment profile",
+          "status": "pass"
+        },
+        {
+          "check": "max_artifact_bytes",
+          "detail": "230 bytes <= 1048576",
+          "status": "pass"
+        }
+      ],
+      "command": "validate",
+      "config": "/app/out/profile_prod.json",
+      "errors": [],
+      "ok": true,
+      "rules": "/app/data/validation_rules.json",
+      "schema": "/app/data/config_schema.json",
+      "tool": "task-ctl",
+      "warnings": [
+        "non_empty_values: declared empty by the schema: container,producer"
+      ]
+    }
+  ],
+  "warnings": [
+    "non_empty_values: declared empty by the schema: container,producer",
+    "profile_allowed: profile 'TASK' is not one of ['dev', 'prod'] (schema placeholder, not an environment profile)",
+    "non_empty_values: declared empty by the schema: container,producer",
+    "non_empty_values: declared empty by the schema: container,producer"
+  ]
+}

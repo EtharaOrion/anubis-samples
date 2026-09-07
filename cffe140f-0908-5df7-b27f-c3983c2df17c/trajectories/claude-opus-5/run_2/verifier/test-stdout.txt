@@ -1,0 +1,86 @@
+[PASS] test_format_artifacts_present (weight +1)
+[FAIL] test_format_reports_parse (weight +1)
+       AssertionError: summary is missing capture_id
+[FAIL] test_format_adjudication_record_schema (weight +1)
+       AssertionError: adjudication record is missing bracket_candidates
+[FAIL] test_instance_summary (weight +3)
+       AssertionError: shipped capture: summary.json field 'capture_id' is None and the resolved value is 83
+[FAIL] test_instance_reconciliation (weight +3)
+       AssertionError: shipped capture: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[PASS] test_instance_region_east (weight +3)
+[PASS] test_instance_region_north (weight +3)
+[PASS] test_instance_region_south (weight +3)
+[PASS] test_instance_region_west (weight +3)
+[FAIL] test_instance_segment_commercial (weight +3)
+       AssertionError: shipped capture: segment_commercial.json field 'licence_classes' is None and the resolved value is ['LC1', 'LC3']
+[FAIL] test_instance_segment_public (weight +3)
+       AssertionError: shipped capture: segment_public.json field 'licence_classes' is None and the resolved value is ['LC2', 'LC4']
+[FAIL] test_trap_keystream (weight +5)
+       AssertionError: trap_keystream: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_chain (weight +5)
+       AssertionError: trap_chain: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_delta2 (weight +5)
+       AssertionError: trap_delta2: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_driftkey (weight +5)
+       AssertionError: trap_driftkey: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_segperm (weight +5)
+       AssertionError: trap_segperm: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_backref (weight +5)
+       AssertionError: trap_backref: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_endian (weight +5)
+       AssertionError: trap_endian: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_countbias (weight +5)
+       AssertionError: trap_countbias: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_lenshadow (weight +5)
+       AssertionError: trap_lenshadow: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_rotate (weight +5)
+       AssertionError: trap_rotate: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_alias (weight +5)
+       AssertionError: trap_alias: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_escape (weight +5)
+       AssertionError: trap_escape: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_generalisation_tie_config (weight +5)
+       AssertionError: gen_tie_config: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_generalisation_cap_push (weight +5)
+       AssertionError: gen_cap_push: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_generalisation_empty_group (weight +5)
+       AssertionError: gen_empty_group: data_quality.json field 'absent_entrants' is [{'conference': 'West', 'division': 'D7', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'South', 'division': 'D2', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_generalisation_boundary_shift (weight +5)
+       AssertionError: gen_boundary_shift: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_generalisation_add_entity (weight +5)
+       AssertionError: gen_add_entity: data_quality.json field 'absent_entrants' is [{'conference': 'East', 'division': 'D8', 'entrant_id': 'E018', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D10', 'entrant_id': 'E020', 'licence_class': 'LC3', 'segment': 'commercial', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_generalisation_counterfactual_flip (weight +5)
+       AssertionError: gen_counterfactual_flip: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_generalisation_scale (weight +5)
+       AssertionError: gen_scale: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_generalisation_contradict (weight +5)
+       AssertionError: gen_contradict: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_generalisation_alias_chain (weight +5)
+       AssertionError: gen_alias_chain: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_generalisation_nonapply (weight +5)
+       AssertionError: gen_nonapply: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_generalisation_cycle (weight +5)
+       AssertionError: gen_cycle: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_generalisation_partition (weight +5)
+       AssertionError: gen_partition: data_quality.json field 'absent_entrants' is [{'conference': 'West', 'division': 'D3', 'entrant_id': 'E018', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'South', 'division': 'D2', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_generalisation_sentinel_heavy (weight +5)
+       AssertionError: gen_sentinel_heavy: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_generalisation_fresh_base (weight +5)
+       AssertionError: gen_fresh_base: data_quality.json field 'absent_entrants' is [{'conference': 'West', 'division': 'D3', 'entrant_id': 'E019', 'licence_class': 'LC3', 'segment': 'commercial', 'squad_key': 'SLT'}, {'conference': 'East', 'division': 'D8', 'entrant_id': 'E024', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'XCT'}] and the resolved value is ['SLT', 'XCT']
+[FAIL] test_mixed_stateful_guards (weight +5)
+       AssertionError: mix_stateful: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_mixed_layout_guards (weight +5)
+       AssertionError: mix_layout: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_mixed_key_guards (weight +5)
+       AssertionError: mix_key: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_mixed_corpus_context_guards (weight +5)
+       AssertionError: mix_corpus: data_quality.json field 'absent_entrants' is [{'conference': 'South', 'division': 'D2', 'entrant_id': 'E018', 'licence_class': 'LC4', 'segment': 'public', 'squad_key': 'RVN'}, {'conference': 'East', 'division': 'D4', 'entrant_id': 'E020', 'licence_class': 'LC2', 'segment': 'public', 'squad_key': 'TDR'}] and the resolved value is ['RVN', 'TDR']
+[FAIL] test_negative_weight_hardcoded_sample_answers (weight -5)
+       AssertionError: shortcut absent: the shipped capture was not reproduced
+[FAIL] test_negative_weight_filename_dependent_behaviour (weight -5)
+       AssertionError: shortcut absent: both directory names agreed
+[FAIL] test_negative_weight_reads_supplied_answer_data_at_runtime (weight -5)
+       AssertionError: shortcut absent: the supplied transcript was not reused
+[FAIL] test_negative_weight_nondeterministic_output (weight -3)
+       AssertionError: shortcut absent: the runs agreed
+[grade] raw=+13  positive_total=177  reward=+0.073446

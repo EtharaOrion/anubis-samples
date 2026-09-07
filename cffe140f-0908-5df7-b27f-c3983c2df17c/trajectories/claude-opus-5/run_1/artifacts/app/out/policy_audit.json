@@ -1,0 +1,1535 @@
+{
+  "attribution_settlement_passes": 6,
+  "baseline_transcript_check": {
+    "available": true,
+    "byte_exact_agreement": true,
+    "first_disagreement": null,
+    "labelled_records": 278,
+    "recovered_records": 278
+  },
+  "bracket": {
+    "best_satisfied_constraint_count": 9,
+    "candidate_space_size": 816,
+    "constraints": [
+      "at least one member sits in a division whose ladder weight reaches the prominence figure",
+      "both entrant segments appear among the members",
+      "every member holds at least the standing points floor",
+      "no two members share a conference",
+      "at least one member is a ranked entrant",
+      "the ladder weights of the members sum to at least the combined ladder weight floor",
+      "no member carries any overflow upkeep",
+      "at least one member holds the champion tier",
+      "the gross output of the members sums to at least the combined gross output floor",
+      "no member has handed its entry to another squad"
+    ],
+    "elected": [
+      "KRN",
+      "LMX",
+      "MRA"
+    ],
+    "elected_charged_upkeep": 2580,
+    "elected_constraint_verdicts": [
+      {
+        "constraint": "at least one member sits in a division whose ladder weight reaches the prominence figure",
+        "satisfied": true
+      },
+      {
+        "constraint": "both entrant segments appear among the members",
+        "satisfied": true
+      },
+      {
+        "constraint": "every member holds at least the standing points floor",
+        "satisfied": true
+      },
+      {
+        "constraint": "no two members share a conference",
+        "satisfied": true
+      },
+      {
+        "constraint": "at least one member is a ranked entrant",
+        "satisfied": true
+      },
+      {
+        "constraint": "the ladder weights of the members sum to at least the combined ladder weight floor",
+        "satisfied": true
+      },
+      {
+        "constraint": "no member carries any overflow upkeep",
+        "satisfied": false
+      },
+      {
+        "constraint": "at least one member holds the champion tier",
+        "satisfied": true
+      },
+      {
+        "constraint": "the gross output of the members sums to at least the combined gross output floor",
+        "satisfied": true
+      },
+      {
+        "constraint": "no member has handed its entry to another squad",
+        "satisfied": true
+      }
+    ],
+    "elected_satisfied": 9,
+    "eligibility": {
+      "match_floor": 2,
+      "own_effective_owner": true
+    },
+    "eligible_pool": [
+      "AKR",
+      "AXL",
+      "BLZ",
+      "BQT",
+      "EMB",
+      "FLX",
+      "KRN",
+      "LMX",
+      "MRA",
+      "NVL",
+      "ORC",
+      "PYX",
+      "QRM",
+      "SLT",
+      "WRN",
+      "XCT",
+      "YRD",
+      "ZPH"
+    ],
+    "thresholds": {
+      "bracket_size": 3,
+      "gross_floor": 900,
+      "prominence": 4,
+      "standing_floor": 3,
+      "weight_floor": 7
+    }
+  },
+  "calibration": [
+    {
+      "agrees": true,
+      "figure": "matches opened",
+      "id": "C1",
+      "published": 5,
+      "reproduced": 5,
+      "stage": "guard"
+    },
+    {
+      "agrees": true,
+      "figure": "records recovered",
+      "id": "C2",
+      "published": 238,
+      "reproduced": 238,
+      "stage": "guard"
+    },
+    {
+      "agrees": true,
+      "figure": "distinct squads",
+      "id": "C3",
+      "published": 16,
+      "reproduced": 16,
+      "stage": "guard"
+    },
+    {
+      "agrees": true,
+      "figure": "gross output",
+      "id": "C4",
+      "published": 6228,
+      "reproduced": 6228,
+      "stage": "guard"
+    },
+    {
+      "agrees": true,
+      "figure": "voided output",
+      "id": "C5",
+      "published": 1703,
+      "reproduced": 1703,
+      "stage": "guard"
+    },
+    {
+      "agrees": true,
+      "figure": "raw upkeep",
+      "id": "C6",
+      "published": 8166,
+      "reproduced": 8166,
+      "stage": "guard"
+    },
+    {
+      "agrees": true,
+      "figure": "charged upkeep",
+      "id": "C7",
+      "published": 7939,
+      "reproduced": 7939,
+      "stage": "budget"
+    },
+    {
+      "agrees": true,
+      "figure": "overflow upkeep",
+      "id": "C8",
+      "published": 227,
+      "reproduced": 227,
+      "stage": "budget"
+    },
+    {
+      "agrees": true,
+      "figure": "champion entrants",
+      "id": "C9",
+      "published": 1,
+      "reproduced": 1,
+      "stage": "threshold"
+    },
+    {
+      "agrees": true,
+      "figure": "qualifier entrants",
+      "id": "C10",
+      "published": 1,
+      "reproduced": 1,
+      "stage": "threshold"
+    },
+    {
+      "agrees": true,
+      "figure": "provisional entrants",
+      "id": "C11",
+      "published": 14,
+      "reproduced": 14,
+      "stage": "threshold"
+    }
+  ],
+  "calibration_all_agree": true,
+  "docket": {
+    "conference_cap": 2,
+    "review_weight": 25,
+    "size": 5
+  },
+  "effective_owners": {
+    "CDR": "BLZ",
+    "DVN": "BLZ",
+    "GRT": "FLX",
+    "HVN": "FLX",
+    "IBX": "FLX",
+    "JDE": "FLX",
+    "UMB": "FLX",
+    "VLC": "BLZ"
+  },
+  "hand_overs": [
+    {
+      "from": "BLZ",
+      "to": "CDR"
+    },
+    {
+      "from": "CDR",
+      "to": "DVN"
+    },
+    {
+      "from": "DVN",
+      "to": "BLZ"
+    },
+    {
+      "from": "GRT",
+      "to": "FLX"
+    },
+    {
+      "from": "HVN",
+      "to": "GRT"
+    },
+    {
+      "from": "IBX",
+      "to": "HVN"
+    },
+    {
+      "from": "JDE",
+      "to": "IBX"
+    },
+    {
+      "from": "UMB",
+      "to": "JDE"
+    },
+    {
+      "from": "VLC",
+      "to": "BLZ"
+    }
+  ],
+  "resolved": {
+    "engine_tag": "tessel-drift",
+    "promotion_threshold": 700,
+    "season_budget": 860,
+    "sentinel": "0x1D",
+    "window_depth": 6
+  },
+  "unstated_quantities": {
+    "guard_quantities": {
+      "candidate_space_size": 128,
+      "candidates": [
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 56",
+          "engine_tag": "orion-fold",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 56",
+          "engine_tag": "orion-fold",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 56",
+          "engine_tag": "orion-fold",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 56",
+          "engine_tag": "orion-fold",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 56",
+          "engine_tag": "orion-fold",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 56",
+          "engine_tag": "orion-fold",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 56",
+          "engine_tag": "orion-fold",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 56",
+          "engine_tag": "orion-fold",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 56",
+          "engine_tag": "orion-fold",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 56",
+          "engine_tag": "orion-fold",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 56",
+          "engine_tag": "orion-fold",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 56",
+          "engine_tag": "orion-fold",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 56",
+          "engine_tag": "orion-fold",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 56",
+          "engine_tag": "orion-fold",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 56",
+          "engine_tag": "orion-fold",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 56",
+          "engine_tag": "orion-fold",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 51",
+          "engine_tag": "wren-cadence",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 51",
+          "engine_tag": "wren-cadence",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 51",
+          "engine_tag": "wren-cadence",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 51",
+          "engine_tag": "wren-cadence",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 51",
+          "engine_tag": "wren-cadence",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 51",
+          "engine_tag": "wren-cadence",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 51",
+          "engine_tag": "wren-cadence",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 51",
+          "engine_tag": "wren-cadence",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 51",
+          "engine_tag": "wren-cadence",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 51",
+          "engine_tag": "wren-cadence",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 51",
+          "engine_tag": "wren-cadence",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 51",
+          "engine_tag": "wren-cadence",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 51",
+          "engine_tag": "wren-cadence",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 51",
+          "engine_tag": "wren-cadence",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 51",
+          "engine_tag": "wren-cadence",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 51",
+          "engine_tag": "wren-cadence",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 29",
+          "engine_tag": "tessel-drift",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "back reference past the window",
+          "engine_tag": "tessel-drift",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 29",
+          "engine_tag": "tessel-drift",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 29",
+          "engine_tag": "tessel-drift",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 29",
+          "engine_tag": "tessel-drift",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 6,
+          "decode_error": null,
+          "engine_tag": "tessel-drift",
+          "falsifier": null,
+          "sentinel": "0x1D",
+          "verdict": "accepted",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 29",
+          "engine_tag": "tessel-drift",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 29",
+          "engine_tag": "tessel-drift",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 29",
+          "engine_tag": "tessel-drift",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 3,
+          "decode_error": null,
+          "engine_tag": "tessel-drift",
+          "falsifier": "C4 gross output: published 6228, reproduced 6713",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 29",
+          "engine_tag": "tessel-drift",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 29",
+          "engine_tag": "tessel-drift",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 29",
+          "engine_tag": "tessel-drift",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 3,
+          "decode_error": null,
+          "engine_tag": "tessel-drift",
+          "falsifier": "C4 gross output: published 6228, reproduced 6834",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 29",
+          "engine_tag": "tessel-drift",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 29",
+          "engine_tag": "tessel-drift",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 135",
+          "engine_tag": "halcyon-mark",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 135",
+          "engine_tag": "halcyon-mark",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 135",
+          "engine_tag": "halcyon-mark",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 135",
+          "engine_tag": "halcyon-mark",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 135",
+          "engine_tag": "halcyon-mark",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 135",
+          "engine_tag": "halcyon-mark",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 135",
+          "engine_tag": "halcyon-mark",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 135",
+          "engine_tag": "halcyon-mark",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 135",
+          "engine_tag": "halcyon-mark",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 135",
+          "engine_tag": "halcyon-mark",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 135",
+          "engine_tag": "halcyon-mark",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 135",
+          "engine_tag": "halcyon-mark",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 135",
+          "engine_tag": "halcyon-mark",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 135",
+          "engine_tag": "halcyon-mark",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 135",
+          "engine_tag": "halcyon-mark",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 135",
+          "engine_tag": "halcyon-mark",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 87",
+          "engine_tag": "vector-plume",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 87",
+          "engine_tag": "vector-plume",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 87",
+          "engine_tag": "vector-plume",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 87",
+          "engine_tag": "vector-plume",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 87",
+          "engine_tag": "vector-plume",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 87",
+          "engine_tag": "vector-plume",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 87",
+          "engine_tag": "vector-plume",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 87",
+          "engine_tag": "vector-plume",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 87",
+          "engine_tag": "vector-plume",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 87",
+          "engine_tag": "vector-plume",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 87",
+          "engine_tag": "vector-plume",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 87",
+          "engine_tag": "vector-plume",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 87",
+          "engine_tag": "vector-plume",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 87",
+          "engine_tag": "vector-plume",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 87",
+          "engine_tag": "vector-plume",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 87",
+          "engine_tag": "vector-plume",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 79",
+          "engine_tag": "umbral-stack",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 79",
+          "engine_tag": "umbral-stack",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 79",
+          "engine_tag": "umbral-stack",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 79",
+          "engine_tag": "umbral-stack",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 79",
+          "engine_tag": "umbral-stack",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 79",
+          "engine_tag": "umbral-stack",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 79",
+          "engine_tag": "umbral-stack",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 79",
+          "engine_tag": "umbral-stack",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 79",
+          "engine_tag": "umbral-stack",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 79",
+          "engine_tag": "umbral-stack",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 79",
+          "engine_tag": "umbral-stack",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 79",
+          "engine_tag": "umbral-stack",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 79",
+          "engine_tag": "umbral-stack",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 79",
+          "engine_tag": "umbral-stack",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 79",
+          "engine_tag": "umbral-stack",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 79",
+          "engine_tag": "umbral-stack",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 220",
+          "engine_tag": "quill-lattice",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 220",
+          "engine_tag": "quill-lattice",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 220",
+          "engine_tag": "quill-lattice",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 220",
+          "engine_tag": "quill-lattice",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 220",
+          "engine_tag": "quill-lattice",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 220",
+          "engine_tag": "quill-lattice",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 220",
+          "engine_tag": "quill-lattice",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 220",
+          "engine_tag": "quill-lattice",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 220",
+          "engine_tag": "quill-lattice",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 220",
+          "engine_tag": "quill-lattice",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 220",
+          "engine_tag": "quill-lattice",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 220",
+          "engine_tag": "quill-lattice",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 220",
+          "engine_tag": "quill-lattice",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 220",
+          "engine_tag": "quill-lattice",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 220",
+          "engine_tag": "quill-lattice",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 220",
+          "engine_tag": "quill-lattice",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 162",
+          "engine_tag": "nimbus-gable",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 162",
+          "engine_tag": "nimbus-gable",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 162",
+          "engine_tag": "nimbus-gable",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 162",
+          "engine_tag": "nimbus-gable",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 4
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 162",
+          "engine_tag": "nimbus-gable",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 162",
+          "engine_tag": "nimbus-gable",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 162",
+          "engine_tag": "nimbus-gable",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 162",
+          "engine_tag": "nimbus-gable",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 6
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 162",
+          "engine_tag": "nimbus-gable",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 162",
+          "engine_tag": "nimbus-gable",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 162",
+          "engine_tag": "nimbus-gable",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 162",
+          "engine_tag": "nimbus-gable",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 8
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 162",
+          "engine_tag": "nimbus-gable",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1A",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 162",
+          "engine_tag": "nimbus-gable",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x1D",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 162",
+          "engine_tag": "nimbus-gable",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x20",
+          "verdict": "rejected",
+          "window_depth": 10
+        },
+        {
+          "control_figures_reproduced": 1,
+          "decode_error": "unknown event kind 162",
+          "engine_tag": "nimbus-gable",
+          "falsifier": "C2 records recovered: published 238, reproduced nothing (the capture would not decode under this reading)",
+          "sentinel": "0x7F",
+          "verdict": "rejected",
+          "window_depth": 10
+        }
+      ],
+      "rosters": {
+        "engine_tag": [
+          "orion-fold",
+          "wren-cadence",
+          "tessel-drift",
+          "halcyon-mark",
+          "vector-plume",
+          "umbral-stack",
+          "quill-lattice",
+          "nimbus-gable"
+        ],
+        "sentinel": [
+          "0x1A",
+          "0x1D",
+          "0x20",
+          "0x7F"
+        ],
+        "window_depth": [
+          4,
+          6,
+          8,
+          10
+        ]
+      },
+      "surviving_readings": [
+        {
+          "engine_tag": "tessel-drift",
+          "sentinel": "0x1D",
+          "window_depth": 6
+        }
+      ]
+    },
+    "promotion_threshold": {
+      "candidate_space_size": 6,
+      "candidates": [
+        {
+          "falsifier": "C9 champion entrants: published 1, reproduced 7",
+          "value": 20,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C9 champion entrants: published 1, reproduced 3",
+          "value": 140,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C9 champion entrants: published 1, reproduced 3",
+          "value": 200,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C10 qualifier entrants: published 1, reproduced 3",
+          "value": 360,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "value": 700,
+          "verdict": "accepted"
+        },
+        {
+          "falsifier": "C9 champion entrants: published 1, reproduced 0",
+          "value": 1300,
+          "verdict": "rejected"
+        }
+      ],
+      "resolved": 700,
+      "roster": [
+        20,
+        140,
+        200,
+        360,
+        700,
+        1300
+      ]
+    },
+    "season_budget": {
+      "candidate_space_size": 6,
+      "candidates": [
+        {
+          "falsifier": "C7 charged upkeep: published 7939, reproduced 300",
+          "value": 20,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C7 charged upkeep: published 7939, reproduced 3278",
+          "value": 220,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C7 charged upkeep: published 7939, reproduced 5769",
+          "value": 440,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C7 charged upkeep: published 7939, reproduced 7230",
+          "value": 640,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "value": 860,
+          "verdict": "accepted"
+        },
+        {
+          "falsifier": "C7 charged upkeep: published 7939, reproduced 8159",
+          "value": 1060,
+          "verdict": "rejected"
+        }
+      ],
+      "resolved": 860,
+      "roster": [
+        20,
+        220,
+        440,
+        640,
+        860,
+        1060
+      ]
+    }
+  }
+}

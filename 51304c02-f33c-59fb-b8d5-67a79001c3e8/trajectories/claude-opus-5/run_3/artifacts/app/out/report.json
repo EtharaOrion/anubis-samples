@@ -1,0 +1,214 @@
+{
+  "assumptions": [
+    "profile for the main configuration is the literal 'TASK' carried by config_schema.json; the dev/prod profile names in validation_rules.json apply to the derived profile artifacts.",
+    "producer and container are required keys whose contract value is the empty string given by config_schema.json and defaults.json; they are emitted as empty strings rather than invented.",
+    "trailer is taken verbatim from defaults.json for every artifact: the override files define arithmetic only for keys carrying a _delta suffix, and no rule rewrites the trailer per profile."
+  ],
+  "commands": [
+    {
+      "command": "init",
+      "defaults": "/app/data/defaults.json",
+      "out": "/app/out/config.json",
+      "schema": "/app/data/config_schema.json"
+    },
+    {
+      "applied": [
+        {
+          "key": "mode",
+          "set": "strict-local"
+        },
+        {
+          "delta": 1,
+          "key": "retry_limit",
+          "result": 4
+        },
+        {
+          "delta": -125,
+          "key": "timeout_ms",
+          "result": 1646
+        },
+        {
+          "key": "profile",
+          "set": "dev"
+        },
+        {
+          "delta": -10,
+          "key": "max_records",
+          "result": 135
+        },
+        {
+          "key": "checksum",
+          "set": "crc32"
+        }
+      ],
+      "command": "derive",
+      "config": "/app/out/config.json",
+      "out": "/app/out/profile_dev.json",
+      "overrides": "/app/data/env_overrides.json",
+      "profile": "dev",
+      "spec": "/app/data/sample_config_dev.json"
+    },
+    {
+      "applied": [
+        {
+          "key": "mode",
+          "set": "strict-local"
+        },
+        {
+          "delta": 0,
+          "key": "retry_limit",
+          "result": 3
+        },
+        {
+          "delta": 250,
+          "key": "timeout_ms",
+          "result": 2021
+        },
+        {
+          "key": "profile",
+          "set": "prod"
+        },
+        {
+          "delta": 25,
+          "key": "max_records",
+          "result": 170
+        },
+        {
+          "key": "checksum",
+          "set": "crc32"
+        }
+      ],
+      "command": "derive",
+      "config": "/app/out/config.json",
+      "out": "/app/out/profile_prod.json",
+      "overrides": "/app/data/env_overrides.json",
+      "profile": "prod",
+      "spec": "/app/data/sample_config_prod.json"
+    },
+    {
+      "command": "validate",
+      "configs": [
+        "/app/out/config.json",
+        "/app/out/profile_dev.json",
+        "/app/out/profile_prod.json"
+      ],
+      "report": "/app/out/validation_report.json",
+      "schema": "/app/data/config_schema.json",
+      "valid": true
+    }
+  ],
+  "config": {
+    "checksum": "crc32",
+    "container": "",
+    "max_records": 145,
+    "mode": "strict-local",
+    "producer": "",
+    "profile": "TASK",
+    "retry_limit": 3,
+    "timeout_ms": 1771,
+    "trailer": "harbor:cli-config:TASK:0000000000016384"
+  },
+  "config_path": "/app/out/config.json",
+  "constraints_honoured": [
+    "Python standard library only (argparse, json, pathlib, sys, zlib).",
+    "No network access; every input is a local file under /app/data.",
+    "config.json, profile_dev.json, profile_prod.json, validation_report.json, report.json and summary.json were all produced by running the repaired CLI, not written by hand."
+  ],
+  "contract_files": [
+    "/app/data/config_schema.json",
+    "/app/data/validation_rules.json",
+    "/app/data/defaults.json",
+    "/app/data/env_overrides.json",
+    "/app/data/sample_config_dev.json",
+    "/app/data/sample_config_prod.json"
+  ],
+  "extracted_to": "/app/tool",
+  "faults_found_and_fixed": [
+    {
+      "fault": "Read args.config, an option the 'init' subparser never defines, so every init raised AttributeError.",
+      "fix": "Read args.schema, the option the subparser actually declares.",
+      "id": 1,
+      "location": "cmd_init",
+      "severity": "fatal"
+    },
+    {
+      "fault": "Wrote checksum nested under a 'settings' object, violating the flat/scalar-only contract in config_schema.json (scalar_only: true) and hiding a required key.",
+      "fix": "Emit checksum as a top-level scalar; the configuration is flat by construction.",
+      "id": 2,
+      "location": "cmd_init",
+      "severity": "contract-violation"
+    },
+    {
+      "fault": "No way to seed the values held in defaults.json, so max_records, retry_limit, timeout_ms, mode and trailer could never be produced by the tool.",
+      "fix": "Added optional --defaults; top-level scalars and the base_config group are flattened into the configuration.",
+      "id": 3,
+      "location": "cmd_init",
+      "severity": "missing-capability"
+    },
+    {
+      "fault": "Upper-cased the key (max_records became MAX_RECORDS), so the required lowercase keys were never satisfied and stale duplicates accumulated.",
+      "fix": "Store the key exactly as given.",
+      "id": 4,
+      "location": "cmd_set",
+      "severity": "fatal"
+    },
+    {
+      "fault": "Stored every value as the raw argv string, so numeric keys such as max_records became \"145\" instead of 145.",
+      "fix": "Coerce the value to the scalar it denotes via json.loads, and reject objects/arrays to preserve scalar_only.",
+      "id": 5,
+      "location": "cmd_set",
+      "severity": "contract-violation"
+    },
+    {
+      "fault": "Called schema['required_keys'].split(','), which raises AttributeError against the canonical schema where required_keys is a JSON list.",
+      "fix": "Accept required_keys as either a list or a comma-separated string.",
+      "id": 6,
+      "location": "cmd_validate",
+      "severity": "fatal"
+    },
+    {
+      "fault": "Aborted on the first failure class with an ad-hoc string, handled one config only, ignored the schema's scalar_only flag and the forbidden_keys rule, and produced no machine-readable result.",
+      "fix": "Collect every problem, accept repeatable --config, honour scalar_only, add --rules for the forbidden-key check and --report for a JSON validation report; exit non-zero on failure.",
+      "id": 7,
+      "location": "cmd_validate",
+      "severity": "incorrect-validation"
+    },
+    {
+      "fault": "Emitted the literal \"commands\": \"unknown\", so a report could not show how its configuration was produced.",
+      "fix": "Added --transcript recording on every subcommand; export-report embeds the real command list and can merge notes via --notes.",
+      "id": 8,
+      "location": "cmd_report",
+      "severity": "unusable-output"
+    },
+    {
+      "fault": "add_subparsers without required=True, so invoking the tool with no subcommand crashed with AttributeError on args.func instead of printing usage.",
+      "fix": "Marked the subcommand required; bare invocation now prints usage and exits 2.",
+      "id": 9,
+      "location": "main",
+      "severity": "usability"
+    },
+    {
+      "fault": "Did not create the parent directory, so writing into a not-yet-existing output directory failed.",
+      "fix": "Create parents on write and emit stable, sorted, indented JSON for byte-reproducible artifacts.",
+      "id": 10,
+      "location": "write_json",
+      "severity": "robustness"
+    },
+    {
+      "fault": "No command could consume env_overrides.json, the sample profile specs or validation_rules.json, so the per-environment profiles and the artifact-level rules the contract describes were unreachable.",
+      "fix": "Added 'derive' (applies <key>_delta arithmetic plus direct scalar assignments from overrides and a profile spec) and 'summarize' (checks required artifacts, size limit and forbidden keys).",
+      "id": 11,
+      "location": "cli (whole)",
+      "severity": "missing-capability"
+    }
+  ],
+  "ok": true,
+  "source_archive": "/app/data/tool.zip",
+  "task": "Repair the task-ctl CLI shipped in /app/data/tool.zip and use it to generate the configuration set.",
+  "tool": "task-ctl",
+  "verification": {
+    "determinism": "No timestamps, uuids or random seeds are written; re-running the pipeline reproduces identical bytes.",
+    "no_subcommand": "python3 cli.py now exits 2 with usage instead of raising AttributeError.",
+    "self_test": "All four commands documented in the tool README were exercised end to end on a scratch config before the deliverable run: init, set (string and numeric values), validate (failing and passing), export-report."
+  }
+}

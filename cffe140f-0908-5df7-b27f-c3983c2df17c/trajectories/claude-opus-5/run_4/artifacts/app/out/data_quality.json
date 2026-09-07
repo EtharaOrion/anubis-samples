@@ -1,0 +1,250 @@
+{
+  "absent_entrants": [
+    {
+      "conference": "South",
+      "division": "D2",
+      "entrant_id": "E018",
+      "licence_class": "LC4",
+      "squad_key": "RVN"
+    },
+    {
+      "conference": "East",
+      "division": "D4",
+      "entrant_id": "E020",
+      "licence_class": "LC2",
+      "squad_key": "TDR"
+    }
+  ],
+  "attribution_residual": {
+    "carried_by": {
+      "AXL": 817,
+      "BQT": 202,
+      "YRD": 1357,
+      "ZPH": 873
+    },
+    "conference_gross_output_total": 22702,
+    "residual": 3249,
+    "season_gross_output": 25951,
+    "segment_gross_output_total": 22702,
+    "segment_residual": 3249
+  },
+  "captures": [
+    {
+      "backwards_tick_places": 0,
+      "capture_id": 41,
+      "count_bias": 0,
+      "declared_records": 278,
+      "declared_records_debiased": 278,
+      "declared_roster_size": 16,
+      "declared_roster_size_debiased": 16,
+      "declared_segments": 6,
+      "declared_segments_debiased": 6,
+      "envelope_checksum_agrees": true,
+      "envelope_checksum_declared": 1197,
+      "envelope_checksum_recomputed": 1197,
+      "file": "baseline-capture.rjnl",
+      "filler_widths_agree": true,
+      "guard_register": 0,
+      "guards_active": [],
+      "payload_checksums_agree": true,
+      "reading_error": null,
+      "record_residual": 0,
+      "recovered_records": 278,
+      "recovered_segments": 6,
+      "role": "reference",
+      "segment_residual": 0,
+      "structurally_sound": true,
+      "trailing_bytes": 0,
+      "unresolved_escape_directives": 0
+    },
+    {
+      "backwards_tick_places": 0,
+      "capture_id": 62,
+      "count_bias": 6,
+      "declared_records": 244,
+      "declared_records_debiased": 238,
+      "declared_roster_size": 21,
+      "declared_roster_size_debiased": 15,
+      "declared_segments": 11,
+      "declared_segments_debiased": 5,
+      "envelope_checksum_agrees": true,
+      "envelope_checksum_declared": 1629,
+      "envelope_checksum_recomputed": 1629,
+      "file": "control-capture.rjnl",
+      "filler_widths_agree": true,
+      "guard_register": 4095,
+      "guards_active": [
+        "keystream",
+        "chain",
+        "delta2",
+        "driftkey",
+        "segperm",
+        "backref",
+        "endian",
+        "countbias",
+        "shadow",
+        "rotate",
+        "alias",
+        "escape"
+      ],
+      "payload_checksums_agree": true,
+      "reading_error": null,
+      "record_residual": 0,
+      "recovered_records": 238,
+      "recovered_segments": 5,
+      "role": "control",
+      "segment_residual": 0,
+      "structurally_sound": true,
+      "trailing_bytes": 0,
+      "unresolved_escape_directives": 0
+    },
+    {
+      "backwards_tick_places": 0,
+      "capture_id": 83,
+      "count_bias": 6,
+      "declared_records": 1022,
+      "declared_records_debiased": 1016,
+      "declared_roster_size": 28,
+      "declared_roster_size_debiased": 22,
+      "declared_segments": 24,
+      "declared_segments_debiased": 18,
+      "envelope_checksum_agrees": true,
+      "envelope_checksum_declared": 1572,
+      "envelope_checksum_recomputed": 1572,
+      "file": "season-capture.rjnl",
+      "filler_widths_agree": true,
+      "guard_register": 4095,
+      "guards_active": [
+        "keystream",
+        "chain",
+        "delta2",
+        "driftkey",
+        "segperm",
+        "backref",
+        "endian",
+        "countbias",
+        "shadow",
+        "rotate",
+        "alias",
+        "escape"
+      ],
+      "payload_checksums_agree": true,
+      "reading_error": null,
+      "record_residual": 0,
+      "recovered_records": 1016,
+      "recovered_segments": 18,
+      "role": "season",
+      "segment_residual": 0,
+      "structurally_sound": true,
+      "trailing_bytes": 0,
+      "unresolved_escape_directives": 6
+    }
+  ],
+  "findings": [
+    "season-capture.rjnl: 6 escape directives advance from a squad the roster dictionary does not hold and leave the attribution where it was",
+    "attribution residual of 3249 gross output carried by squads with no entry: AXL, BQT, YRD, ZPH",
+    "absent entrants listed in the registry but seen in no capture: RVN, TDR",
+    "squads seen on the wire that the entrant registry never lists: AXL, BQT, YRD, ZPH"
+  ],
+  "identities": {
+    "backwards_tick_places": 0,
+    "charged_plus_overflow": 42467,
+    "gross_plus_voided": 32463,
+    "output_identity_residual": 0,
+    "raw_upkeep": 42467,
+    "reported_output": 32463,
+    "upkeep_identity_residual": 0
+  },
+  "ledger_residual": {
+    "kind_ledger": {
+      "close": 18,
+      "concede": 3,
+      "deploy": 212,
+      "disband": 59,
+      "eliminate": 79,
+      "output": 636,
+      "transfer": 9
+    },
+    "ledger_total": 1016,
+    "recovered_records": 1016,
+    "residual": 0
+  },
+  "reference_transcript_check": {
+    "byte_exact": true,
+    "fields_compared": [
+      "kind",
+      "logical_segment",
+      "match_id",
+      "record_ordinal",
+      "squad_key",
+      "tick",
+      "unit",
+      "value"
+    ],
+    "first_mismatches": [],
+    "mismatching_records": 0,
+    "recovered_records": 278,
+    "transcript_file": "baseline-events.jsonl",
+    "transcript_present": true,
+    "transcript_records": 278
+  },
+  "season_reconciliation": {
+    "declared_records_debiased": 1016,
+    "declared_roster_size_debiased": 22,
+    "declared_segments_debiased": 18,
+    "distinct_squads_recovered": 26,
+    "record_residual": 0,
+    "recovered_records": 1016,
+    "recovered_segments": 18,
+    "registered_squads_recovered": 22,
+    "roster_residual": 0,
+    "segment_residual": 0,
+    "squads_without_an_entry": 4
+  },
+  "unregistered_squads": [
+    {
+      "charged_upkeep": 860,
+      "gross_output": 817,
+      "matches": 2,
+      "overflow_upkeep": 47,
+      "raw_upkeep": 907,
+      "season_score": -43,
+      "squad_key": "AXL",
+      "tier": "provisional",
+      "voided_output": 397
+    },
+    {
+      "charged_upkeep": 860,
+      "gross_output": 202,
+      "matches": 2,
+      "overflow_upkeep": 121,
+      "raw_upkeep": 981,
+      "season_score": -658,
+      "squad_key": "BQT",
+      "tier": "provisional",
+      "voided_output": 258
+    },
+    {
+      "charged_upkeep": 860,
+      "gross_output": 1357,
+      "matches": 3,
+      "overflow_upkeep": 1435,
+      "raw_upkeep": 2295,
+      "season_score": 497,
+      "squad_key": "YRD",
+      "tier": "provisional",
+      "voided_output": 275
+    },
+    {
+      "charged_upkeep": 860,
+      "gross_output": 873,
+      "matches": 2,
+      "overflow_upkeep": 430,
+      "raw_upkeep": 1290,
+      "season_score": 13,
+      "squad_key": "ZPH",
+      "tier": "provisional",
+      "voided_output": 73
+    }
+  ]
+}

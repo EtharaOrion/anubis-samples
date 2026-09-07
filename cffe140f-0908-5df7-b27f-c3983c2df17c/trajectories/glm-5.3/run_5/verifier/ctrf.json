@@ -1,0 +1,245 @@
+{
+  "results": {
+    "tool": {
+      "name": "pytest",
+      "version": "9.1.1"
+    },
+    "summary": {
+      "tests": 45,
+      "passed": 1,
+      "failed": 44,
+      "pending": 0,
+      "skipped": 0,
+      "other": 0,
+      "overall_score": 0.0056,
+      "weighted_percentage": 0.565
+    },
+    "tests": [
+      {
+        "name": "test_format_artifacts_present",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_format_reports_parse",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_format_adjudication_record_schema",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_instance_summary",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_instance_reconciliation",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_instance_region_east",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_instance_region_north",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_instance_region_south",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_instance_region_west",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_instance_segment_commercial",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_instance_segment_public",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_trap_keystream",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_trap_chain",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_trap_delta2",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_trap_driftkey",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_trap_segperm",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_trap_backref",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_trap_endian",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_trap_countbias",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_trap_lenshadow",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_trap_rotate",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_trap_alias",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_trap_escape",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_generalisation_tie_config",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_generalisation_cap_push",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_generalisation_empty_group",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_generalisation_boundary_shift",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_generalisation_add_entity",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_generalisation_counterfactual_flip",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_generalisation_scale",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_generalisation_contradict",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_generalisation_alias_chain",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_generalisation_nonapply",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_generalisation_cycle",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_generalisation_partition",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_generalisation_sentinel_heavy",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_generalisation_fresh_base",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_mixed_stateful_guards",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_mixed_layout_guards",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_mixed_key_guards",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_mixed_corpus_context_guards",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_hardcoded_sample_answers",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_filename_dependent_behaviour",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_reads_supplied_answer_data_at_runtime",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_nondeterministic_output",
+        "status": "failed",
+        "duration": 0
+      }
+    ]
+  }
+}

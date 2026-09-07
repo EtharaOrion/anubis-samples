@@ -1,0 +1,2493 @@
+{
+  "attribution_settlement_passes": 6,
+  "baseline_transcript_check": {
+    "byte_exact": true,
+    "declared_records": 278,
+    "decoded_records": 278,
+    "transcript": "baseline-events.jsonl",
+    "transcript_found": true
+  },
+  "bracket": {
+    "best_satisfied_constraint_count": 9,
+    "candidate_space": 680,
+    "constraint_count": 10,
+    "elected": [
+      "FLX",
+      "KRN",
+      "LMX"
+    ],
+    "eligible_pool": [
+      "AKR",
+      "AXL",
+      "BQT",
+      "EMB",
+      "FLX",
+      "KRN",
+      "LMX",
+      "MRA",
+      "NVL",
+      "ORC",
+      "PYX",
+      "QRM",
+      "SLT",
+      "WRN",
+      "XCT",
+      "YRD",
+      "ZPH"
+    ],
+    "eligible_pool_size": 17,
+    "tie_break": "most satisfied wishes, then least combined charged upkeep, then first-sorting member keys"
+  },
+  "budget_candidate_verdicts": [
+    {
+      "candidate": 20,
+      "falsifier": {
+        "control": "C7",
+        "figure": "charged upkeep",
+        "published": 7939,
+        "reproduced": 300
+      },
+      "reproduced": {
+        "charged upkeep": 300,
+        "overflow upkeep": 7866
+      },
+      "verdict": "rejected"
+    },
+    {
+      "candidate": 220,
+      "falsifier": {
+        "control": "C7",
+        "figure": "charged upkeep",
+        "published": 7939,
+        "reproduced": 3278
+      },
+      "reproduced": {
+        "charged upkeep": 3278,
+        "overflow upkeep": 4888
+      },
+      "verdict": "rejected"
+    },
+    {
+      "candidate": 440,
+      "falsifier": {
+        "control": "C7",
+        "figure": "charged upkeep",
+        "published": 7939,
+        "reproduced": 5769
+      },
+      "reproduced": {
+        "charged upkeep": 5769,
+        "overflow upkeep": 2397
+      },
+      "verdict": "rejected"
+    },
+    {
+      "candidate": 640,
+      "falsifier": {
+        "control": "C7",
+        "figure": "charged upkeep",
+        "published": 7939,
+        "reproduced": 7230
+      },
+      "reproduced": {
+        "charged upkeep": 7230,
+        "overflow upkeep": 936
+      },
+      "verdict": "rejected"
+    },
+    {
+      "candidate": 860,
+      "falsifier": null,
+      "reproduced": {
+        "charged upkeep": 7939,
+        "overflow upkeep": 227
+      },
+      "verdict": "accepted"
+    },
+    {
+      "candidate": 1060,
+      "falsifier": {
+        "control": "C7",
+        "figure": "charged upkeep",
+        "published": 7939,
+        "reproduced": 8159
+      },
+      "reproduced": {
+        "charged upkeep": 8159,
+        "overflow upkeep": 7
+      },
+      "verdict": "rejected"
+    }
+  ],
+  "calibration": [
+    {
+      "agrees": true,
+      "control": "C1",
+      "figure": "matches opened",
+      "published": 5,
+      "reproduced": 5
+    },
+    {
+      "agrees": true,
+      "control": "C2",
+      "figure": "records recovered",
+      "published": 238,
+      "reproduced": 238
+    },
+    {
+      "agrees": true,
+      "control": "C3",
+      "figure": "distinct squads",
+      "published": 16,
+      "reproduced": 16
+    },
+    {
+      "agrees": true,
+      "control": "C4",
+      "figure": "gross output",
+      "published": 6228,
+      "reproduced": 6228
+    },
+    {
+      "agrees": true,
+      "control": "C5",
+      "figure": "voided output",
+      "published": 1703,
+      "reproduced": 1703
+    },
+    {
+      "agrees": true,
+      "control": "C6",
+      "figure": "raw upkeep",
+      "published": 8166,
+      "reproduced": 8166
+    },
+    {
+      "agrees": true,
+      "control": "C7",
+      "figure": "charged upkeep",
+      "published": 7939,
+      "reproduced": 7939
+    },
+    {
+      "agrees": true,
+      "control": "C8",
+      "figure": "overflow upkeep",
+      "published": 227,
+      "reproduced": 227
+    },
+    {
+      "agrees": true,
+      "control": "C9",
+      "figure": "champion entrants",
+      "published": 1,
+      "reproduced": 1
+    },
+    {
+      "agrees": true,
+      "control": "C10",
+      "figure": "qualifier entrants",
+      "published": 1,
+      "reproduced": 1
+    },
+    {
+      "agrees": true,
+      "control": "C11",
+      "figure": "provisional entrants",
+      "published": 14,
+      "reproduced": 14
+    }
+  ],
+  "closed_hand_over_sets": [
+    [
+      "BLZ",
+      "CDR",
+      "DVN"
+    ]
+  ],
+  "control_capture": {
+    "guards_active": [
+      "alias",
+      "backref",
+      "chain",
+      "countbias",
+      "delta2",
+      "driftkey",
+      "endian",
+      "escape",
+      "keystream",
+      "rotate",
+      "segperm",
+      "shadow"
+    ],
+    "name": "control-capture.rjnl",
+    "records": 238
+  },
+  "docket": {
+    "candidate_space": 16,
+    "conference_cap": 2,
+    "docket_size": 5,
+    "elected": [
+      503,
+      507,
+      509,
+      513,
+      515
+    ],
+    "review_weight": 25,
+    "total_review_index": 2993
+  },
+  "guard_candidate_verdicts": [
+    {
+      "decode_error": "unknown attribution mode 14",
+      "engine_tag": "orion-fold",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 14",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 14",
+      "engine_tag": "orion-fold",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 14",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 14",
+      "engine_tag": "orion-fold",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 14",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 14",
+      "engine_tag": "orion-fold",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 14",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 14",
+      "engine_tag": "orion-fold",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 14",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 14",
+      "engine_tag": "orion-fold",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 14",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 14",
+      "engine_tag": "orion-fold",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 14",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 14",
+      "engine_tag": "orion-fold",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 14",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 14",
+      "engine_tag": "orion-fold",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 14",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 14",
+      "engine_tag": "orion-fold",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 14",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 14",
+      "engine_tag": "orion-fold",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 14",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 14",
+      "engine_tag": "orion-fold",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 14",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 14",
+      "engine_tag": "orion-fold",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 14",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 14",
+      "engine_tag": "orion-fold",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 14",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 14",
+      "engine_tag": "orion-fold",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 14",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 14",
+      "engine_tag": "orion-fold",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 14",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 108",
+      "engine_tag": "wren-cadence",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 108",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 108",
+      "engine_tag": "wren-cadence",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 108",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 108",
+      "engine_tag": "wren-cadence",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 108",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 108",
+      "engine_tag": "wren-cadence",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 108",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 108",
+      "engine_tag": "wren-cadence",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 108",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 108",
+      "engine_tag": "wren-cadence",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 108",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 108",
+      "engine_tag": "wren-cadence",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 108",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 108",
+      "engine_tag": "wren-cadence",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 108",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 108",
+      "engine_tag": "wren-cadence",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 108",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 108",
+      "engine_tag": "wren-cadence",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 108",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 108",
+      "engine_tag": "wren-cadence",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 108",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 108",
+      "engine_tag": "wren-cadence",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 108",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 108",
+      "engine_tag": "wren-cadence",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 108",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 108",
+      "engine_tag": "wren-cadence",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 108",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 108",
+      "engine_tag": "wren-cadence",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 108",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 108",
+      "engine_tag": "wren-cadence",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 108",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 43",
+      "engine_tag": "tessel-drift",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 43",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "back reference out of window",
+      "engine_tag": "tessel-drift",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: back reference out of window",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 43",
+      "engine_tag": "tessel-drift",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 43",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 43",
+      "engine_tag": "tessel-drift",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 43",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 43",
+      "engine_tag": "tessel-drift",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 43",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "engine_tag": "tessel-drift",
+      "falsifier": null,
+      "reproduced": {
+        "distinct squads": 16,
+        "gross output": 6228,
+        "matches opened": 5,
+        "raw upkeep": 8166,
+        "records recovered": 238,
+        "voided output": 1703
+      },
+      "sentinel": "0x1D",
+      "verdict": "accepted",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 43",
+      "engine_tag": "tessel-drift",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 43",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 43",
+      "engine_tag": "tessel-drift",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 43",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 43",
+      "engine_tag": "tessel-drift",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 43",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "engine_tag": "tessel-drift",
+      "falsifier": {
+        "control": "C4",
+        "figure": "gross output",
+        "published": 6228,
+        "reproduced": 6644
+      },
+      "reproduced": {
+        "distinct squads": 16,
+        "gross output": 6644,
+        "matches opened": 5,
+        "raw upkeep": 8092,
+        "records recovered": 238,
+        "voided output": 1287
+      },
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 43",
+      "engine_tag": "tessel-drift",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 43",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 43",
+      "engine_tag": "tessel-drift",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 43",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 43",
+      "engine_tag": "tessel-drift",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 43",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "engine_tag": "tessel-drift",
+      "falsifier": {
+        "control": "C4",
+        "figure": "gross output",
+        "published": 6228,
+        "reproduced": 6922
+      },
+      "reproduced": {
+        "distinct squads": 16,
+        "gross output": 6922,
+        "matches opened": 5,
+        "raw upkeep": 8375,
+        "records recovered": 238,
+        "voided output": 1009
+      },
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 43",
+      "engine_tag": "tessel-drift",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 43",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 43",
+      "engine_tag": "tessel-drift",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 43",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "halcyon-mark",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "halcyon-mark",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "halcyon-mark",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "halcyon-mark",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "halcyon-mark",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "halcyon-mark",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "halcyon-mark",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "halcyon-mark",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "halcyon-mark",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "halcyon-mark",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "halcyon-mark",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "halcyon-mark",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "halcyon-mark",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "halcyon-mark",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "halcyon-mark",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "halcyon-mark",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 38",
+      "engine_tag": "vector-plume",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 38",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 38",
+      "engine_tag": "vector-plume",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 38",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 38",
+      "engine_tag": "vector-plume",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 38",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 38",
+      "engine_tag": "vector-plume",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 38",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 38",
+      "engine_tag": "vector-plume",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 38",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 38",
+      "engine_tag": "vector-plume",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 38",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 38",
+      "engine_tag": "vector-plume",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 38",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 38",
+      "engine_tag": "vector-plume",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 38",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 38",
+      "engine_tag": "vector-plume",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 38",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 38",
+      "engine_tag": "vector-plume",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 38",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 38",
+      "engine_tag": "vector-plume",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 38",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 38",
+      "engine_tag": "vector-plume",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 38",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 38",
+      "engine_tag": "vector-plume",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 38",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 38",
+      "engine_tag": "vector-plume",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 38",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 38",
+      "engine_tag": "vector-plume",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 38",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 38",
+      "engine_tag": "vector-plume",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 38",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 250",
+      "engine_tag": "umbral-stack",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 250",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 250",
+      "engine_tag": "umbral-stack",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 250",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 250",
+      "engine_tag": "umbral-stack",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 250",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 250",
+      "engine_tag": "umbral-stack",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 250",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 250",
+      "engine_tag": "umbral-stack",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 250",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 250",
+      "engine_tag": "umbral-stack",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 250",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 250",
+      "engine_tag": "umbral-stack",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 250",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 250",
+      "engine_tag": "umbral-stack",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 250",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 250",
+      "engine_tag": "umbral-stack",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 250",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 250",
+      "engine_tag": "umbral-stack",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 250",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 250",
+      "engine_tag": "umbral-stack",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 250",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 250",
+      "engine_tag": "umbral-stack",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 250",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 250",
+      "engine_tag": "umbral-stack",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 250",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 250",
+      "engine_tag": "umbral-stack",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 250",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 250",
+      "engine_tag": "umbral-stack",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 250",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 250",
+      "engine_tag": "umbral-stack",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 250",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "quill-lattice",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "quill-lattice",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "quill-lattice",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "quill-lattice",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "quill-lattice",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "quill-lattice",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "quill-lattice",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "quill-lattice",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "quill-lattice",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "quill-lattice",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "quill-lattice",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "quill-lattice",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "quill-lattice",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "quill-lattice",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "quill-lattice",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 122",
+      "engine_tag": "quill-lattice",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 122",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 66",
+      "engine_tag": "nimbus-gable",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 66",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 66",
+      "engine_tag": "nimbus-gable",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 66",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 66",
+      "engine_tag": "nimbus-gable",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 66",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 66",
+      "engine_tag": "nimbus-gable",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 66",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 4
+    },
+    {
+      "decode_error": "unknown attribution mode 66",
+      "engine_tag": "nimbus-gable",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 66",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 66",
+      "engine_tag": "nimbus-gable",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 66",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 66",
+      "engine_tag": "nimbus-gable",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 66",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 66",
+      "engine_tag": "nimbus-gable",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 66",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 6
+    },
+    {
+      "decode_error": "unknown attribution mode 66",
+      "engine_tag": "nimbus-gable",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 66",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 66",
+      "engine_tag": "nimbus-gable",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 66",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 66",
+      "engine_tag": "nimbus-gable",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 66",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 66",
+      "engine_tag": "nimbus-gable",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 66",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 8
+    },
+    {
+      "decode_error": "unknown attribution mode 66",
+      "engine_tag": "nimbus-gable",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 66",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1A",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 66",
+      "engine_tag": "nimbus-gable",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 66",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x1D",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 66",
+      "engine_tag": "nimbus-gable",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 66",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x20",
+      "verdict": "rejected",
+      "window_depth": 10
+    },
+    {
+      "decode_error": "unknown attribution mode 66",
+      "engine_tag": "nimbus-gable",
+      "falsifier": {
+        "control": "C2",
+        "detail": "capture would not decode: unknown attribution mode 66",
+        "figure": "records recovered",
+        "published": 238,
+        "reproduced": null
+      },
+      "reproduced": {},
+      "sentinel": "0x7F",
+      "verdict": "rejected",
+      "window_depth": 10
+    }
+  ],
+  "hand_overs": {
+    "BLZ": "CDR",
+    "CDR": "DVN",
+    "DVN": "BLZ",
+    "GRT": "FLX",
+    "HVN": "GRT",
+    "IBX": "HVN",
+    "JDE": "IBX",
+    "UMB": "JDE",
+    "VLC": "BLZ"
+  },
+  "notes": [
+    "Escape operation 2 advances within the roster dictionary; a record whose current attribution is not a dictionary entry holds no position to advance from, so operation 2 leaves it unchanged.",
+    "Record blobs are unmasked keystream-first and then turned right; the filler width follows the salt written in the segment envelope, not the drift-adjusted effective salt."
+  ],
+  "review_index_table": [
+    {
+      "conference": "East",
+      "escape_records": 2,
+      "leading_squad": "DVN",
+      "match_id": 500,
+      "review_index": 415,
+      "voided_output": 365
+    },
+    {
+      "conference": "North",
+      "escape_records": 2,
+      "leading_squad": "EMB",
+      "match_id": 501,
+      "review_index": 132,
+      "voided_output": 82
+    },
+    {
+      "conference": "West",
+      "escape_records": 2,
+      "leading_squad": "GRT",
+      "match_id": 502,
+      "review_index": 367,
+      "voided_output": 317
+    },
+    {
+      "conference": "West",
+      "escape_records": 2,
+      "leading_squad": "KRN",
+      "match_id": 503,
+      "review_index": 499,
+      "voided_output": 449
+    },
+    {
+      "conference": "South",
+      "escape_records": 2,
+      "leading_squad": "NVL",
+      "match_id": 504,
+      "review_index": 50,
+      "voided_output": 0
+    },
+    {
+      "conference": "East",
+      "escape_records": 2,
+      "leading_squad": "PYX",
+      "match_id": 505,
+      "review_index": 464,
+      "voided_output": 414
+    },
+    {
+      "conference": "South",
+      "escape_records": 2,
+      "leading_squad": "VLC",
+      "match_id": 506,
+      "review_index": 299,
+      "voided_output": 249
+    },
+    {
+      "conference": "East",
+      "escape_records": 2,
+      "leading_squad": "HVN",
+      "match_id": 507,
+      "review_index": 489,
+      "voided_output": 439
+    },
+    {
+      "conference": "South",
+      "escape_records": 2,
+      "leading_squad": "BLZ",
+      "match_id": 508,
+      "review_index": 480,
+      "voided_output": 430
+    },
+    {
+      "conference": "South",
+      "escape_records": 2,
+      "leading_squad": "BLZ",
+      "match_id": 509,
+      "review_index": 663,
+      "voided_output": 613
+    },
+    {
+      "conference": "South",
+      "escape_records": 2,
+      "leading_squad": "FLX",
+      "match_id": 510,
+      "review_index": 606,
+      "voided_output": 556
+    },
+    {
+      "conference": "North",
+      "escape_records": 2,
+      "leading_squad": "IBX",
+      "match_id": 511,
+      "review_index": 390,
+      "voided_output": 340
+    },
+    {
+      "conference": "North",
+      "escape_records": 2,
+      "leading_squad": "MRA",
+      "match_id": 512,
+      "review_index": 180,
+      "voided_output": 130
+    },
+    {
+      "conference": "West",
+      "escape_records": 2,
+      "leading_squad": "SLT",
+      "match_id": 513,
+      "review_index": 631,
+      "voided_output": 581
+    },
+    {
+      "conference": "North",
+      "escape_records": 2,
+      "leading_squad": "UMB",
+      "match_id": 514,
+      "review_index": 371,
+      "voided_output": 321
+    },
+    {
+      "conference": "South",
+      "escape_records": 2,
+      "leading_squad": "VLC",
+      "match_id": 515,
+      "review_index": 711,
+      "voided_output": 661
+    },
+    {
+      "conference": "West",
+      "escape_records": 2,
+      "leading_squad": "KRN",
+      "match_id": 516,
+      "review_index": 370,
+      "voided_output": 320
+    },
+    {
+      "conference": "West",
+      "escape_records": 2,
+      "leading_squad": "CDR",
+      "match_id": 517,
+      "review_index": 295,
+      "voided_output": 245
+    }
+  ],
+  "roster_dictionary": [
+    "AKR",
+    "CDR",
+    "BLZ",
+    "DVN",
+    "FLX",
+    "EMB",
+    "GRT",
+    "HVN",
+    "IBX",
+    "JDE",
+    "KRN",
+    "LMX",
+    "ORC",
+    "MRA",
+    "NVL",
+    "PYX"
+  ],
+  "threshold_candidate_verdicts": [
+    {
+      "candidate": 20,
+      "falsifier": {
+        "control": "C9",
+        "figure": "champion entrants",
+        "published": 1,
+        "reproduced": 7
+      },
+      "reproduced": {
+        "champion entrants": 7,
+        "provisional entrants": 9,
+        "qualifier entrants": 0
+      },
+      "verdict": "rejected"
+    },
+    {
+      "candidate": 140,
+      "falsifier": {
+        "control": "C9",
+        "figure": "champion entrants",
+        "published": 1,
+        "reproduced": 4
+      },
+      "reproduced": {
+        "champion entrants": 4,
+        "provisional entrants": 9,
+        "qualifier entrants": 1
+      },
+      "verdict": "rejected"
+    },
+    {
+      "candidate": 200,
+      "falsifier": {
+        "control": "C9",
+        "figure": "champion entrants",
+        "published": 1,
+        "reproduced": 3
+      },
+      "reproduced": {
+        "champion entrants": 3,
+        "provisional entrants": 9,
+        "qualifier entrants": 3
+      },
+      "verdict": "rejected"
+    },
+    {
+      "candidate": 360,
+      "falsifier": {
+        "control": "C10",
+        "figure": "qualifier entrants",
+        "published": 1,
+        "reproduced": 2
+      },
+      "reproduced": {
+        "champion entrants": 1,
+        "provisional entrants": 12,
+        "qualifier entrants": 2
+      },
+      "verdict": "rejected"
+    },
+    {
+      "candidate": 700,
+      "falsifier": null,
+      "reproduced": {
+        "champion entrants": 1,
+        "provisional entrants": 14,
+        "qualifier entrants": 1
+      },
+      "verdict": "accepted"
+    },
+    {
+      "candidate": 1300,
+      "falsifier": {
+        "control": "C9",
+        "figure": "champion entrants",
+        "published": 1,
+        "reproduced": 0
+      },
+      "reproduced": {
+        "champion entrants": 0,
+        "provisional entrants": 15,
+        "qualifier entrants": 1
+      },
+      "verdict": "rejected"
+    }
+  ],
+  "unstated_quantities": {
+    "engine_tag": {
+      "candidate_space": [
+        "orion-fold",
+        "wren-cadence",
+        "tessel-drift",
+        "halcyon-mark",
+        "vector-plume",
+        "umbral-stack",
+        "quill-lattice",
+        "nimbus-gable"
+      ],
+      "pinned": "tessel-drift"
+    },
+    "escape_sentinel": {
+      "candidate_space": [
+        "0x1A",
+        "0x1D",
+        "0x20",
+        "0x7F"
+      ],
+      "pinned": "0x1D"
+    },
+    "promotion_threshold": {
+      "candidate_space": [
+        20,
+        140,
+        200,
+        360,
+        700,
+        1300
+      ],
+      "pinned": 700
+    },
+    "season_budget": {
+      "candidate_space": [
+        20,
+        220,
+        440,
+        640,
+        860,
+        1060
+      ],
+      "pinned": 860
+    },
+    "window_depth": {
+      "candidate_space": [
+        4,
+        6,
+        8,
+        10
+      ],
+      "pinned": 6
+    }
+  }
+}

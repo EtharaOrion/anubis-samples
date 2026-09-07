@@ -1,0 +1,191 @@
+{
+  "tool": "task-ctl",
+  "ok": true,
+  "config": {
+    "profile": "TASK",
+    "producer": "",
+    "container": "",
+    "max_records": 145,
+    "retry_limit": 3,
+    "timeout_ms": 1771,
+    "checksum": "crc32",
+    "mode": "strict-local",
+    "trailer": "harbor:cli-config:TASK:0000000000016384"
+  },
+  "config_key_count": 9,
+  "commands": [
+    {
+      "command": "init",
+      "status": "ok",
+      "detail": {
+        "schema": "data/config_schema.json",
+        "defaults": "data/defaults.json",
+        "out": "out/config.json",
+        "keys": 9
+      }
+    },
+    {
+      "command": "validate",
+      "status": "ok",
+      "detail": {
+        "schema": "data/config_schema.json",
+        "config": "out/config.json",
+        "rules": "data/validation_rules.json",
+        "profile_kind": "main",
+        "valid": true
+      }
+    },
+    {
+      "command": "apply-profile",
+      "status": "ok",
+      "detail": {
+        "config": "out/config.json",
+        "profile": "dev",
+        "profile_config": "data/sample_config_dev.json",
+        "overrides": "data/env_overrides.json",
+        "out": "out/profile_dev.json",
+        "applied": 6
+      }
+    },
+    {
+      "command": "validate",
+      "status": "ok",
+      "detail": {
+        "schema": "data/config_schema.json",
+        "config": "out/profile_dev.json",
+        "rules": "data/validation_rules.json",
+        "profile_kind": "env",
+        "valid": true
+      }
+    },
+    {
+      "command": "apply-profile",
+      "status": "ok",
+      "detail": {
+        "config": "out/config.json",
+        "profile": "prod",
+        "profile_config": "data/sample_config_prod.json",
+        "overrides": "data/env_overrides.json",
+        "out": "out/profile_prod.json",
+        "applied": 6
+      }
+    },
+    {
+      "command": "validate",
+      "status": "ok",
+      "detail": {
+        "schema": "data/config_schema.json",
+        "config": "out/profile_prod.json",
+        "rules": "data/validation_rules.json",
+        "profile_kind": "env",
+        "valid": true
+      }
+    }
+  ],
+  "command_count": 6,
+  "repair": {
+    "archive": "/app/data/tool.zip",
+    "extracted_to": "/app/tool",
+    "files_changed": [
+      "cli.py",
+      "schema.json",
+      "README.md"
+    ],
+    "faults_found": 7,
+    "faults": [
+      {
+        "id": "F1",
+        "file": "cli.py",
+        "symbol": "cmd_init",
+        "fault": "init read args.config, an argument its subparser never defines, so every init run died with AttributeError before writing anything.",
+        "evidence": "sub.add_parser('init') declares only --schema and --out.",
+        "fix": "Read the schema from args.schema."
+      },
+      {
+        "id": "F2",
+        "file": "cli.py",
+        "symbol": "cmd_init",
+        "fault": "init emitted the checksum inside a nested 'settings' object, violating the schema's scalar_only contract, and emitted only 4 of the 9 required keys.",
+        "evidence": "config_schema.json sets scalar_only=true and lists 9 required_keys; defaults.json holds mode plus base_config values for the rest.",
+        "fix": "Build a flat object, merge defaults.json (top level plus base_config) over the schema, keep only required keys and reject any non-scalar value."
+      },
+      {
+        "id": "F3",
+        "file": "cli.py",
+        "symbol": "cmd_set",
+        "fault": "set upper-cased the key, so 'max_records' was stored as 'MAX_RECORDS' and the required key stayed missing.",
+        "evidence": "README documents 'set --key max_records'; required_keys are lower-case.",
+        "fix": "Store the key exactly as given."
+      },
+      {
+        "id": "F4",
+        "file": "cli.py",
+        "symbol": "cmd_set",
+        "fault": "set stored every value as a string, so numeric keys such as max_records became \"100\" and no delta arithmetic was possible.",
+        "evidence": "defaults.json base_config values are numbers; env_overrides.json applies numeric deltas.",
+        "fix": "Coerce via json.loads with a string fallback, and reject non-scalar (dict/list) values."
+      },
+      {
+        "id": "F5",
+        "file": "cli.py",
+        "symbol": "cmd_validate",
+        "fault": "validate called schema['required_keys'].split(','), which raises AttributeError on the contract schema where required_keys is a JSON list.",
+        "evidence": "/app/data/config_schema.json stores required_keys as a list; the bundled schema.json used a comma string.",
+        "fix": "Normalise required_keys from either list or comma-separated string, and extend validation to cover scalar_only, forbidden_keys, unresolved *_delta keys, checksum algorithm, profile allow-list and max_artifact_bytes."
+      },
+      {
+        "id": "F6",
+        "file": "cli.py",
+        "symbol": "cmd_report",
+        "fault": "export-report hard-coded \"commands\": \"unknown\", so the report carried no usable transcript of what was run.",
+        "evidence": "The literal string is unusable as a record of the run.",
+        "fix": "Added an opt-in --log transcript that every command appends to, and export-report renders it as a list of {command, status, detail} entries."
+      },
+      {
+        "id": "F7",
+        "file": "cli.py",
+        "symbol": "main",
+        "fault": "The subparser was not required, so running task-ctl with no subcommand crashed with AttributeError: 'Namespace' object has no attribute 'func' instead of printing usage.",
+        "evidence": "add_subparsers(dest='command') without required=True.",
+        "fix": "Marked the subcommand required; bare invocation now prints usage and exits 2."
+      }
+    ],
+    "gaps_closed": [
+      "The tool could not consume defaults.json, env_overrides.json or the sample profile files at all; added --defaults to init and a new apply-profile command that resolves <key>_delta offsets against the base configuration and applies the matching env_overrides section.",
+      "Added validate-all to check every artifact plus the rules file's required_artifacts list, and summarize to describe the produced artifact set.",
+      "Fixed the bundled schema.json to mirror the contract in /app/data/config_schema.json (list-form required_keys, scalar_only)."
+    ],
+    "verification": [
+      "init on the contract schema now writes all 9 required keys as flat scalars.",
+      "set --key max_records --value 100 stores lower-case 'max_records' with integer 100.",
+      "set rejects *_delta keys and non-scalar JSON values with exit 1.",
+      "validate accepts both list-form and comma-string required_keys.",
+      "validate rejects a config carrying a nested key and a forbidden 'timestamp' key with exit 1.",
+      "task-ctl with no subcommand prints usage and exits 2.",
+      "Re-running the full pipeline reproduces every artifact byte-for-byte."
+    ]
+  },
+  "run": {
+    "cli": "/app/tool/cli.py",
+    "invocation": "python3 /app/tool/cli.py <command> ...",
+    "inputs": [
+      "/app/data/config_schema.json",
+      "/app/data/defaults.json",
+      "/app/data/env_overrides.json",
+      "/app/data/sample_config_dev.json",
+      "/app/data/sample_config_prod.json",
+      "/app/data/validation_rules.json"
+    ],
+    "derivation": {
+      "config.json": "init from config_schema.json + defaults.json (base_config values verbatim, no deltas)",
+      "profile_dev.json": "apply-profile: max_records 145-10=135, retry_limit 3+1=4, timeout_ms 1771-125=1646",
+      "profile_prod.json": "apply-profile: max_records 145+25=170, retry_limit 3+0=3, timeout_ms 1771+250=2021"
+    },
+    "notes": [
+      "producer and container are empty strings because both config_schema.json and defaults.json specify them as empty; they are required to be present, not non-empty.",
+      "The base configuration keeps the schema profile name TASK; the dev/prod allow-list in validation_rules.json applies to the derived environment profiles.",
+      "Standard library only; no network access. No timestamp, generated_at, uuid or random_seed key is written anywhere.",
+      "The transcript below covers config generation and per-artifact validation; the closing validate-all and summarize bookkeeping steps run after this report is written."
+    ]
+  }
+}

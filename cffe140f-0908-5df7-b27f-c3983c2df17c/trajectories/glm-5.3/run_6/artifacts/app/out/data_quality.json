@@ -1,0 +1,203 @@
+{
+  "absent_entrants": [
+    {
+      "division": "D2",
+      "entrant_id": "E018",
+      "licence_class": "LC4",
+      "squad_key": "RVN"
+    },
+    {
+      "division": "D4",
+      "entrant_id": "E020",
+      "licence_class": "LC2",
+      "squad_key": "TDR"
+    }
+  ],
+  "baseline_transcript_reconciliation": {
+    "byte_exact": true,
+    "differences": [],
+    "file": "baseline-events.jsonl",
+    "records_compared": 278,
+    "records_differing": 0,
+    "records_matching": 278,
+    "recovered_records": 278,
+    "transcript_records": 278
+  },
+  "captures": [
+    {
+      "capture_id": 41,
+      "count_bias_applied": 0,
+      "declared_record_count": 278,
+      "declared_roster_size": 16,
+      "declared_segment_count": 6,
+      "distinct_squads_recovered": 16,
+      "envelope_checksum_ok": true,
+      "file": "baseline-capture.rjnl",
+      "guard_register": 0,
+      "guards_active": [],
+      "record_count_residual": 0,
+      "recovered_record_count": 278,
+      "recovered_segment_count": 6,
+      "registered_squads_recovered": 16,
+      "role": "reference",
+      "roster_size_residual": 0,
+      "segment_count_residual": 0,
+      "segment_payload_checksums_ok": true
+    },
+    {
+      "capture_id": 62,
+      "count_bias_applied": 6,
+      "declared_record_count": 238,
+      "declared_roster_size": 15,
+      "declared_segment_count": 5,
+      "distinct_squads_recovered": 16,
+      "envelope_checksum_ok": true,
+      "file": "control-capture.rjnl",
+      "guard_register": 4095,
+      "guards_active": [
+        "keystream",
+        "chain",
+        "delta2",
+        "driftkey",
+        "segperm",
+        "backref",
+        "endian",
+        "countbias",
+        "shadow",
+        "rotate",
+        "alias",
+        "escape"
+      ],
+      "record_count_residual": 0,
+      "recovered_record_count": 238,
+      "recovered_segment_count": 5,
+      "registered_squads_recovered": 16,
+      "role": "control",
+      "roster_size_residual": -1,
+      "segment_count_residual": 0,
+      "segment_payload_checksums_ok": true
+    },
+    {
+      "capture_id": 83,
+      "count_bias_applied": 6,
+      "declared_record_count": 1016,
+      "declared_roster_size": 22,
+      "declared_segment_count": 18,
+      "distinct_squads_recovered": 26,
+      "envelope_checksum_ok": true,
+      "file": "season-capture.rjnl",
+      "guard_register": 4095,
+      "guards_active": [
+        "keystream",
+        "chain",
+        "delta2",
+        "driftkey",
+        "segperm",
+        "backref",
+        "endian",
+        "countbias",
+        "shadow",
+        "rotate",
+        "alias",
+        "escape"
+      ],
+      "record_count_residual": 0,
+      "recovered_record_count": 1016,
+      "recovered_segment_count": 18,
+      "registered_squads_recovered": 22,
+      "role": "season",
+      "roster_size_residual": 0,
+      "segment_count_residual": 0,
+      "segment_payload_checksums_ok": true
+    }
+  ],
+  "reference_roster_dictionary": [
+    "AKR",
+    "CDR",
+    "BLZ",
+    "DVN",
+    "FLX",
+    "EMB",
+    "GRT",
+    "HVN",
+    "IBX",
+    "JDE",
+    "KRN",
+    "LMX",
+    "ORC",
+    "MRA",
+    "NVL",
+    "PYX"
+  ],
+  "season": {
+    "attribution_residual": 3249,
+    "backwards_tick_transitions": 0,
+    "conference_gross_output_sum": 22702,
+    "gross_output": 25951,
+    "kind_ledger": {
+      "close": 18,
+      "concede": 3,
+      "deploy": 212,
+      "disband": 59,
+      "eliminate": 79,
+      "output": 636,
+      "transfer": 9
+    },
+    "output_ledger": {
+      "gross_output": 25951,
+      "reported_output": 32463,
+      "residual": 0,
+      "voided_output": 6512
+    },
+    "upkeep_ledger": {
+      "charged_upkeep": 21769,
+      "overflow_upkeep": 20698,
+      "raw_upkeep": 42467,
+      "residual": 0
+    }
+  },
+  "unregistered_squad_output": {
+    "AXL": {
+      "charged_upkeep": 860,
+      "gross_output": 817,
+      "matches": 2,
+      "overflow_upkeep": 47,
+      "raw_upkeep": 907,
+      "season_score": -43,
+      "voided_output": 397
+    },
+    "BQT": {
+      "charged_upkeep": 860,
+      "gross_output": 202,
+      "matches": 2,
+      "overflow_upkeep": 121,
+      "raw_upkeep": 981,
+      "season_score": -658,
+      "voided_output": 258
+    },
+    "YRD": {
+      "charged_upkeep": 860,
+      "gross_output": 1357,
+      "matches": 3,
+      "overflow_upkeep": 1435,
+      "raw_upkeep": 2295,
+      "season_score": 497,
+      "voided_output": 275
+    },
+    "ZPH": {
+      "charged_upkeep": 860,
+      "gross_output": 873,
+      "matches": 2,
+      "overflow_upkeep": 430,
+      "raw_upkeep": 1290,
+      "season_score": 13,
+      "voided_output": 73
+    }
+  },
+  "unregistered_squads": [
+    "AXL",
+    "BQT",
+    "YRD",
+    "ZPH"
+  ]
+}

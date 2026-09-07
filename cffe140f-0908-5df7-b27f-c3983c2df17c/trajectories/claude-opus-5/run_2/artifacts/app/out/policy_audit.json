@@ -1,0 +1,485 @@
+{
+  "attribution_settlement": {
+    "closed_sets": [
+      [
+        "BLZ",
+        "CDR",
+        "DVN"
+      ]
+    ],
+    "effective_owners": {
+      "CDR": "BLZ",
+      "DVN": "BLZ",
+      "GRT": "FLX",
+      "HVN": "FLX",
+      "IBX": "FLX",
+      "JDE": "FLX",
+      "UMB": "FLX",
+      "VLC": "BLZ"
+    },
+    "hand_overs": [
+      {
+        "from": "BLZ",
+        "to": "CDR"
+      },
+      {
+        "from": "CDR",
+        "to": "DVN"
+      },
+      {
+        "from": "DVN",
+        "to": "BLZ"
+      },
+      {
+        "from": "GRT",
+        "to": "FLX"
+      },
+      {
+        "from": "HVN",
+        "to": "GRT"
+      },
+      {
+        "from": "IBX",
+        "to": "HVN"
+      },
+      {
+        "from": "JDE",
+        "to": "IBX"
+      },
+      {
+        "from": "UMB",
+        "to": "JDE"
+      },
+      {
+        "from": "VLC",
+        "to": "BLZ"
+      }
+    ],
+    "passes": 6
+  },
+  "bracket_search": {
+    "best_satisfied_constraints": 9,
+    "candidate_space": 816,
+    "constraints": [
+      {
+        "constraint": "member in a prominent division",
+        "met": true
+      },
+      {
+        "constraint": "both entrant segments present",
+        "met": true
+      },
+      {
+        "constraint": "every member meets the standing points floor",
+        "met": true
+      },
+      {
+        "constraint": "no two members share a conference",
+        "met": true
+      },
+      {
+        "constraint": "a ranked entrant is present",
+        "met": true
+      },
+      {
+        "constraint": "combined ladder weight floor",
+        "met": true
+      },
+      {
+        "constraint": "no member carries overflow upkeep",
+        "met": false
+      },
+      {
+        "constraint": "a champion tier member is present",
+        "met": true
+      },
+      {
+        "constraint": "combined gross output floor",
+        "met": true
+      },
+      {
+        "constraint": "no member has handed its entry away",
+        "met": true
+      }
+    ],
+    "elected": [
+      "KRN",
+      "LMX",
+      "MRA"
+    ],
+    "elected_combined_charged_upkeep": 2580,
+    "elected_satisfied_constraints": 9,
+    "eligibility_match_floor": 2,
+    "eligible_pool": [
+      "AKR",
+      "AXL",
+      "BLZ",
+      "BQT",
+      "EMB",
+      "FLX",
+      "KRN",
+      "LMX",
+      "MRA",
+      "NVL",
+      "ORC",
+      "PYX",
+      "QRM",
+      "SLT",
+      "WRN",
+      "XCT",
+      "YRD",
+      "ZPH"
+    ],
+    "total_constraints": 10
+  },
+  "calibration_agrees": true,
+  "calibration_comparison": [
+    {
+      "agrees": true,
+      "control": "C1",
+      "figure": "matches opened",
+      "published_value": 5,
+      "reproduced_value": 5
+    },
+    {
+      "agrees": true,
+      "control": "C2",
+      "figure": "records recovered",
+      "published_value": 238,
+      "reproduced_value": 238
+    },
+    {
+      "agrees": true,
+      "control": "C3",
+      "figure": "distinct squads",
+      "published_value": 16,
+      "reproduced_value": 16
+    },
+    {
+      "agrees": true,
+      "control": "C4",
+      "figure": "gross output",
+      "published_value": 6228,
+      "reproduced_value": 6228
+    },
+    {
+      "agrees": true,
+      "control": "C5",
+      "figure": "voided output",
+      "published_value": 1703,
+      "reproduced_value": 1703
+    },
+    {
+      "agrees": true,
+      "control": "C6",
+      "figure": "raw upkeep",
+      "published_value": 8166,
+      "reproduced_value": 8166
+    },
+    {
+      "agrees": true,
+      "control": "C7",
+      "figure": "charged upkeep",
+      "published_value": 7939,
+      "reproduced_value": 7939
+    },
+    {
+      "agrees": true,
+      "control": "C8",
+      "figure": "overflow upkeep",
+      "published_value": 227,
+      "reproduced_value": 227
+    },
+    {
+      "agrees": true,
+      "control": "C9",
+      "figure": "champion entrants",
+      "published_value": 1,
+      "reproduced_value": 1
+    },
+    {
+      "agrees": true,
+      "control": "C10",
+      "figure": "qualifier entrants",
+      "published_value": 1,
+      "reproduced_value": 1
+    },
+    {
+      "agrees": true,
+      "control": "C11",
+      "figure": "provisional entrants",
+      "published_value": 14,
+      "reproduced_value": 14
+    }
+  ],
+  "captures": {
+    "control": "control-capture.rjnl",
+    "reference": "baseline-capture.rjnl",
+    "season": "season-capture.rjnl"
+  },
+  "docket_search": {
+    "candidate_matches": 18,
+    "combined_review_index": 2993,
+    "conference_cap": 2,
+    "docket_size": 5,
+    "elected": [
+      503,
+      507,
+      509,
+      513,
+      515
+    ],
+    "review_weight": 25
+  },
+  "guard_search": {
+    "combinations_examined": 128,
+    "combinations_surviving": 1,
+    "derived_count_bias": 6
+  },
+  "policy_constants": {
+    "docket_cap": 2,
+    "docket_size": 5,
+    "gross_floor": 900,
+    "match_floor": 2,
+    "prominence": 4,
+    "review_weight": 25,
+    "standing_floor": 3,
+    "weight_floor": 7
+  },
+  "reference_transcript_check": {
+    "byte_exact_agreement": true,
+    "checked": true,
+    "first_disagreement": null,
+    "labelled_records": 278,
+    "recovered_records": 278,
+    "transcript": "baseline-events.jsonl"
+  },
+  "roster_dictionary": [
+    "AKR",
+    "CDR",
+    "BLZ",
+    "DVN",
+    "FLX",
+    "EMB",
+    "GRT",
+    "HVN",
+    "IBX",
+    "JDE",
+    "KRN",
+    "LMX",
+    "ORC",
+    "MRA",
+    "NVL",
+    "PYX"
+  ],
+  "unstated_quantities": {
+    "engine_tag": {
+      "candidate_space": 8,
+      "candidates": [
+        {
+          "falsifier": "no record stream recovers under this reading (event kind 56 after 0 records), so none of C1, C2, C3, C4, C5, C6 is reproduced",
+          "value": "orion-fold",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "no record stream recovers under this reading (event kind 51 after 0 records), so none of C1, C2, C3, C4, C5, C6 is reproduced",
+          "value": "wren-cadence",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "value": "tessel-drift",
+          "verdict": "accepted"
+        },
+        {
+          "falsifier": "no record stream recovers under this reading (event kind 135 after 0 records), so none of C1, C2, C3, C4, C5, C6 is reproduced",
+          "value": "halcyon-mark",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "no record stream recovers under this reading (event kind 87 after 0 records), so none of C1, C2, C3, C4, C5, C6 is reproduced",
+          "value": "vector-plume",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "no record stream recovers under this reading (event kind 79 after 0 records), so none of C1, C2, C3, C4, C5, C6 is reproduced",
+          "value": "umbral-stack",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "no record stream recovers under this reading (event kind 220 after 0 records), so none of C1, C2, C3, C4, C5, C6 is reproduced",
+          "value": "quill-lattice",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "no record stream recovers under this reading (event kind 162 after 0 records), so none of C1, C2, C3, C4, C5, C6 is reproduced",
+          "value": "nimbus-gable",
+          "verdict": "rejected"
+        }
+      ],
+      "resolved": "tessel-drift",
+      "roster": [
+        "orion-fold",
+        "wren-cadence",
+        "tessel-drift",
+        "halcyon-mark",
+        "vector-plume",
+        "umbral-stack",
+        "quill-lattice",
+        "nimbus-gable"
+      ]
+    },
+    "promotion_threshold": {
+      "candidate_space": 6,
+      "candidates": [
+        {
+          "falsifier": "C9 champion entrants (published 1, reproduced 7)",
+          "value": 20,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C9 champion entrants (published 1, reproduced 3)",
+          "value": 140,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C9 champion entrants (published 1, reproduced 3)",
+          "value": 200,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C10 qualifier entrants (published 1, reproduced 3)",
+          "value": 360,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "value": 700,
+          "verdict": "accepted"
+        },
+        {
+          "falsifier": "C9 champion entrants (published 1, reproduced 0)",
+          "value": 1300,
+          "verdict": "rejected"
+        }
+      ],
+      "resolved": 700,
+      "roster": [
+        20,
+        140,
+        200,
+        360,
+        700,
+        1300
+      ]
+    },
+    "season_budget": {
+      "candidate_space": 6,
+      "candidates": [
+        {
+          "falsifier": "C7 charged upkeep (published 7939, reproduced 300)",
+          "value": 20,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C7 charged upkeep (published 7939, reproduced 3278)",
+          "value": 220,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C7 charged upkeep (published 7939, reproduced 5769)",
+          "value": 440,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C7 charged upkeep (published 7939, reproduced 7230)",
+          "value": 640,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "value": 860,
+          "verdict": "accepted"
+        },
+        {
+          "falsifier": "C7 charged upkeep (published 7939, reproduced 8159)",
+          "value": 1060,
+          "verdict": "rejected"
+        }
+      ],
+      "resolved": 860,
+      "roster": [
+        20,
+        220,
+        440,
+        640,
+        860,
+        1060
+      ]
+    },
+    "sentinel": {
+      "candidate_space": 4,
+      "candidates": [
+        {
+          "falsifier": "no record stream recovers under this reading (event kind 29 after 21 records), so none of C1, C2, C3, C4, C5, C6 is reproduced",
+          "value": "0x1A",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "value": "0x1D",
+          "verdict": "accepted"
+        },
+        {
+          "falsifier": "no record stream recovers under this reading (event kind 29 after 21 records), so none of C1, C2, C3, C4, C5, C6 is reproduced",
+          "value": "0x20",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "no record stream recovers under this reading (event kind 29 after 21 records), so none of C1, C2, C3, C4, C5, C6 is reproduced",
+          "value": "0x7F",
+          "verdict": "rejected"
+        }
+      ],
+      "resolved": "0x1D",
+      "roster": [
+        "0x1A",
+        "0x1D",
+        "0x20",
+        "0x7F"
+      ]
+    },
+    "window_depth": {
+      "candidate_space": 4,
+      "candidates": [
+        {
+          "falsifier": "no record stream recovers under this reading (back reference out of range after 74 records), so none of C1, C2, C3, C4, C5, C6 is reproduced",
+          "value": 4,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "value": 6,
+          "verdict": "accepted"
+        },
+        {
+          "falsifier": "C4 gross output (published 6228, reproduced 6713)",
+          "value": 8,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C4 gross output (published 6228, reproduced 6834)",
+          "value": 10,
+          "verdict": "rejected"
+        }
+      ],
+      "resolved": 6,
+      "roster": [
+        4,
+        6,
+        8,
+        10
+      ]
+    }
+  }
+}

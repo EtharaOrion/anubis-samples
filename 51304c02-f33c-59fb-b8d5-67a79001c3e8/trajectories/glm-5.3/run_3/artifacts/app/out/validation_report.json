@@ -1,0 +1,219 @@
+{
+  "artifacts": {
+    "directory": "/app/out",
+    "max_artifact_bytes": 1048576,
+    "missing": [],
+    "ok": true,
+    "oversize": [],
+    "present": [
+      "config.json",
+      "report.json",
+      "tool.zip",
+      "profile_dev.json",
+      "profile_prod.json",
+      "validation_report.json",
+      "summary.json"
+    ],
+    "required": [
+      "config.json",
+      "report.json",
+      "tool.zip",
+      "profile_dev.json",
+      "profile_prod.json",
+      "validation_report.json",
+      "summary.json"
+    ],
+    "sizes_bytes": {
+      "config.json": 230,
+      "profile_dev.json": 229,
+      "profile_prod.json": 230,
+      "report.json": 15667,
+      "summary.json": 8769,
+      "tool.zip": 7991,
+      "validation_report.json": 5739
+    }
+  },
+  "command": "validate",
+  "configs": [
+    {
+      "checks": [
+        {
+          "detail": "all 9 required keys present (profile, producer, container, max_records, retry_limit, timeout_ms, checksum, mode, trailer)",
+          "name": "required_keys_present",
+          "status": "pass"
+        },
+        {
+          "detail": "every value is a scalar",
+          "name": "scalar_only",
+          "status": "pass"
+        },
+        {
+          "detail": "none of [timestamp, generated_at, uuid, random_seed] appear in the configuration",
+          "name": "forbidden_keys_absent",
+          "status": "pass"
+        },
+        {
+          "detail": "profile 'TASK' is permitted (TASK, dev, prod)",
+          "name": "profile_allowed",
+          "status": "pass"
+        },
+        {
+          "detail": "checksum algorithm is 'crc32'",
+          "name": "checksum_algorithm",
+          "status": "pass"
+        },
+        {
+          "detail": "configuration holds exactly the required key set",
+          "name": "unknown_keys",
+          "status": "pass"
+        },
+        {
+          "detail": "max_records, retry_limit, timeout_ms are integers",
+          "name": "numeric_keys_integer",
+          "status": "pass"
+        }
+      ],
+      "errors": [],
+      "key_count": 9,
+      "keys": [
+        "checksum",
+        "container",
+        "max_records",
+        "mode",
+        "producer",
+        "profile",
+        "retry_limit",
+        "timeout_ms",
+        "trailer"
+      ],
+      "ok": true,
+      "path": "/app/out/config.json",
+      "profile": "TASK",
+      "warnings": []
+    },
+    {
+      "checks": [
+        {
+          "detail": "all 9 required keys present (profile, producer, container, max_records, retry_limit, timeout_ms, checksum, mode, trailer)",
+          "name": "required_keys_present",
+          "status": "pass"
+        },
+        {
+          "detail": "every value is a scalar",
+          "name": "scalar_only",
+          "status": "pass"
+        },
+        {
+          "detail": "none of [timestamp, generated_at, uuid, random_seed] appear in the configuration",
+          "name": "forbidden_keys_absent",
+          "status": "pass"
+        },
+        {
+          "detail": "profile 'dev' is permitted (TASK, dev, prod)",
+          "name": "profile_allowed",
+          "status": "pass"
+        },
+        {
+          "detail": "checksum algorithm is 'crc32'",
+          "name": "checksum_algorithm",
+          "status": "pass"
+        },
+        {
+          "detail": "configuration holds exactly the required key set",
+          "name": "unknown_keys",
+          "status": "pass"
+        },
+        {
+          "detail": "max_records, retry_limit, timeout_ms are integers",
+          "name": "numeric_keys_integer",
+          "status": "pass"
+        }
+      ],
+      "errors": [],
+      "key_count": 9,
+      "keys": [
+        "checksum",
+        "container",
+        "max_records",
+        "mode",
+        "producer",
+        "profile",
+        "retry_limit",
+        "timeout_ms",
+        "trailer"
+      ],
+      "ok": true,
+      "path": "/app/out/profile_dev.json",
+      "profile": "dev",
+      "warnings": []
+    },
+    {
+      "checks": [
+        {
+          "detail": "all 9 required keys present (profile, producer, container, max_records, retry_limit, timeout_ms, checksum, mode, trailer)",
+          "name": "required_keys_present",
+          "status": "pass"
+        },
+        {
+          "detail": "every value is a scalar",
+          "name": "scalar_only",
+          "status": "pass"
+        },
+        {
+          "detail": "none of [timestamp, generated_at, uuid, random_seed] appear in the configuration",
+          "name": "forbidden_keys_absent",
+          "status": "pass"
+        },
+        {
+          "detail": "profile 'prod' is permitted (TASK, dev, prod)",
+          "name": "profile_allowed",
+          "status": "pass"
+        },
+        {
+          "detail": "checksum algorithm is 'crc32'",
+          "name": "checksum_algorithm",
+          "status": "pass"
+        },
+        {
+          "detail": "configuration holds exactly the required key set",
+          "name": "unknown_keys",
+          "status": "pass"
+        },
+        {
+          "detail": "max_records, retry_limit, timeout_ms are integers",
+          "name": "numeric_keys_integer",
+          "status": "pass"
+        }
+      ],
+      "errors": [],
+      "key_count": 9,
+      "keys": [
+        "checksum",
+        "container",
+        "max_records",
+        "mode",
+        "producer",
+        "profile",
+        "retry_limit",
+        "timeout_ms",
+        "trailer"
+      ],
+      "ok": true,
+      "path": "/app/out/profile_prod.json",
+      "profile": "prod",
+      "warnings": []
+    }
+  ],
+  "ok": true,
+  "rules": "/app/data/validation_rules.json",
+  "schema": "/app/data/config_schema.json",
+  "summary": {
+    "checks_run": 21,
+    "configs_checked": 3,
+    "configs_ok": 3,
+    "errors": 0,
+    "warnings": 0
+  },
+  "tool": "task-ctl",
+  "tool_version": "1.1.0"
+}

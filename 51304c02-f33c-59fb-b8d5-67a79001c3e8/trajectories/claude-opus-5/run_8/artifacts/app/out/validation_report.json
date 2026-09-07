@@ -1,0 +1,154 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "checks": [
+        {
+          "check": "required_keys",
+          "detail": "all required keys present",
+          "ok": true
+        },
+        {
+          "check": "scalar_only",
+          "detail": "configuration is flat",
+          "ok": true
+        },
+        {
+          "check": "forbidden_keys",
+          "detail": "no forbidden keys",
+          "ok": true
+        },
+        {
+          "check": "profile_value",
+          "detail": "profile=\"TASK\" allowed one of TASK,dev,prod",
+          "ok": true
+        },
+        {
+          "check": "checksum_algorithm",
+          "detail": "checksum=\"crc32\" expected \"crc32\"",
+          "ok": true
+        },
+        {
+          "check": "numeric:max_records",
+          "detail": "max_records=145 must be a non-negative integer",
+          "ok": true
+        },
+        {
+          "check": "numeric:retry_limit",
+          "detail": "retry_limit=3 must be a non-negative integer",
+          "ok": true
+        },
+        {
+          "check": "numeric:timeout_ms",
+          "detail": "timeout_ms=1771 must be a non-negative integer",
+          "ok": true
+        }
+      ],
+      "config": "/app/out/config.json",
+      "errors": [],
+      "key_count": 9,
+      "ok": true
+    },
+    {
+      "checks": [
+        {
+          "check": "required_keys",
+          "detail": "all required keys present",
+          "ok": true
+        },
+        {
+          "check": "scalar_only",
+          "detail": "configuration is flat",
+          "ok": true
+        },
+        {
+          "check": "forbidden_keys",
+          "detail": "no forbidden keys",
+          "ok": true
+        },
+        {
+          "check": "profile_value",
+          "detail": "profile=\"dev\" allowed one of TASK,dev,prod",
+          "ok": true
+        },
+        {
+          "check": "checksum_algorithm",
+          "detail": "checksum=\"crc32\" expected \"crc32\"",
+          "ok": true
+        },
+        {
+          "check": "numeric:max_records",
+          "detail": "max_records=135 must be a non-negative integer",
+          "ok": true
+        },
+        {
+          "check": "numeric:retry_limit",
+          "detail": "retry_limit=4 must be a non-negative integer",
+          "ok": true
+        },
+        {
+          "check": "numeric:timeout_ms",
+          "detail": "timeout_ms=1646 must be a non-negative integer",
+          "ok": true
+        }
+      ],
+      "config": "/app/out/profile_dev.json",
+      "errors": [],
+      "key_count": 9,
+      "ok": true
+    },
+    {
+      "checks": [
+        {
+          "check": "required_keys",
+          "detail": "all required keys present",
+          "ok": true
+        },
+        {
+          "check": "scalar_only",
+          "detail": "configuration is flat",
+          "ok": true
+        },
+        {
+          "check": "forbidden_keys",
+          "detail": "no forbidden keys",
+          "ok": true
+        },
+        {
+          "check": "profile_value",
+          "detail": "profile=\"prod\" allowed one of TASK,dev,prod",
+          "ok": true
+        },
+        {
+          "check": "checksum_algorithm",
+          "detail": "checksum=\"crc32\" expected \"crc32\"",
+          "ok": true
+        },
+        {
+          "check": "numeric:max_records",
+          "detail": "max_records=170 must be a non-negative integer",
+          "ok": true
+        },
+        {
+          "check": "numeric:retry_limit",
+          "detail": "retry_limit=3 must be a non-negative integer",
+          "ok": true
+        },
+        {
+          "check": "numeric:timeout_ms",
+          "detail": "timeout_ms=2021 must be a non-negative integer",
+          "ok": true
+        }
+      ],
+      "config": "/app/out/profile_prod.json",
+      "errors": [],
+      "key_count": 9,
+      "ok": true
+    }
+  ],
+  "rules": "/app/data/validation_rules.json",
+  "schema": "/app/data/config_schema.json",
+  "targets_validated": 3,
+  "tool": "task-ctl",
+  "tool_version": "1.0.0"
+}

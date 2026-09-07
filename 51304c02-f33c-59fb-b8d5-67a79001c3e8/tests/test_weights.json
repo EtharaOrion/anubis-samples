@@ -1,0 +1,20 @@
+{
+  "test_artifacts_exist": 1,
+  "test_config_is_flat_json_object": 3,
+  "test_config_matches_hidden_seed_policy": 5,
+  "test_report_records_real_cli_commands": 5,
+  "test_report_is_deterministic_and_truthful": 3,
+  "test_outputs_are_world_readable_regular_files": 1,
+  "test_no_external_network_endpoints_or_secrets": 3,
+  "test_cli_source_was_repaired_not_bypassed": 5,
+  "test_config_round_trips_through_cli_validator": 5,
+  "test_canonical_trailer_present": 3,
+  "test_profile_dev_matches_embedded_reference": 3,
+  "test_profile_prod_matches_embedded_reference": 3,
+  "test_validation_report_covers_all_artifacts_and_profiles": 5,
+  "test_summary_lists_inputs_profiles_and_artifacts": 3,
+  "test_negative_weight_hardcoded_sample_answers": -5,
+  "test_negative_weight_nested_or_dynamic_config": -5,
+  "test_negative_weight_fake_cli_transcript": -3,
+  "test_negative_weight_network_or_secret_material": -3
+}

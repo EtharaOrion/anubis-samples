@@ -1,0 +1,79 @@
+{
+  "checks": [
+    "required_keys",
+    "scalar_only",
+    "forbidden_keys",
+    "checksum",
+    "profile",
+    "trailer",
+    "numeric_types"
+  ],
+  "config_count": 3,
+  "configs": [
+    {
+      "error_count": 0,
+      "errors": [],
+      "expected_profile": "TASK",
+      "keys": [
+        "checksum",
+        "container",
+        "max_records",
+        "mode",
+        "producer",
+        "profile",
+        "retry_limit",
+        "timeout_ms",
+        "trailer"
+      ],
+      "ok": true,
+      "path": "/app/out/config.json",
+      "warning_count": 0,
+      "warnings": []
+    },
+    {
+      "error_count": 0,
+      "errors": [],
+      "expected_profile": "dev",
+      "keys": [
+        "checksum",
+        "container",
+        "max_records",
+        "mode",
+        "producer",
+        "profile",
+        "retry_limit",
+        "timeout_ms",
+        "trailer"
+      ],
+      "ok": true,
+      "path": "/app/out/profile_dev.json",
+      "warning_count": 0,
+      "warnings": []
+    },
+    {
+      "error_count": 0,
+      "errors": [],
+      "expected_profile": "prod",
+      "keys": [
+        "checksum",
+        "container",
+        "max_records",
+        "mode",
+        "producer",
+        "profile",
+        "retry_limit",
+        "timeout_ms",
+        "trailer"
+      ],
+      "ok": true,
+      "path": "/app/out/profile_prod.json",
+      "warning_count": 0,
+      "warnings": []
+    }
+  ],
+  "ok": true,
+  "rules": "/app/data/validation_rules.json",
+  "schema": "/app/data/config_schema.json",
+  "tool": "task-ctl",
+  "version": "1.1.0"
+}

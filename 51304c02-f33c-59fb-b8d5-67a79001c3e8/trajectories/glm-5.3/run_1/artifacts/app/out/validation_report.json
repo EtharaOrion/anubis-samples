@@ -1,0 +1,175 @@
+{
+  "tool": "task-ctl",
+  "version": "1.1.0",
+  "command": "validate",
+  "schema": "/app/data/config_schema.json",
+  "rules": "/app/data/validation_rules.json",
+  "defaults": "/app/data/defaults.json",
+  "ok": true,
+  "valid_count": 3,
+  "config_count": 3,
+  "results": [
+    {
+      "config": "/app/out/config.json",
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "required keys left empty: producer, container"
+      ],
+      "checks": {
+        "required_keys": [
+          "profile",
+          "producer",
+          "container",
+          "max_records",
+          "retry_limit",
+          "timeout_ms",
+          "checksum",
+          "mode",
+          "trailer"
+        ],
+        "missing_keys": [],
+        "forbidden_keys": [
+          "timestamp",
+          "generated_at",
+          "uuid",
+          "random_seed"
+        ],
+        "forbidden_present": [],
+        "non_scalar_keys": [],
+        "type_mismatches": [],
+        "declared_types": [
+          "checksum",
+          "container",
+          "max_records",
+          "mode",
+          "producer",
+          "retry_limit",
+          "timeout_ms",
+          "trailer"
+        ],
+        "unknown_keys": [],
+        "scalar_only": true,
+        "profile": "TASK",
+        "allowed_profiles": [
+          "dev",
+          "prod",
+          "TASK"
+        ],
+        "profile_state": "allowed",
+        "checksum": "crc32",
+        "expected_checksum": "crc32",
+        "config_bytes": 230,
+        "max_artifact_bytes": 1048576
+      }
+    },
+    {
+      "config": "/app/out/profile_dev.json",
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "required keys left empty: producer, container"
+      ],
+      "checks": {
+        "required_keys": [
+          "profile",
+          "producer",
+          "container",
+          "max_records",
+          "retry_limit",
+          "timeout_ms",
+          "checksum",
+          "mode",
+          "trailer"
+        ],
+        "missing_keys": [],
+        "forbidden_keys": [
+          "timestamp",
+          "generated_at",
+          "uuid",
+          "random_seed"
+        ],
+        "forbidden_present": [],
+        "non_scalar_keys": [],
+        "type_mismatches": [],
+        "declared_types": [
+          "checksum",
+          "container",
+          "max_records",
+          "mode",
+          "producer",
+          "retry_limit",
+          "timeout_ms",
+          "trailer"
+        ],
+        "unknown_keys": [],
+        "scalar_only": true,
+        "profile": "dev",
+        "allowed_profiles": [
+          "dev",
+          "prod",
+          "TASK"
+        ],
+        "profile_state": "allowed",
+        "checksum": "crc32",
+        "expected_checksum": "crc32",
+        "config_bytes": 229,
+        "max_artifact_bytes": 1048576
+      }
+    },
+    {
+      "config": "/app/out/profile_prod.json",
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "required keys left empty: producer, container"
+      ],
+      "checks": {
+        "required_keys": [
+          "profile",
+          "producer",
+          "container",
+          "max_records",
+          "retry_limit",
+          "timeout_ms",
+          "checksum",
+          "mode",
+          "trailer"
+        ],
+        "missing_keys": [],
+        "forbidden_keys": [
+          "timestamp",
+          "generated_at",
+          "uuid",
+          "random_seed"
+        ],
+        "forbidden_present": [],
+        "non_scalar_keys": [],
+        "type_mismatches": [],
+        "declared_types": [
+          "checksum",
+          "container",
+          "max_records",
+          "mode",
+          "producer",
+          "retry_limit",
+          "timeout_ms",
+          "trailer"
+        ],
+        "unknown_keys": [],
+        "scalar_only": true,
+        "profile": "prod",
+        "allowed_profiles": [
+          "dev",
+          "prod",
+          "TASK"
+        ],
+        "profile_state": "allowed",
+        "checksum": "crc32",
+        "expected_checksum": "crc32",
+        "config_bytes": 230,
+        "max_artifact_bytes": 1048576
+      }
+    }
+  ]
+}

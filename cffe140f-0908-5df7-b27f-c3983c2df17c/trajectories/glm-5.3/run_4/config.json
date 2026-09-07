@@ -1,0 +1,21 @@
+{
+    "task": {
+        "path": "cffe140f-0908-5df7-b27f-c3983c2df17c"
+    },
+    "trial_name": "cffe140f-0908-5df7-b27f-c3983c2df17c__FihQXs5",
+    "trials_dir": "cffe140f-0908-5df7-b27f-c3983c2df17c/trajectories/glm-5.3",
+    "agent_setup_timeout_multiplier": 3.0,
+    "agent": {
+        "name": "claude-code",
+        "model_name": "glm-5.3"
+    },
+    "verifier": {
+        "env": {
+            "REWARDKIT_JUDGE": "gpt-5.6-sol",
+            "OPENAI_API_BASE": "http://host.docker.internal:52998",
+            "OPENAI_BASE_URL": "http://host.docker.internal:52998",
+            "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+        }
+    },
+    "job_id": "b7875c47-6461-4d3c-a852-591b0a7c151f"
+}

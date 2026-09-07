@@ -1,0 +1,225 @@
+{
+  "captures": [
+    {
+      "backwards_tick_transitions": 0,
+      "capture_identifier": 41,
+      "declared_record_count": 278,
+      "declared_roster_size": 16,
+      "declared_segment_count": 6,
+      "distinct_squads_recovered": 16,
+      "distinct_written_attribution_keys": 16,
+      "envelope_checksum_ok": true,
+      "file": "baseline-capture.rjnl",
+      "filler_widths_ok": true,
+      "guards_active": [],
+      "kind_ledger": {
+        "close": 6,
+        "concede": 3,
+        "deploy": 55,
+        "disband": 18,
+        "eliminate": 27,
+        "output": 169,
+        "transfer": 0
+      },
+      "payload_checksums_ok": true,
+      "record_residual": 0,
+      "recovered_record_count": 278,
+      "recovered_segment_count": 6,
+      "registered_squads_recovered": 16,
+      "registered_written_attribution_keys": 16,
+      "role": "reference",
+      "roster_residual": 0,
+      "segment_residual": 0,
+      "squads_never_written_on_the_wire": [],
+      "unregistered_squads": []
+    },
+    {
+      "backwards_tick_transitions": 0,
+      "capture_identifier": 62,
+      "declared_record_count": 238,
+      "declared_roster_size": 15,
+      "declared_segment_count": 5,
+      "distinct_squads_recovered": 16,
+      "distinct_written_attribution_keys": 15,
+      "envelope_checksum_ok": true,
+      "file": "control-capture.rjnl",
+      "filler_widths_ok": true,
+      "guards_active": [
+        "keystream",
+        "chain",
+        "delta2",
+        "driftkey",
+        "segperm",
+        "backref",
+        "endian",
+        "countbias",
+        "shadow",
+        "rotate",
+        "alias",
+        "escape"
+      ],
+      "kind_ledger": {
+        "close": 5,
+        "concede": 2,
+        "deploy": 49,
+        "disband": 14,
+        "eliminate": 16,
+        "output": 149,
+        "transfer": 3
+      },
+      "payload_checksums_ok": true,
+      "record_residual": 0,
+      "recovered_record_count": 238,
+      "recovered_segment_count": 5,
+      "registered_squads_recovered": 16,
+      "registered_written_attribution_keys": 15,
+      "role": "control",
+      "roster_residual": 0,
+      "segment_residual": 0,
+      "squads_never_written_on_the_wire": [
+        "PYX"
+      ],
+      "unregistered_squads": []
+    },
+    {
+      "backwards_tick_transitions": 0,
+      "capture_identifier": 83,
+      "declared_record_count": 1016,
+      "declared_roster_size": 22,
+      "declared_segment_count": 18,
+      "distinct_squads_recovered": 26,
+      "distinct_written_attribution_keys": 26,
+      "envelope_checksum_ok": true,
+      "file": "season-capture.rjnl",
+      "filler_widths_ok": true,
+      "guards_active": [
+        "keystream",
+        "chain",
+        "delta2",
+        "driftkey",
+        "segperm",
+        "backref",
+        "endian",
+        "countbias",
+        "shadow",
+        "rotate",
+        "alias",
+        "escape"
+      ],
+      "kind_ledger": {
+        "close": 18,
+        "concede": 3,
+        "deploy": 212,
+        "disband": 59,
+        "eliminate": 79,
+        "output": 636,
+        "transfer": 9
+      },
+      "payload_checksums_ok": true,
+      "record_residual": 0,
+      "recovered_record_count": 1016,
+      "recovered_segment_count": 18,
+      "registered_squads_recovered": 22,
+      "registered_written_attribution_keys": 22,
+      "role": "season",
+      "roster_residual": 0,
+      "segment_residual": 0,
+      "squads_never_written_on_the_wire": [],
+      "unregistered_squads": [
+        "AXL",
+        "BQT",
+        "YRD",
+        "ZPH"
+      ]
+    }
+  ],
+  "kind_ledger": {
+    "close": 18,
+    "concede": 3,
+    "deploy": 212,
+    "disband": 59,
+    "eliminate": 79,
+    "output": 636,
+    "transfer": 9
+  },
+  "kind_ledger_all_captures": {
+    "control": {
+      "close": 5,
+      "concede": 2,
+      "deploy": 49,
+      "disband": 14,
+      "eliminate": 16,
+      "output": 149,
+      "transfer": 3
+    },
+    "corpus": {
+      "close": 29,
+      "concede": 8,
+      "deploy": 316,
+      "disband": 91,
+      "eliminate": 122,
+      "output": 954,
+      "transfer": 12
+    },
+    "reference": {
+      "close": 6,
+      "concede": 3,
+      "deploy": 55,
+      "disband": 18,
+      "eliminate": 27,
+      "output": 169,
+      "transfer": 0
+    },
+    "season": {
+      "close": 18,
+      "concede": 3,
+      "deploy": 212,
+      "disband": 59,
+      "eliminate": 79,
+      "output": 636,
+      "transfer": 9
+    }
+  },
+  "reconciliation": {
+    "absent_entrants": [
+      "RVN",
+      "TDR"
+    ],
+    "absent_entrants_note": "entrant registry entries that appear in no capture; listed and contributing nothing",
+    "attribution_residual": 3249,
+    "attribution_residual_gross_output": 3249,
+    "attribution_residual_note": "season gross output less the sum of the conference gross outputs; the output of squads that played without an entry",
+    "attribution_residual_squads": [
+      "AXL",
+      "BQT",
+      "YRD",
+      "ZPH"
+    ],
+    "ledger_residual": 0,
+    "ledger_residual_note": "the season kind ledger total less the season records recovered; records that could not be given an event kind",
+    "output_conservation": 0,
+    "output_conservation_note": "gross output plus voided output less every reported output event",
+    "unregistered_squads": [
+      "AXL",
+      "BQT",
+      "YRD",
+      "ZPH"
+    ],
+    "unregistered_squads_note": "squad keys seen on the wire that the entrant registry never lists",
+    "upkeep_conservation": 0,
+    "upkeep_conservation_note": "charged upkeep plus overflow upkeep less raw upkeep"
+  },
+  "report_kind": "data_quality",
+  "season_totals": {
+    "charged_upkeep": 21769,
+    "gross_output": 25951,
+    "matches": 18,
+    "overflow_upkeep": 20698,
+    "raw_upkeep": 42467,
+    "records": 1016,
+    "registered_squads": 22,
+    "squads": 26,
+    "unregistered_squads": 4,
+    "voided_output": 6512
+  }
+}

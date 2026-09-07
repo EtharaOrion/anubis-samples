@@ -1,0 +1,335 @@
+{
+  "absent_entrants": [
+    {
+      "conference": "South",
+      "division": "D2",
+      "entrant_id": "E018",
+      "licence_class": "LC4",
+      "segment": "public",
+      "squad_key": "RVN"
+    },
+    {
+      "conference": "East",
+      "division": "D4",
+      "entrant_id": "E020",
+      "licence_class": "LC2",
+      "segment": "public",
+      "squad_key": "TDR"
+    }
+  ],
+  "attribution_residual": {
+    "conference_gross_output": 22702,
+    "residual": 3249,
+    "season_gross_output": 25951,
+    "segment_gross_output": 22702,
+    "unregistered_gross_output": 3249
+  },
+  "backward_tick_events": 0,
+  "capture": {
+    "capture_id": 83,
+    "count_bias": 6,
+    "envelope_checksum_ok": true,
+    "file": "season-capture.rjnl",
+    "guard_register": 4095,
+    "guards_active": [
+      "keystream",
+      "chain",
+      "delta2",
+      "driftkey",
+      "segperm",
+      "backref",
+      "endian",
+      "countbias",
+      "shadow",
+      "rotate",
+      "alias",
+      "escape"
+    ]
+  },
+  "declared_versus_recovered": {
+    "records": {
+      "declared_raw": 1022,
+      "declared_unbiased": 1016,
+      "recovered": 1016,
+      "residual": 0
+    },
+    "roster": {
+      "declared_raw": 28,
+      "declared_unbiased": 22,
+      "distinct_squads_recovered": 26,
+      "registered_squads_recovered": 22,
+      "residual": 0,
+      "squads_without_an_entry_exposed": 4
+    },
+    "segments": {
+      "declared_raw": 24,
+      "declared_unbiased": 18,
+      "recovered": 18,
+      "residual": 0
+    }
+  },
+  "findings": [
+    "squads seen on the wire that the entrant registry never lists: AXL, BQT, YRD, ZPH",
+    "attribution residual of 3249 gross output belongs to no conference",
+    "absent entrants listed in the registry but seen in no capture: RVN, TDR"
+  ],
+  "kind_ledger": {
+    "close": 18,
+    "concede": 3,
+    "deploy": 212,
+    "disband": 59,
+    "eliminate": 79,
+    "output": 636,
+    "transfer": 9
+  },
+  "ledger_residuals": {
+    "output": {
+      "all_output_reported": 32463,
+      "gross_output": 25951,
+      "residual": 0,
+      "voided_output": 6512
+    },
+    "upkeep": {
+      "charged_upkeep": 21769,
+      "overflow_upkeep": 20698,
+      "raw_upkeep": 42467,
+      "residual": 0
+    }
+  },
+  "reference_transcript_check": {
+    "byte_exact_agreement": true,
+    "checked": true,
+    "first_disagreement": null,
+    "labelled_records": 278,
+    "recovered_records": 278,
+    "transcript": "baseline-events.jsonl"
+  },
+  "segment_ledger": [
+    {
+      "declared_raw": 73,
+      "declared_unbiased": 67,
+      "logical_position": 0,
+      "match_id": 500,
+      "payload_checksum_ok": true,
+      "recovered": 67,
+      "residual": 0,
+      "storage_slot": 16
+    },
+    {
+      "declared_raw": 57,
+      "declared_unbiased": 51,
+      "logical_position": 1,
+      "match_id": 501,
+      "payload_checksum_ok": true,
+      "recovered": 51,
+      "residual": 0,
+      "storage_slot": 9
+    },
+    {
+      "declared_raw": 65,
+      "declared_unbiased": 59,
+      "logical_position": 2,
+      "match_id": 502,
+      "payload_checksum_ok": true,
+      "recovered": 59,
+      "residual": 0,
+      "storage_slot": 2
+    },
+    {
+      "declared_raw": 60,
+      "declared_unbiased": 54,
+      "logical_position": 3,
+      "match_id": 503,
+      "payload_checksum_ok": true,
+      "recovered": 54,
+      "residual": 0,
+      "storage_slot": 13
+    },
+    {
+      "declared_raw": 36,
+      "declared_unbiased": 30,
+      "logical_position": 4,
+      "match_id": 504,
+      "payload_checksum_ok": true,
+      "recovered": 30,
+      "residual": 0,
+      "storage_slot": 6
+    },
+    {
+      "declared_raw": 78,
+      "declared_unbiased": 72,
+      "logical_position": 5,
+      "match_id": 505,
+      "payload_checksum_ok": true,
+      "recovered": 72,
+      "residual": 0,
+      "storage_slot": 17
+    },
+    {
+      "declared_raw": 57,
+      "declared_unbiased": 51,
+      "logical_position": 6,
+      "match_id": 506,
+      "payload_checksum_ok": true,
+      "recovered": 51,
+      "residual": 0,
+      "storage_slot": 10
+    },
+    {
+      "declared_raw": 43,
+      "declared_unbiased": 37,
+      "logical_position": 7,
+      "match_id": 507,
+      "payload_checksum_ok": true,
+      "recovered": 37,
+      "residual": 0,
+      "storage_slot": 3
+    },
+    {
+      "declared_raw": 52,
+      "declared_unbiased": 46,
+      "logical_position": 8,
+      "match_id": 508,
+      "payload_checksum_ok": true,
+      "recovered": 46,
+      "residual": 0,
+      "storage_slot": 14
+    },
+    {
+      "declared_raw": 48,
+      "declared_unbiased": 42,
+      "logical_position": 9,
+      "match_id": 509,
+      "payload_checksum_ok": true,
+      "recovered": 42,
+      "residual": 0,
+      "storage_slot": 7
+    },
+    {
+      "declared_raw": 90,
+      "declared_unbiased": 84,
+      "logical_position": 10,
+      "match_id": 510,
+      "payload_checksum_ok": true,
+      "recovered": 84,
+      "residual": 0,
+      "storage_slot": 0
+    },
+    {
+      "declared_raw": 75,
+      "declared_unbiased": 69,
+      "logical_position": 11,
+      "match_id": 511,
+      "payload_checksum_ok": true,
+      "recovered": 69,
+      "residual": 0,
+      "storage_slot": 11
+    },
+    {
+      "declared_raw": 62,
+      "declared_unbiased": 56,
+      "logical_position": 12,
+      "match_id": 512,
+      "payload_checksum_ok": true,
+      "recovered": 56,
+      "residual": 0,
+      "storage_slot": 4
+    },
+    {
+      "declared_raw": 82,
+      "declared_unbiased": 76,
+      "logical_position": 13,
+      "match_id": 513,
+      "payload_checksum_ok": true,
+      "recovered": 76,
+      "residual": 0,
+      "storage_slot": 15
+    },
+    {
+      "declared_raw": 56,
+      "declared_unbiased": 50,
+      "logical_position": 14,
+      "match_id": 514,
+      "payload_checksum_ok": true,
+      "recovered": 50,
+      "residual": 0,
+      "storage_slot": 8
+    },
+    {
+      "declared_raw": 67,
+      "declared_unbiased": 61,
+      "logical_position": 15,
+      "match_id": 515,
+      "payload_checksum_ok": true,
+      "recovered": 61,
+      "residual": 0,
+      "storage_slot": 1
+    },
+    {
+      "declared_raw": 58,
+      "declared_unbiased": 52,
+      "logical_position": 16,
+      "match_id": 516,
+      "payload_checksum_ok": true,
+      "recovered": 52,
+      "residual": 0,
+      "storage_slot": 12
+    },
+    {
+      "declared_raw": 65,
+      "declared_unbiased": 59,
+      "logical_position": 17,
+      "match_id": 517,
+      "payload_checksum_ok": true,
+      "recovered": 59,
+      "residual": 0,
+      "storage_slot": 5
+    }
+  ],
+  "unregistered_squads": [
+    {
+      "charged_upkeep": 860,
+      "gross_output": 817,
+      "matches": 2,
+      "overflow_upkeep": 47,
+      "raw_upkeep": 907,
+      "season_score": -43,
+      "squad_key": "AXL",
+      "standing_points": 0,
+      "voided_output": 397
+    },
+    {
+      "charged_upkeep": 860,
+      "gross_output": 202,
+      "matches": 2,
+      "overflow_upkeep": 121,
+      "raw_upkeep": 981,
+      "season_score": -658,
+      "squad_key": "BQT",
+      "standing_points": 0,
+      "voided_output": 258
+    },
+    {
+      "charged_upkeep": 860,
+      "gross_output": 1357,
+      "matches": 3,
+      "overflow_upkeep": 1435,
+      "raw_upkeep": 2295,
+      "season_score": 497,
+      "squad_key": "YRD",
+      "standing_points": 3,
+      "voided_output": 275
+    },
+    {
+      "charged_upkeep": 860,
+      "gross_output": 873,
+      "matches": 2,
+      "overflow_upkeep": 430,
+      "raw_upkeep": 1290,
+      "season_score": 13,
+      "squad_key": "ZPH",
+      "standing_points": 0,
+      "voided_output": 73
+    }
+  ]
+}

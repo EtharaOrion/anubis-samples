@@ -1,0 +1,303 @@
+{
+  "tool": {
+    "name": "task-ctl",
+    "version": "1.1.0",
+    "command": "validate"
+  },
+  "ok": true,
+  "schema": "/app/data/config_schema.json",
+  "rules": "/app/data/validation_rules.json",
+  "defaults": "/app/data/defaults.json",
+  "contract": {
+    "required_keys": [
+      "profile",
+      "producer",
+      "container",
+      "max_records",
+      "retry_limit",
+      "timeout_ms",
+      "checksum",
+      "mode",
+      "trailer"
+    ],
+    "scalar_only": true,
+    "checksum": "crc32",
+    "allowed_profiles": [
+      "dev",
+      "prod",
+      "TASK"
+    ],
+    "forbidden_keys": [
+      "timestamp",
+      "generated_at",
+      "uuid",
+      "random_seed"
+    ],
+    "max_artifact_bytes": 1048576,
+    "required_artifacts": [
+      "config.json",
+      "report.json",
+      "tool.zip",
+      "profile_dev.json",
+      "profile_prod.json",
+      "validation_report.json",
+      "summary.json"
+    ]
+  },
+  "results": [
+    {
+      "config": "/app/out/config.json",
+      "ok": true,
+      "key_count": 9,
+      "keys": [
+        "checksum",
+        "container",
+        "max_records",
+        "mode",
+        "producer",
+        "profile",
+        "retry_limit",
+        "timeout_ms",
+        "trailer"
+      ],
+      "checks": [
+        {
+          "id": "required_keys",
+          "status": "pass",
+          "detail": "9 required keys present"
+        },
+        {
+          "id": "scalar_only",
+          "status": "pass",
+          "detail": "all 9 values are scalars (scalar_only=True)"
+        },
+        {
+          "id": "forbidden_keys",
+          "status": "pass",
+          "detail": "none of 4 forbidden keys present"
+        },
+        {
+          "id": "profile_allowed",
+          "status": "pass",
+          "detail": "profile 'TASK' in ['dev', 'prod', 'TASK']"
+        },
+        {
+          "id": "checksum_algorithm",
+          "status": "pass",
+          "detail": "checksum='crc32' matches schema"
+        },
+        {
+          "id": "value_types",
+          "status": "pass",
+          "detail": "all typed values match defaults"
+        },
+        {
+          "id": "no_extra_keys",
+          "status": "pass",
+          "detail": "no keys outside the contract"
+        }
+      ],
+      "errors": [],
+      "warnings": [],
+      "stats": {
+        "path": "/app/out/config.json",
+        "exists": true,
+        "bytes": 230,
+        "sha256": "df63fbb8d4f1c1f6c038eff6b5171362730fb586adc1147afa575028444d15c7"
+      }
+    },
+    {
+      "config": "/app/out/profile_dev.json",
+      "ok": true,
+      "key_count": 9,
+      "keys": [
+        "checksum",
+        "container",
+        "max_records",
+        "mode",
+        "producer",
+        "profile",
+        "retry_limit",
+        "timeout_ms",
+        "trailer"
+      ],
+      "checks": [
+        {
+          "id": "required_keys",
+          "status": "pass",
+          "detail": "9 required keys present"
+        },
+        {
+          "id": "scalar_only",
+          "status": "pass",
+          "detail": "all 9 values are scalars (scalar_only=True)"
+        },
+        {
+          "id": "forbidden_keys",
+          "status": "pass",
+          "detail": "none of 4 forbidden keys present"
+        },
+        {
+          "id": "profile_allowed",
+          "status": "pass",
+          "detail": "profile 'dev' in ['dev', 'prod', 'TASK']"
+        },
+        {
+          "id": "checksum_algorithm",
+          "status": "pass",
+          "detail": "checksum='crc32' matches schema"
+        },
+        {
+          "id": "value_types",
+          "status": "pass",
+          "detail": "all typed values match defaults"
+        },
+        {
+          "id": "no_extra_keys",
+          "status": "pass",
+          "detail": "no keys outside the contract"
+        }
+      ],
+      "errors": [],
+      "warnings": [],
+      "stats": {
+        "path": "/app/out/profile_dev.json",
+        "exists": true,
+        "bytes": 229,
+        "sha256": "f1867fd2a555669c6905617efcdee9ea7f48b6c304fe5ae99cc29ce7aa036ce1"
+      }
+    },
+    {
+      "config": "/app/out/profile_prod.json",
+      "ok": true,
+      "key_count": 9,
+      "keys": [
+        "checksum",
+        "container",
+        "max_records",
+        "mode",
+        "producer",
+        "profile",
+        "retry_limit",
+        "timeout_ms",
+        "trailer"
+      ],
+      "checks": [
+        {
+          "id": "required_keys",
+          "status": "pass",
+          "detail": "9 required keys present"
+        },
+        {
+          "id": "scalar_only",
+          "status": "pass",
+          "detail": "all 9 values are scalars (scalar_only=True)"
+        },
+        {
+          "id": "forbidden_keys",
+          "status": "pass",
+          "detail": "none of 4 forbidden keys present"
+        },
+        {
+          "id": "profile_allowed",
+          "status": "pass",
+          "detail": "profile 'prod' in ['dev', 'prod', 'TASK']"
+        },
+        {
+          "id": "checksum_algorithm",
+          "status": "pass",
+          "detail": "checksum='crc32' matches schema"
+        },
+        {
+          "id": "value_types",
+          "status": "pass",
+          "detail": "all typed values match defaults"
+        },
+        {
+          "id": "no_extra_keys",
+          "status": "pass",
+          "detail": "no keys outside the contract"
+        }
+      ],
+      "errors": [],
+      "warnings": [],
+      "stats": {
+        "path": "/app/out/profile_prod.json",
+        "exists": true,
+        "bytes": 230,
+        "sha256": "2b419463faffd567fe8fa6071a6b30cc45307794f8e4d96b463bc242c5e3287d"
+      }
+    }
+  ],
+  "artifacts": {
+    "directory": "/app/out",
+    "ok": true,
+    "missing": [],
+    "oversized": [],
+    "artifacts": [
+      {
+        "artifact": "config.json",
+        "present": true,
+        "expected": false,
+        "bytes": 230,
+        "sha256": "df63fbb8d4f1c1f6c038eff6b5171362730fb586adc1147afa575028444d15c7",
+        "within_limit": true
+      },
+      {
+        "artifact": "report.json",
+        "present": true,
+        "expected": false,
+        "bytes": 60759,
+        "sha256": "19f23bff788ea39f3609460c3ac0e1b222ab0009d5d44db900229bd303efdb4a",
+        "within_limit": true
+      },
+      {
+        "artifact": "tool.zip",
+        "present": true,
+        "expected": false,
+        "bytes": 40235,
+        "sha256": "6f492ad1c0e6f8706dcd26f24ea752224d252692b47a2c8661fc3521c76b991c",
+        "within_limit": true
+      },
+      {
+        "artifact": "profile_dev.json",
+        "present": true,
+        "expected": false,
+        "bytes": 229,
+        "sha256": "f1867fd2a555669c6905617efcdee9ea7f48b6c304fe5ae99cc29ce7aa036ce1",
+        "within_limit": true
+      },
+      {
+        "artifact": "profile_prod.json",
+        "present": true,
+        "expected": false,
+        "bytes": 230,
+        "sha256": "2b419463faffd567fe8fa6071a6b30cc45307794f8e4d96b463bc242c5e3287d",
+        "within_limit": true
+      },
+      {
+        "artifact": "validation_report.json",
+        "present": true,
+        "expected": true,
+        "bytes": null,
+        "sha256": null,
+        "within_limit": null
+      },
+      {
+        "artifact": "summary.json",
+        "present": true,
+        "expected": false,
+        "bytes": 17609,
+        "sha256": "69f07a6816d84562e42a1282ae81ced83d1bba5f49f1723bae1782a45e841e7c",
+        "within_limit": true
+      }
+    ]
+  },
+  "summary": {
+    "configs_checked": 3,
+    "configs_passed": 3,
+    "configs_failed": [],
+    "errors": 0,
+    "warnings": 0
+  }
+}

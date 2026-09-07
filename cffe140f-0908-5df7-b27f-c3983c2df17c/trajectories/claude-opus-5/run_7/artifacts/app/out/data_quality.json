@@ -1,0 +1,228 @@
+{
+  "baseline_verification": {
+    "byte_exact": true,
+    "checked": true,
+    "decoded_records": 278,
+    "first_mismatches": [],
+    "mismatches": 0,
+    "transcript_file": "baseline-events.jsonl",
+    "transcript_records": 278
+  },
+  "captures": [
+    {
+      "backwards_ticks": 0,
+      "capture_id": 41,
+      "count_bias_applied": 0,
+      "declared_records": 278,
+      "declared_records_raw": 278,
+      "declared_roster_size": 16,
+      "declared_roster_size_raw": 16,
+      "declared_segments": 6,
+      "declared_segments_raw": 6,
+      "distinct_squads_recovered": 16,
+      "envelope_checksum_ok": true,
+      "file": "baseline-capture.rjnl",
+      "guard_register": 0,
+      "guards_active": [],
+      "record_residual": 0,
+      "recovered_records": 278,
+      "recovered_segments": 6,
+      "registered_squads_recovered": 16,
+      "role": "reference",
+      "roster_exposure_residual": 0,
+      "roster_residual": 0,
+      "segment_payload_checksums_ok": true,
+      "segment_residual": 0,
+      "unregistered_squads": []
+    },
+    {
+      "backwards_ticks": 0,
+      "capture_id": 62,
+      "count_bias_applied": 6,
+      "declared_records": 238,
+      "declared_records_raw": 244,
+      "declared_roster_size": 15,
+      "declared_roster_size_raw": 21,
+      "declared_segments": 5,
+      "declared_segments_raw": 11,
+      "distinct_squads_recovered": 16,
+      "envelope_checksum_ok": true,
+      "file": "control-capture.rjnl",
+      "guard_register": 4095,
+      "guards_active": [
+        "keystream",
+        "chain",
+        "delta2",
+        "driftkey",
+        "segperm",
+        "backref",
+        "endian",
+        "countbias",
+        "shadow",
+        "rotate",
+        "alias",
+        "escape"
+      ],
+      "record_residual": 0,
+      "recovered_records": 238,
+      "recovered_segments": 5,
+      "registered_squads_recovered": 16,
+      "role": "control",
+      "roster_exposure_residual": 1,
+      "roster_residual": 1,
+      "segment_payload_checksums_ok": true,
+      "segment_residual": 0,
+      "unregistered_squads": []
+    },
+    {
+      "backwards_ticks": 0,
+      "capture_id": 83,
+      "count_bias_applied": 6,
+      "declared_records": 1016,
+      "declared_records_raw": 1022,
+      "declared_roster_size": 22,
+      "declared_roster_size_raw": 28,
+      "declared_segments": 18,
+      "declared_segments_raw": 24,
+      "distinct_squads_recovered": 26,
+      "envelope_checksum_ok": true,
+      "file": "season-capture.rjnl",
+      "guard_register": 4095,
+      "guards_active": [
+        "keystream",
+        "chain",
+        "delta2",
+        "driftkey",
+        "segperm",
+        "backref",
+        "endian",
+        "countbias",
+        "shadow",
+        "rotate",
+        "alias",
+        "escape"
+      ],
+      "record_residual": 0,
+      "recovered_records": 1016,
+      "recovered_segments": 18,
+      "registered_squads_recovered": 22,
+      "role": "season",
+      "roster_exposure_residual": 4,
+      "roster_residual": 0,
+      "segment_payload_checksums_ok": true,
+      "segment_residual": 0,
+      "unregistered_squads": [
+        "AXL",
+        "BQT",
+        "YRD",
+        "ZPH"
+      ]
+    }
+  ],
+  "findings": [
+    "control capture: 16 distinct squads recovered against a declared roster size of 15 with no unregistered squad on the wire to account for the gap",
+    "control capture: 16 registered squads recovered against a declared roster size of 15 (residual +1)",
+    "squads on the wire with no entry in the registry: AXL, BQT, YRD, ZPH",
+    "registered entrants absent from the season capture: RVN, TDR",
+    "attribution residual of 3249 gross output sits outside the conference reports, carried by AXL, BQT, YRD, ZPH"
+  ],
+  "season": {
+    "absent_entrants": [
+      "RVN",
+      "TDR"
+    ],
+    "attribution_residual": {
+      "conference_gross_output": 22702,
+      "conference_residual": 3249,
+      "season_gross_output": 25951,
+      "segment_gross_output": 22702,
+      "segment_residual": 3249
+    },
+    "kind_ledger": {
+      "close": 18,
+      "concede": 3,
+      "deploy": 212,
+      "disband": 59,
+      "eliminate": 79,
+      "output": 636,
+      "transfer": 9,
+      "unknown": 0
+    },
+    "ledger_residuals": {
+      "backwards_ticks": 0,
+      "output_split": 0,
+      "record_count": 0,
+      "roster_exposure": 4,
+      "roster_size": 0,
+      "segment_count": 0,
+      "upkeep_split": 0
+    },
+    "totals": {
+      "charged_upkeep": 21769,
+      "distinct_squads": 26,
+      "gross_output": 25951,
+      "matches": 18,
+      "overflow_upkeep": 20698,
+      "raw_upkeep": 42467,
+      "records": 1016,
+      "registered_squads": 22,
+      "season_score": 27070,
+      "standing_points": 60,
+      "total_output": 32463,
+      "unregistered_squads": 4,
+      "voided_output": 6512
+    },
+    "unregistered_squads": [
+      {
+        "charged_upkeep": 860,
+        "gross_output": 817,
+        "matches": 2,
+        "overflow_upkeep": 47,
+        "raw_upkeep": 907,
+        "season_score": -43,
+        "squad_key": "AXL",
+        "standing_points": 0,
+        "voided_output": 397
+      },
+      {
+        "charged_upkeep": 860,
+        "gross_output": 202,
+        "matches": 2,
+        "overflow_upkeep": 121,
+        "raw_upkeep": 981,
+        "season_score": -658,
+        "squad_key": "BQT",
+        "standing_points": 0,
+        "voided_output": 258
+      },
+      {
+        "charged_upkeep": 860,
+        "gross_output": 1357,
+        "matches": 3,
+        "overflow_upkeep": 1435,
+        "raw_upkeep": 2295,
+        "season_score": 497,
+        "squad_key": "YRD",
+        "standing_points": 3,
+        "voided_output": 275
+      },
+      {
+        "charged_upkeep": 860,
+        "gross_output": 873,
+        "matches": 2,
+        "overflow_upkeep": 430,
+        "raw_upkeep": 1290,
+        "season_score": 13,
+        "squad_key": "ZPH",
+        "standing_points": 0,
+        "voided_output": 73
+      }
+    ],
+    "unregistered_wire_keys": [
+      "AXL",
+      "BQT",
+      "YRD",
+      "ZPH"
+    ]
+  }
+}

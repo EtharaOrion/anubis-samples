@@ -1,0 +1,2423 @@
+{
+  "attribution_settlement": {
+    "control_passes": 4,
+    "cycles_resolved_to_first_sorting_key": true,
+    "hand_overs": {
+      "BLZ": "CDR",
+      "CDR": "DVN",
+      "DVN": "BLZ",
+      "GRT": "FLX",
+      "HVN": "GRT",
+      "IBX": "HVN",
+      "JDE": "IBX",
+      "UMB": "JDE",
+      "VLC": "BLZ"
+    },
+    "passes": 6
+  },
+  "bracket_search": {
+    "best_satisfied_constraint_count": 9,
+    "bracket_size": 3,
+    "candidate_space": 816,
+    "constraints": [
+      {
+        "constraint": "prominent_division",
+        "satisfied": true
+      },
+      {
+        "constraint": "both_segments_present",
+        "satisfied": true
+      },
+      {
+        "constraint": "standing_points_floor",
+        "satisfied": true
+      },
+      {
+        "constraint": "distinct_conferences",
+        "satisfied": true
+      },
+      {
+        "constraint": "ranked_entrant_present",
+        "satisfied": true
+      },
+      {
+        "constraint": "combined_ladder_weight",
+        "satisfied": true
+      },
+      {
+        "constraint": "no_overflow_upkeep",
+        "satisfied": false
+      },
+      {
+        "constraint": "champion_present",
+        "satisfied": true
+      },
+      {
+        "constraint": "combined_gross_output",
+        "satisfied": true
+      },
+      {
+        "constraint": "no_handed_entry",
+        "satisfied": true
+      }
+    ],
+    "constraints_total": 10,
+    "elected": [
+      "KRN",
+      "LMX",
+      "MRA"
+    ],
+    "eligibility_rule": "own effective owner and at least 2 matches",
+    "eligible_pool": [
+      "AKR",
+      "AXL",
+      "BLZ",
+      "BQT",
+      "EMB",
+      "FLX",
+      "KRN",
+      "LMX",
+      "MRA",
+      "NVL",
+      "ORC",
+      "PYX",
+      "QRM",
+      "SLT",
+      "WRN",
+      "XCT",
+      "YRD",
+      "ZPH"
+    ],
+    "eligible_pool_size": 18,
+    "tie_breaks": [
+      "least combined charged upkeep",
+      "member keys sort first"
+    ]
+  },
+  "calibration": [
+    {
+      "agrees": true,
+      "control_id": "C1",
+      "label": "matches opened",
+      "published": 5,
+      "reproduced": 5
+    },
+    {
+      "agrees": true,
+      "control_id": "C2",
+      "label": "records recovered",
+      "published": 238,
+      "reproduced": 238
+    },
+    {
+      "agrees": true,
+      "control_id": "C3",
+      "label": "distinct squads",
+      "published": 16,
+      "reproduced": 16
+    },
+    {
+      "agrees": true,
+      "control_id": "C4",
+      "label": "gross output",
+      "published": 6228,
+      "reproduced": 6228
+    },
+    {
+      "agrees": true,
+      "control_id": "C5",
+      "label": "voided output",
+      "published": 1703,
+      "reproduced": 1703
+    },
+    {
+      "agrees": true,
+      "control_id": "C6",
+      "label": "raw upkeep",
+      "published": 8166,
+      "reproduced": 8166
+    },
+    {
+      "agrees": true,
+      "control_id": "C7",
+      "label": "charged upkeep",
+      "published": 7939,
+      "reproduced": 7939
+    },
+    {
+      "agrees": true,
+      "control_id": "C8",
+      "label": "overflow upkeep",
+      "published": 227,
+      "reproduced": 227
+    },
+    {
+      "agrees": true,
+      "control_id": "C9",
+      "label": "champion entrants",
+      "published": 1,
+      "reproduced": 1
+    },
+    {
+      "agrees": true,
+      "control_id": "C10",
+      "label": "qualifier entrants",
+      "published": 1,
+      "reproduced": 1
+    },
+    {
+      "agrees": true,
+      "control_id": "C11",
+      "label": "provisional entrants",
+      "published": 14,
+      "reproduced": 14
+    }
+  ],
+  "calibration_agrees": true,
+  "docket_search": {
+    "candidate_space": 8568,
+    "conference_cap": 2,
+    "conference_spread": {
+      "North": 1,
+      "South": 2,
+      "West": 2
+    },
+    "docket_size": 5,
+    "elected": [
+      503,
+      507,
+      509,
+      513,
+      515
+    ],
+    "match_review_index": [
+      {
+        "conference": "East",
+        "escape_records": 2,
+        "leading_squad": "DVN",
+        "logical_index": 0,
+        "match_id": 500,
+        "review_index": 415,
+        "voided_output": 365
+      },
+      {
+        "conference": "North",
+        "escape_records": 2,
+        "leading_squad": "EMB",
+        "logical_index": 1,
+        "match_id": 501,
+        "review_index": 132,
+        "voided_output": 82
+      },
+      {
+        "conference": "West",
+        "escape_records": 2,
+        "leading_squad": "GRT",
+        "logical_index": 2,
+        "match_id": 502,
+        "review_index": 367,
+        "voided_output": 317
+      },
+      {
+        "conference": "West",
+        "escape_records": 2,
+        "leading_squad": "KRN",
+        "logical_index": 3,
+        "match_id": 503,
+        "review_index": 499,
+        "voided_output": 449
+      },
+      {
+        "conference": "South",
+        "escape_records": 2,
+        "leading_squad": "NVL",
+        "logical_index": 4,
+        "match_id": 504,
+        "review_index": 50,
+        "voided_output": 0
+      },
+      {
+        "conference": "East",
+        "escape_records": 2,
+        "leading_squad": "PYX",
+        "logical_index": 5,
+        "match_id": 505,
+        "review_index": 464,
+        "voided_output": 414
+      },
+      {
+        "conference": "South",
+        "escape_records": 2,
+        "leading_squad": "VLC",
+        "logical_index": 6,
+        "match_id": 506,
+        "review_index": 299,
+        "voided_output": 249
+      },
+      {
+        "conference": "North",
+        "escape_records": 2,
+        "leading_squad": "MRA",
+        "logical_index": 7,
+        "match_id": 507,
+        "review_index": 489,
+        "voided_output": 439
+      },
+      {
+        "conference": "South",
+        "escape_records": 2,
+        "leading_squad": "BLZ",
+        "logical_index": 8,
+        "match_id": 508,
+        "review_index": 480,
+        "voided_output": 430
+      },
+      {
+        "conference": "South",
+        "escape_records": 2,
+        "leading_squad": "BLZ",
+        "logical_index": 9,
+        "match_id": 509,
+        "review_index": 663,
+        "voided_output": 613
+      },
+      {
+        "conference": "South",
+        "escape_records": 2,
+        "leading_squad": "FLX",
+        "logical_index": 10,
+        "match_id": 510,
+        "review_index": 606,
+        "voided_output": 556
+      },
+      {
+        "conference": "North",
+        "escape_records": 2,
+        "leading_squad": "IBX",
+        "logical_index": 11,
+        "match_id": 511,
+        "review_index": 390,
+        "voided_output": 340
+      },
+      {
+        "conference": "North",
+        "escape_records": 2,
+        "leading_squad": "MRA",
+        "logical_index": 12,
+        "match_id": 512,
+        "review_index": 180,
+        "voided_output": 130
+      },
+      {
+        "conference": "West",
+        "escape_records": 2,
+        "leading_squad": "SLT",
+        "logical_index": 13,
+        "match_id": 513,
+        "review_index": 631,
+        "voided_output": 581
+      },
+      {
+        "conference": "North",
+        "escape_records": 2,
+        "leading_squad": "UMB",
+        "logical_index": 14,
+        "match_id": 514,
+        "review_index": 371,
+        "voided_output": 321
+      },
+      {
+        "conference": "South",
+        "escape_records": 2,
+        "leading_squad": "VLC",
+        "logical_index": 15,
+        "match_id": 515,
+        "review_index": 711,
+        "voided_output": 661
+      },
+      {
+        "conference": "West",
+        "escape_records": 2,
+        "leading_squad": "CDR",
+        "logical_index": 16,
+        "match_id": 516,
+        "review_index": 370,
+        "voided_output": 320
+      },
+      {
+        "conference": "West",
+        "escape_records": 2,
+        "leading_squad": "CDR",
+        "logical_index": 17,
+        "match_id": 517,
+        "review_index": 295,
+        "voided_output": 245
+      }
+    ],
+    "total_review_index": 2993
+  },
+  "joint_guard_search": {
+    "accepted": [
+      {
+        "engine_tag": "tessel-drift",
+        "sentinel": "0x1D",
+        "verdict": "accepted",
+        "window_depth": 6
+      }
+    ],
+    "dimensions": {
+      "engine_tag": 8,
+      "sentinel": 4,
+      "window_depth": 4
+    },
+    "readings": [
+      {
+        "engine_tag": "orion-fold",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 6",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "orion-fold",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 6",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "orion-fold",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 6",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "orion-fold",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 6",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "orion-fold",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 6",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "orion-fold",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 6",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "orion-fold",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 6",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "orion-fold",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 6",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "orion-fold",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 6",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "orion-fold",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 6",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "orion-fold",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 6",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "orion-fold",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 6",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "orion-fold",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 6",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "orion-fold",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 6",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "orion-fold",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 6",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "orion-fold",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 6",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "falsifier": {
+          "control_id": "C2",
+          "label": "records recovered",
+          "published": 238,
+          "reason": "capture would not decode: unknown attribution mode 43",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "falsifier": {
+          "control_id": "C2",
+          "label": "records recovered",
+          "published": 238,
+          "reason": "capture would not decode: back reference 4 beyond window",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "falsifier": {
+          "control_id": "C2",
+          "label": "records recovered",
+          "published": 238,
+          "reason": "capture would not decode: unknown attribution mode 43",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "falsifier": {
+          "control_id": "C2",
+          "label": "records recovered",
+          "published": 238,
+          "reason": "capture would not decode: unknown attribution mode 43",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "falsifier": {
+          "control_id": "C2",
+          "label": "records recovered",
+          "published": 238,
+          "reason": "capture would not decode: unknown attribution mode 43",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "sentinel": "0x1D",
+        "verdict": "accepted",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "falsifier": {
+          "control_id": "C2",
+          "label": "records recovered",
+          "published": 238,
+          "reason": "capture would not decode: unknown attribution mode 43",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "falsifier": {
+          "control_id": "C2",
+          "label": "records recovered",
+          "published": 238,
+          "reason": "capture would not decode: unknown attribution mode 43",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "falsifier": {
+          "control_id": "C2",
+          "label": "records recovered",
+          "published": 238,
+          "reason": "capture would not decode: unknown attribution mode 43",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "falsifier": {
+          "control_id": "C4",
+          "label": "gross output",
+          "published": 6228,
+          "reproduced": 6713
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "falsifier": {
+          "control_id": "C2",
+          "label": "records recovered",
+          "published": 238,
+          "reason": "capture would not decode: unknown attribution mode 43",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "falsifier": {
+          "control_id": "C2",
+          "label": "records recovered",
+          "published": 238,
+          "reason": "capture would not decode: unknown attribution mode 43",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "falsifier": {
+          "control_id": "C2",
+          "label": "records recovered",
+          "published": 238,
+          "reason": "capture would not decode: unknown attribution mode 43",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "falsifier": {
+          "control_id": "C4",
+          "label": "gross output",
+          "published": 6228,
+          "reproduced": 6834
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "falsifier": {
+          "control_id": "C2",
+          "label": "records recovered",
+          "published": 238,
+          "reason": "capture would not decode: unknown attribution mode 43",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "falsifier": {
+          "control_id": "C2",
+          "label": "records recovered",
+          "published": 238,
+          "reason": "capture would not decode: unknown attribution mode 43",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "vector-plume",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "vector-plume",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "vector-plume",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "vector-plume",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "vector-plume",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "vector-plume",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "vector-plume",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "vector-plume",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "vector-plume",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "vector-plume",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "vector-plume",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "vector-plume",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "vector-plume",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "vector-plume",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "vector-plume",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "vector-plume",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 3",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 10",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 4
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 6
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 8
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x1A",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x1D",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x20",
+        "verdict": "rejected",
+        "window_depth": 10
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "falsifier": {
+          "control_id": "C1",
+          "label": "matches opened",
+          "published": 5,
+          "reason": "capture would not decode: recovered 5 segments, declared 4",
+          "reproduced": null
+        },
+        "sentinel": "0x7F",
+        "verdict": "rejected",
+        "window_depth": 10
+      }
+    ],
+    "space_size": 128
+  },
+  "resolved": {
+    "combined_gross_output_floor": 900,
+    "combined_ladder_weight_floor": 7,
+    "count_bias": 6,
+    "docket_conference_cap": 2,
+    "docket_size": 5,
+    "eligibility_match_floor": 2,
+    "engine_tag": "tessel-drift",
+    "ladder_weight_prominence": 4,
+    "promotion_threshold": 700,
+    "review_weight": 25,
+    "season_budget": 860,
+    "sentinel": "0x1D",
+    "standing_points_floor": 3,
+    "window_depth": 6
+  },
+  "unstated_quantities": {
+    "engine_tag": {
+      "candidates": [
+        {
+          "candidate": "orion-fold",
+          "falsifier": {
+            "control_id": "C1",
+            "label": "matches opened",
+            "published": 5,
+            "reason": "capture would not decode: recovered 5 segments, declared 6",
+            "reproduced": null
+          },
+          "note": "no reading on this candidate reproduces every control figure of the guard stage",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "wren-cadence",
+          "falsifier": {
+            "control_id": "C1",
+            "label": "matches opened",
+            "published": 5,
+            "reason": "capture would not decode: recovered 5 segments, declared 3",
+            "reproduced": null
+          },
+          "note": "no reading on this candidate reproduces every control figure of the guard stage",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "tessel-drift",
+          "supporting_readings": 1,
+          "verdict": "accepted"
+        },
+        {
+          "candidate": "halcyon-mark",
+          "falsifier": {
+            "control_id": "C1",
+            "label": "matches opened",
+            "published": 5,
+            "reason": "capture would not decode: recovered 5 segments, declared 10",
+            "reproduced": null
+          },
+          "note": "no reading on this candidate reproduces every control figure of the guard stage",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "vector-plume",
+          "falsifier": {
+            "control_id": "C1",
+            "label": "matches opened",
+            "published": 5,
+            "reason": "capture would not decode: recovered 5 segments, declared 3",
+            "reproduced": null
+          },
+          "note": "no reading on this candidate reproduces every control figure of the guard stage",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "umbral-stack",
+          "falsifier": {
+            "control_id": "C1",
+            "label": "matches opened",
+            "published": 5,
+            "reason": "capture would not decode: recovered 5 segments, declared 10",
+            "reproduced": null
+          },
+          "note": "no reading on this candidate reproduces every control figure of the guard stage",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "quill-lattice",
+          "falsifier": {
+            "control_id": "C1",
+            "label": "matches opened",
+            "published": 5,
+            "reason": "capture would not decode: recovered 5 segments, declared 4",
+            "reproduced": null
+          },
+          "note": "no reading on this candidate reproduces every control figure of the guard stage",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "nimbus-gable",
+          "falsifier": {
+            "control_id": "C1",
+            "label": "matches opened",
+            "published": 5,
+            "reason": "capture would not decode: recovered 5 segments, declared 4",
+            "reproduced": null
+          },
+          "note": "no reading on this candidate reproduces every control figure of the guard stage",
+          "verdict": "rejected"
+        }
+      ],
+      "pinned_by": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ],
+      "resolved": "tessel-drift",
+      "roster": [
+        "orion-fold",
+        "wren-cadence",
+        "tessel-drift",
+        "halcyon-mark",
+        "vector-plume",
+        "umbral-stack",
+        "quill-lattice",
+        "nimbus-gable"
+      ]
+    },
+    "promotion_threshold": {
+      "candidates": [
+        {
+          "candidate": 20,
+          "falsifier": {
+            "control_id": "C9",
+            "label": "champion entrants",
+            "published": 1,
+            "reproduced": 7
+          },
+          "verdict": "rejected"
+        },
+        {
+          "candidate": 140,
+          "falsifier": {
+            "control_id": "C9",
+            "label": "champion entrants",
+            "published": 1,
+            "reproduced": 3
+          },
+          "verdict": "rejected"
+        },
+        {
+          "candidate": 200,
+          "falsifier": {
+            "control_id": "C9",
+            "label": "champion entrants",
+            "published": 1,
+            "reproduced": 3
+          },
+          "verdict": "rejected"
+        },
+        {
+          "candidate": 360,
+          "falsifier": {
+            "control_id": "C10",
+            "label": "qualifier entrants",
+            "published": 1,
+            "reproduced": 3
+          },
+          "verdict": "rejected"
+        },
+        {
+          "candidate": 700,
+          "verdict": "accepted"
+        },
+        {
+          "candidate": 1300,
+          "falsifier": {
+            "control_id": "C9",
+            "label": "champion entrants",
+            "published": 1,
+            "reproduced": 0
+          },
+          "verdict": "rejected"
+        }
+      ],
+      "pinned_by": [
+        "C9",
+        "C10",
+        "C11"
+      ],
+      "resolved": 700,
+      "roster": [
+        20,
+        140,
+        200,
+        360,
+        700,
+        1300
+      ]
+    },
+    "season_budget": {
+      "candidates": [
+        {
+          "candidate": 20,
+          "falsifier": {
+            "control_id": "C7",
+            "label": "charged upkeep",
+            "published": 7939,
+            "reproduced": 300
+          },
+          "verdict": "rejected"
+        },
+        {
+          "candidate": 220,
+          "falsifier": {
+            "control_id": "C7",
+            "label": "charged upkeep",
+            "published": 7939,
+            "reproduced": 3278
+          },
+          "verdict": "rejected"
+        },
+        {
+          "candidate": 440,
+          "falsifier": {
+            "control_id": "C7",
+            "label": "charged upkeep",
+            "published": 7939,
+            "reproduced": 5769
+          },
+          "verdict": "rejected"
+        },
+        {
+          "candidate": 640,
+          "falsifier": {
+            "control_id": "C7",
+            "label": "charged upkeep",
+            "published": 7939,
+            "reproduced": 7230
+          },
+          "verdict": "rejected"
+        },
+        {
+          "candidate": 860,
+          "verdict": "accepted"
+        },
+        {
+          "candidate": 1060,
+          "falsifier": {
+            "control_id": "C7",
+            "label": "charged upkeep",
+            "published": 7939,
+            "reproduced": 8159
+          },
+          "verdict": "rejected"
+        }
+      ],
+      "pinned_by": [
+        "C7",
+        "C8"
+      ],
+      "resolved": 860,
+      "roster": [
+        20,
+        220,
+        440,
+        640,
+        860,
+        1060
+      ]
+    },
+    "sentinel": {
+      "candidates": [
+        {
+          "candidate": "0x1A",
+          "falsifier": {
+            "control_id": "C2",
+            "label": "records recovered",
+            "published": 238,
+            "reason": "capture would not decode: unknown attribution mode 43",
+            "reproduced": null
+          },
+          "note": "no reading on this candidate reproduces every control figure of the guard stage",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "0x1D",
+          "supporting_readings": 1,
+          "verdict": "accepted"
+        },
+        {
+          "candidate": "0x20",
+          "falsifier": {
+            "control_id": "C2",
+            "label": "records recovered",
+            "published": 238,
+            "reason": "capture would not decode: unknown attribution mode 43",
+            "reproduced": null
+          },
+          "note": "no reading on this candidate reproduces every control figure of the guard stage",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": "0x7F",
+          "falsifier": {
+            "control_id": "C2",
+            "label": "records recovered",
+            "published": 238,
+            "reason": "capture would not decode: unknown attribution mode 43",
+            "reproduced": null
+          },
+          "note": "no reading on this candidate reproduces every control figure of the guard stage",
+          "verdict": "rejected"
+        }
+      ],
+      "pinned_by": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ],
+      "resolved": "0x1D",
+      "roster": [
+        "0x1A",
+        "0x1D",
+        "0x20",
+        "0x7F"
+      ]
+    },
+    "window_depth": {
+      "candidates": [
+        {
+          "candidate": 4,
+          "falsifier": {
+            "control_id": "C2",
+            "label": "records recovered",
+            "published": 238,
+            "reason": "capture would not decode: unknown attribution mode 43",
+            "reproduced": null
+          },
+          "note": "no reading on this candidate reproduces every control figure of the guard stage",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": 6,
+          "supporting_readings": 1,
+          "verdict": "accepted"
+        },
+        {
+          "candidate": 8,
+          "falsifier": {
+            "control_id": "C4",
+            "label": "gross output",
+            "published": 6228,
+            "reproduced": 6713
+          },
+          "note": "no reading on this candidate reproduces every control figure of the guard stage",
+          "verdict": "rejected"
+        },
+        {
+          "candidate": 10,
+          "falsifier": {
+            "control_id": "C4",
+            "label": "gross output",
+            "published": 6228,
+            "reproduced": 6834
+          },
+          "note": "no reading on this candidate reproduces every control figure of the guard stage",
+          "verdict": "rejected"
+        }
+      ],
+      "pinned_by": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6"
+      ],
+      "resolved": 6,
+      "roster": [
+        4,
+        6,
+        8,
+        10
+      ]
+    }
+  }
+}

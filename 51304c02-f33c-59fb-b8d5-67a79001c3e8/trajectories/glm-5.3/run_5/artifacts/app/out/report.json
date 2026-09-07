@@ -1,0 +1,314 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/app/tool/cli.py",
+        "--log",
+        "/app/work/run.jsonl",
+        "init",
+        "--schema",
+        "/app/data/config_schema.json",
+        "--defaults",
+        "/app/data/defaults.json",
+        "--out",
+        "/app/out/config.json"
+      ],
+      "command": "init",
+      "exit_code": 0,
+      "status": "ok"
+    },
+    {
+      "argv": [
+        "/app/tool/cli.py",
+        "--log",
+        "/app/work/run.jsonl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "max_records",
+        "--value",
+        "145",
+        "--schema",
+        "/app/data/config_schema.json",
+        "--rules",
+        "/app/data/validation_rules.json"
+      ],
+      "command": "set",
+      "exit_code": 0,
+      "status": "ok"
+    },
+    {
+      "argv": [
+        "/app/tool/cli.py",
+        "--log",
+        "/app/work/run.jsonl",
+        "init",
+        "--schema",
+        "/app/data/config_schema.json",
+        "--defaults",
+        "/app/data/defaults.json",
+        "--env",
+        "/app/data/env_overrides.json",
+        "--profile",
+        "dev",
+        "--profile-file",
+        "/app/data/sample_config_dev.json",
+        "--out",
+        "/app/out/profile_dev.json"
+      ],
+      "command": "init",
+      "exit_code": 0,
+      "status": "ok"
+    },
+    {
+      "argv": [
+        "/app/tool/cli.py",
+        "--log",
+        "/app/work/run.jsonl",
+        "init",
+        "--schema",
+        "/app/data/config_schema.json",
+        "--defaults",
+        "/app/data/defaults.json",
+        "--env",
+        "/app/data/env_overrides.json",
+        "--profile",
+        "prod",
+        "--profile-file",
+        "/app/data/sample_config_prod.json",
+        "--out",
+        "/app/out/profile_prod.json"
+      ],
+      "command": "init",
+      "exit_code": 0,
+      "status": "ok"
+    },
+    {
+      "argv": [
+        "/app/tool/cli.py",
+        "--log",
+        "/app/work/run.jsonl",
+        "pack",
+        "--source",
+        "/app/tool",
+        "--out",
+        "/app/out/tool.zip"
+      ],
+      "command": "pack",
+      "exit_code": 0,
+      "status": "ok"
+    },
+    {
+      "argv": [
+        "/app/tool/cli.py",
+        "--log",
+        "/app/work/run.jsonl",
+        "validate",
+        "--schema",
+        "/app/data/config_schema.json",
+        "--rules",
+        "/app/data/validation_rules.json",
+        "--config",
+        "/app/out/config.json",
+        "--profile",
+        "TASK",
+        "--config",
+        "/app/out/profile_dev.json",
+        "--profile",
+        "dev",
+        "--config",
+        "/app/out/profile_prod.json",
+        "--profile",
+        "prod",
+        "--out",
+        "/app/out/validation_report.json"
+      ],
+      "command": "validate",
+      "exit_code": 0,
+      "status": "ok"
+    }
+  ],
+  "config": {
+    "checksum": "crc32",
+    "container": "",
+    "max_records": 145,
+    "mode": "strict-local",
+    "producer": "",
+    "profile": "TASK",
+    "retry_limit": 3,
+    "timeout_ms": 1771,
+    "trailer": "harbor:cli-config:TASK:0000000000016384"
+  },
+  "config_path": "/app/out/config.json",
+  "config_sha256": "sha256:f0c089f9c7e6d78181193e40d6577ad9662569974198b5eebfbe9b2d9a452dd7",
+  "key_count": 9,
+  "notes": {
+    "interpretation": {
+      "checksum": "The checksum key holds the algorithm name crc32, exactly as the schema and both sample profiles spell it; it is not a computed digest.",
+      "deltas": "Numeric settings are base + sample profile *_delta + env_overrides *_delta: dev gets max_records 135, retry_limit 4, timeout_ms 1646; prod gets 170, 3 and 2021. Both profiles set mode to strict-local.",
+      "empty_fields": "producer and container stay empty: both the schema and defaults.json specify them that way.",
+      "profile_of_config.json": "config.json is the base configuration: its profile is TASK, taken from the profile field of config_schema.json, which init copies verbatim. validation_rules.json's profiles list enumerates the environment profiles the tool must handle (dev, prod), so the validator accepts the schema's own profile plus those two; the profile artifacts are validated against their declared profile as well.",
+      "trailer": "harbor:cli-config:TASK:0000000000016384 is carried through from defaults.json base_config unchanged for the base configuration and both profiles. Its 16-digit tail reads as an opaque sequence token: 16384 is a power of two and is not the CRC-32 (or Adler-32) of any canonical serialisation of the base configuration that was tested, so it is treated as data rather than derived. TASK is the configuration family named by the schema, not the profile, which is why it stays fixed while the profile key varies."
+    },
+    "objective": "Repair task-ctl, then use the repaired CLI to generate and validate the flat configuration and its two environment profiles.",
+    "repair": {
+      "added_commands": [
+        "pack - archive the tool itself reproducibly (a fixed member mtime, deterministic member order, no cache files)",
+        "summarize - check a deliverables directory against required_artifacts, max_artifact_bytes and forbidden_keys"
+      ],
+      "compatibility": "The four documented commands keep their documented arguments; every added input is optional and resolves to a file beside the schema when omitted.",
+      "defects": [
+        {
+          "area": "init",
+          "cause": "cmd_init called load_json(args.config), but the init subparser only defines --schema and --out.",
+          "file": "cli.py",
+          "fix": "Read the schema from args.schema.",
+          "id": 1,
+          "symptom": "AttributeError: 'Namespace' object has no attribute 'config' on every init invocation."
+        },
+        {
+          "area": "init",
+          "cause": "cmd_init nested the checksum under a settings object.",
+          "file": "cli.py",
+          "fix": "Emit a flat document holding exactly the nine required keys.",
+          "id": 2,
+          "symptom": "Generated configuration failed the contract's scalar-only rule."
+        },
+        {
+          "area": "init",
+          "cause": "The tool never read defaults.json, env_overrides.json or the sample profile files.",
+          "file": "cli.py",
+          "fix": "Compose the base configuration from the schema identity fields plus defaults.json (top level for checksum/mode/producer/container, base_config for the numeric keys and the trailer), then fold in a sample profile's *_delta values and the matching env_overrides entry. Inputs not passed explicitly are looked up beside the schema.",
+          "id": 3,
+          "symptom": "No numeric settings, no mode, no trailer, and no way to produce dev or prod."
+        },
+        {
+          "area": "set",
+          "cause": "cmd_set stored args.key.upper().",
+          "file": "cli.py",
+          "fix": "Store the key exactly as named, and reject blank or padded names.",
+          "id": 4,
+          "symptom": "Setting max_records wrote MAX_RECORDS, outside the contract's key names, and a second set of the same key duplicated it under a second spelling."
+        },
+        {
+          "area": "set",
+          "cause": "No coercion of the raw argparse string.",
+          "file": "cli.py",
+          "fix": "Coerce to bool/int/float/str and refuse null and empty values, so a stored value can never be a container.",
+          "id": 5,
+          "symptom": "--value 100 was stored as the string \"100\", so numeric keys failed type checks."
+        },
+        {
+          "area": "set",
+          "file": "cli.py",
+          "fix": "Reject forbidden keys always (falling back to the built-in copy of that list when no rules file is reachable) and reject keys outside required_keys when a schema is given.",
+          "id": 6,
+          "symptom": "set happily wrote the keys validation_rules.json forbids, and any other unrecognised key."
+        },
+        {
+          "area": "validate",
+          "cause": "cmd_validate assumed required_keys was a comma-joined string, but config_schema.json supplies a JSON array.",
+          "file": "cli.py",
+          "fix": "Normalise both spellings into a list before use.",
+          "id": 7,
+          "symptom": "AttributeError: 'list' object has no attribute 'split' against the shipped contract."
+        },
+        {
+          "area": "validate",
+          "cause": "scalar_only, forbidden_keys, checksum, profile and value types were never consulted.",
+          "file": "cli.py",
+          "fix": "Check required keys, unexpected keys (warning), forbidden keys, scalar/non-null values, checksum against the schema, profile against the schema profile plus the rules' profiles, the trailer token's shape, and integer/non-negative numeric keys with a non-zero timeout_ms. Report structured findings and exit non-zero when any error stands.",
+          "id": 8,
+          "symptom": "Only key presence and flatness were checked, and the command always exited 0, so a broken configuration printed ok."
+        },
+        {
+          "area": "export-report",
+          "file": "cli.py",
+          "fix": "Emit the configuration, its canonical SHA-256, digests of every input file, the validation verdict, the run log recorded via --log, and optional caller notes.",
+          "id": 9,
+          "symptom": "The report carried \"commands\": \"unknown\" and a hard-coded ok, so it described nothing."
+        },
+        {
+          "area": "main",
+          "cause": "The subparsers action was created without required.",
+          "file": "cli.py",
+          "fix": "Declare the subcommand required, so argparse prints usage and exits 2.",
+          "id": 10,
+          "symptom": "python3 cli.py with no subcommand raised AttributeError instead of printing usage."
+        },
+        {
+          "area": "io",
+          "file": "cli.py",
+          "fix": "Write UTF-8, sorted keys, two-space indent and a trailing newline; create the parent directory; read with an explicit encoding.",
+          "id": 11,
+          "symptom": "Output key order depended on insertion order, and reading or writing used the process locale's default encoding."
+        },
+        {
+          "area": "errors",
+          "file": "cli.py",
+          "fix": "Wrap every read, write and contract violation in a ToolError reported as \"task-ctl: error: ...\" with exit code 1.",
+          "id": 12,
+          "symptom": "A missing file or malformed JSON produced a traceback."
+        },
+        {
+          "area": "bundled contract",
+          "file": "schema.json",
+          "fix": "Align the bundled schema with config_schema.json; the loader still accepts the older comma-joined spelling.",
+          "id": 13,
+          "symptom": "The schema shipped inside the tool disagreed with the contract in /app/data: required_keys was a comma-joined string and scalar_only was absent."
+        },
+        {
+          "area": "outputs",
+          "file": "cli.py",
+          "fix": "validate accepts repeated --config and writes a JSON report; summarize checks a deliverables directory for the required artifacts, the size limit and forbidden keys; pack archives the tool with a fixed member mtime.",
+          "id": 14,
+          "symptom": "No machine-readable validation output, and the rules' required_artifacts and max_artifact_bytes were never used anywhere."
+        }
+      ],
+      "summary": "The archive shipped a CLI whose four commands could not run end to end: init dereferenced an argument it never declared and emitted a nested object the contract forbids; set mangled key names and left every value a string; validate crashed on the contract's own schema; export-report wrote a placeholder; the entry point crashed with no subcommand. Underneath those, the tool had no way to read defaults.json, env_overrides.json or the sample profiles, so it could not have produced the configuration it exists to produce."
+    },
+    "run": {
+      "log": "Each invocation was made with --log so the run log is the tool's own record; export-report folds it into this report.",
+      "set_usage": "set is exercised once on config.json with max_records 145, the value defaults.json already specifies, to demonstrate scalar coercion without moving any value off its contracted default."
+    }
+  },
+  "sources": {
+    "defaults": {
+      "path": "/app/data/defaults.json",
+      "sha256": "sha256:987b6a277bc029f2b717dbb96131b48fa044a4d2e454a94218c312ee1e9e83f5"
+    },
+    "env_overrides": {
+      "path": "/app/data/env_overrides.json",
+      "sha256": "sha256:94a51d7a107bfba5f7e44e8497ee9de81fca93dcb1b2ebebc7aba29d6564c177"
+    },
+    "profile_sample": {
+      "path": "/app/data/sample_config_dev.json",
+      "sha256": "sha256:c0fe8be3b9dc29eb85d6a168aafe8e8b985c6402672f99c108e27e1e2b19e5e1"
+    },
+    "rules": {
+      "path": "/app/data/validation_rules.json",
+      "sha256": "sha256:d3a339d9a03f0f891ae61f898fd02573d2eeac2f943d8e1e494e9430f4fadf62"
+    },
+    "schema": {
+      "path": "/app/data/config_schema.json",
+      "sha256": "sha256:a2be2fe479296993b815c089a4720940071a537be5003cd4ef1bccccba27a918"
+    }
+  },
+  "tool": "task-ctl",
+  "validation": {
+    "checks": [
+      "required_keys",
+      "scalar_only",
+      "forbidden_keys",
+      "checksum",
+      "profile",
+      "trailer",
+      "numeric_types"
+    ],
+    "errors": [],
+    "ok": true,
+    "warnings": []
+  },
+  "version": "1.1.0"
+}

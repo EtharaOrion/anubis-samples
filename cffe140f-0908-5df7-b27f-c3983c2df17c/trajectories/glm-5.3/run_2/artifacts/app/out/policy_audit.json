@@ -1,0 +1,790 @@
+{
+  "all_control_figures_agree": true,
+  "attribution": {
+    "closed_sets": [
+      [
+        "BLZ",
+        "CDR",
+        "DVN"
+      ]
+    ],
+    "effective_owners": [
+      [
+        "AKR",
+        "AKR"
+      ],
+      [
+        "AXL",
+        "AXL"
+      ],
+      [
+        "BLZ",
+        "BLZ"
+      ],
+      [
+        "BQT",
+        "BQT"
+      ],
+      [
+        "CDR",
+        "BLZ"
+      ],
+      [
+        "DVN",
+        "BLZ"
+      ],
+      [
+        "EMB",
+        "EMB"
+      ],
+      [
+        "FLX",
+        "FLX"
+      ],
+      [
+        "GRT",
+        "FLX"
+      ],
+      [
+        "HVN",
+        "FLX"
+      ],
+      [
+        "IBX",
+        "FLX"
+      ],
+      [
+        "JDE",
+        "FLX"
+      ],
+      [
+        "KRN",
+        "KRN"
+      ],
+      [
+        "LMX",
+        "LMX"
+      ],
+      [
+        "MRA",
+        "MRA"
+      ],
+      [
+        "NVL",
+        "NVL"
+      ],
+      [
+        "ORC",
+        "ORC"
+      ],
+      [
+        "PYX",
+        "PYX"
+      ],
+      [
+        "QRM",
+        "QRM"
+      ],
+      [
+        "SLT",
+        "SLT"
+      ],
+      [
+        "UMB",
+        "FLX"
+      ],
+      [
+        "VLC",
+        "BLZ"
+      ],
+      [
+        "WRN",
+        "WRN"
+      ],
+      [
+        "XCT",
+        "XCT"
+      ],
+      [
+        "YRD",
+        "YRD"
+      ],
+      [
+        "ZPH",
+        "ZPH"
+      ]
+    ],
+    "handovers": [
+      [
+        "BLZ",
+        "CDR"
+      ],
+      [
+        "CDR",
+        "DVN"
+      ],
+      [
+        "DVN",
+        "BLZ"
+      ],
+      [
+        "GRT",
+        "FLX"
+      ],
+      [
+        "HVN",
+        "GRT"
+      ],
+      [
+        "IBX",
+        "HVN"
+      ],
+      [
+        "JDE",
+        "IBX"
+      ],
+      [
+        "UMB",
+        "JDE"
+      ],
+      [
+        "VLC",
+        "BLZ"
+      ]
+    ],
+    "settlement_passes": 6,
+    "squads_that_own_their_entry": [
+      "AKR",
+      "AXL",
+      "BLZ",
+      "BQT",
+      "EMB",
+      "FLX",
+      "KRN",
+      "LMX",
+      "MRA",
+      "NVL",
+      "ORC",
+      "PYX",
+      "QRM",
+      "SLT",
+      "WRN",
+      "XCT",
+      "YRD",
+      "ZPH"
+    ]
+  },
+  "attribution_settlement_passes": 6,
+  "bracket": {
+    "candidate_space": 816,
+    "constraints": [
+      {
+        "met": true,
+        "text": "at least one member sits in a division whose ladder weight reaches the prominence figure"
+      },
+      {
+        "met": true,
+        "text": "both entrant segments appear among the members"
+      },
+      {
+        "met": true,
+        "text": "every member holds at least the standing points floor"
+      },
+      {
+        "met": true,
+        "text": "no two members share a conference"
+      },
+      {
+        "met": true,
+        "text": "at least one member is a ranked entrant"
+      },
+      {
+        "met": true,
+        "text": "the ladder weights of the members sum to at least the combined ladder weight floor"
+      },
+      {
+        "met": false,
+        "text": "no member carries any overflow upkeep"
+      },
+      {
+        "met": true,
+        "text": "at least one member holds the champion tier"
+      },
+      {
+        "met": true,
+        "text": "the gross output of the members sums to at least the combined gross output floor"
+      },
+      {
+        "met": true,
+        "text": "no member has handed its entry to another squad"
+      }
+    ],
+    "eligible_pool": [
+      "AKR",
+      "AXL",
+      "BLZ",
+      "BQT",
+      "EMB",
+      "FLX",
+      "KRN",
+      "LMX",
+      "MRA",
+      "NVL",
+      "ORC",
+      "PYX",
+      "QRM",
+      "SLT",
+      "WRN",
+      "XCT",
+      "YRD",
+      "ZPH"
+    ],
+    "members": [
+      "FLX",
+      "KRN",
+      "LMX"
+    ],
+    "pool_size": 18,
+    "satisfied": 9,
+    "total_charged_upkeep": 2580,
+    "total_gross_output": 7468,
+    "total_ladder_weight": 9
+  },
+  "bracket_best_satisfied_constraints": 9,
+  "bracket_candidate_space": 816,
+  "calibration_comparison": [
+    {
+      "agrees": true,
+      "figure": "C1 matches opened",
+      "published": 5,
+      "reproduced": 5
+    },
+    {
+      "agrees": true,
+      "figure": "C2 records recovered",
+      "published": 238,
+      "reproduced": 238
+    },
+    {
+      "agrees": true,
+      "figure": "C3 distinct squads",
+      "published": 16,
+      "reproduced": 16
+    },
+    {
+      "agrees": true,
+      "figure": "C4 gross output",
+      "published": 6228,
+      "reproduced": 6228
+    },
+    {
+      "agrees": true,
+      "figure": "C5 voided output",
+      "published": 1703,
+      "reproduced": 1703
+    },
+    {
+      "agrees": true,
+      "figure": "C6 raw upkeep",
+      "published": 8166,
+      "reproduced": 8166
+    },
+    {
+      "agrees": true,
+      "figure": "C7 charged upkeep",
+      "published": 7939,
+      "reproduced": 7939
+    },
+    {
+      "agrees": true,
+      "figure": "C8 overflow upkeep",
+      "published": 227,
+      "reproduced": 227
+    },
+    {
+      "agrees": true,
+      "figure": "C9 champion entrants",
+      "published": 1,
+      "reproduced": 1
+    },
+    {
+      "agrees": true,
+      "figure": "C10 qualifier entrants",
+      "published": 1,
+      "reproduced": 1
+    },
+    {
+      "agrees": true,
+      "figure": "C11 provisional entrants",
+      "published": 14,
+      "reproduced": 14
+    }
+  ],
+  "control_capture_role": "control",
+  "docket": {
+    "all_matches": [
+      {
+        "conference": "South",
+        "match_id": 500,
+        "review_index": 579
+      },
+      {
+        "conference": "South",
+        "match_id": 501,
+        "review_index": 194
+      },
+      {
+        "conference": "South",
+        "match_id": 502,
+        "review_index": 1008
+      },
+      {
+        "conference": "West",
+        "match_id": 503,
+        "review_index": 499
+      },
+      {
+        "conference": "South",
+        "match_id": 504,
+        "review_index": 50
+      },
+      {
+        "conference": "East",
+        "match_id": 505,
+        "review_index": 464
+      },
+      {
+        "conference": "South",
+        "match_id": 506,
+        "review_index": 299
+      },
+      {
+        "conference": "South",
+        "match_id": 507,
+        "review_index": 489
+      },
+      {
+        "conference": "South",
+        "match_id": 508,
+        "review_index": 480
+      },
+      {
+        "conference": "South",
+        "match_id": 509,
+        "review_index": 432
+      },
+      {
+        "conference": "South",
+        "match_id": 510,
+        "review_index": 1254
+      },
+      {
+        "conference": "South",
+        "match_id": 511,
+        "review_index": 390
+      },
+      {
+        "conference": "North",
+        "match_id": 512,
+        "review_index": 180
+      },
+      {
+        "conference": "West",
+        "match_id": 513,
+        "review_index": 631
+      },
+      {
+        "conference": "South",
+        "match_id": 514,
+        "review_index": 371
+      },
+      {
+        "conference": "South",
+        "match_id": 515,
+        "review_index": 711
+      },
+      {
+        "conference": "West",
+        "match_id": 516,
+        "review_index": 370
+      },
+      {
+        "conference": "South",
+        "match_id": 517,
+        "review_index": 586
+      }
+    ],
+    "by_conference": {
+      "East": 1,
+      "South": 2,
+      "West": 2
+    },
+    "entries": [
+      {
+        "conference": "South",
+        "escape_records": 2,
+        "match_id": 502,
+        "review_index": 1008,
+        "top_squad": "FLX",
+        "voided_output": 958
+      },
+      {
+        "conference": "West",
+        "escape_records": 2,
+        "match_id": 503,
+        "review_index": 499,
+        "top_squad": "KRN",
+        "voided_output": 449
+      },
+      {
+        "conference": "East",
+        "escape_records": 2,
+        "match_id": 505,
+        "review_index": 464,
+        "top_squad": "PYX",
+        "voided_output": 414
+      },
+      {
+        "conference": "South",
+        "escape_records": 2,
+        "match_id": 510,
+        "review_index": 1254,
+        "top_squad": "FLX",
+        "voided_output": 1204
+      },
+      {
+        "conference": "West",
+        "escape_records": 2,
+        "match_id": 513,
+        "review_index": 631,
+        "top_squad": "SLT",
+        "voided_output": 581
+      }
+    ],
+    "enumeration_exact": true,
+    "matches": [
+      502,
+      503,
+      505,
+      510,
+      513
+    ],
+    "total_review_index": 3856
+  },
+  "elected_guards": {
+    "engine_tag": "tessel-drift",
+    "sentinel": 29,
+    "window_depth": 6
+  },
+  "method": "every candidate reading decodes the control slice, settles it without effective-owner reattribution (the control slice is held out of the settlement) and is compared figure by figure with the published controls; the first figure that disagrees is the falsifier. The seal order was confirmed as keystream mask then left turn, filler width taken from the written segment salt, drift running sum taken over the decoded value fields.",
+  "unstated_quantities": [
+    {
+      "candidate_space": 8,
+      "candidates": [
+        {
+          "falsifier": "C1 matches opened (decode failed: declared 6 segments, found 5)",
+          "reproduced": {},
+          "value": "orion-fold",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C1 matches opened (decode failed: declared 3 segments, found 5)",
+          "reproduced": {},
+          "value": "wren-cadence",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "reproduced": {
+            "C1 matches opened": 5,
+            "C2 records recovered": 238,
+            "C3 distinct squads": 16,
+            "C4 gross output": 6228,
+            "C5 voided output": 1703,
+            "C6 raw upkeep": 8166
+          },
+          "value": "tessel-drift",
+          "verdict": "survives"
+        },
+        {
+          "falsifier": "C1 matches opened (decode failed: declared 10 segments, found 5)",
+          "reproduced": {},
+          "value": "halcyon-mark",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C1 matches opened (decode failed: declared 3 segments, found 5)",
+          "reproduced": {},
+          "value": "vector-plume",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C1 matches opened (decode failed: declared 10 segments, found 5)",
+          "reproduced": {},
+          "value": "umbral-stack",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C1 matches opened (decode failed: declared 4 segments, found 5)",
+          "reproduced": {},
+          "value": "quill-lattice",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C1 matches opened (decode failed: declared 4 segments, found 5)",
+          "reproduced": {},
+          "value": "nimbus-gable",
+          "verdict": "rejected"
+        }
+      ],
+      "elected": "tessel-drift",
+      "name": "engine_tag",
+      "pinned_by": "C1-C6",
+      "roster": [
+        "orion-fold",
+        "wren-cadence",
+        "tessel-drift",
+        "halcyon-mark",
+        "vector-plume",
+        "umbral-stack",
+        "quill-lattice",
+        "nimbus-gable"
+      ],
+      "surviving": [
+        "tessel-drift"
+      ]
+    },
+    {
+      "candidate_space": 4,
+      "candidates": [
+        {
+          "falsifier": "C3 distinct squads (decode failed: back reference 4 beyond window depth 4)",
+          "reproduced": {},
+          "value": 4,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "reproduced": {
+            "C1 matches opened": 5,
+            "C2 records recovered": 238,
+            "C3 distinct squads": 16,
+            "C4 gross output": 6228,
+            "C5 voided output": 1703,
+            "C6 raw upkeep": 8166
+          },
+          "value": 6,
+          "verdict": "survives"
+        },
+        {
+          "falsifier": "C4 gross output",
+          "reproduced": {
+            "C1 matches opened": 5,
+            "C2 records recovered": 238,
+            "C3 distinct squads": 16,
+            "C4 gross output": 6644,
+            "C5 voided output": 1287,
+            "C6 raw upkeep": 7458
+          },
+          "value": 8,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C4 gross output",
+          "reproduced": {
+            "C1 matches opened": 5,
+            "C2 records recovered": 238,
+            "C3 distinct squads": 16,
+            "C4 gross output": 6922,
+            "C5 voided output": 1009,
+            "C6 raw upkeep": 8030
+          },
+          "value": 10,
+          "verdict": "rejected"
+        }
+      ],
+      "elected": 6,
+      "name": "window_depth",
+      "pinned_by": "C1-C6",
+      "roster": [
+        4,
+        6,
+        8,
+        10
+      ],
+      "surviving": [
+        6
+      ]
+    },
+    {
+      "candidate_space": 4,
+      "candidates": [
+        {
+          "falsifier": "C2 records recovered (decode failed: body width 19 does not suit mode 43)",
+          "reproduced": {},
+          "value": "0x1a",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "reproduced": {
+            "C1 matches opened": 5,
+            "C2 records recovered": 238,
+            "C3 distinct squads": 16,
+            "C4 gross output": 6228,
+            "C5 voided output": 1703,
+            "C6 raw upkeep": 8166
+          },
+          "value": "0x1d",
+          "verdict": "survives"
+        },
+        {
+          "falsifier": "C2 records recovered (decode failed: body width 19 does not suit mode 43)",
+          "reproduced": {},
+          "value": "0x20",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": "C2 records recovered (decode failed: body width 19 does not suit mode 43)",
+          "reproduced": {},
+          "value": "0x7f",
+          "verdict": "rejected"
+        }
+      ],
+      "elected": "0x1d",
+      "name": "sentinel",
+      "pinned_by": "C1-C6",
+      "roster": [
+        "0x1a",
+        "0x1d",
+        "0x20",
+        "0x7f"
+      ],
+      "surviving": [
+        "0x1d"
+      ]
+    },
+    {
+      "candidate_space": 6,
+      "candidates": [
+        {
+          "charged_upkeep": 300,
+          "falsifier": "C7 charged upkeep",
+          "overflow_upkeep": 7866,
+          "value": 20,
+          "verdict": "rejected"
+        },
+        {
+          "charged_upkeep": 3278,
+          "falsifier": "C7 charged upkeep",
+          "overflow_upkeep": 4888,
+          "value": 220,
+          "verdict": "rejected"
+        },
+        {
+          "charged_upkeep": 5769,
+          "falsifier": "C7 charged upkeep",
+          "overflow_upkeep": 2397,
+          "value": 440,
+          "verdict": "rejected"
+        },
+        {
+          "charged_upkeep": 7230,
+          "falsifier": "C7 charged upkeep",
+          "overflow_upkeep": 936,
+          "value": 640,
+          "verdict": "rejected"
+        },
+        {
+          "charged_upkeep": 7939,
+          "falsifier": null,
+          "overflow_upkeep": 227,
+          "value": 860,
+          "verdict": "survives"
+        },
+        {
+          "charged_upkeep": 8159,
+          "falsifier": "C7 charged upkeep",
+          "overflow_upkeep": 7,
+          "value": 1060,
+          "verdict": "rejected"
+        }
+      ],
+      "elected": 860,
+      "name": "season_budget",
+      "pinned_by": "C7-C8",
+      "roster": [
+        20,
+        220,
+        440,
+        640,
+        860,
+        1060
+      ]
+    },
+    {
+      "candidate_space": 6,
+      "candidates": [
+        {
+          "champion_entrants": 7,
+          "falsifier": "C9 champion entrants",
+          "provisional_entrants": 9,
+          "qualifier_entrants": 0,
+          "value": 20,
+          "verdict": "rejected"
+        },
+        {
+          "champion_entrants": 4,
+          "falsifier": "C9 champion entrants",
+          "provisional_entrants": 9,
+          "qualifier_entrants": 1,
+          "value": 140,
+          "verdict": "rejected"
+        },
+        {
+          "champion_entrants": 3,
+          "falsifier": "C9 champion entrants",
+          "provisional_entrants": 9,
+          "qualifier_entrants": 3,
+          "value": 200,
+          "verdict": "rejected"
+        },
+        {
+          "champion_entrants": 1,
+          "falsifier": "C10 qualifier entrants",
+          "provisional_entrants": 12,
+          "qualifier_entrants": 2,
+          "value": 360,
+          "verdict": "rejected"
+        },
+        {
+          "champion_entrants": 1,
+          "falsifier": null,
+          "provisional_entrants": 14,
+          "qualifier_entrants": 1,
+          "value": 700,
+          "verdict": "survives"
+        },
+        {
+          "champion_entrants": 0,
+          "falsifier": "C9 champion entrants",
+          "provisional_entrants": 15,
+          "qualifier_entrants": 1,
+          "value": 1300,
+          "verdict": "rejected"
+        }
+      ],
+      "elected": 700,
+      "name": "promotion_threshold",
+      "pinned_by": "C9-C11",
+      "roster": [
+        20,
+        140,
+        200,
+        360,
+        700,
+        1300
+      ]
+    }
+  ]
+}

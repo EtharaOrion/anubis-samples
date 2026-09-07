@@ -1,0 +1,12 @@
+{
+  "checksum": "crc32",
+  "mode": "strict-local",
+  "producer": "",
+  "container": "",
+  "base_config": {
+    "max_records": 145,
+    "retry_limit": 3,
+    "timeout_ms": 1771,
+    "trailer": "harbor:cli-config:TASK:0000000000016384"
+  }
+}

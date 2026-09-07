@@ -1,0 +1,153 @@
+{
+  "absent_entrants": [
+    {
+      "conference": "South",
+      "division": "D2",
+      "entrant_id": "E018",
+      "segment": "public",
+      "squad_key": "RVN"
+    },
+    {
+      "conference": "East",
+      "division": "D4",
+      "entrant_id": "E020",
+      "segment": "public",
+      "squad_key": "TDR"
+    }
+  ],
+  "attribution_anomalies": {
+    "advance_off_dictionary": 6,
+    "alias_out_of_range": 0,
+    "backref_out_of_range": 0,
+    "unknown_directive_op": 0
+  },
+  "attribution_residual": {
+    "conference_gross_output": 22702,
+    "explained_by": [
+      {
+        "charged_upkeep": 860,
+        "gross_output": 817,
+        "season_score": -43,
+        "squad_key": "AXL",
+        "voided_output": 397
+      },
+      {
+        "charged_upkeep": 860,
+        "gross_output": 202,
+        "season_score": -658,
+        "squad_key": "BQT",
+        "voided_output": 258
+      },
+      {
+        "charged_upkeep": 860,
+        "gross_output": 1357,
+        "season_score": 497,
+        "squad_key": "YRD",
+        "voided_output": 275
+      },
+      {
+        "charged_upkeep": 860,
+        "gross_output": 873,
+        "season_score": 13,
+        "squad_key": "ZPH",
+        "voided_output": 73
+      }
+    ],
+    "residual": 3249,
+    "season_gross_output": 25951,
+    "segment_gross_output": 22702,
+    "segment_residual": 3249
+  },
+  "control_capture": {
+    "capture_id": 62,
+    "declared_records": 238,
+    "declared_roster_size": 15,
+    "declared_segments": 5,
+    "distinct_squads_recovered": 16,
+    "envelope_checksum_ok": true,
+    "record_residual": 0,
+    "recovered_records": 238,
+    "recovered_segments": 5,
+    "registered_squads_recovered": 16,
+    "roster_residual": -1,
+    "segment_residual": 0,
+    "source": "control-capture.rjnl",
+    "squads_reached_only_by_escape": [
+      "PYX"
+    ],
+    "unregistered_squads": []
+  },
+  "findings": [
+    "attribution residual of 3249 gross output belongs to unregistered squads AXL, BQT, YRD, ZPH",
+    "squads seen on the wire with no entry in the registry: AXL, BQT, YRD, ZPH",
+    "entrants registered but absent from the capture: RVN, TDR",
+    "control slice roster residual is -1 (squads reached only by an escape directive, never on the wire: PYX)",
+    "6 escape advance directives were applied to squads that hold no roster dictionary position (SLT, VLC, WRN, YRD); the advance is a no-op, and 0 of those records finish on their wire attribution"
+  ],
+  "kind_ledger": {
+    "close": 18,
+    "concede": 3,
+    "deploy": 212,
+    "disband": 59,
+    "eliminate": 79,
+    "output": 636,
+    "transfer": 9
+  },
+  "kind_ledger_residual": 0,
+  "kind_ledger_total": 1016,
+  "output_ledger": {
+    "gross_output": 25951,
+    "reported_output": 32463,
+    "residual": 0,
+    "settled_output": 32463,
+    "voided_output": 6512
+  },
+  "reference_capture": {
+    "capture_id": 41,
+    "declared_records": 278,
+    "declared_segments": 6,
+    "envelope_checksum_ok": true,
+    "recovered_records": 278,
+    "recovered_segments": 6,
+    "roster_dictionary_size": 16,
+    "source": "baseline-capture.rjnl",
+    "transcript_agreement": {
+      "available": true,
+      "byte_exact_agreement": true,
+      "decoded_records": 278,
+      "first_mismatches": [],
+      "mismatched_records": 0,
+      "transcript_records": 278
+    }
+  },
+  "season_capture": {
+    "capture_id": 83,
+    "declared_records": 1016,
+    "declared_roster_size": 22,
+    "declared_segments": 18,
+    "distinct_squads_recovered": 26,
+    "envelope_checksum_ok": true,
+    "record_residual": 0,
+    "recovered_records": 1016,
+    "recovered_segments": 18,
+    "registered_squads_recovered": 22,
+    "roster_residual": 0,
+    "segment_checksums_ok": true,
+    "segment_residual": 0,
+    "source": "season-capture.rjnl",
+    "trailing_bytes_after_last_segment": 0
+  },
+  "ticks_moving_backwards": 0,
+  "unregistered_squads": [
+    "AXL",
+    "BQT",
+    "YRD",
+    "ZPH"
+  ],
+  "upkeep_ledger": {
+    "charged_upkeep": 21769,
+    "overflow_upkeep": 20698,
+    "raw_upkeep": 42467,
+    "residual": 0
+  }
+}

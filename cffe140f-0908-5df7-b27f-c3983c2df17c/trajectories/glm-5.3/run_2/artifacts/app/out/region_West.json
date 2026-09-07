@@ -1,0 +1,91 @@
+{
+  "charged_upkeep": 2849,
+  "divisions": [
+    "D3",
+    "D7"
+  ],
+  "entrants": 4,
+  "entries": [
+    {
+      "charged_upkeep": 860,
+      "conference": "West",
+      "division": "D3",
+      "entrant_id": "E011",
+      "gross_output": 1363,
+      "licence_class": "LC3",
+      "matches": 8,
+      "overflow_upkeep": 834,
+      "season_score": 2872,
+      "segment": "commercial",
+      "squad_key": "KRN",
+      "standing_points": 3,
+      "streak_credit": 0,
+      "tier": "champion",
+      "voided_output": 126
+    },
+    {
+      "charged_upkeep": 269,
+      "conference": "West",
+      "division": "D7",
+      "entrant_id": "E015",
+      "gross_output": 482,
+      "licence_class": "LC3",
+      "matches": 3,
+      "overflow_upkeep": 0,
+      "season_score": 157,
+      "segment": "commercial",
+      "squad_key": "ORC",
+      "standing_points": 0,
+      "streak_credit": 0,
+      "tier": "provisional",
+      "voided_output": 224
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "West",
+      "division": "D3",
+      "entrant_id": "E019",
+      "gross_output": 1422,
+      "licence_class": "LC3",
+      "matches": 3,
+      "overflow_upkeep": 867,
+      "season_score": 3108,
+      "segment": "commercial",
+      "squad_key": "SLT",
+      "standing_points": 0,
+      "streak_credit": 0,
+      "tier": "champion",
+      "voided_output": 0
+    },
+    {
+      "charged_upkeep": 860,
+      "conference": "West",
+      "division": "D7",
+      "entrant_id": "E023",
+      "gross_output": 384,
+      "licence_class": "LC3",
+      "matches": 2,
+      "overflow_upkeep": 332,
+      "season_score": -1812,
+      "segment": "commercial",
+      "squad_key": "WRN",
+      "standing_points": 0,
+      "streak_credit": 0,
+      "tier": "provisional",
+      "voided_output": 138
+    }
+  ],
+  "gross_output": 3651,
+  "group_kind": "conference",
+  "group_name": "West",
+  "overflow_upkeep": 2033,
+  "season_score": 4325,
+  "standing_points": 3,
+  "tier_counts": {
+    "champion": 2,
+    "contender": 0,
+    "provisional": 2,
+    "qualifier": 0
+  },
+  "voided_output": 488
+}

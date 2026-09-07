@@ -1,0 +1,90 @@
+[PASS] test_format_artifacts_present (weight +1)
+[FAIL] test_format_reports_parse (weight +1)
+       AssertionError: summary is missing capture_id
+[FAIL] test_format_adjudication_record_schema (weight +1)
+       AssertionError: adjudication record is missing bracket_candidates
+[FAIL] test_instance_summary (weight +3)
+       AssertionError: shipped capture: summary.json field 'capture_id' is None and the resolved value is 83
+[FAIL] test_instance_reconciliation (weight +3)
+       AssertionError: shipped capture: data_quality.json field 'absent_entrants' is None and the resolved value is ['RVN', 'TDR']
+[FAIL] test_instance_region_east (weight +3)
+       AssertionError: shipped capture: region_East.json field 'entries' is [{'charged_upkeep': 860, 'conference': 'East', 'division': 'D4', 'entrant_id': 'E004', 'gross_output': 879, 'licence_class': 'LC2', 'matches': 3, 'overflow_upkeep': 662, 'season_score': 898, 'segment': 'public', 'squad_key': 'DVN', 'standing_points': 3, 'streak_credit': 0, 'tier': 'qualifier', 'voided_output': 425}, {'charged_upk
+[FAIL] test_instance_region_north (weight +3)
+       AssertionError: shipped capture: region_North.json field 'entries' is [{'charged_upkeep': 860, 'conference': 'North', 'division': 'D1', 'entrant_id': 'E001', 'gross_output': 1005, 'licence_class': 'LC1', 'matches': 6, 'overflow_upkeep': 298, 'season_score': 1295, 'segment': 'commercial', 'squad_key': 'AKR', 'standing_points': 0, 'streak_credit': 0, 'tier': 'qualifier', 'voided_output': 79}, {'char
+[FAIL] test_instance_region_south (weight +3)
+       AssertionError: shipped capture: region_South.json field 'entries' is [{'charged_upkeep': 860, 'conference': 'South', 'division': 'D2', 'entrant_id': 'E002', 'gross_output': 1793, 'licence_class': 'LC4', 'matches': 6, 'overflow_upkeep': 2002, 'season_score': 1866, 'segment': 'public', 'squad_key': 'BLZ', 'standing_points': 8, 'streak_credit': 2, 'tier': 'contender', 'voided_output': 540}, {'charge
+[FAIL] test_instance_region_west (weight +3)
+       AssertionError: shipped capture: region_West.json field 'entries' is [{'charged_upkeep': 860, 'conference': 'West', 'division': 'D3', 'entrant_id': 'E003', 'gross_output': 949, 'licence_class': 'LC3', 'matches': 3, 'overflow_upkeep': 1104, 'season_score': 1216, 'segment': 'commercial', 'squad_key': 'CDR', 'standing_points': 3, 'streak_credit': 0, 'tier': 'qualifier', 'voided_output': 172}, {'charg
+[FAIL] test_instance_segment_commercial (weight +3)
+       AssertionError: shipped capture: segment_commercial.json field 'entries' is [{'charged_upkeep': 860, 'conference': 'North', 'division': 'D1', 'entrant_id': 'E001', 'gross_output': 1005, 'licence_class': 'LC1', 'matches': 6, 'overflow_upkeep': 298, 'season_score': 1295, 'segment': 'commercial', 'squad_key': 'AKR', 'standing_points': 0, 'streak_credit': 0, 'tier': 'qualifier', 'voided_output': 79}, 
+[FAIL] test_instance_segment_public (weight +3)
+       AssertionError: shipped capture: segment_public.json field 'entries' is [{'charged_upkeep': 860, 'conference': 'South', 'division': 'D2', 'entrant_id': 'E002', 'gross_output': 1793, 'licence_class': 'LC4', 'matches': 6, 'overflow_upkeep': 2002, 'season_score': 1866, 'segment': 'public', 'squad_key': 'BLZ', 'standing_points': 8, 'streak_credit': 2, 'tier': 'contender', 'voided_output': 540}, {'char
+[FAIL] test_trap_keystream (weight +5)
+       AssertionError: trap_keystream: data_quality.json field 'absent_entrants' is None and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_chain (weight +5)
+       AssertionError: trap_chain: data_quality.json field 'absent_entrants' is None and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_delta2 (weight +5)
+       AssertionError: trap_delta2: data_quality.json field 'absent_entrants' is None and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_driftkey (weight +5)
+       AssertionError: trap_driftkey: data_quality.json field 'absent_entrants' is None and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_segperm (weight +5)
+       AssertionError: trap_segperm: data_quality.json field 'absent_entrants' is None and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_backref (weight +5)
+       AssertionError: trap_backref: data_quality.json field 'absent_entrants' is None and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_endian (weight +5)
+       AssertionError: trap_endian: data_quality.json field 'absent_entrants' is None and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_countbias (weight +5)
+       AssertionError: trap_countbias: data_quality.json field 'absent_entrants' is None and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_lenshadow (weight +5)
+       AssertionError: trap_lenshadow: data_quality.json field 'absent_entrants' is None and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_rotate (weight +5)
+       AssertionError: trap_rotate: data_quality.json field 'absent_entrants' is None and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_alias (weight +5)
+       AssertionError: trap_alias: data_quality.json field 'absent_entrants' is None and the resolved value is ['RVN', 'TDR']
+[FAIL] test_trap_escape (weight +5)
+       AssertionError: derivation program exited 1: no reading of the material reproduces the control figures
+[FAIL] test_generalisation_tie_config (weight +5)
+       AssertionError: derivation program exited 1: no threshold on the published roster reproduces the control figures
+[FAIL] test_generalisation_cap_push (weight +5)
+       AssertionError: derivation program exited 1: no threshold on the published roster reproduces the control figures
+[FAIL] test_generalisation_empty_group (weight +5)
+       AssertionError: gen_empty_group: data_quality.json field 'absent_entrants' is None and the resolved value is ['RVN', 'TDR']
+[FAIL] test_generalisation_boundary_shift (weight +5)
+       AssertionError: derivation program exited 1: no reading of the material reproduces the control figures
+[FAIL] test_generalisation_add_entity (weight +5)
+       AssertionError: derivation program exited 1: no reading of the material reproduces the control figures
+[FAIL] test_generalisation_counterfactual_flip (weight +5)
+       AssertionError: derivation program exited 1: no reading of the material reproduces the control figures
+[FAIL] test_generalisation_scale (weight +5)
+       AssertionError: derivation program exited 1: no reading of the material reproduces the control figures
+[FAIL] test_generalisation_contradict (weight +5)
+       AssertionError: derivation program exited 1: no reading of the material reproduces the control figures
+[FAIL] test_generalisation_alias_chain (weight +5)
+       AssertionError: derivation program exited 1: no threshold on the published roster reproduces the control figures
+[FAIL] test_generalisation_nonapply (weight +5)
+       AssertionError: derivation program exited 1: no threshold on the published roster reproduces the control figures
+[FAIL] test_generalisation_cycle (weight +5)
+       AssertionError: derivation program exited 1: no reading of the material reproduces the control figures
+[FAIL] test_generalisation_partition (weight +5)
+       AssertionError: derivation program exited 1: no threshold on the published roster reproduces the control figures
+[FAIL] test_generalisation_sentinel_heavy (weight +5)
+       AssertionError: derivation program exited 1: no reading of the material reproduces the control figures
+[FAIL] test_generalisation_fresh_base (weight +5)
+       AssertionError: derivation program exited 1: no reading of the material reproduces the control figures
+[FAIL] test_mixed_stateful_guards (weight +5)
+       AssertionError: mix_stateful: data_quality.json field 'absent_entrants' is None and the resolved value is ['RVN', 'TDR']
+[FAIL] test_mixed_layout_guards (weight +5)
+       AssertionError: mix_layout: data_quality.json field 'absent_entrants' is None and the resolved value is ['RVN', 'TDR']
+[FAIL] test_mixed_key_guards (weight +5)
+       AssertionError: derivation program exited 1: no reading of the material reproduces the control figures
+[FAIL] test_mixed_corpus_context_guards (weight +5)
+       AssertionError: mix_corpus: data_quality.json field 'absent_entrants' is None and the resolved value is ['RVN', 'TDR']
+[FAIL] test_negative_weight_hardcoded_sample_answers (weight -5)
+       AssertionError: shortcut absent: the shipped capture was not reproduced
+[FAIL] test_negative_weight_filename_dependent_behaviour (weight -5)
+       AssertionError: derivation program exited 1: no reading of the material reproduces the control figures
+[FAIL] test_negative_weight_reads_supplied_answer_data_at_runtime (weight -5)
+       AssertionError: derivation program exited 1: no threshold on the published roster reproduces the control figures
+[FAIL] test_negative_weight_nondeterministic_output (weight -3)
+       AssertionError: derivation program exited 1: no reading of the material reproduces the control figures
+[grade] raw=+1  positive_total=177  reward=+0.005650

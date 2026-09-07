@@ -1,0 +1,9 @@
+tenant_class,tenant_segment
+trial-single,consumer
+retail-single,consumer
+shop-floor,smb
+shop-back,smb
+dept-desk,corporate
+dept-lab,corporate
+carrier-core,enterprise
+carrier-edge,enterprise

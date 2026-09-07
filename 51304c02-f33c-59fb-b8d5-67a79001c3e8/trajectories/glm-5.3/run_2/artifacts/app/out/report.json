@@ -1,0 +1,923 @@
+{
+  "ok": true,
+  "tool": {
+    "name": "task-ctl",
+    "version": "1.1.0",
+    "python": "3.12.13",
+    "platform": "Linux-6.12.76-linuxkit-aarch64-with-glibc2.41",
+    "entry_point": "/app/tool/cli.py"
+  },
+  "repair": {
+    "summary": "tool.zip contained a stdlib-only CLI (task-ctl) whose init/set/validate/export-report commands were each faulty: init crashed on a misread argument and could not produce a contract-valid document, set mangled key names and value types, validate could not read the real contract schema and ignored validation_rules.json, export-report emitted a placeholder transcript, and the CLI crashed when invoked without a command. All eleven faults (five marked with '# BUG' comments, six unmarked) were repaired in /app/tool; the repaired tool then generated every artifact in /app/out itself.",
+    "source_archive": {
+      "path": "/app/data/tool.zip",
+      "extracted_to": "/app/tool",
+      "sha256": "c1886992f9c88addb7d25a7c3da324f78cea072933f988db68a9b5a79e1ece93",
+      "original_files": [
+        "README.md",
+        "cli.py",
+        "schema.json"
+      ]
+    },
+    "faults": [
+      {
+        "id": "F1",
+        "where": "cli.py:cmd_init",
+        "marked": true,
+        "symptom": "init crashed: AttributeError: 'Namespace' object has no attribute 'config' (it read args.config; the parser only defines --schema/--out).",
+        "fix": "init reads args.schema.",
+        "evidence": "python3 cli.py init --schema schema.json --out config.json -> AttributeError before any file was written."
+      },
+      {
+        "id": "F2",
+        "where": "cli.py:cmd_init",
+        "marked": true,
+        "symptom": "init wrote a nested 'settings' object, violating scalar_only, and emitted only 4 of the 9 required keys because defaults.json was never consulted.",
+        "fix": "init merges schema -> defaults -> env_overrides[profile] -> sample_config_<profile>.json, applies *_delta adjustments, orders keys as required_keys, and refuses to write a config that fails validation.",
+        "evidence": "old init output (with F1 bypassed): {\"profile\": \"TASK\", \"producer\": \"\", \"container\": \"\", \"settings\": {\"checksum\": \"crc32\"}}."
+      },
+      {
+        "id": "F3",
+        "where": "cli.py:cmd_set",
+        "marked": true,
+        "symptom": "set stored data[args.key.upper()], creating a key outside the contract, and kept the raw string, so numeric fields silently became strings.",
+        "fix": "keys are matched case-insensitively onto the key already stored in the config, values are coerced to bool/int/float/str, forbidden keys are refused, and --schema re-orders and re-validates after the change.",
+        "evidence": "old set output: \"MAX_RECORDS\": \"100\" appended next to the lowercase contract keys."
+      },
+      {
+        "id": "F4",
+        "where": "cli.py:cmd_report",
+        "marked": true,
+        "symptom": "export-report wrote {\"ok\": true, \"config\": ..., \"commands\": \"unknown\"}, asserting success without validating anything and with no usable transcript.",
+        "fix": "export-report validates every --config, replays the real run journal (command, argv, captured output, exit code), records input/output digests and merges structured notes.",
+        "evidence": "old report output was a three-key object with the literal string 'unknown' for commands."
+      },
+      {
+        "id": "F5",
+        "where": "cli.py:main",
+        "marked": true,
+        "symptom": "subparsers were optional, so running the CLI with no command crashed on args.func.",
+        "fix": "subparsers are required (argparse prints usage instead of a traceback); every command returns an exit status.",
+        "evidence": "python3 cli.py -> AttributeError: 'Namespace' object has no attribute 'func'."
+      },
+      {
+        "id": "F6",
+        "where": "cli.py:cmd_validate",
+        "marked": false,
+        "symptom": "required_keys was assumed to be a comma-separated string; the contract (/app/data/config_schema.json) defines it as a JSON array, so validate crashed with AttributeError: 'list' object has no attribute 'split'.",
+        "fix": "both the array form and the legacy comma-separated string form are accepted and normalised.",
+        "evidence": "python3 cli.py validate --schema config_schema.json --config config.json -> AttributeError: 'list' object has no attribute 'split'."
+      },
+      {
+        "id": "F7",
+        "where": "cli.py:cmd_validate",
+        "marked": false,
+        "symptom": "validation_rules.json was ignored entirely: no forbidden_keys check, no known-profile check, no required_artifacts/max_artifact_bytes check, no machine-readable output and no failure exit status.",
+        "fix": "validate checks required keys, scalar_only, scalar types, numeric ranges, checksum algorithm, known profiles, forbidden keys, unknown keys, trailer presence/shape, value derivation from defaults+overrides, and (with --artifacts) the required artifact set and size limit; --out writes a structured report and the exit status is 1 on any error.",
+        "evidence": "old validate only printed 'ok' after two partial checks."
+      },
+      {
+        "id": "F8",
+        "where": "cli.py (missing feature)",
+        "marked": false,
+        "symptom": "the tool had no way to consume env_overrides.json or the sample_config_<profile>.json files, so it could not produce the dev/prod environment profiles the data directory is shaped around.",
+        "fix": "init --profile <name> applies env_overrides[<name>] plus sample_config_<name>.json, honouring *_delta arithmetic (max_records_delta, retry_limit_delta, timeout_ms_delta).",
+        "evidence": "old CLI parser defined no profile-related arguments at all."
+      },
+      {
+        "id": "F9",
+        "where": "packaging",
+        "marked": false,
+        "symptom": "the tool 'installs as task-ctl' but no task-ctl entry point existed, only cli.py.",
+        "fix": "added the executable task-ctl wrapper (imports cli.main from its own directory, so it also works through a symlink); bundled copies of schema.json, defaults.json, env_overrides.json and validation_rules.json make the tool runnable standalone.",
+        "evidence": "tool.zip listing: README.md, cli.py, schema.json only."
+      },
+      {
+        "id": "F10",
+        "where": "schema.json",
+        "marked": false,
+        "symptom": "the bundled schema shipped the legacy comma-separated required_keys and lacked scalar_only, diverging from the authoritative contract.",
+        "fix": "schema.json realigned with /app/data/config_schema.json (array form of required_keys, scalar_only, checksum).",
+        "evidence": "old schema.json vs config_schema.json."
+      },
+      {
+        "id": "F11",
+        "where": "cli.py:load_json/write_json",
+        "marked": false,
+        "symptom": "bare tracebacks on missing/invalid JSON, no explicit encoding, and single-line JSON output.",
+        "fix": "load failures exit with a one-line message; writes are deterministic (2-space indent, UTF-8, keys ordered by required_keys, trailing newline).",
+        "evidence": "old write_json emitted json.dumps(data) with no indent and no encoding."
+      }
+    ],
+    "files_changed": [
+      {
+        "path": "cli.py",
+        "change": "repaired and extended (all eleven faults)"
+      },
+      {
+        "path": "schema.json",
+        "change": "realigned with the contract"
+      },
+      {
+        "path": "task-ctl",
+        "change": "new executable entry point"
+      },
+      {
+        "path": "defaults.json",
+        "change": "new: baseline values shipped so the tool runs standalone (verbatim copy of the provided /app/data/defaults.json)"
+      },
+      {
+        "path": "env_overrides.json",
+        "change": "new: per-profile overrides shipped with the tool (verbatim copy of the provided /app/data/env_overrides.json)"
+      },
+      {
+        "path": "validation_rules.json",
+        "change": "new: rules contract shipped with the tool (verbatim copy of the provided /app/data/validation_rules.json)"
+      },
+      {
+        "path": "README.md",
+        "change": "rewritten for the repaired command surface"
+      },
+      {
+        "path": "REPAIR.md",
+        "change": "new: this fault list"
+      },
+      {
+        "path": "tests/test_cli.py",
+        "change": "new: 14 offline regression tests"
+      }
+    ],
+    "verification": {
+      "command": "python3 -B -m unittest discover -s tests -v",
+      "tests": 14,
+      "result": "OK",
+      "note": "tests exercise every fixed fault, including the four README command shapes and packaging."
+    },
+    "environment": {
+      "python": "3.12.13",
+      "dependencies": "Python standard library only",
+      "network": "none used; the workflow is fully offline"
+    }
+  },
+  "decisions": [
+    {
+      "topic": "profile of the main config.json",
+      "decision": "config.json carries the schema's base profile \"TASK\" (not dev/prod).",
+      "reason": "config_schema.json states \"profile\": \"TASK\", the default trailer is 'harbor:cli-config:TASK:...', and the brief calls config.json the main configuration and asks separately for the two environment profiles. validation_rules.json's \"profiles\" list is read as the set of environment profiles the tool must handle (it matches env_overrides.json exactly), not as a constraint forcing the main config onto one environment.",
+      "validator_behaviour": "profile_known accepts the schema's base profile plus every profile in validation_rules.json (plus any profile that has env_overrides entries), so config.json (TASK) and profile_dev.json/profile_prod.json (dev/prod) all validate."
+    },
+    {
+      "topic": "checksum field",
+      "decision": "checksum keeps the literal value \"crc32\".",
+      "reason": "the schema, defaults and both sample profiles all carry the string \"crc32\"; it names the checksum algorithm the contract requires, so validate asserts the config's checksum equals the schema's checksum rather than inventing a digest."
+    },
+    {
+      "topic": "environment profile values",
+      "decision": "dev = max_records 135, retry_limit 4, timeout_ms 1646; prod = max_records 170, retry_limit 3, timeout_ms 2021; both mode strict-local, trailer inherited from defaults.",
+      "reason": "base_config (max_records 145, retry_limit 3, timeout_ms 1771) plus env_overrides deltas (dev: retry +1, timeout -125; prod: timeout +250) plus the sample max_records_delta (dev -10, prod +25). env_overrides does not override the trailer, so it is carried through unchanged."
+    },
+    {
+      "topic": "artifacts produced by the tool",
+      "decision": "all seven required artifacts are written by task-ctl commands; nothing in /app/out was hand-authored.",
+      "reason": "config.json/profile_dev.json/profile_prod.json via init, report.json via export-report (merging these notes), validation_report.json via validate --out, summary.json via summarize, and tool.zip packaged from the repaired /app/tool with the standard library zipfile module."
+    }
+  ],
+  "run": {
+    "journal": "/app/out/run_log.jsonl",
+    "current_command": [
+      "export-report",
+      "--schema",
+      "/app/data/config_schema.json",
+      "--config",
+      "/app/out/config.json",
+      "--config",
+      "/app/out/profile_dev.json",
+      "--config",
+      "/app/out/profile_prod.json",
+      "--out",
+      "/app/out/report.json",
+      "--rules",
+      "/app/data/validation_rules.json",
+      "--notes",
+      "/app/work/notes.json"
+    ],
+    "commands": [
+      {
+        "seq": 1,
+        "recorded_utc": "2026-09-04T18:40:13Z",
+        "command": "init",
+        "argv": [
+          "init",
+          "--schema",
+          "/app/data/config_schema.json",
+          "--out",
+          "/app/out/config.json"
+        ],
+        "exit_code": 0,
+        "output": "wrote /app/out/config.json (profile=TASK)\n  profile = 'TASK'\n  producer = ''\n  container = ''\n  max_records = 145\n  retry_limit = 3\n  timeout_ms = 1771\n  checksum = 'crc32'\n  mode = 'strict-local'\n  trailer = 'harbor:cli-config:TASK:0000000000016384'\nvalidated /app/out/config.json: ok (12 checks)"
+      },
+      {
+        "seq": 2,
+        "recorded_utc": "2026-09-04T18:40:13Z",
+        "command": "init",
+        "argv": [
+          "init",
+          "--schema",
+          "/app/data/config_schema.json",
+          "--out",
+          "/app/out/profile_dev.json",
+          "--profile",
+          "dev"
+        ],
+        "exit_code": 0,
+        "output": "wrote /app/out/profile_dev.json (profile=dev)\n  profile = 'dev'\n  producer = ''\n  container = ''\n  max_records = 135\n  retry_limit = 4\n  timeout_ms = 1646\n  checksum = 'crc32'\n  mode = 'strict-local'\n  trailer = 'harbor:cli-config:TASK:0000000000016384'\nvalidated /app/out/profile_dev.json: ok (12 checks)"
+      },
+      {
+        "seq": 3,
+        "recorded_utc": "2026-09-04T18:40:13Z",
+        "command": "init",
+        "argv": [
+          "init",
+          "--schema",
+          "/app/data/config_schema.json",
+          "--out",
+          "/app/out/profile_prod.json",
+          "--profile",
+          "prod"
+        ],
+        "exit_code": 0,
+        "output": "wrote /app/out/profile_prod.json (profile=prod)\n  profile = 'prod'\n  producer = ''\n  container = ''\n  max_records = 170\n  retry_limit = 3\n  timeout_ms = 2021\n  checksum = 'crc32'\n  mode = 'strict-local'\n  trailer = 'harbor:cli-config:TASK:0000000000016384'\nvalidated /app/out/profile_prod.json: ok (12 checks)"
+      },
+      {
+        "seq": 4,
+        "recorded_utc": "2026-09-04T18:40:13Z",
+        "command": "set",
+        "argv": [
+          "set",
+          "--schema",
+          "/app/data/config_schema.json",
+          "--config",
+          "/app/out/config.json",
+          "--key",
+          "MAX_RECORDS",
+          "--value",
+          "145"
+        ],
+        "exit_code": 0,
+        "output": "set max_records = 145 (int) (was 145)\nok   /app/out/config.json (profile=TASK, 12 checks, 0 warnings)"
+      },
+      {
+        "seq": 5,
+        "recorded_utc": "2026-09-04T18:40:13Z",
+        "command": "package",
+        "argv": [
+          "package",
+          "--dir",
+          "/app/tool",
+          "--out",
+          "/app/out/tool.zip"
+        ],
+        "exit_code": 0,
+        "output": "wrote /app/out/tool.zip (9 files, 16752 bytes)\n  README.md (3191 bytes)\n  REPAIR.md (3635 bytes)\n  cli.py (38225 bytes)\n  defaults.json (240 bytes)\n  env_overrides.json (205 bytes)\n  schema.json (239 bytes)\n  task-ctl (258 bytes)\n  tests/test_cli.py (9245 bytes)\n  validation_rules.json (292 bytes)"
+      },
+      {
+        "seq": 6,
+        "recorded_utc": "2026-09-04T18:40:13Z",
+        "command": "validate",
+        "argv": [
+          "validate",
+          "--schema",
+          "/app/data/config_schema.json",
+          "--config",
+          "/app/out/config.json",
+          "--config",
+          "/app/out/profile_dev.json",
+          "--config",
+          "/app/out/profile_prod.json",
+          "--artifacts",
+          "/app/out",
+          "--rules",
+          "/app/data/validation_rules.json",
+          "--out",
+          "/app/out/validation_report.json"
+        ],
+        "exit_code": 1,
+        "output": "ok   /app/out/config.json (profile=TASK, 12 checks, 0 warnings)\nok   /app/out/profile_dev.json (profile=dev, 12 checks, 0 warnings)\nok   /app/out/profile_prod.json (profile=prod, 12 checks, 0 warnings)\nok   artifact config.json (230 bytes)\nFAIL artifact report.json (None bytes)\n     error: missing\nok   artifact tool.zip (16752 bytes)\nok   artifact profile_dev.json (229 bytes)\nok   artifact profile_prod.json (230 bytes)\nFAIL artifact validation_report.json (None bytes)\n     error: missing\nFAIL artifact summary.json (None bytes)\n     error: missing\nnote extra file in artifact dir: run_log.jsonl\nvalidation: FAILED (3/3 configs, 3 errors, 0 warnings, 7 artifacts)\nwrote /app/out/validation_report.json"
+      },
+      {
+        "seq": 7,
+        "recorded_utc": "2026-09-04T18:40:13Z",
+        "command": "summarize",
+        "argv": [
+          "summarize",
+          "--dir",
+          "/app/out",
+          "--out",
+          "/app/out/summary.json",
+          "--rules",
+          "/app/data/validation_rules.json",
+          "--notes",
+          "/app/work/notes.json"
+        ],
+        "exit_code": 1,
+        "output": "wrote /app/out/summary.json: 6/7 artifacts ok, validation_ok=False, report_ok=None"
+      }
+    ],
+    "command_note": "the journal holds every command that completed before this report was written; this export-report invocation is listed above",
+    "inputs": [
+      {
+        "role": "schema",
+        "path": "/app/data/config_schema.json",
+        "exists": true,
+        "bytes": 239,
+        "sha256": "a2be2fe479296993b815c089a4720940071a537be5003cd4ef1bccccba27a918"
+      },
+      {
+        "role": "defaults",
+        "path": "/app/data/defaults.json",
+        "exists": true,
+        "bytes": 240,
+        "sha256": "987b6a277bc029f2b717dbb96131b48fa044a4d2e454a94218c312ee1e9e83f5"
+      },
+      {
+        "role": "env_overrides",
+        "path": "/app/data/env_overrides.json",
+        "exists": true,
+        "bytes": 205,
+        "sha256": "94a51d7a107bfba5f7e44e8497ee9de81fca93dcb1b2ebebc7aba29d6564c177"
+      },
+      {
+        "role": "rules",
+        "path": "/app/data/validation_rules.json",
+        "exists": true,
+        "bytes": 292,
+        "sha256": "d3a339d9a03f0f891ae61f898fd02573d2eeac2f943d8e1e494e9430f4fadf62"
+      }
+    ],
+    "outputs": [
+      {
+        "role": "config",
+        "path": "/app/out/config.json",
+        "exists": true,
+        "bytes": 230,
+        "sha256": "df63fbb8d4f1c1f6c038eff6b5171362730fb586adc1147afa575028444d15c7"
+      },
+      {
+        "role": "config",
+        "path": "/app/out/profile_dev.json",
+        "exists": true,
+        "bytes": 229,
+        "sha256": "f1867fd2a555669c6905617efcdee9ea7f48b6c304fe5ae99cc29ce7aa036ce1"
+      },
+      {
+        "role": "config",
+        "path": "/app/out/profile_prod.json",
+        "exists": true,
+        "bytes": 230,
+        "sha256": "2b419463faffd567fe8fa6071a6b30cc45307794f8e4d96b463bc242c5e3287d"
+      }
+    ],
+    "notes": {
+      "journal": "/app/out/run_log.jsonl holds one JSON line per task-ctl invocation (command, argv, captured stdout/stderr, exit code, UTC stamp); export-report replays it as the run transcript.",
+      "self_test": "python3 -B -m unittest discover -s tests -v in /app/tool: 14 tests, result OK (re-run immediately before the deliverable run)."
+    }
+  },
+  "validation": {
+    "schema": "/app/data/config_schema.json",
+    "rules": "/app/data/validation_rules.json",
+    "defaults": "/app/data/defaults.json",
+    "env_overrides": "/app/data/env_overrides.json",
+    "known_profiles": [
+      "TASK",
+      "dev",
+      "prod"
+    ],
+    "profiles_with_overrides": [
+      "dev",
+      "prod"
+    ],
+    "configs": [
+      {
+        "path": "/app/out/config.json",
+        "profile": "TASK",
+        "ok": true,
+        "checks": [
+          {
+            "id": "json_object",
+            "status": "pass",
+            "severity": "error",
+            "detail": "configuration is a JSON object"
+          },
+          {
+            "id": "required_keys",
+            "status": "pass",
+            "severity": "error",
+            "detail": "all 9 required keys present (profile, producer, container, max_records, retry_limit, timeout_ms, checksum, mode, trailer)"
+          },
+          {
+            "id": "scalar_only",
+            "status": "pass",
+            "severity": "error",
+            "detail": "flat configuration (scalar values only)"
+          },
+          {
+            "id": "scalar_types",
+            "status": "pass",
+            "severity": "error",
+            "detail": "declared scalar types match the contract"
+          },
+          {
+            "id": "numeric_ranges",
+            "status": "pass",
+            "severity": "error",
+            "detail": "numeric keys within range"
+          },
+          {
+            "id": "checksum_algorithm",
+            "status": "pass",
+            "severity": "error",
+            "detail": "checksum algorithm is 'crc32'"
+          },
+          {
+            "id": "profile_known",
+            "status": "pass",
+            "severity": "error",
+            "detail": "profile is one of ['TASK', 'dev', 'prod']"
+          },
+          {
+            "id": "forbidden_keys",
+            "status": "pass",
+            "severity": "error",
+            "detail": "no forbidden keys present (generated_at, random_seed, timestamp, uuid)"
+          },
+          {
+            "id": "unknown_keys",
+            "status": "pass",
+            "severity": "warning",
+            "detail": "no keys beyond the contract"
+          },
+          {
+            "id": "trailer_present",
+            "status": "pass",
+            "severity": "error",
+            "detail": "trailer is a non-empty string"
+          },
+          {
+            "id": "trailer_shape",
+            "status": "pass",
+            "severity": "warning",
+            "detail": "trailer matches 'harbor:cli-config:<name>:<number>'"
+          },
+          {
+            "id": "derivation",
+            "status": "pass",
+            "severity": "warning",
+            "detail": "stored values match the values derived from defaults+overrides"
+          }
+        ],
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "path": "/app/out/profile_dev.json",
+        "profile": "dev",
+        "ok": true,
+        "checks": [
+          {
+            "id": "json_object",
+            "status": "pass",
+            "severity": "error",
+            "detail": "configuration is a JSON object"
+          },
+          {
+            "id": "required_keys",
+            "status": "pass",
+            "severity": "error",
+            "detail": "all 9 required keys present (profile, producer, container, max_records, retry_limit, timeout_ms, checksum, mode, trailer)"
+          },
+          {
+            "id": "scalar_only",
+            "status": "pass",
+            "severity": "error",
+            "detail": "flat configuration (scalar values only)"
+          },
+          {
+            "id": "scalar_types",
+            "status": "pass",
+            "severity": "error",
+            "detail": "declared scalar types match the contract"
+          },
+          {
+            "id": "numeric_ranges",
+            "status": "pass",
+            "severity": "error",
+            "detail": "numeric keys within range"
+          },
+          {
+            "id": "checksum_algorithm",
+            "status": "pass",
+            "severity": "error",
+            "detail": "checksum algorithm is 'crc32'"
+          },
+          {
+            "id": "profile_known",
+            "status": "pass",
+            "severity": "error",
+            "detail": "profile is one of ['TASK', 'dev', 'prod']"
+          },
+          {
+            "id": "forbidden_keys",
+            "status": "pass",
+            "severity": "error",
+            "detail": "no forbidden keys present (generated_at, random_seed, timestamp, uuid)"
+          },
+          {
+            "id": "unknown_keys",
+            "status": "pass",
+            "severity": "warning",
+            "detail": "no keys beyond the contract"
+          },
+          {
+            "id": "trailer_present",
+            "status": "pass",
+            "severity": "error",
+            "detail": "trailer is a non-empty string"
+          },
+          {
+            "id": "trailer_shape",
+            "status": "pass",
+            "severity": "warning",
+            "detail": "trailer matches 'harbor:cli-config:<name>:<number>'"
+          },
+          {
+            "id": "derivation",
+            "status": "pass",
+            "severity": "warning",
+            "detail": "stored values match the values derived from defaults+overrides"
+          }
+        ],
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "path": "/app/out/profile_prod.json",
+        "profile": "prod",
+        "ok": true,
+        "checks": [
+          {
+            "id": "json_object",
+            "status": "pass",
+            "severity": "error",
+            "detail": "configuration is a JSON object"
+          },
+          {
+            "id": "required_keys",
+            "status": "pass",
+            "severity": "error",
+            "detail": "all 9 required keys present (profile, producer, container, max_records, retry_limit, timeout_ms, checksum, mode, trailer)"
+          },
+          {
+            "id": "scalar_only",
+            "status": "pass",
+            "severity": "error",
+            "detail": "flat configuration (scalar values only)"
+          },
+          {
+            "id": "scalar_types",
+            "status": "pass",
+            "severity": "error",
+            "detail": "declared scalar types match the contract"
+          },
+          {
+            "id": "numeric_ranges",
+            "status": "pass",
+            "severity": "error",
+            "detail": "numeric keys within range"
+          },
+          {
+            "id": "checksum_algorithm",
+            "status": "pass",
+            "severity": "error",
+            "detail": "checksum algorithm is 'crc32'"
+          },
+          {
+            "id": "profile_known",
+            "status": "pass",
+            "severity": "error",
+            "detail": "profile is one of ['TASK', 'dev', 'prod']"
+          },
+          {
+            "id": "forbidden_keys",
+            "status": "pass",
+            "severity": "error",
+            "detail": "no forbidden keys present (generated_at, random_seed, timestamp, uuid)"
+          },
+          {
+            "id": "unknown_keys",
+            "status": "pass",
+            "severity": "warning",
+            "detail": "no keys beyond the contract"
+          },
+          {
+            "id": "trailer_present",
+            "status": "pass",
+            "severity": "error",
+            "detail": "trailer is a non-empty string"
+          },
+          {
+            "id": "trailer_shape",
+            "status": "pass",
+            "severity": "warning",
+            "detail": "trailer matches 'harbor:cli-config:<name>:<number>'"
+          },
+          {
+            "id": "derivation",
+            "status": "pass",
+            "severity": "warning",
+            "detail": "stored values match the values derived from defaults+overrides"
+          }
+        ],
+        "errors": [],
+        "warnings": []
+      }
+    ]
+  },
+  "configs": [
+    {
+      "path": "/app/out/config.json",
+      "profile": "TASK",
+      "ok": true,
+      "checks": [
+        {
+          "id": "json_object",
+          "status": "pass",
+          "severity": "error",
+          "detail": "configuration is a JSON object"
+        },
+        {
+          "id": "required_keys",
+          "status": "pass",
+          "severity": "error",
+          "detail": "all 9 required keys present (profile, producer, container, max_records, retry_limit, timeout_ms, checksum, mode, trailer)"
+        },
+        {
+          "id": "scalar_only",
+          "status": "pass",
+          "severity": "error",
+          "detail": "flat configuration (scalar values only)"
+        },
+        {
+          "id": "scalar_types",
+          "status": "pass",
+          "severity": "error",
+          "detail": "declared scalar types match the contract"
+        },
+        {
+          "id": "numeric_ranges",
+          "status": "pass",
+          "severity": "error",
+          "detail": "numeric keys within range"
+        },
+        {
+          "id": "checksum_algorithm",
+          "status": "pass",
+          "severity": "error",
+          "detail": "checksum algorithm is 'crc32'"
+        },
+        {
+          "id": "profile_known",
+          "status": "pass",
+          "severity": "error",
+          "detail": "profile is one of ['TASK', 'dev', 'prod']"
+        },
+        {
+          "id": "forbidden_keys",
+          "status": "pass",
+          "severity": "error",
+          "detail": "no forbidden keys present (generated_at, random_seed, timestamp, uuid)"
+        },
+        {
+          "id": "unknown_keys",
+          "status": "pass",
+          "severity": "warning",
+          "detail": "no keys beyond the contract"
+        },
+        {
+          "id": "trailer_present",
+          "status": "pass",
+          "severity": "error",
+          "detail": "trailer is a non-empty string"
+        },
+        {
+          "id": "trailer_shape",
+          "status": "pass",
+          "severity": "warning",
+          "detail": "trailer matches 'harbor:cli-config:<name>:<number>'"
+        },
+        {
+          "id": "derivation",
+          "status": "pass",
+          "severity": "warning",
+          "detail": "stored values match the values derived from defaults+overrides"
+        }
+      ],
+      "errors": [],
+      "warnings": [],
+      "data": {
+        "profile": "TASK",
+        "producer": "",
+        "container": "",
+        "max_records": 145,
+        "retry_limit": 3,
+        "timeout_ms": 1771,
+        "checksum": "crc32",
+        "mode": "strict-local",
+        "trailer": "harbor:cli-config:TASK:0000000000016384"
+      }
+    },
+    {
+      "path": "/app/out/profile_dev.json",
+      "profile": "dev",
+      "ok": true,
+      "checks": [
+        {
+          "id": "json_object",
+          "status": "pass",
+          "severity": "error",
+          "detail": "configuration is a JSON object"
+        },
+        {
+          "id": "required_keys",
+          "status": "pass",
+          "severity": "error",
+          "detail": "all 9 required keys present (profile, producer, container, max_records, retry_limit, timeout_ms, checksum, mode, trailer)"
+        },
+        {
+          "id": "scalar_only",
+          "status": "pass",
+          "severity": "error",
+          "detail": "flat configuration (scalar values only)"
+        },
+        {
+          "id": "scalar_types",
+          "status": "pass",
+          "severity": "error",
+          "detail": "declared scalar types match the contract"
+        },
+        {
+          "id": "numeric_ranges",
+          "status": "pass",
+          "severity": "error",
+          "detail": "numeric keys within range"
+        },
+        {
+          "id": "checksum_algorithm",
+          "status": "pass",
+          "severity": "error",
+          "detail": "checksum algorithm is 'crc32'"
+        },
+        {
+          "id": "profile_known",
+          "status": "pass",
+          "severity": "error",
+          "detail": "profile is one of ['TASK', 'dev', 'prod']"
+        },
+        {
+          "id": "forbidden_keys",
+          "status": "pass",
+          "severity": "error",
+          "detail": "no forbidden keys present (generated_at, random_seed, timestamp, uuid)"
+        },
+        {
+          "id": "unknown_keys",
+          "status": "pass",
+          "severity": "warning",
+          "detail": "no keys beyond the contract"
+        },
+        {
+          "id": "trailer_present",
+          "status": "pass",
+          "severity": "error",
+          "detail": "trailer is a non-empty string"
+        },
+        {
+          "id": "trailer_shape",
+          "status": "pass",
+          "severity": "warning",
+          "detail": "trailer matches 'harbor:cli-config:<name>:<number>'"
+        },
+        {
+          "id": "derivation",
+          "status": "pass",
+          "severity": "warning",
+          "detail": "stored values match the values derived from defaults+overrides"
+        }
+      ],
+      "errors": [],
+      "warnings": [],
+      "data": {
+        "profile": "dev",
+        "producer": "",
+        "container": "",
+        "max_records": 135,
+        "retry_limit": 4,
+        "timeout_ms": 1646,
+        "checksum": "crc32",
+        "mode": "strict-local",
+        "trailer": "harbor:cli-config:TASK:0000000000016384"
+      }
+    },
+    {
+      "path": "/app/out/profile_prod.json",
+      "profile": "prod",
+      "ok": true,
+      "checks": [
+        {
+          "id": "json_object",
+          "status": "pass",
+          "severity": "error",
+          "detail": "configuration is a JSON object"
+        },
+        {
+          "id": "required_keys",
+          "status": "pass",
+          "severity": "error",
+          "detail": "all 9 required keys present (profile, producer, container, max_records, retry_limit, timeout_ms, checksum, mode, trailer)"
+        },
+        {
+          "id": "scalar_only",
+          "status": "pass",
+          "severity": "error",
+          "detail": "flat configuration (scalar values only)"
+        },
+        {
+          "id": "scalar_types",
+          "status": "pass",
+          "severity": "error",
+          "detail": "declared scalar types match the contract"
+        },
+        {
+          "id": "numeric_ranges",
+          "status": "pass",
+          "severity": "error",
+          "detail": "numeric keys within range"
+        },
+        {
+          "id": "checksum_algorithm",
+          "status": "pass",
+          "severity": "error",
+          "detail": "checksum algorithm is 'crc32'"
+        },
+        {
+          "id": "profile_known",
+          "status": "pass",
+          "severity": "error",
+          "detail": "profile is one of ['TASK', 'dev', 'prod']"
+        },
+        {
+          "id": "forbidden_keys",
+          "status": "pass",
+          "severity": "error",
+          "detail": "no forbidden keys present (generated_at, random_seed, timestamp, uuid)"
+        },
+        {
+          "id": "unknown_keys",
+          "status": "pass",
+          "severity": "warning",
+          "detail": "no keys beyond the contract"
+        },
+        {
+          "id": "trailer_present",
+          "status": "pass",
+          "severity": "error",
+          "detail": "trailer is a non-empty string"
+        },
+        {
+          "id": "trailer_shape",
+          "status": "pass",
+          "severity": "warning",
+          "detail": "trailer matches 'harbor:cli-config:<name>:<number>'"
+        },
+        {
+          "id": "derivation",
+          "status": "pass",
+          "severity": "warning",
+          "detail": "stored values match the values derived from defaults+overrides"
+        }
+      ],
+      "errors": [],
+      "warnings": [],
+      "data": {
+        "profile": "prod",
+        "producer": "",
+        "container": "",
+        "max_records": 170,
+        "retry_limit": 3,
+        "timeout_ms": 2021,
+        "checksum": "crc32",
+        "mode": "strict-local",
+        "trailer": "harbor:cli-config:TASK:0000000000016384"
+      }
+    }
+  ]
+}

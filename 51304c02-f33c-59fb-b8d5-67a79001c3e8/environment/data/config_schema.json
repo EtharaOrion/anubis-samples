@@ -1,0 +1,8 @@
+{
+  "profile": "TASK",
+  "producer": "",
+  "container": "",
+  "required_keys": ["profile", "producer", "container", "max_records", "retry_limit", "timeout_ms", "checksum", "mode", "trailer"],
+  "scalar_only": true,
+  "checksum": "crc32"
+}

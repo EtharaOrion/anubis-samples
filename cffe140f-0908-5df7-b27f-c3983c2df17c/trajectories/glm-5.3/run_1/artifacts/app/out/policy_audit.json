@@ -1,0 +1,2514 @@
+{
+  "reference_transcript_check": {
+    "present": true,
+    "file": "baseline-events.jsonl",
+    "records_compared": 278,
+    "field_by_field_agreement": true
+  },
+  "roster_dictionary": {
+    "source_capture": "baseline-capture.rjnl",
+    "capture_identifier": 41,
+    "size": 16,
+    "order": [
+      "AKR",
+      "CDR",
+      "BLZ",
+      "DVN",
+      "FLX",
+      "EMB",
+      "GRT",
+      "HVN",
+      "IBX",
+      "JDE",
+      "KRN",
+      "LMX",
+      "ORC",
+      "MRA",
+      "NVL",
+      "PYX"
+    ]
+  },
+  "unstated_quantities": {
+    "engine_tag": {
+      "document": "replay-guards.md",
+      "published_roster": [
+        "orion-fold",
+        "wren-cadence",
+        "tessel-drift",
+        "halcyon-mark",
+        "vector-plume",
+        "umbral-stack",
+        "quill-lattice",
+        "nimbus-gable"
+      ],
+      "candidate_space_size": 8,
+      "selected": "tessel-drift",
+      "candidates": [
+        {
+          "value": "orion-fold",
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C1",
+            "label": "matches opened",
+            "reason": "control-capture.rjnl: declares 6 segments but holds 5"
+          },
+          "reproduces": null
+        },
+        {
+          "value": "wren-cadence",
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C1",
+            "label": "matches opened",
+            "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+          },
+          "reproduces": null
+        },
+        {
+          "value": "tessel-drift",
+          "verdict": "accepted",
+          "falsifier": null,
+          "reproduces": {
+            "C1": 5,
+            "C2": 238,
+            "C3": 16,
+            "C4": 6228,
+            "C5": 1703,
+            "C6": 8166,
+            "C7": 7939,
+            "C8": 227,
+            "C9": 1,
+            "C10": 1,
+            "C11": 14
+          }
+        },
+        {
+          "value": "halcyon-mark",
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C1",
+            "label": "matches opened",
+            "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+          },
+          "reproduces": null
+        },
+        {
+          "value": "vector-plume",
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C1",
+            "label": "matches opened",
+            "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+          },
+          "reproduces": null
+        },
+        {
+          "value": "umbral-stack",
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C1",
+            "label": "matches opened",
+            "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+          },
+          "reproduces": null
+        },
+        {
+          "value": "quill-lattice",
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C1",
+            "label": "matches opened",
+            "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+          },
+          "reproduces": null
+        },
+        {
+          "value": "nimbus-gable",
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C1",
+            "label": "matches opened",
+            "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+          },
+          "reproduces": null
+        }
+      ],
+      "search": "every candidate is tried against the control capture with the window depth and the escape sentinel held at their pinned values"
+    },
+    "window_depth": {
+      "document": "replay-guards.md",
+      "published_roster": [
+        4,
+        6,
+        8,
+        10
+      ],
+      "candidate_space_size": 4,
+      "selected": 6,
+      "candidates": [
+        {
+          "value": 4,
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C2",
+            "label": "records recovered",
+            "reason": "control-capture.rjnl: back reference 4 outside the 4 deep window"
+          },
+          "reproduces": null
+        },
+        {
+          "value": 6,
+          "verdict": "accepted",
+          "falsifier": null,
+          "reproduces": {
+            "C1": 5,
+            "C2": 238,
+            "C3": 16,
+            "C4": 6228,
+            "C5": 1703,
+            "C6": 8166,
+            "C7": 7939,
+            "C8": 227,
+            "C9": 1,
+            "C10": 1,
+            "C11": 14
+          }
+        },
+        {
+          "value": 8,
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C4",
+            "label": "gross output",
+            "published": 6228,
+            "reproduced": 6644
+          },
+          "reproduces": {
+            "C1": 5,
+            "C2": 238,
+            "C3": 16,
+            "C4": 6644,
+            "C5": 1287,
+            "C6": 7458,
+            "C7": 7096,
+            "C8": 362,
+            "C9": 0,
+            "C10": 3,
+            "C11": 13
+          }
+        },
+        {
+          "value": 10,
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C4",
+            "label": "gross output",
+            "published": 6228,
+            "reproduced": 6922
+          },
+          "reproduces": {
+            "C1": 5,
+            "C2": 238,
+            "C3": 16,
+            "C4": 6922,
+            "C5": 1009,
+            "C6": 8030,
+            "C7": 7361,
+            "C8": 669,
+            "C9": 0,
+            "C10": 1,
+            "C11": 13
+          }
+        }
+      ],
+      "search": "every candidate is tried against the control capture with the engine tag and the escape sentinel held at their pinned values"
+    },
+    "escape_sentinel": {
+      "document": "replay-guards.md",
+      "published_roster": [
+        26,
+        29,
+        32,
+        127
+      ],
+      "candidate_space_size": 4,
+      "selected": "0x1D",
+      "candidates": [
+        {
+          "value": 26,
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C2",
+            "label": "records recovered",
+            "reason": "control-capture.rjnl: bad event kind 29 or attribution mode 43 in slot 4 record 21"
+          },
+          "reproduces": null
+        },
+        {
+          "value": 29,
+          "verdict": "accepted",
+          "falsifier": null,
+          "reproduces": {
+            "C1": 5,
+            "C2": 238,
+            "C3": 16,
+            "C4": 6228,
+            "C5": 1703,
+            "C6": 8166,
+            "C7": 7939,
+            "C8": 227,
+            "C9": 1,
+            "C10": 1,
+            "C11": 14
+          }
+        },
+        {
+          "value": 32,
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C2",
+            "label": "records recovered",
+            "reason": "control-capture.rjnl: bad event kind 29 or attribution mode 43 in slot 4 record 21"
+          },
+          "reproduces": null
+        },
+        {
+          "value": 127,
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C2",
+            "label": "records recovered",
+            "reason": "control-capture.rjnl: bad event kind 29 or attribution mode 43 in slot 4 record 21"
+          },
+          "reproduces": null
+        }
+      ],
+      "search": "every candidate is tried against the control capture with the engine tag and the window depth held at their pinned values"
+    },
+    "season_budget": {
+      "document": "upkeep-policy.md",
+      "published_roster": [
+        20,
+        220,
+        440,
+        640,
+        860,
+        1060
+      ],
+      "candidate_space_size": 6,
+      "selected": 860,
+      "candidates": [
+        {
+          "value": 20,
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C7",
+            "label": "charged upkeep",
+            "published": 7939,
+            "reproduced": 300
+          },
+          "reproduces": {
+            "C1": 5,
+            "C2": 238,
+            "C3": 16,
+            "C4": 6228,
+            "C5": 1703,
+            "C6": 8166,
+            "C7": 300,
+            "C8": 7866,
+            "C9": 2,
+            "C10": 6,
+            "C11": 7
+          }
+        },
+        {
+          "value": 220,
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C7",
+            "label": "charged upkeep",
+            "published": 7939,
+            "reproduced": 3278
+          },
+          "reproduces": {
+            "C1": 5,
+            "C2": 238,
+            "C3": 16,
+            "C4": 6228,
+            "C5": 1703,
+            "C6": 8166,
+            "C7": 3278,
+            "C8": 4888,
+            "C9": 1,
+            "C10": 4,
+            "C11": 10
+          }
+        },
+        {
+          "value": 440,
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C7",
+            "label": "charged upkeep",
+            "published": 7939,
+            "reproduced": 5769
+          },
+          "reproduces": {
+            "C1": 5,
+            "C2": 238,
+            "C3": 16,
+            "C4": 6228,
+            "C5": 1703,
+            "C6": 8166,
+            "C7": 5769,
+            "C8": 2397,
+            "C9": 1,
+            "C10": 2,
+            "C11": 13
+          }
+        },
+        {
+          "value": 640,
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C7",
+            "label": "charged upkeep",
+            "published": 7939,
+            "reproduced": 7230
+          },
+          "reproduces": {
+            "C1": 5,
+            "C2": 238,
+            "C3": 16,
+            "C4": 6228,
+            "C5": 1703,
+            "C6": 8166,
+            "C7": 7230,
+            "C8": 936,
+            "C9": 1,
+            "C10": 1,
+            "C11": 14
+          }
+        },
+        {
+          "value": 860,
+          "verdict": "accepted",
+          "falsifier": null,
+          "reproduces": {
+            "C1": 5,
+            "C2": 238,
+            "C3": 16,
+            "C4": 6228,
+            "C5": 1703,
+            "C6": 8166,
+            "C7": 7939,
+            "C8": 227,
+            "C9": 1,
+            "C10": 1,
+            "C11": 14
+          }
+        },
+        {
+          "value": 1060,
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C7",
+            "label": "charged upkeep",
+            "published": 7939,
+            "reproduced": 8159
+          },
+          "reproduces": {
+            "C1": 5,
+            "C2": 238,
+            "C3": 16,
+            "C4": 6228,
+            "C5": 1703,
+            "C6": 8166,
+            "C7": 8159,
+            "C8": 7,
+            "C9": 1,
+            "C10": 1,
+            "C11": 14
+          }
+        }
+      ],
+      "search": "every candidate is tried against the control capture with the guard quantities and the promotion threshold held at their pinned values"
+    },
+    "promotion_threshold": {
+      "document": "standings-policy.md",
+      "published_roster": [
+        20,
+        140,
+        200,
+        360,
+        700,
+        1300
+      ],
+      "candidate_space_size": 6,
+      "selected": 700,
+      "candidates": [
+        {
+          "value": 20,
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C9",
+            "label": "champion entrants",
+            "published": 1,
+            "reproduced": 7
+          },
+          "reproduces": {
+            "C1": 5,
+            "C2": 238,
+            "C3": 16,
+            "C4": 6228,
+            "C5": 1703,
+            "C6": 8166,
+            "C7": 7939,
+            "C8": 227,
+            "C9": 7,
+            "C10": 0,
+            "C11": 9
+          }
+        },
+        {
+          "value": 140,
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C9",
+            "label": "champion entrants",
+            "published": 1,
+            "reproduced": 4
+          },
+          "reproduces": {
+            "C1": 5,
+            "C2": 238,
+            "C3": 16,
+            "C4": 6228,
+            "C5": 1703,
+            "C6": 8166,
+            "C7": 7939,
+            "C8": 227,
+            "C9": 4,
+            "C10": 1,
+            "C11": 9
+          }
+        },
+        {
+          "value": 200,
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C9",
+            "label": "champion entrants",
+            "published": 1,
+            "reproduced": 3
+          },
+          "reproduces": {
+            "C1": 5,
+            "C2": 238,
+            "C3": 16,
+            "C4": 6228,
+            "C5": 1703,
+            "C6": 8166,
+            "C7": 7939,
+            "C8": 227,
+            "C9": 3,
+            "C10": 3,
+            "C11": 9
+          }
+        },
+        {
+          "value": 360,
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C10",
+            "label": "qualifier entrants",
+            "published": 1,
+            "reproduced": 2
+          },
+          "reproduces": {
+            "C1": 5,
+            "C2": 238,
+            "C3": 16,
+            "C4": 6228,
+            "C5": 1703,
+            "C6": 8166,
+            "C7": 7939,
+            "C8": 227,
+            "C9": 1,
+            "C10": 2,
+            "C11": 12
+          }
+        },
+        {
+          "value": 700,
+          "verdict": "accepted",
+          "falsifier": null,
+          "reproduces": {
+            "C1": 5,
+            "C2": 238,
+            "C3": 16,
+            "C4": 6228,
+            "C5": 1703,
+            "C6": 8166,
+            "C7": 7939,
+            "C8": 227,
+            "C9": 1,
+            "C10": 1,
+            "C11": 14
+          }
+        },
+        {
+          "value": 1300,
+          "verdict": "rejected",
+          "falsifier": {
+            "figure": "C9",
+            "label": "champion entrants",
+            "published": 1,
+            "reproduced": 0
+          },
+          "reproduces": {
+            "C1": 5,
+            "C2": 238,
+            "C3": 16,
+            "C4": 6228,
+            "C5": 1703,
+            "C6": 8166,
+            "C7": 7939,
+            "C8": 227,
+            "C9": 0,
+            "C10": 1,
+            "C11": 15
+          }
+        }
+      ],
+      "search": "every candidate is tried against the control capture with the guard quantities and the season budget held at their pinned values"
+    }
+  },
+  "guard_candidate_space": {
+    "axes": [
+      "engine_tag",
+      "window_depth",
+      "escape_sentinel"
+    ],
+    "combinations_evaluated": 128,
+    "combinations_accepted": 1,
+    "combinations": [
+      {
+        "engine_tag": "orion-fold",
+        "window_depth": 4,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 6 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "orion-fold",
+        "window_depth": 4,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 6 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "orion-fold",
+        "window_depth": 4,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 6 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "orion-fold",
+        "window_depth": 4,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 6 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "orion-fold",
+        "window_depth": 6,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 6 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "orion-fold",
+        "window_depth": 6,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 6 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "orion-fold",
+        "window_depth": 6,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 6 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "orion-fold",
+        "window_depth": 6,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 6 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "orion-fold",
+        "window_depth": 8,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 6 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "orion-fold",
+        "window_depth": 8,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 6 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "orion-fold",
+        "window_depth": 8,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 6 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "orion-fold",
+        "window_depth": 8,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 6 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "orion-fold",
+        "window_depth": 10,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 6 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "orion-fold",
+        "window_depth": 10,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 6 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "orion-fold",
+        "window_depth": 10,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 6 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "orion-fold",
+        "window_depth": 10,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 6 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "window_depth": 4,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "window_depth": 4,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "window_depth": 4,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "window_depth": 4,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "window_depth": 6,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "window_depth": 6,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "window_depth": 6,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "window_depth": 6,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "window_depth": 8,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "window_depth": 8,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "window_depth": 8,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "window_depth": 8,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "window_depth": 10,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "window_depth": 10,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "window_depth": 10,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "wren-cadence",
+        "window_depth": 10,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 4,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C2",
+          "label": "records recovered",
+          "reason": "control-capture.rjnl: bad event kind 29 or attribution mode 43 in slot 4 record 21"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 4,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C2",
+          "label": "records recovered",
+          "reason": "control-capture.rjnl: back reference 4 outside the 4 deep window"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 4,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C2",
+          "label": "records recovered",
+          "reason": "control-capture.rjnl: bad event kind 29 or attribution mode 43 in slot 4 record 21"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 4,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C2",
+          "label": "records recovered",
+          "reason": "control-capture.rjnl: bad event kind 29 or attribution mode 43 in slot 4 record 21"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 6,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C2",
+          "label": "records recovered",
+          "reason": "control-capture.rjnl: bad event kind 29 or attribution mode 43 in slot 4 record 21"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 6,
+        "sentinel": 29,
+        "verdict": "accepted",
+        "falsifier": null,
+        "reproduces": [
+          "C1",
+          "C2",
+          "C3",
+          "C4",
+          "C5",
+          "C6"
+        ],
+        "metrics": {
+          "matches_opened": 5,
+          "records_recovered": 238,
+          "distinct_squads": 16,
+          "gross_output": 6228,
+          "voided_output": 1703,
+          "raw_upkeep": 8166,
+          "charged_upkeep": 300,
+          "overflow_upkeep": 7866,
+          "champion": 16,
+          "contender": 0,
+          "qualifier": 0,
+          "provisional": 0
+        }
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 6,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C2",
+          "label": "records recovered",
+          "reason": "control-capture.rjnl: bad event kind 29 or attribution mode 43 in slot 4 record 21"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 6,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C2",
+          "label": "records recovered",
+          "reason": "control-capture.rjnl: bad event kind 29 or attribution mode 43 in slot 4 record 21"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 8,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C2",
+          "label": "records recovered",
+          "reason": "control-capture.rjnl: bad event kind 29 or attribution mode 43 in slot 4 record 21"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 8,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C4",
+          "label": "gross output",
+          "published": 6228,
+          "reproduced": 6644
+        },
+        "reproduces": [
+          "C1",
+          "C2",
+          "C3"
+        ],
+        "metrics": {
+          "matches_opened": 5,
+          "records_recovered": 238,
+          "distinct_squads": 16,
+          "gross_output": 6644,
+          "voided_output": 1287,
+          "raw_upkeep": 7458,
+          "charged_upkeep": 300,
+          "overflow_upkeep": 7158,
+          "champion": 16,
+          "contender": 0,
+          "qualifier": 0,
+          "provisional": 0
+        }
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 8,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C2",
+          "label": "records recovered",
+          "reason": "control-capture.rjnl: bad event kind 29 or attribution mode 43 in slot 4 record 21"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 8,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C2",
+          "label": "records recovered",
+          "reason": "control-capture.rjnl: bad event kind 29 or attribution mode 43 in slot 4 record 21"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 10,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C2",
+          "label": "records recovered",
+          "reason": "control-capture.rjnl: bad event kind 29 or attribution mode 43 in slot 4 record 21"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 10,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C4",
+          "label": "gross output",
+          "published": 6228,
+          "reproduced": 6922
+        },
+        "reproduces": [
+          "C1",
+          "C2",
+          "C3"
+        ],
+        "metrics": {
+          "matches_opened": 5,
+          "records_recovered": 238,
+          "distinct_squads": 16,
+          "gross_output": 6922,
+          "voided_output": 1009,
+          "raw_upkeep": 8030,
+          "charged_upkeep": 300,
+          "overflow_upkeep": 7730,
+          "champion": 16,
+          "contender": 0,
+          "qualifier": 0,
+          "provisional": 0
+        }
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 10,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C2",
+          "label": "records recovered",
+          "reason": "control-capture.rjnl: bad event kind 29 or attribution mode 43 in slot 4 record 21"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 10,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C2",
+          "label": "records recovered",
+          "reason": "control-capture.rjnl: bad event kind 29 or attribution mode 43 in slot 4 record 21"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "window_depth": 4,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "window_depth": 4,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "window_depth": 4,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "window_depth": 4,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "window_depth": 6,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "window_depth": 6,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "window_depth": 6,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "window_depth": 6,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "window_depth": 8,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "window_depth": 8,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "window_depth": 8,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "window_depth": 8,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "window_depth": 10,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "window_depth": 10,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "window_depth": 10,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "halcyon-mark",
+        "window_depth": 10,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "vector-plume",
+        "window_depth": 4,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "vector-plume",
+        "window_depth": 4,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "vector-plume",
+        "window_depth": 4,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "vector-plume",
+        "window_depth": 4,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "vector-plume",
+        "window_depth": 6,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "vector-plume",
+        "window_depth": 6,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "vector-plume",
+        "window_depth": 6,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "vector-plume",
+        "window_depth": 6,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "vector-plume",
+        "window_depth": 8,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "vector-plume",
+        "window_depth": 8,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "vector-plume",
+        "window_depth": 8,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "vector-plume",
+        "window_depth": 8,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "vector-plume",
+        "window_depth": 10,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "vector-plume",
+        "window_depth": 10,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "vector-plume",
+        "window_depth": 10,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "vector-plume",
+        "window_depth": 10,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 3 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "window_depth": 4,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "window_depth": 4,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "window_depth": 4,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "window_depth": 4,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "window_depth": 6,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "window_depth": 6,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "window_depth": 6,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "window_depth": 6,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "window_depth": 8,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "window_depth": 8,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "window_depth": 8,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "window_depth": 8,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "window_depth": 10,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "window_depth": 10,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "window_depth": 10,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "umbral-stack",
+        "window_depth": 10,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 10 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "window_depth": 4,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "window_depth": 4,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "window_depth": 4,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "window_depth": 4,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "window_depth": 6,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "window_depth": 6,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "window_depth": 6,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "window_depth": 6,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "window_depth": 8,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "window_depth": 8,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "window_depth": 8,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "window_depth": 8,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "window_depth": 10,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "window_depth": 10,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "window_depth": 10,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "quill-lattice",
+        "window_depth": 10,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "window_depth": 4,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "window_depth": 4,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "window_depth": 4,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "window_depth": 4,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "window_depth": 6,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "window_depth": 6,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "window_depth": 6,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "window_depth": 6,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "window_depth": 8,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "window_depth": 8,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "window_depth": 8,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "window_depth": 8,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "window_depth": 10,
+        "sentinel": 26,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "window_depth": 10,
+        "sentinel": 29,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "window_depth": 10,
+        "sentinel": 32,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      },
+      {
+        "engine_tag": "nimbus-gable",
+        "window_depth": 10,
+        "sentinel": 127,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C1",
+          "label": "matches opened",
+          "reason": "control-capture.rjnl: declares 4 segments but holds 5"
+        },
+        "reproduces": []
+      }
+    ]
+  },
+  "budget_candidate_space": {
+    "candidates_evaluated": 6,
+    "candidates": [
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 6,
+        "sentinel": 29,
+        "budget": 20,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C7",
+          "label": "charged upkeep",
+          "published": 7939,
+          "reproduced": 300
+        }
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 6,
+        "sentinel": 29,
+        "budget": 220,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C7",
+          "label": "charged upkeep",
+          "published": 7939,
+          "reproduced": 3278
+        }
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 6,
+        "sentinel": 29,
+        "budget": 440,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C7",
+          "label": "charged upkeep",
+          "published": 7939,
+          "reproduced": 5769
+        }
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 6,
+        "sentinel": 29,
+        "budget": 640,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C7",
+          "label": "charged upkeep",
+          "published": 7939,
+          "reproduced": 7230
+        }
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 6,
+        "sentinel": 29,
+        "budget": 860,
+        "verdict": "accepted",
+        "falsifier": null
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 6,
+        "sentinel": 29,
+        "budget": 1060,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C7",
+          "label": "charged upkeep",
+          "published": 7939,
+          "reproduced": 8159
+        }
+      }
+    ]
+  },
+  "threshold_candidate_space": {
+    "candidates_evaluated": 6,
+    "candidates": [
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 6,
+        "sentinel": 29,
+        "budget": 860,
+        "threshold": 20,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C9",
+          "label": "champion entrants",
+          "published": 1,
+          "reproduced": 7
+        }
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 6,
+        "sentinel": 29,
+        "budget": 860,
+        "threshold": 140,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C9",
+          "label": "champion entrants",
+          "published": 1,
+          "reproduced": 4
+        }
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 6,
+        "sentinel": 29,
+        "budget": 860,
+        "threshold": 200,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C9",
+          "label": "champion entrants",
+          "published": 1,
+          "reproduced": 3
+        }
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 6,
+        "sentinel": 29,
+        "budget": 860,
+        "threshold": 360,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C10",
+          "label": "qualifier entrants",
+          "published": 1,
+          "reproduced": 2
+        }
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 6,
+        "sentinel": 29,
+        "budget": 860,
+        "threshold": 700,
+        "verdict": "accepted",
+        "falsifier": null
+      },
+      {
+        "engine_tag": "tessel-drift",
+        "window_depth": 6,
+        "sentinel": 29,
+        "budget": 860,
+        "threshold": 1300,
+        "verdict": "rejected",
+        "falsifier": {
+          "figure": "C9",
+          "label": "champion entrants",
+          "published": 1,
+          "reproduced": 0
+        }
+      }
+    ]
+  },
+  "attribution_settlement": {
+    "pass_count": 6,
+    "method": "a sweep replaces the current owner of every squad by the squad that the current owner hands to; closed sets settle on their alphabetically first member before sweeping",
+    "handovers": {
+      "BLZ": "CDR",
+      "CDR": "DVN",
+      "DVN": "BLZ",
+      "GRT": "FLX",
+      "HVN": "GRT",
+      "IBX": "HVN",
+      "JDE": "IBX",
+      "UMB": "JDE",
+      "VLC": "BLZ"
+    },
+    "closed_sets": [
+      [
+        "BLZ",
+        "CDR",
+        "DVN"
+      ]
+    ],
+    "effective_owners": {
+      "CDR": "BLZ",
+      "DVN": "BLZ",
+      "GRT": "FLX",
+      "HVN": "FLX",
+      "IBX": "FLX",
+      "JDE": "FLX",
+      "UMB": "FLX",
+      "VLC": "BLZ"
+    }
+  },
+  "bracket_candidate_space": {
+    "candidate_space_size": 680,
+    "best_satisfied_constraint_count": 9,
+    "candidates_reaching_the_best": 17,
+    "constraint_count": 10,
+    "constraint_names": [
+      "member_in_a_prominent_division",
+      "both_entrant_segments_present",
+      "every_member_at_the_standing_points_floor",
+      "no_two_members_share_a_conference",
+      "a_ranked_entrant_present",
+      "combined_ladder_weight_at_the_floor",
+      "no_member_carries_overflow_upkeep",
+      "a_champion_tier_member_present",
+      "combined_gross_output_at_the_floor",
+      "no_member_handed_its_entry_away"
+    ],
+    "tie_break": "least combined charged upkeep, then the member keys sorting first",
+    "selected_members": [
+      "FLX",
+      "KRN",
+      "LMX"
+    ]
+  },
+  "docket_search": {
+    "matches_considered": 18,
+    "conference_cap": 2,
+    "docket_size": 5,
+    "total_review_index": 2993,
+    "selected_match_ids": [
+      503,
+      507,
+      509,
+      513,
+      515
+    ]
+  },
+  "calibration": {
+    "control_capture": "control-capture.rjnl",
+    "figures_published": 11,
+    "rows": [
+      {
+        "figure": "C1",
+        "label": "matches opened",
+        "published": 5,
+        "reproduced": 5,
+        "agrees": true
+      },
+      {
+        "figure": "C2",
+        "label": "records recovered",
+        "published": 238,
+        "reproduced": 238,
+        "agrees": true
+      },
+      {
+        "figure": "C3",
+        "label": "distinct squads",
+        "published": 16,
+        "reproduced": 16,
+        "agrees": true
+      },
+      {
+        "figure": "C4",
+        "label": "gross output",
+        "published": 6228,
+        "reproduced": 6228,
+        "agrees": true
+      },
+      {
+        "figure": "C5",
+        "label": "voided output",
+        "published": 1703,
+        "reproduced": 1703,
+        "agrees": true
+      },
+      {
+        "figure": "C6",
+        "label": "raw upkeep",
+        "published": 8166,
+        "reproduced": 8166,
+        "agrees": true
+      },
+      {
+        "figure": "C7",
+        "label": "charged upkeep",
+        "published": 7939,
+        "reproduced": 7939,
+        "agrees": true
+      },
+      {
+        "figure": "C8",
+        "label": "overflow upkeep",
+        "published": 227,
+        "reproduced": 227,
+        "agrees": true
+      },
+      {
+        "figure": "C9",
+        "label": "champion entrants",
+        "published": 1,
+        "reproduced": 1,
+        "agrees": true
+      },
+      {
+        "figure": "C10",
+        "label": "qualifier entrants",
+        "published": 1,
+        "reproduced": 1,
+        "agrees": true
+      },
+      {
+        "figure": "C11",
+        "label": "provisional entrants",
+        "published": 14,
+        "reproduced": 14,
+        "agrees": true
+      }
+    ],
+    "all_agree": true
+  },
+  "policy_figures_in_force": {
+    "eligibility_match_floor": 2,
+    "ladder_weight_prominence": 4,
+    "standing_points_floor": 3,
+    "combined_ladder_weight_floor": 7,
+    "combined_gross_output_floor": 900,
+    "review_weight": 25,
+    "docket_size": 5,
+    "docket_conference_cap": 2
+  }
+}

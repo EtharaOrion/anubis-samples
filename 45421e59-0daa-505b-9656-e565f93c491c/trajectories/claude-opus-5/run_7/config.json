@@ -1,0 +1,19 @@
+{
+  "task": {
+    "path": "45421e59-0daa-505b-9656-e565f93c491c",
+    "source": "45421e59-0daa-505b-9656-e565f93c491c"
+  },
+  "trial_name": "data__ko3zH97",
+  "trials_dir": "45421e59-0daa-505b-9656-e565f93c491c/trajectories/claude-opus-5",
+  "agent_setup_timeout_multiplier": 6.0,
+  "agent": {
+    "name": "claude-code",
+    "model_name": "claude-opus-5"
+  },
+  "verifier": {
+    "env": {
+      "REWARDKIT_JUDGE": "gpt-5.6-sol"
+    }
+  },
+  "job_id": "cca79999-3ccf-47c6-8ad2-6765a6105c11"
+}

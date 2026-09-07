@@ -1,0 +1,60 @@
+[PASS] test_triage_set_is_complete (weight +1)
+[PASS] test_triage_program_carries_its_promised_fallback_locations (weight +1)
+[PASS] test_shipped_ledger_matches_the_reference (weight +3)
+[PASS] test_shipped_incident_and_module_rollups_match_the_reference (weight +3)
+[PASS] test_shipped_zone_reports_match_the_reference (weight +3)
+[PASS] test_shipped_tenant_segment_reports_match_the_reference (weight +3)
+[PASS] test_shipped_reconciliation_record_matches_the_reference (weight +3)
+[PASS] test_trap_second_order_cost_inverse (weight +5)
+[FAIL] test_trap_chained_entry_inverse (weight +5)
+       AssertionError: normalized.jsonl differs from the reference
+[FAIL] test_trap_running_unwind_drift_inverse (weight +5)
+       AssertionError: normalized.jsonl differs from the reference
+[FAIL] test_trap_rotated_frame_lines_inverse (weight +5)
+       AssertionError: normalized.jsonl differs from the reference
+[FAIL] test_trap_biased_declared_count_inverse (weight +5)
+       DecodeError: dump DC0000 claims 15 of 8 lines
+[FAIL] test_trap_alternate_radix_base_inverse (weight +5)
+       DecodeError: digit 'f' is out of radix 11
+[PASS] test_trap_registry_alias_column_inverse (weight +5)
+[FAIL] test_trap_split_dump_base_inverse (weight +5)
+       DecodeError: split-base low part overflows in dump DC0000
+[PASS] test_trap_shadow_frame_index_inverse (weight +5)
+[FAIL] test_trap_rotated_fault_signature_inverse (weight +5)
+       AssertionError: normalized.jsonl differs from the reference
+[FAIL] test_trap_coarse_allocation_escape_inverse (weight +5)
+       AssertionError: normalized.jsonl differs from the reference
+[PASS] test_trap_ring_back_reference_inverse (weight +5)
+[FAIL] test_generalises_to_a_fresh_crash_corpus (weight +5)
+       DecodeError: dump DC0002 claims 12 of 9 lines
+[FAIL] test_generalises_when_budget_ties_move (weight +5)
+       DecodeError: dump DC0002 claims 13 of 10 lines
+[FAIL] test_generalises_when_peaks_sit_on_the_budget (weight +5)
+       DecodeError: dump DC0002 claims 12 of 9 lines
+[FAIL] test_generalises_when_rule_presentation_order_inverts (weight +5)
+       DecodeError: digit 'd' is out of radix 11
+[FAIL] test_generalises_when_a_deployment_zone_empties (weight +5)
+       DecodeError: dump DC0002 claims 14 of 11 lines
+[FAIL] test_generalises_when_the_registry_carries_a_cycle (weight +5)
+       DecodeError: dump DC0002 claims 13 of 10 lines
+[FAIL] test_generalises_when_the_support_boundary_shifts (weight +5)
+       DecodeError: dump DC0002 claims 9 of 6 lines
+[FAIL] test_generalises_when_a_new_module_enters (weight +5)
+       DecodeError: dump DC0002 claims 9 of 6 lines
+[FAIL] test_generalises_when_a_dormant_rule_fires (weight +5)
+       DecodeError: dump DC0002 claims 11 of 8 lines
+[FAIL] test_generalises_when_the_partition_count_changes (weight +5)
+       DecodeError: dump DC0002 claims 11 of 8 lines
+[FAIL] test_generalises_when_the_corpus_scales (weight +5)
+       DecodeError: dump DC0002 claims 10 of 7 lines
+[FAIL] test_generalises_when_the_corpus_contradicts_the_control_slice (weight +5)
+       DecodeError: dump DC0002 claims 14 of 11 lines
+[FAIL] test_negative_weight_hardcoded_sample_answers (weight -5)
+       AssertionError
+[FAIL] test_negative_weight_filename_dependent_behaviour (weight -5)
+       DecodeError: dump DC0002 claims 8 of 5 lines
+[FAIL] test_negative_weight_reads_supplied_answer_data_at_runtime (weight -5)
+       AssertionError
+[FAIL] test_negative_weight_nondeterministic_output (weight -3)
+       DecodeError: dump DC0002 claims 8 of 5 lines
+[grade] raw=+37  positive_total=137  reward=+0.270073

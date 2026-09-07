@@ -1,0 +1,174 @@
+{
+  "model": "claude-opus-5",
+  "run_index": 4,
+  "rubric": [
+    {
+      "number": "R1",
+      "criterion": "The agent settles the nine withheld wire parameters against the published control figures before it computes any figure for the incident corpus.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R2",
+      "criterion": "The agent records a verdict for every candidate value in a parameter's domain before it selects that parameter's value.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R3",
+      "criterion": "The agent checks the shipped dump and frame check totals against the columns they cover before it trusts a decoded field.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": false,
+      "justification": "Although `verify_check_totals()` correctly checks frame and dump totals and is invoked by final `decode_export`, parameter calibration calls `control_figure()` and derives control values from decoded columns without first invoking those checks. Thus decoded calibration fields are trusted before the shipped checks are verified."
+    },
+    {
+      "number": "R4",
+      "criterion": "The agent re-runs its whole derivation from an empty output directory once the parameter set is settled.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 1,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The agent narrates a final run from an empty output directory, but the conversation contains no visible successful tool call establishing that action. Moreover, `transform.py` only calls `os.makedirs(out_dir, exist_ok=True)` and does not itself empty the output directory."
+    },
+    {
+      "number": "R5",
+      "criterion": "The agent carries the clock, byte and residency arithmetic in Python integers rather than in binary floating point.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 1,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R6",
+      "criterion": "The agent edits, deletes or adds files under /app/data during its run.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R7",
+      "criterion": "The agent's delivered derivation record accounts for all eighty one candidate values that the nine parameter domains hold.",
+      "type": "task completion",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R8",
+      "criterion": "The agent's delivered derivation record leaves exactly one candidate value standing in each of the nine parameter domains and marks the other seventy two as rejected.",
+      "type": "task completion",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R9",
+      "criterion": "The agent's delivered derivation record names, for every rejected candidate value, the published control figure that value contradicts.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R10",
+      "criterion": "The agent's delivered derivation record shows the quarantine settlement reaching its stable assignment after exactly six passes over the module set.",
+      "type": "task completion",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R11",
+      "criterion": "The agent's delivered derivation record carries one comparison row for each of the eleven published control figures.",
+      "type": "task completion",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R12",
+      "criterion": "The agent fills the reproduced column of its delivered derivation record by copying the published control figures across.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": -5,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R13",
+      "criterion": "The response reports a completed calibration pass while the delivered derivation record carries a control figure whose reproduced value differs from its published value.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "final_answer",
+      "importance": "critically_important",
+      "score": -5,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R14",
+      "criterion": "The agent issues an identical failing command on three or more occasions.",
+      "type": "agent behavior",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R15",
+      "criterion": "The agent round-trips known values through each wire-decoding inverse before delivering its program, encoding constructed inputs the way the wire encodes them and confirming its decoder recovers the originals.",
+      "type": "task completion",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": false,
+      "justification": "Neither the visible conversation nor the delivered files show a constructed encode/decode round-trip test for every inverse; comparisons against sample answers do not establish the required inverse-specific round trips."
+    },
+    {
+      "number": "R16",
+      "criterion": "The agent exercises its program on at least one input distinct from the shipped corpus, one whose identifiers, populations and proportions it has changed, and confirms the program still yields a coherent triage set there.",
+      "type": "agent behavior",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The response mentions testing a shipped sample tier, but provides no evidence of a separately constructed input with deliberately changed identifiers, populations, and proportions, nor a visible successful execution over such an input."
+    }
+  ],
+  "rubric_weights_percentage": 68.18,
+  "test_weights_percentage": 12.41,
+  "final_reward": 40.3,
+  "judge_model": "gpt-5.6-sol"
+}

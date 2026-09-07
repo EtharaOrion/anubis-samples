@@ -1,0 +1,350 @@
+{
+  "ok": true,
+  "tool": {
+    "name": "task-ctl",
+    "version": "1.1.0",
+    "python": "3.12.13",
+    "platform": "Linux-6.12.76-linuxkit-aarch64-with-glibc2.41",
+    "entry_point": "/app/tool/cli.py"
+  },
+  "validation": {
+    "schema": "/app/data/config_schema.json",
+    "rules": "/app/data/validation_rules.json",
+    "defaults": "/app/data/defaults.json",
+    "env_overrides": "/app/data/env_overrides.json",
+    "known_profiles": [
+      "TASK",
+      "dev",
+      "prod"
+    ],
+    "profiles_with_overrides": [
+      "dev",
+      "prod"
+    ],
+    "configs": [
+      {
+        "path": "/app/out/config.json",
+        "profile": "TASK",
+        "ok": true,
+        "checks": [
+          {
+            "id": "json_object",
+            "status": "pass",
+            "severity": "error",
+            "detail": "configuration is a JSON object"
+          },
+          {
+            "id": "required_keys",
+            "status": "pass",
+            "severity": "error",
+            "detail": "all 9 required keys present (profile, producer, container, max_records, retry_limit, timeout_ms, checksum, mode, trailer)"
+          },
+          {
+            "id": "scalar_only",
+            "status": "pass",
+            "severity": "error",
+            "detail": "flat configuration (scalar values only)"
+          },
+          {
+            "id": "scalar_types",
+            "status": "pass",
+            "severity": "error",
+            "detail": "declared scalar types match the contract"
+          },
+          {
+            "id": "numeric_ranges",
+            "status": "pass",
+            "severity": "error",
+            "detail": "numeric keys within range"
+          },
+          {
+            "id": "checksum_algorithm",
+            "status": "pass",
+            "severity": "error",
+            "detail": "checksum algorithm is 'crc32'"
+          },
+          {
+            "id": "profile_known",
+            "status": "pass",
+            "severity": "error",
+            "detail": "profile is one of ['TASK', 'dev', 'prod']"
+          },
+          {
+            "id": "forbidden_keys",
+            "status": "pass",
+            "severity": "error",
+            "detail": "no forbidden keys present (generated_at, random_seed, timestamp, uuid)"
+          },
+          {
+            "id": "unknown_keys",
+            "status": "pass",
+            "severity": "warning",
+            "detail": "no keys beyond the contract"
+          },
+          {
+            "id": "trailer_present",
+            "status": "pass",
+            "severity": "error",
+            "detail": "trailer is a non-empty string"
+          },
+          {
+            "id": "trailer_shape",
+            "status": "pass",
+            "severity": "warning",
+            "detail": "trailer matches 'harbor:cli-config:<name>:<number>'"
+          },
+          {
+            "id": "derivation",
+            "status": "pass",
+            "severity": "warning",
+            "detail": "stored values match the values derived from defaults+overrides"
+          }
+        ],
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "path": "/app/out/profile_dev.json",
+        "profile": "dev",
+        "ok": true,
+        "checks": [
+          {
+            "id": "json_object",
+            "status": "pass",
+            "severity": "error",
+            "detail": "configuration is a JSON object"
+          },
+          {
+            "id": "required_keys",
+            "status": "pass",
+            "severity": "error",
+            "detail": "all 9 required keys present (profile, producer, container, max_records, retry_limit, timeout_ms, checksum, mode, trailer)"
+          },
+          {
+            "id": "scalar_only",
+            "status": "pass",
+            "severity": "error",
+            "detail": "flat configuration (scalar values only)"
+          },
+          {
+            "id": "scalar_types",
+            "status": "pass",
+            "severity": "error",
+            "detail": "declared scalar types match the contract"
+          },
+          {
+            "id": "numeric_ranges",
+            "status": "pass",
+            "severity": "error",
+            "detail": "numeric keys within range"
+          },
+          {
+            "id": "checksum_algorithm",
+            "status": "pass",
+            "severity": "error",
+            "detail": "checksum algorithm is 'crc32'"
+          },
+          {
+            "id": "profile_known",
+            "status": "pass",
+            "severity": "error",
+            "detail": "profile is one of ['TASK', 'dev', 'prod']"
+          },
+          {
+            "id": "forbidden_keys",
+            "status": "pass",
+            "severity": "error",
+            "detail": "no forbidden keys present (generated_at, random_seed, timestamp, uuid)"
+          },
+          {
+            "id": "unknown_keys",
+            "status": "pass",
+            "severity": "warning",
+            "detail": "no keys beyond the contract"
+          },
+          {
+            "id": "trailer_present",
+            "status": "pass",
+            "severity": "error",
+            "detail": "trailer is a non-empty string"
+          },
+          {
+            "id": "trailer_shape",
+            "status": "pass",
+            "severity": "warning",
+            "detail": "trailer matches 'harbor:cli-config:<name>:<number>'"
+          },
+          {
+            "id": "derivation",
+            "status": "pass",
+            "severity": "warning",
+            "detail": "stored values match the values derived from defaults+overrides"
+          }
+        ],
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "path": "/app/out/profile_prod.json",
+        "profile": "prod",
+        "ok": true,
+        "checks": [
+          {
+            "id": "json_object",
+            "status": "pass",
+            "severity": "error",
+            "detail": "configuration is a JSON object"
+          },
+          {
+            "id": "required_keys",
+            "status": "pass",
+            "severity": "error",
+            "detail": "all 9 required keys present (profile, producer, container, max_records, retry_limit, timeout_ms, checksum, mode, trailer)"
+          },
+          {
+            "id": "scalar_only",
+            "status": "pass",
+            "severity": "error",
+            "detail": "flat configuration (scalar values only)"
+          },
+          {
+            "id": "scalar_types",
+            "status": "pass",
+            "severity": "error",
+            "detail": "declared scalar types match the contract"
+          },
+          {
+            "id": "numeric_ranges",
+            "status": "pass",
+            "severity": "error",
+            "detail": "numeric keys within range"
+          },
+          {
+            "id": "checksum_algorithm",
+            "status": "pass",
+            "severity": "error",
+            "detail": "checksum algorithm is 'crc32'"
+          },
+          {
+            "id": "profile_known",
+            "status": "pass",
+            "severity": "error",
+            "detail": "profile is one of ['TASK', 'dev', 'prod']"
+          },
+          {
+            "id": "forbidden_keys",
+            "status": "pass",
+            "severity": "error",
+            "detail": "no forbidden keys present (generated_at, random_seed, timestamp, uuid)"
+          },
+          {
+            "id": "unknown_keys",
+            "status": "pass",
+            "severity": "warning",
+            "detail": "no keys beyond the contract"
+          },
+          {
+            "id": "trailer_present",
+            "status": "pass",
+            "severity": "error",
+            "detail": "trailer is a non-empty string"
+          },
+          {
+            "id": "trailer_shape",
+            "status": "pass",
+            "severity": "warning",
+            "detail": "trailer matches 'harbor:cli-config:<name>:<number>'"
+          },
+          {
+            "id": "derivation",
+            "status": "pass",
+            "severity": "warning",
+            "detail": "stored values match the values derived from defaults+overrides"
+          }
+        ],
+        "errors": [],
+        "warnings": []
+      }
+    ]
+  },
+  "artifacts": {
+    "dir": "/app/out",
+    "max_artifact_bytes": 1048576,
+    "items": [
+      {
+        "name": "config.json",
+        "path": "/app/out/config.json",
+        "exists": true,
+        "bytes": 230,
+        "max_bytes": 1048576,
+        "ok": true,
+        "problem": null
+      },
+      {
+        "name": "report.json",
+        "path": "/app/out/report.json",
+        "exists": true,
+        "bytes": 34601,
+        "max_bytes": 1048576,
+        "ok": true,
+        "problem": null
+      },
+      {
+        "name": "tool.zip",
+        "path": "/app/out/tool.zip",
+        "exists": true,
+        "bytes": 16752,
+        "max_bytes": 1048576,
+        "ok": true,
+        "problem": null
+      },
+      {
+        "name": "profile_dev.json",
+        "path": "/app/out/profile_dev.json",
+        "exists": true,
+        "bytes": 229,
+        "max_bytes": 1048576,
+        "ok": true,
+        "problem": null
+      },
+      {
+        "name": "profile_prod.json",
+        "path": "/app/out/profile_prod.json",
+        "exists": true,
+        "bytes": 230,
+        "max_bytes": 1048576,
+        "ok": true,
+        "problem": null
+      },
+      {
+        "name": "validation_report.json",
+        "path": "/app/out/validation_report.json",
+        "exists": true,
+        "bytes": 9987,
+        "max_bytes": 1048576,
+        "ok": true,
+        "problem": null
+      },
+      {
+        "name": "summary.json",
+        "path": "/app/out/summary.json",
+        "exists": true,
+        "bytes": 7763,
+        "max_bytes": 1048576,
+        "ok": true,
+        "problem": null
+      }
+    ],
+    "extra_files": [
+      "run_log.jsonl"
+    ],
+    "ok": true
+  },
+  "summary": {
+    "configs_checked": 3,
+    "configs_ok": 3,
+    "errors": 0,
+    "warnings": 0,
+    "artifacts_checked": 7
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "tool": "task-ctl",
+  "tool_version": "1.0.0-repaired",
+  "ok": true,
+  "config_path": "/app/out/config.json",
+  "config": {
+    "profile": "TASK",
+    "producer": "",
+    "container": "",
+    "max_records": 145,
+    "retry_limit": 3,
+    "timeout_ms": 1771,
+    "checksum": "crc32",
+    "mode": "strict-local",
+    "trailer": "harbor:cli-config:TASK:0000000000016384"
+  },
+  "config_key_count": 9,
+  "repairs": [
+    {
+      "id": "init-reads-missing-arg",
+      "location": "cmd_init",
+      "fault": "init loaded args.config, an option the init subparser never defines, so every invocation died with AttributeError.",
+      "fix": "init now loads the schema from args.schema, as documented in README.md."
+    },
+    {
+      "id": "init-emits-nested-config",
+      "location": "cmd_init",
+      "fault": "init nested the checksum under a 'settings' object and emitted only 4 of the 9 required keys; the schema demands a flat, scalar-only document.",
+      "fix": "init emits a flat document containing every required key, seeded from the schema and (when --defaults is given) from defaults.json."
+    },
+    {
+      "id": "set-uppercases-key",
+      "location": "cmd_set",
+      "fault": "set wrote args.key.upper(), producing keys like MAX_RECORDS that no required key matches, and left every value as a string.",
+      "fix": "set preserves the key exactly and coerces the value to int/float/bool/null when the literal is one, so numeric keys stay numeric."
+    },
+    {
+      "id": "set-accepts-nonscalar",
+      "location": "cmd_set",
+      "fault": "set never rejected structured or forbidden keys, so it could silently break the scalar-only and forbidden-key rules.",
+      "fix": "set rejects non-scalar values and forbidden keys before writing."
+    },
+    {
+      "id": "validate-assumes-string-required-keys",
+      "location": "cmd_validate",
+      "fault": "validate called schema['required_keys'].split(','), which raises AttributeError against config_schema.json where required_keys is a list.",
+      "fix": "the schema loader normalises required_keys from either a JSON list or a comma-separated string, so both schema spellings validate."
+    },
+    {
+      "id": "validate-too-thin",
+      "location": "cmd_validate",
+      "fault": "validate only checked key presence and flatness; it ignored the declared checksum, the forbidden-key list and the allowed profiles, and it could not emit a machine-readable result.",
+      "fix": "validate checks required keys, scalar-only shape, forbidden keys, the declared checksum and the allowed profile set, accepts repeated --config, and can write its findings with --report-out."
+    },
+    {
+      "id": "report-transcript-unusable",
+      "location": "cmd_report",
+      "fault": "export-report hard-coded 'commands': 'unknown', so the report carried no record of what was actually run.",
+      "fix": "every command appends a structured entry to a transcript file next to the config (override with --log) and export-report emits that transcript as a list, together with the repair notes."
+    },
+    {
+      "id": "subcommand-not-required",
+      "location": "main",
+      "fault": "the subparsers were not required, so a bare `task-ctl` crashed with AttributeError: 'Namespace' object has no attribute 'func'.",
+      "fix": "a subcommand is required and a bare invocation prints usage and exits 2."
+    },
+    {
+      "id": "no-profile-support",
+      "location": "main",
+      "fault": "the tool had no way to combine defaults.json, env_overrides.json and a sample profile, so the per-environment configurations it is meant to produce could not be generated at all.",
+      "fix": "added build-profile, which applies base defaults, then environment overrides, then the profile document, resolving '<key>_delta' additively."
+    }
+  ],
+  "repair_count": 9,
+  "commands": [
+    {
+      "command": "init",
+      "options": {
+        "schema": "/app/data/config_schema.json",
+        "defaults": "/app/data/defaults.json",
+        "out": "/app/out/config.json"
+      },
+      "status": "ok",
+      "detail": {
+        "keys": [
+          "profile",
+          "producer",
+          "container",
+          "max_records",
+          "retry_limit",
+          "timeout_ms",
+          "checksum",
+          "mode",
+          "trailer"
+        ]
+      }
+    },
+    {
+      "command": "set",
+      "options": {
+        "config": "/app/out/config.json",
+        "key": "mode",
+        "value": "strict-local"
+      },
+      "status": "ok",
+      "detail": {
+        "from": "strict-local",
+        "to": "strict-local",
+        "type": "str"
+      }
+    },
+    {
+      "command": "set",
+      "options": {
+        "config": "/app/out/config.json",
+        "key": "max_records",
+        "value": "145"
+      },
+      "status": "ok",
+      "detail": {
+        "from": 145,
+        "to": 145,
+        "type": "int"
+      }
+    },
+    {
+      "command": "build-profile",
+      "options": {
+        "schema": "/app/data/config_schema.json",
+        "defaults": "/app/data/defaults.json",
+        "overrides": "/app/data/env_overrides.json",
+        "profile_input": "/app/data/sample_config_dev.json",
+        "out": "/app/out/profile_dev.json"
+      },
+      "status": "ok",
+      "detail": {
+        "profile": "dev",
+        "applied": [
+          {
+            "source": "env_overrides",
+            "key": "mode",
+            "from": "strict-local",
+            "to": "strict-local"
+          },
+          {
+            "source": "env_overrides",
+            "key": "retry_limit",
+            "delta": 1,
+            "from": 3,
+            "to": 4
+          },
+          {
+            "source": "env_overrides",
+            "key": "timeout_ms",
+            "delta": -125,
+            "from": 1771,
+            "to": 1646
+          },
+          {
+            "source": "profile",
+            "key": "profile",
+            "from": "TASK",
+            "to": "dev"
+          },
+          {
+            "source": "profile",
+            "key": "max_records",
+            "delta": -10,
+            "from": 145,
+            "to": 135
+          },
+          {
+            "source": "profile",
+            "key": "checksum",
+            "from": "crc32",
+            "to": "crc32"
+          }
+        ]
+      }
+    },
+    {
+      "command": "build-profile",
+      "options": {
+        "schema": "/app/data/config_schema.json",
+        "defaults": "/app/data/defaults.json",
+        "overrides": "/app/data/env_overrides.json",
+        "profile_input": "/app/data/sample_config_prod.json",
+        "out": "/app/out/profile_prod.json"
+      },
+      "status": "ok",
+      "detail": {
+        "profile": "prod",
+        "applied": [
+          {
+            "source": "env_overrides",
+            "key": "mode",
+            "from": "strict-local",
+            "to": "strict-local"
+          },
+          {
+            "source": "env_overrides",
+            "key": "retry_limit",
+            "delta": 0,
+            "from": 3,
+            "to": 3
+          },
+          {
+            "source": "env_overrides",
+            "key": "timeout_ms",
+            "delta": 250,
+            "from": 1771,
+            "to": 2021
+          },
+          {
+            "source": "profile",
+            "key": "profile",
+            "from": "TASK",
+            "to": "prod"
+          },
+          {
+            "source": "profile",
+            "key": "max_records",
+            "delta": 25,
+            "from": 145,
+            "to": 170
+          },
+          {
+            "source": "profile",
+            "key": "checksum",
+            "from": "crc32",
+            "to": "crc32"
+          }
+        ]
+      }
+    },
+    {
+      "command": "validate",
+      "options": {
+        "schema": "/app/data/config_schema.json",
+        "config": [
+          "/app/out/config.json",
+          "/app/out/profile_dev.json",
+          "/app/out/profile_prod.json"
+        ],
+        "rules": "/app/data/validation_rules.json",
+        "report_out": "/app/out/validation_report.json"
+      },
+      "status": "ok",
+      "detail": {
+        "ok": true,
+        "configs_validated": 3
+      }
+    },
+    {
+      "command": "export-report",
+      "options": {
+        "config": "/app/out/config.json",
+        "out": "/app/out/report.json"
+      },
+      "status": "ok"
+    }
+  ],
+  "command_count": 7,
+  "run": {
+    "source_archive": "/app/data/tool.zip",
+    "extracted_to": "/app/tool",
+    "schema": "/app/data/config_schema.json",
+    "rules": "/app/data/validation_rules.json",
+    "network": "none",
+    "dependencies": "python3-stdlib-only"
+  }
+}

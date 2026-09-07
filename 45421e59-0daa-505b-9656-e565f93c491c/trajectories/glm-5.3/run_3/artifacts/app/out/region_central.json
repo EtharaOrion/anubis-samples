@@ -1,0 +1,29 @@
+{
+  "accepted_count": 26,
+  "by_component": {
+    "AURORA": 667967,
+    "BASALT": 160057,
+    "CIPHER": 217940,
+    "DYNAMO": 430767
+  },
+  "by_tenant_segment": {
+    "consumer": 300768,
+    "corporate": 713114,
+    "enterprise": 367676,
+    "smb": 95173
+  },
+  "modules": [
+    "AURORA-V1",
+    "AURORA-V2",
+    "AURORA-V3",
+    "BASALT-V2",
+    "CIPHER-V1",
+    "DYNAMO-V1",
+    "DYNAMO-V2",
+    "DYNAMO-V3"
+  ],
+  "total_bytes_uploaded": 1476731,
+  "total_cost_ns": 1780800,
+  "within_budget_count": 8,
+  "zone": "central"
+}

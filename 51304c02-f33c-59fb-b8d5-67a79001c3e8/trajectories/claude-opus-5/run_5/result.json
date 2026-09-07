@@ -1,0 +1,119 @@
+{
+  "id": "4a9b2ecb-e12a-4ec1-aa6c-dcc5ca5679e1",
+  "task_name": "terminal-bench/51304c02-f33c-59fb-b8d5-67a79001c3e8",
+  "trial_name": "51304c02-f33c-59fb-b8d5-67a79001__SBuxCAp",
+  "trial_uri": "file://51304c02-f33c-59fb-b8d5-67a79001c3e8/trajectories/claude-opus-5/run_5",
+  "task_id": {
+    "path": "51304c02-f33c-59fb-b8d5-67a79001c3e8"
+  },
+  "source": null,
+  "task_checksum": "0084e83e72a6c6420d14c9cee16b6f056ad1525d7d555ff07113fc41345cf433",
+  "config": {
+    "task": {
+      "path": "51304c02-f33c-59fb-b8d5-67a79001c3e8",
+      "git_url": null,
+      "git_commit_id": null,
+      "name": null,
+      "ref": null,
+      "overwrite": false,
+      "download_dir": null,
+      "source": null
+    },
+    "trial_name": "51304c02-f33c-59fb-b8d5-67a79001__SBuxCAp",
+    "trials_dir": "51304c02-f33c-59fb-b8d5-67a79001c3e8/trajectories/claude-opus-5",
+    "install_only": false,
+    "timeout_multiplier": 1.0,
+    "agent_timeout_multiplier": null,
+    "verifier_timeout_multiplier": null,
+    "agent_setup_timeout_multiplier": 3.0,
+    "environment_build_timeout_multiplier": null,
+    "agent": {
+      "name": "claude-code",
+      "import_path": null,
+      "model_name": "claude-opus-5",
+      "n_concurrent": null,
+      "concurrency_group": null,
+      "skills": [],
+      "override_timeout_sec": null,
+      "override_setup_timeout_sec": null,
+      "max_timeout_sec": null,
+      "resume_trajectory": false,
+      "load_trajectory": null,
+      "extra_allowed_hosts": [],
+      "kwargs": {},
+      "mcp_servers": []
+    },
+    "environment": {
+      "type": "docker",
+      "import_path": null,
+      "force_build": false,
+      "delete": true,
+      "cpu_enforcement_policy": "auto",
+      "memory_enforcement_policy": "auto",
+      "override_cpus": null,
+      "override_memory_mb": null,
+      "override_storage_mb": null,
+      "override_gpus": null,
+      "override_tpu": null,
+      "mounts": null,
+      "extra_docker_compose": [],
+      "kwargs": {},
+      "extra_allowed_hosts": []
+    },
+    "verifier": {
+      "override_timeout_sec": null,
+      "max_timeout_sec": null,
+      "env": {
+        "REWARDKIT_JUDGE": "gpt-5.6-sol",
+        "ANTHROPIC_API_BASE": "http://host.docker.internal:64136",
+        "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}"
+      },
+      "disable": false
+    },
+    "artifacts": [],
+    "extra_instruction_paths": [],
+    "job_id": "977d0fca-c92f-430a-8311-fbc9e713152e"
+  },
+  "agent_info": {
+    "name": "claude-code",
+    "version": "2.1.259",
+    "model_info": {
+      "name": "claude-opus-5",
+      "provider": null
+    }
+  },
+  "agent_result": {
+    "n_input_tokens": 1019412,
+    "n_cache_tokens": 962632,
+    "n_output_tokens": 26409,
+    "cost_usd": 1.4963584999999997,
+    "rollout_details": null,
+    "metadata": null
+  },
+  "verifier_result": {
+    "rewards": {
+      "reward": 0.3333333333333333
+    }
+  },
+  "verifier_environment_mode": "separate",
+  "exception_info": null,
+  "started_at": "2026-09-03T06:55:29.309096Z",
+  "finished_at": "2026-09-03T07:13:12.403253Z",
+  "environment_setup": {
+    "started_at": "2026-09-03T06:55:29.379286Z",
+    "finished_at": "2026-09-03T06:55:52.503604Z"
+  },
+  "agent_setup": {
+    "started_at": "2026-09-03T06:55:52.505484Z",
+    "finished_at": "2026-09-03T07:00:19.997649Z"
+  },
+  "agent_execution": {
+    "started_at": "2026-09-03T07:00:20.044225Z",
+    "finished_at": "2026-09-03T07:10:43.268699Z"
+  },
+  "verifier": {
+    "started_at": "2026-09-03T07:11:57.262880Z",
+    "finished_at": "2026-09-03T07:13:12.401542Z"
+  },
+  "step_results": null
+}

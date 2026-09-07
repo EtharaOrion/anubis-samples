@@ -1,0 +1,932 @@
+{
+  "attribution_settlement": {
+    "closed_sets": [
+      [
+        "BLZ",
+        "CDR",
+        "DVN"
+      ]
+    ],
+    "effective_owners": {
+      "BLZ": "BLZ",
+      "CDR": "BLZ",
+      "DVN": "BLZ",
+      "FLX": "FLX",
+      "GRT": "FLX",
+      "HVN": "FLX",
+      "IBX": "FLX",
+      "JDE": "FLX",
+      "UMB": "FLX",
+      "VLC": "BLZ"
+    },
+    "handovers": [
+      {
+        "squad": "BLZ",
+        "target": "CDR"
+      },
+      {
+        "squad": "CDR",
+        "target": "DVN"
+      },
+      {
+        "squad": "DVN",
+        "target": "BLZ"
+      },
+      {
+        "squad": "GRT",
+        "target": "FLX"
+      },
+      {
+        "squad": "IBX",
+        "target": "HVN"
+      },
+      {
+        "squad": "HVN",
+        "target": "GRT"
+      },
+      {
+        "squad": "JDE",
+        "target": "IBX"
+      },
+      {
+        "squad": "UMB",
+        "target": "JDE"
+      },
+      {
+        "squad": "VLC",
+        "target": "BLZ"
+      }
+    ],
+    "passes": 6,
+    "squads_that_handed_their_entry_away": [
+      "BLZ",
+      "CDR",
+      "DVN",
+      "GRT",
+      "HVN",
+      "IBX",
+      "JDE",
+      "UMB",
+      "VLC"
+    ]
+  },
+  "bracket": {
+    "best_satisfied_constraints": 9,
+    "candidate_space_size": 816,
+    "constraints": [
+      {
+        "key": "prominence",
+        "satisfied": true,
+        "text": "at least one member sits in a division whose ladder weight reaches the prominence figure"
+      },
+      {
+        "key": "segments",
+        "satisfied": true,
+        "text": "both entrant segments appear among the members"
+      },
+      {
+        "key": "standing_floor",
+        "satisfied": true,
+        "text": "every member holds at least the standing points floor"
+      },
+      {
+        "key": "conferences",
+        "satisfied": true,
+        "text": "no two members share a conference"
+      },
+      {
+        "key": "ranked",
+        "satisfied": true,
+        "text": "at least one member is a ranked entrant"
+      },
+      {
+        "key": "weight_floor",
+        "satisfied": true,
+        "text": "the ladder weights of the members sum to at least the combined ladder weight floor"
+      },
+      {
+        "key": "no_overflow",
+        "satisfied": false,
+        "text": "no member carries any overflow upkeep"
+      },
+      {
+        "key": "champion",
+        "satisfied": true,
+        "text": "at least one member holds the champion tier"
+      },
+      {
+        "key": "gross_floor",
+        "satisfied": true,
+        "text": "the gross output of the members sums to at least the combined gross output floor"
+      },
+      {
+        "key": "no_handover",
+        "satisfied": true,
+        "text": "no member has handed its entry to another squad"
+      }
+    ],
+    "elected": [
+      "FLX",
+      "KRN",
+      "LMX"
+    ],
+    "eligibility": {
+      "match_floor": 2,
+      "own_effective_owner": true
+    },
+    "eligible_squads": [
+      "AKR",
+      "AXL",
+      "BLZ",
+      "BQT",
+      "EMB",
+      "FLX",
+      "KRN",
+      "LMX",
+      "MRA",
+      "NVL",
+      "ORC",
+      "PYX",
+      "QRM",
+      "SLT",
+      "WRN",
+      "XCT",
+      "YRD",
+      "ZPH"
+    ],
+    "size": 3,
+    "tie_break": "most constraints met, then least total charged upkeep, then member keys sorting first"
+  },
+  "calibration": {
+    "all_figures_agree": true,
+    "control_capture": "control-capture.rjnl",
+    "rows": [
+      {
+        "agrees": true,
+        "figure": "C1",
+        "label": "matches opened",
+        "metric": "matches_opened",
+        "published": 5,
+        "reproduced": 5
+      },
+      {
+        "agrees": true,
+        "figure": "C10",
+        "label": "qualifier entrants",
+        "metric": "qualifier_entrants",
+        "published": 1,
+        "reproduced": 1
+      },
+      {
+        "agrees": true,
+        "figure": "C11",
+        "label": "provisional entrants",
+        "metric": "provisional_entrants",
+        "published": 14,
+        "reproduced": 14
+      },
+      {
+        "agrees": true,
+        "figure": "C2",
+        "label": "records recovered",
+        "metric": "records_recovered",
+        "published": 238,
+        "reproduced": 238
+      },
+      {
+        "agrees": true,
+        "figure": "C3",
+        "label": "distinct squads",
+        "metric": "distinct_squads",
+        "published": 16,
+        "reproduced": 16
+      },
+      {
+        "agrees": true,
+        "figure": "C4",
+        "label": "gross output",
+        "metric": "gross_output",
+        "published": 6228,
+        "reproduced": 6228
+      },
+      {
+        "agrees": true,
+        "figure": "C5",
+        "label": "voided output",
+        "metric": "voided_output",
+        "published": 1703,
+        "reproduced": 1703
+      },
+      {
+        "agrees": true,
+        "figure": "C6",
+        "label": "raw upkeep",
+        "metric": "raw_upkeep",
+        "published": 8166,
+        "reproduced": 8166
+      },
+      {
+        "agrees": true,
+        "figure": "C7",
+        "label": "charged upkeep",
+        "metric": "charged_upkeep",
+        "published": 7939,
+        "reproduced": 7939
+      },
+      {
+        "agrees": true,
+        "figure": "C8",
+        "label": "overflow upkeep",
+        "metric": "overflow_upkeep",
+        "published": 227,
+        "reproduced": 227
+      },
+      {
+        "agrees": true,
+        "figure": "C9",
+        "label": "champion entrants",
+        "metric": "champion_entrants",
+        "published": 1,
+        "reproduced": 1
+      }
+    ]
+  },
+  "guard_derivation": {
+    "engine_tag": "tessel-drift",
+    "mask_order": "rotate left then mask with the keystream",
+    "roster_dictionary": [
+      "AKR",
+      "CDR",
+      "BLZ",
+      "DVN",
+      "FLX",
+      "EMB",
+      "GRT",
+      "HVN",
+      "IBX",
+      "JDE",
+      "KRN",
+      "LMX",
+      "ORC",
+      "MRA",
+      "NVL",
+      "PYX"
+    ],
+    "sentinel": 29,
+    "window_depth": 6
+  },
+  "unstated_quantities": [
+    {
+      "candidates": [
+        {
+          "falsifier": {
+            "figure": "C2",
+            "label": "records recovered",
+            "published": 238,
+            "reproduced": 90
+          },
+          "figures_reproduced": 1,
+          "reproduced": {
+            "charged_upkeep": 0,
+            "distinct_squads": 0,
+            "gross_output": 0,
+            "matches_opened": 5,
+            "overflow_upkeep": 0,
+            "raw_upkeep": 0,
+            "records_recovered": 90,
+            "voided_output": 0
+          },
+          "value": "orion-fold",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": {
+            "figure": "C2",
+            "label": "records recovered",
+            "published": 238,
+            "reproduced": 92
+          },
+          "figures_reproduced": 1,
+          "reproduced": {
+            "charged_upkeep": 0,
+            "distinct_squads": 0,
+            "gross_output": 0,
+            "matches_opened": 5,
+            "overflow_upkeep": 0,
+            "raw_upkeep": 0,
+            "records_recovered": 92,
+            "voided_output": 0
+          },
+          "value": "wren-cadence",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "figures_reproduced": 6,
+          "reproduced": {
+            "charged_upkeep": 0,
+            "distinct_squads": 16,
+            "gross_output": 6228,
+            "matches_opened": 5,
+            "overflow_upkeep": 8166,
+            "raw_upkeep": 8166,
+            "records_recovered": 238,
+            "voided_output": 1703
+          },
+          "value": "tessel-drift",
+          "verdict": "accepted"
+        },
+        {
+          "falsifier": {
+            "figure": "C2",
+            "label": "records recovered",
+            "published": 238,
+            "reproduced": 89
+          },
+          "figures_reproduced": 1,
+          "reproduced": {
+            "charged_upkeep": 0,
+            "distinct_squads": 0,
+            "gross_output": 0,
+            "matches_opened": 5,
+            "overflow_upkeep": 0,
+            "raw_upkeep": 0,
+            "records_recovered": 89,
+            "voided_output": 0
+          },
+          "value": "halcyon-mark",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": {
+            "figure": "C2",
+            "label": "records recovered",
+            "published": 238,
+            "reproduced": 90
+          },
+          "figures_reproduced": 1,
+          "reproduced": {
+            "charged_upkeep": 0,
+            "distinct_squads": 0,
+            "gross_output": 0,
+            "matches_opened": 5,
+            "overflow_upkeep": 0,
+            "raw_upkeep": 0,
+            "records_recovered": 90,
+            "voided_output": 0
+          },
+          "value": "vector-plume",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": {
+            "figure": "C2",
+            "label": "records recovered",
+            "published": 238,
+            "reproduced": 87
+          },
+          "figures_reproduced": 1,
+          "reproduced": {
+            "charged_upkeep": 0,
+            "distinct_squads": 0,
+            "gross_output": 0,
+            "matches_opened": 5,
+            "overflow_upkeep": 0,
+            "raw_upkeep": 0,
+            "records_recovered": 87,
+            "voided_output": 0
+          },
+          "value": "umbral-stack",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": {
+            "figure": "C2",
+            "label": "records recovered",
+            "published": 238,
+            "reproduced": 87
+          },
+          "figures_reproduced": 1,
+          "reproduced": {
+            "charged_upkeep": 0,
+            "distinct_squads": 1,
+            "gross_output": 0,
+            "matches_opened": 5,
+            "overflow_upkeep": 0,
+            "raw_upkeep": 0,
+            "records_recovered": 87,
+            "voided_output": 0
+          },
+          "value": "quill-lattice",
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": {
+            "figure": "C2",
+            "label": "records recovered",
+            "published": 238,
+            "reproduced": 91
+          },
+          "figures_reproduced": 1,
+          "reproduced": {
+            "charged_upkeep": 0,
+            "distinct_squads": 0,
+            "gross_output": 0,
+            "matches_opened": 5,
+            "overflow_upkeep": 0,
+            "raw_upkeep": 0,
+            "records_recovered": 91,
+            "voided_output": 0
+          },
+          "value": "nimbus-gable",
+          "verdict": "rejected"
+        }
+      ],
+      "quantity": "engine_tag",
+      "roster": [
+        "orion-fold",
+        "wren-cadence",
+        "tessel-drift",
+        "halcyon-mark",
+        "vector-plume",
+        "umbral-stack",
+        "quill-lattice",
+        "nimbus-gable"
+      ],
+      "search_space": {
+        "guard_combinations": 256
+      },
+      "selected": "tessel-drift"
+    },
+    {
+      "candidates": [
+        {
+          "falsifier": {
+            "figure": "C4",
+            "label": "gross output",
+            "published": 6228,
+            "reproduced": 4985
+          },
+          "figures_reproduced": 3,
+          "reproduced": {
+            "charged_upkeep": 0,
+            "distinct_squads": 16,
+            "gross_output": 4985,
+            "matches_opened": 5,
+            "overflow_upkeep": 7463,
+            "raw_upkeep": 7463,
+            "records_recovered": 238,
+            "voided_output": 734
+          },
+          "value": 4,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "figures_reproduced": 6,
+          "reproduced": {
+            "charged_upkeep": 0,
+            "distinct_squads": 16,
+            "gross_output": 6228,
+            "matches_opened": 5,
+            "overflow_upkeep": 8166,
+            "raw_upkeep": 8166,
+            "records_recovered": 238,
+            "voided_output": 1703
+          },
+          "value": 6,
+          "verdict": "accepted"
+        },
+        {
+          "falsifier": {
+            "figure": "C4",
+            "label": "gross output",
+            "published": 6228,
+            "reproduced": 6644
+          },
+          "figures_reproduced": 3,
+          "reproduced": {
+            "charged_upkeep": 0,
+            "distinct_squads": 16,
+            "gross_output": 6644,
+            "matches_opened": 5,
+            "overflow_upkeep": 8092,
+            "raw_upkeep": 8092,
+            "records_recovered": 238,
+            "voided_output": 1287
+          },
+          "value": 8,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": {
+            "figure": "C4",
+            "label": "gross output",
+            "published": 6228,
+            "reproduced": 6922
+          },
+          "figures_reproduced": 3,
+          "reproduced": {
+            "charged_upkeep": 0,
+            "distinct_squads": 16,
+            "gross_output": 6922,
+            "matches_opened": 5,
+            "overflow_upkeep": 8375,
+            "raw_upkeep": 8375,
+            "records_recovered": 238,
+            "voided_output": 1009
+          },
+          "value": 10,
+          "verdict": "rejected"
+        }
+      ],
+      "quantity": "window_depth",
+      "roster": [
+        4,
+        6,
+        8,
+        10
+      ],
+      "search_space": {
+        "guard_combinations": 256
+      },
+      "selected": 6
+    },
+    {
+      "candidates": [
+        {
+          "falsifier": {
+            "figure": "C2",
+            "label": "records recovered",
+            "published": 238,
+            "reproduced": 90
+          },
+          "figures_reproduced": 1,
+          "reproduced": {
+            "charged_upkeep": 0,
+            "distinct_squads": 0,
+            "gross_output": 0,
+            "matches_opened": 5,
+            "overflow_upkeep": 0,
+            "raw_upkeep": 0,
+            "records_recovered": 90,
+            "voided_output": 0
+          },
+          "value": 26,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "figures_reproduced": 6,
+          "reproduced": {
+            "charged_upkeep": 0,
+            "distinct_squads": 16,
+            "gross_output": 6228,
+            "matches_opened": 5,
+            "overflow_upkeep": 8166,
+            "raw_upkeep": 8166,
+            "records_recovered": 238,
+            "voided_output": 1703
+          },
+          "value": 29,
+          "verdict": "accepted"
+        },
+        {
+          "falsifier": {
+            "figure": "C2",
+            "label": "records recovered",
+            "published": 238,
+            "reproduced": 90
+          },
+          "figures_reproduced": 1,
+          "reproduced": {
+            "charged_upkeep": 0,
+            "distinct_squads": 0,
+            "gross_output": 0,
+            "matches_opened": 5,
+            "overflow_upkeep": 0,
+            "raw_upkeep": 0,
+            "records_recovered": 90,
+            "voided_output": 0
+          },
+          "value": 32,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": {
+            "figure": "C2",
+            "label": "records recovered",
+            "published": 238,
+            "reproduced": 90
+          },
+          "figures_reproduced": 1,
+          "reproduced": {
+            "charged_upkeep": 0,
+            "distinct_squads": 0,
+            "gross_output": 0,
+            "matches_opened": 5,
+            "overflow_upkeep": 0,
+            "raw_upkeep": 0,
+            "records_recovered": 90,
+            "voided_output": 0
+          },
+          "value": 127,
+          "verdict": "rejected"
+        }
+      ],
+      "quantity": "sentinel",
+      "roster": [
+        26,
+        29,
+        32,
+        127
+      ],
+      "search_space": {
+        "guard_combinations": 256
+      },
+      "selected": 29
+    },
+    {
+      "candidates": [
+        {
+          "falsifier": {
+            "figure": "C7",
+            "label": "charged upkeep",
+            "published": 7939,
+            "reproduced": 300
+          },
+          "reproduced": {
+            "charged_upkeep": 300,
+            "distinct_squads": 16,
+            "gross_output": 6228,
+            "matches_opened": 5,
+            "overflow_upkeep": 7866,
+            "raw_upkeep": 8166,
+            "records_recovered": 238,
+            "voided_output": 1703
+          },
+          "value": 20,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": {
+            "figure": "C7",
+            "label": "charged upkeep",
+            "published": 7939,
+            "reproduced": 3278
+          },
+          "reproduced": {
+            "charged_upkeep": 3278,
+            "distinct_squads": 16,
+            "gross_output": 6228,
+            "matches_opened": 5,
+            "overflow_upkeep": 4888,
+            "raw_upkeep": 8166,
+            "records_recovered": 238,
+            "voided_output": 1703
+          },
+          "value": 220,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": {
+            "figure": "C7",
+            "label": "charged upkeep",
+            "published": 7939,
+            "reproduced": 5769
+          },
+          "reproduced": {
+            "charged_upkeep": 5769,
+            "distinct_squads": 16,
+            "gross_output": 6228,
+            "matches_opened": 5,
+            "overflow_upkeep": 2397,
+            "raw_upkeep": 8166,
+            "records_recovered": 238,
+            "voided_output": 1703
+          },
+          "value": 440,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": {
+            "figure": "C7",
+            "label": "charged upkeep",
+            "published": 7939,
+            "reproduced": 7230
+          },
+          "reproduced": {
+            "charged_upkeep": 7230,
+            "distinct_squads": 16,
+            "gross_output": 6228,
+            "matches_opened": 5,
+            "overflow_upkeep": 936,
+            "raw_upkeep": 8166,
+            "records_recovered": 238,
+            "voided_output": 1703
+          },
+          "value": 640,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "reproduced": {
+            "charged_upkeep": 7939,
+            "distinct_squads": 16,
+            "gross_output": 6228,
+            "matches_opened": 5,
+            "overflow_upkeep": 227,
+            "raw_upkeep": 8166,
+            "records_recovered": 238,
+            "voided_output": 1703
+          },
+          "value": 860,
+          "verdict": "accepted"
+        },
+        {
+          "falsifier": {
+            "figure": "C7",
+            "label": "charged upkeep",
+            "published": 7939,
+            "reproduced": 8159
+          },
+          "reproduced": {
+            "charged_upkeep": 8159,
+            "distinct_squads": 16,
+            "gross_output": 6228,
+            "matches_opened": 5,
+            "overflow_upkeep": 7,
+            "raw_upkeep": 8166,
+            "records_recovered": 238,
+            "voided_output": 1703
+          },
+          "value": 1060,
+          "verdict": "rejected"
+        }
+      ],
+      "quantity": "season_budget",
+      "roster": [
+        20,
+        220,
+        440,
+        640,
+        860,
+        1060
+      ],
+      "selected": 860
+    },
+    {
+      "candidates": [
+        {
+          "falsifier": {
+            "figure": "C10",
+            "label": "qualifier entrants",
+            "published": 1,
+            "reproduced": 0
+          },
+          "reproduced": {
+            "champion_entrants": 7,
+            "charged_upkeep": 7939,
+            "contender_entrants": 0,
+            "distinct_squads": 16,
+            "gross_output": 6228,
+            "matches_opened": 5,
+            "overflow_upkeep": 227,
+            "provisional_entrants": 9,
+            "qualifier_entrants": 0,
+            "raw_upkeep": 8166,
+            "records_recovered": 238,
+            "voided_output": 1703
+          },
+          "value": 20,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": {
+            "figure": "C11",
+            "label": "provisional entrants",
+            "published": 14,
+            "reproduced": 9
+          },
+          "reproduced": {
+            "champion_entrants": 4,
+            "charged_upkeep": 7939,
+            "contender_entrants": 2,
+            "distinct_squads": 16,
+            "gross_output": 6228,
+            "matches_opened": 5,
+            "overflow_upkeep": 227,
+            "provisional_entrants": 9,
+            "qualifier_entrants": 1,
+            "raw_upkeep": 8166,
+            "records_recovered": 238,
+            "voided_output": 1703
+          },
+          "value": 140,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": {
+            "figure": "C10",
+            "label": "qualifier entrants",
+            "published": 1,
+            "reproduced": 3
+          },
+          "reproduced": {
+            "champion_entrants": 3,
+            "charged_upkeep": 7939,
+            "contender_entrants": 1,
+            "distinct_squads": 16,
+            "gross_output": 6228,
+            "matches_opened": 5,
+            "overflow_upkeep": 227,
+            "provisional_entrants": 9,
+            "qualifier_entrants": 3,
+            "raw_upkeep": 8166,
+            "records_recovered": 238,
+            "voided_output": 1703
+          },
+          "value": 200,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": {
+            "figure": "C10",
+            "label": "qualifier entrants",
+            "published": 1,
+            "reproduced": 2
+          },
+          "reproduced": {
+            "champion_entrants": 1,
+            "charged_upkeep": 7939,
+            "contender_entrants": 1,
+            "distinct_squads": 16,
+            "gross_output": 6228,
+            "matches_opened": 5,
+            "overflow_upkeep": 227,
+            "provisional_entrants": 12,
+            "qualifier_entrants": 2,
+            "raw_upkeep": 8166,
+            "records_recovered": 238,
+            "voided_output": 1703
+          },
+          "value": 360,
+          "verdict": "rejected"
+        },
+        {
+          "falsifier": null,
+          "reproduced": {
+            "champion_entrants": 1,
+            "charged_upkeep": 7939,
+            "contender_entrants": 0,
+            "distinct_squads": 16,
+            "gross_output": 6228,
+            "matches_opened": 5,
+            "overflow_upkeep": 227,
+            "provisional_entrants": 14,
+            "qualifier_entrants": 1,
+            "raw_upkeep": 8166,
+            "records_recovered": 238,
+            "voided_output": 1703
+          },
+          "value": 700,
+          "verdict": "accepted"
+        },
+        {
+          "falsifier": {
+            "figure": "C11",
+            "label": "provisional entrants",
+            "published": 14,
+            "reproduced": 15
+          },
+          "reproduced": {
+            "champion_entrants": 0,
+            "charged_upkeep": 7939,
+            "contender_entrants": 0,
+            "distinct_squads": 16,
+            "gross_output": 6228,
+            "matches_opened": 5,
+            "overflow_upkeep": 227,
+            "provisional_entrants": 15,
+            "qualifier_entrants": 1,
+            "raw_upkeep": 8166,
+            "records_recovered": 238,
+            "voided_output": 1703
+          },
+          "value": 1300,
+          "verdict": "rejected"
+        }
+      ],
+      "quantity": "promotion_threshold",
+      "roster": [
+        20,
+        140,
+        200,
+        360,
+        700,
+        1300
+      ],
+      "selected": 700
+    }
+  ]
+}

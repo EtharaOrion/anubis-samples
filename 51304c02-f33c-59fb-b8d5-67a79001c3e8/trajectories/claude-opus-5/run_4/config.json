@@ -1,0 +1,20 @@
+{
+  "task": {
+    "path": "51304c02-f33c-59fb-b8d5-67a79001c3e8"
+  },
+  "trial_name": "51304c02-f33c-59fb-b8d5-67a79001__MEa7P32",
+  "trials_dir": "51304c02-f33c-59fb-b8d5-67a79001c3e8/trajectories/claude-opus-5",
+  "agent_setup_timeout_multiplier": 3.0,
+  "agent": {
+    "name": "claude-code",
+    "model_name": "claude-opus-5"
+  },
+  "verifier": {
+    "env": {
+      "REWARDKIT_JUDGE": "gpt-5.6-sol",
+      "ANTHROPIC_API_BASE": "http://host.docker.internal:64136",
+      "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}"
+    }
+  },
+  "job_id": "977d0fca-c92f-430a-8311-fbc9e713152e"
+}

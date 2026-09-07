@@ -1,0 +1,164 @@
+{
+  "absent_entrants": [
+    "RVN",
+    "TDR"
+  ],
+  "attribution_residual": {
+    "conference_gross_output": 22702,
+    "residual": 3249,
+    "season_gross_output": 25951,
+    "segment_gross_output": 22702,
+    "segment_residual": 3249
+  },
+  "backwards_tick_detail": [],
+  "backwards_tick_events": 0,
+  "baseline_transcript_check": {
+    "available": true,
+    "byte_exact": true,
+    "recovered_records": 278,
+    "transcript_records": 278
+  },
+  "captures": [
+    {
+      "backwards_tick_events": 0,
+      "capture_id": 41,
+      "count_bias": 0,
+      "declared_records": 278,
+      "declared_roster": 16,
+      "declared_segments": 6,
+      "distinct_squads_recovered": 16,
+      "envelope_checksum_ok": true,
+      "file": "baseline-capture.rjnl",
+      "guard_register": 0,
+      "guards_active": [],
+      "record_residual": 0,
+      "recovered_records": 278,
+      "recovered_segments": 6,
+      "registered_squads_recovered": 16,
+      "role": "reference",
+      "roster_residual": 0,
+      "segment_residual": 0
+    },
+    {
+      "backwards_tick_events": 0,
+      "capture_id": 62,
+      "count_bias": 6,
+      "declared_records": 238,
+      "declared_roster": 15,
+      "declared_segments": 5,
+      "distinct_squads_recovered": 16,
+      "envelope_checksum_ok": true,
+      "file": "control-capture.rjnl",
+      "guard_register": 4095,
+      "guards_active": [
+        "alias",
+        "backref",
+        "chain",
+        "countbias",
+        "delta2",
+        "driftkey",
+        "endian",
+        "escape",
+        "keystream",
+        "rotate",
+        "segperm",
+        "shadow"
+      ],
+      "record_residual": 0,
+      "recovered_records": 238,
+      "recovered_segments": 5,
+      "registered_squads_recovered": 16,
+      "role": "control",
+      "roster_residual": -1,
+      "segment_residual": 0
+    },
+    {
+      "backwards_tick_events": 0,
+      "capture_id": 83,
+      "count_bias": 6,
+      "declared_records": 1016,
+      "declared_roster": 22,
+      "declared_segments": 18,
+      "distinct_squads_recovered": 26,
+      "envelope_checksum_ok": true,
+      "file": "season-capture.rjnl",
+      "guard_register": 4095,
+      "guards_active": [
+        "alias",
+        "backref",
+        "chain",
+        "countbias",
+        "delta2",
+        "driftkey",
+        "endian",
+        "escape",
+        "keystream",
+        "rotate",
+        "segperm",
+        "shadow"
+      ],
+      "record_residual": 0,
+      "recovered_records": 1016,
+      "recovered_segments": 18,
+      "registered_squads_recovered": 22,
+      "role": "season",
+      "roster_residual": 0,
+      "segment_residual": 0
+    }
+  ],
+  "findings": [
+    "squads on the wire with no entry in the registry: AXL, BQT, YRD, ZPH",
+    "attribution residual of 3249 gross output sits outside every conference",
+    "entrants registered but never seen: RVN, TDR"
+  ],
+  "kind_ledger": {
+    "close": 18,
+    "concede": 3,
+    "deploy": 212,
+    "disband": 59,
+    "eliminate": 79,
+    "output": 636,
+    "transfer": 9
+  },
+  "kind_ledger_residual": 0,
+  "kind_ledger_unnamed": {},
+  "output_ledger": {
+    "gross_output": 25951,
+    "output_reported": 32463,
+    "residual": 0,
+    "voided_output": 6512
+  },
+  "season_declaration": {
+    "declared_records": 1016,
+    "declared_roster": 22,
+    "declared_segments": 18,
+    "distinct_squads_recovered": 26,
+    "record_residual": 0,
+    "recovered_records": 1016,
+    "recovered_segments": 18,
+    "registered_squads_recovered": 22,
+    "roster_residual": 0,
+    "segment_residual": 0
+  },
+  "unregistered_squads": [
+    "AXL",
+    "BQT",
+    "YRD",
+    "ZPH"
+  ],
+  "unregistered_totals": {
+    "charged_upkeep": 3440,
+    "gross_output": 3249,
+    "overflow_upkeep": 2033,
+    "raw_upkeep": 5473,
+    "season_score": -191,
+    "voided_output": 1003
+  },
+  "unresolved_escape_advances": 0,
+  "upkeep_ledger": {
+    "charged_upkeep": 21769,
+    "overflow_upkeep": 20698,
+    "raw_upkeep": 42467,
+    "residual": 0
+  }
+}

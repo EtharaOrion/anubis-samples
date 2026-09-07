@@ -1,0 +1,97 @@
+{
+  "artifacts": [
+    {
+      "bytes": 230,
+      "crc32": "7216c226",
+      "forbidden_keys_found": [],
+      "name": "config.json",
+      "present": true,
+      "within_size_limit": true
+    },
+    {
+      "bytes": 8371,
+      "crc32": "170a48c7",
+      "forbidden_keys_found": [],
+      "name": "report.json",
+      "present": true,
+      "within_size_limit": true
+    },
+    {
+      "bytes": 4548,
+      "crc32": "cac64a79",
+      "name": "tool.zip",
+      "present": true,
+      "within_size_limit": true
+    },
+    {
+      "bytes": 229,
+      "crc32": "8f47ad34",
+      "forbidden_keys_found": [],
+      "name": "profile_dev.json",
+      "present": true,
+      "within_size_limit": true
+    },
+    {
+      "bytes": 230,
+      "crc32": "b01203de",
+      "forbidden_keys_found": [],
+      "name": "profile_prod.json",
+      "present": true,
+      "within_size_limit": true
+    },
+    {
+      "bytes": 527,
+      "crc32": "e9b57545",
+      "forbidden_keys_found": [],
+      "name": "validation_report.json",
+      "present": true,
+      "within_size_limit": true
+    },
+    {
+      "name": "summary.json",
+      "present": true,
+      "self": true
+    }
+  ],
+  "artifacts_dir": "/app/out",
+  "constraints": {
+    "deterministic": true,
+    "hand_written_configs": false,
+    "network_access": false,
+    "stdlib_only": true
+  },
+  "derivations": {
+    "base": {
+      "max_records": 145,
+      "retry_limit": 3,
+      "timeout_ms": 1771
+    },
+    "dev": "max_records 145 + (-10) = 135, retry_limit 3 + 1 = 4, timeout_ms 1771 + (-125) = 1646, mode strict-local",
+    "prod": "max_records 145 + 25 = 170, retry_limit 3 + 0 = 3, timeout_ms 1771 + 250 = 2021, mode strict-local"
+  },
+  "ok": true,
+  "rules": "/app/data/validation_rules.json",
+  "status": "complete",
+  "task": "Repair the broken task-ctl CLI and generate its configuration set with the repaired tool.",
+  "tool": "task-ctl",
+  "validation": {
+    "all_valid": true,
+    "configs_checked": 3,
+    "rules_applied": [
+      "required_keys",
+      "scalar_only",
+      "forbidden_keys",
+      "required_artifacts",
+      "max_artifact_bytes"
+    ]
+  },
+  "workflow": [
+    "Extracted /app/data/tool.zip to /app/tool.",
+    "Read cli.py against the contract in config_schema.json and validation_rules.json and repaired 11 faults (see report.json).",
+    "init: built /app/out/config.json from config_schema.json seeded with defaults.json.",
+    "derive: built profile_dev.json and profile_prod.json by applying env_overrides.json and the sample profile specs to the base configuration.",
+    "validate: checked all three configurations against the schema and the validation rules, writing validation_report.json.",
+    "export-report: wrote report.json with the repair notes and the transcript of the commands that produced the configuration.",
+    "Packaged the repaired tool as /app/out/tool.zip and summarized every artifact against the rules."
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "tool": "task-ctl",
+  "check": "config-validation",
+  "results": [
+    {
+      "target": "/app/out/config.json",
+      "label": "config.json",
+      "schema": "/app/data/config_schema.json",
+      "rules": "/app/data/validation_rules.json",
+      "checked_keys": [
+        "checksum",
+        "container",
+        "max_records",
+        "mode",
+        "producer",
+        "profile",
+        "retry_limit",
+        "timeout_ms",
+        "trailer"
+      ],
+      "required_keys": [
+        "profile",
+        "producer",
+        "container",
+        "max_records",
+        "retry_limit",
+        "timeout_ms",
+        "checksum",
+        "mode",
+        "trailer"
+      ],
+      "errors": [],
+      "ok": true
+    },
+    {
+      "target": "/app/out/profile_dev.json",
+      "label": "profile_dev.json",
+      "schema": "/app/data/config_schema.json",
+      "rules": "/app/data/validation_rules.json",
+      "checked_keys": [
+        "checksum",
+        "container",
+        "max_records",
+        "mode",
+        "producer",
+        "profile",
+        "retry_limit",
+        "timeout_ms",
+        "trailer"
+      ],
+      "required_keys": [
+        "profile",
+        "producer",
+        "container",
+        "max_records",
+        "retry_limit",
+        "timeout_ms",
+        "checksum",
+        "mode",
+        "trailer"
+      ],
+      "errors": [],
+      "ok": true
+    },
+    {
+      "target": "/app/out/profile_prod.json",
+      "label": "profile_prod.json",
+      "schema": "/app/data/config_schema.json",
+      "rules": "/app/data/validation_rules.json",
+      "checked_keys": [
+        "checksum",
+        "container",
+        "max_records",
+        "mode",
+        "producer",
+        "profile",
+        "retry_limit",
+        "timeout_ms",
+        "trailer"
+      ],
+      "required_keys": [
+        "profile",
+        "producer",
+        "container",
+        "max_records",
+        "retry_limit",
+        "timeout_ms",
+        "checksum",
+        "mode",
+        "trailer"
+      ],
+      "errors": [],
+      "ok": true
+    }
+  ],
+  "ok": true,
+  "checked": 3
+}

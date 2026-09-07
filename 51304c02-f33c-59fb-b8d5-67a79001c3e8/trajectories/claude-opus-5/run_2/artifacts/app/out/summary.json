@@ -1,0 +1,141 @@
+{
+  "artifacts": {
+    "config.json": {
+      "bytes": 230,
+      "present": true,
+      "within_size_limit": true
+    },
+    "profile_dev.json": {
+      "bytes": 229,
+      "present": true,
+      "within_size_limit": true
+    },
+    "profile_prod.json": {
+      "bytes": 230,
+      "present": true,
+      "within_size_limit": true
+    },
+    "report.json": {
+      "bytes": 9029,
+      "present": true,
+      "within_size_limit": true
+    },
+    "summary.json": {
+      "bytes": 4354,
+      "present": true,
+      "within_size_limit": true
+    },
+    "tool.zip": {
+      "bytes": 6057,
+      "present": true,
+      "within_size_limit": true
+    },
+    "validation_report.json": {
+      "bytes": 5643,
+      "present": true,
+      "within_size_limit": true
+    }
+  },
+  "config": {
+    "generated_by_tool": true,
+    "key_count": 9,
+    "keys": [
+      "checksum",
+      "container",
+      "max_records",
+      "mode",
+      "producer",
+      "profile",
+      "retry_limit",
+      "timeout_ms",
+      "trailer"
+    ],
+    "path": "/app/out/config.json",
+    "values": {
+      "checksum": "crc32",
+      "container": "",
+      "max_records": 145,
+      "mode": "strict-local",
+      "producer": "",
+      "profile": "TASK",
+      "retry_limit": 3,
+      "timeout_ms": 1771,
+      "trailer": "harbor:cli-config:TASK:0000000000016384"
+    }
+  },
+  "constraints": {
+    "deterministic": true,
+    "forbidden_keys_present": [],
+    "max_artifact_bytes": 1048576,
+    "network_used": false
+  },
+  "notes": [
+    "config.json, profile_dev.json and profile_prod.json were produced only by running /app/tool/cli.py; no values were hand written.",
+    "profile values come from base_config in defaults.json with the *_delta overlays from sample_config_<env>.json and env_overrides.json applied by `task-ctl apply-profile`: dev max_records 145-10=135, retry_limit 3+1=4, timeout_ms 1771-125=1646; prod max_records 145+25=170, retry_limit 3+0=3, timeout_ms 1771+250=2021.",
+    "config.json keeps profile=\"TASK\" because that is the value config_schema.json declares; validation_rules.json's profiles list (dev, prod) constrains the derived environment profiles, so the tool reports the base config's profile as a warning, not an error. Both derived profiles satisfy the list.",
+    "producer and container are empty strings because the schema and defaults declare them empty; no other source in /app/data supplies a value. The tool reports this as a warning.",
+    "validation_dev.json and validation_prod.json are the raw per-profile tool reports; *.transcript.json are the tool's command transcripts."
+  ],
+  "profiles": {
+    "dev": {
+      "derived_by": "task-ctl apply-profile",
+      "path": "/app/out/profile_dev.json",
+      "values": {
+        "checksum": "crc32",
+        "container": "",
+        "max_records": 135,
+        "mode": "strict-local",
+        "producer": "",
+        "profile": "dev",
+        "retry_limit": 4,
+        "timeout_ms": 1646,
+        "trailer": "harbor:cli-config:TASK:0000000000016384"
+      }
+    },
+    "prod": {
+      "derived_by": "task-ctl apply-profile",
+      "path": "/app/out/profile_prod.json",
+      "values": {
+        "checksum": "crc32",
+        "container": "",
+        "max_records": 170,
+        "mode": "strict-local",
+        "producer": "",
+        "profile": "prod",
+        "retry_limit": 3,
+        "timeout_ms": 2021,
+        "trailer": "harbor:cli-config:TASK:0000000000016384"
+      }
+    }
+  },
+  "status": "complete",
+  "task": "repair task-ctl and generate its configuration with it",
+  "tool": {
+    "commands": [
+      "init",
+      "set",
+      "apply-profile",
+      "validate",
+      "export-report"
+    ],
+    "faults_fixed": 11,
+    "faults_found": 11,
+    "name": "task-ctl",
+    "path": "/app/tool/cli.py",
+    "stdlib_only": true
+  },
+  "validation": {
+    "checks_failed": 0,
+    "checks_total": 27,
+    "configs_validated": 3,
+    "errors": [],
+    "ok": true,
+    "path": "/app/out/validation_report.json",
+    "warnings": [
+      "non_empty_values: declared empty by the schema: container,producer",
+      "profile_allowed: profile 'TASK' is not one of ['dev', 'prod'] (schema placeholder, not an environment profile)",
+      "non_empty_values: declared empty by the schema: container,producer",
+      "non_empty_values: declared empty by the schema: container,producer"
+    ]
+  }
+}

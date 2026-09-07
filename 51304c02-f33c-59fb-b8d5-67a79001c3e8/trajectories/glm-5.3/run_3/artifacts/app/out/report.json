@@ -1,0 +1,471 @@
+{
+  "artifacts": {
+    "directory": "/app/out",
+    "max_artifact_bytes": 1048576,
+    "missing": [],
+    "ok": true,
+    "oversize": [],
+    "present": [
+      "config.json",
+      "report.json",
+      "tool.zip",
+      "profile_dev.json",
+      "profile_prod.json",
+      "validation_report.json",
+      "summary.json"
+    ],
+    "required": [
+      "config.json",
+      "report.json",
+      "tool.zip",
+      "profile_dev.json",
+      "profile_prod.json",
+      "validation_report.json",
+      "summary.json"
+    ],
+    "sizes_bytes": {
+      "config.json": 230,
+      "profile_dev.json": 229,
+      "profile_prod.json": 230,
+      "report.json": 15667,
+      "summary.json": 8769,
+      "tool.zip": 7991,
+      "validation_report.json": 5771
+    }
+  },
+  "command": "export-report",
+  "command_count": 7,
+  "commands": [
+    {
+      "argv": [
+        "--transcript",
+        "/app/out/run_transcript.jsonl",
+        "init",
+        "--schema",
+        "/app/data/config_schema.json",
+        "--defaults",
+        "/app/data/defaults.json",
+        "--rules",
+        "/app/data/validation_rules.json",
+        "--out",
+        "/app/out/config.json"
+      ],
+      "command": "init",
+      "step": 1,
+      "tool": "task-ctl",
+      "tool_version": "1.1.0"
+    },
+    {
+      "argv": [
+        "--transcript",
+        "/app/out/run_transcript.jsonl",
+        "init",
+        "--schema",
+        "/app/data/config_schema.json",
+        "--defaults",
+        "/app/data/defaults.json",
+        "--env",
+        "/app/data/env_overrides.json",
+        "--profile",
+        "dev",
+        "--rules",
+        "/app/data/validation_rules.json",
+        "--out",
+        "/app/out/profile_dev.json"
+      ],
+      "command": "init",
+      "step": 2,
+      "tool": "task-ctl",
+      "tool_version": "1.1.0"
+    },
+    {
+      "argv": [
+        "--transcript",
+        "/app/out/run_transcript.jsonl",
+        "init",
+        "--schema",
+        "/app/data/config_schema.json",
+        "--defaults",
+        "/app/data/defaults.json",
+        "--env",
+        "/app/data/env_overrides.json",
+        "--sample",
+        "/app/data/sample_config_prod.json",
+        "--profile",
+        "prod",
+        "--rules",
+        "/app/data/validation_rules.json",
+        "--out",
+        "/app/out/profile_prod.json"
+      ],
+      "command": "init",
+      "step": 3,
+      "tool": "task-ctl",
+      "tool_version": "1.1.0"
+    },
+    {
+      "argv": [
+        "--transcript",
+        "/app/out/run_transcript.jsonl",
+        "export-report",
+        "--config",
+        "/app/out/config.json",
+        "--schema",
+        "/app/data/config_schema.json",
+        "--rules",
+        "/app/data/validation_rules.json",
+        "--artifacts",
+        "/app/out",
+        "--notes",
+        "/app/repair_notes.json",
+        "--out",
+        "/app/out/report.json"
+      ],
+      "command": "export-report",
+      "step": 4,
+      "tool": "task-ctl",
+      "tool_version": "1.1.0"
+    },
+    {
+      "argv": [
+        "--transcript",
+        "/app/out/run_transcript.jsonl",
+        "validate",
+        "--schema",
+        "/app/data/config_schema.json",
+        "--config",
+        "/app/out/config.json",
+        "--config",
+        "/app/out/profile_dev.json",
+        "--config",
+        "/app/out/profile_prod.json",
+        "--rules",
+        "/app/data/validation_rules.json",
+        "--artifacts",
+        "/app/out",
+        "--out",
+        "/app/out/validation_report.json"
+      ],
+      "command": "validate",
+      "step": 5,
+      "tool": "task-ctl",
+      "tool_version": "1.1.0"
+    },
+    {
+      "argv": [
+        "--transcript",
+        "/app/out/run_transcript.jsonl",
+        "validate",
+        "--schema",
+        "/app/data/config_schema.json",
+        "--config",
+        "/app/out/config.json",
+        "--config",
+        "/app/out/profile_dev.json",
+        "--config",
+        "/app/out/profile_prod.json",
+        "--rules",
+        "/app/data/validation_rules.json",
+        "--artifacts",
+        "/app/out",
+        "--out",
+        "/app/out/validation_report.json"
+      ],
+      "command": "validate",
+      "step": 6,
+      "tool": "task-ctl",
+      "tool_version": "1.1.0"
+    },
+    {
+      "argv": [
+        "--transcript",
+        "/app/out/run_transcript.jsonl",
+        "export-report",
+        "--config",
+        "/app/out/config.json",
+        "--schema",
+        "/app/data/config_schema.json",
+        "--rules",
+        "/app/data/validation_rules.json",
+        "--artifacts",
+        "/app/out",
+        "--notes",
+        "/app/repair_notes.json",
+        "--out",
+        "/app/out/report.json"
+      ],
+      "command": "export-report",
+      "step": 7,
+      "tool": "task-ctl",
+      "tool_version": "1.1.0"
+    }
+  ],
+  "config": {
+    "checksum": "crc32",
+    "container": "",
+    "max_records": 145,
+    "mode": "strict-local",
+    "producer": "",
+    "profile": "TASK",
+    "retry_limit": 3,
+    "timeout_ms": 1771,
+    "trailer": "harbor:cli-config:TASK:0000000000016384"
+  },
+  "config_path": "/app/out/config.json",
+  "notes": {
+    "contract_decisions": [
+      {
+        "decision": "Left as empty strings.",
+        "reason": "Both config_schema.json and defaults.json specify \"\" for these keys; no source document supplies a non-empty value.",
+        "topic": "producer and container"
+      },
+      {
+        "decision": "Carried through verbatim from defaults.json base_config for all three configurations.",
+        "reason": "No document gives a derivation rule for the trailer. Its trailing 0000000000016384 was tested against crc32 of every plausible contract input \u2014 the base configuration, the trailer prefix, the profile name, and the defaults and schema documents \u2014 and matches none, so it is treated as an opaque literal rather than a value to recompute.",
+        "topic": "trailer"
+      },
+      {
+        "decision": "The TASK token inside the trailer is left unchanged for the dev and prod profiles.",
+        "reason": "The trailer belongs to the shared base_config and no document specifies substituting the profile into it; inventing a substitution would change an identifier the contract supplies literally.",
+        "topic": "trailer profile token"
+      },
+      {
+        "decision": "dev: max_records 145-10=135, retry_limit 3+1=4, timeout_ms 1771-125=1646. prod: max_records 145+25=170, retry_limit 3+0=3, timeout_ms 1771+250=2021. mode stays strict-local in both.",
+        "reason": "The sample profiles carry max_records_delta and env_overrides.json carries retry_limit_delta and timeout_ms_delta.",
+        "topic": "profile arithmetic"
+      },
+      {
+        "decision": "Each configuration holds exactly the nine required keys and nothing else.",
+        "reason": "required_keys is the contract's key set and no document authorises extra keys.",
+        "topic": "key set"
+      },
+      {
+        "decision": "No clock, random or environment derived value enters any artifact.",
+        "reason": "Keeps runs reproducible and keeps the forbidden key names out of every artifact.",
+        "topic": "reproducibility"
+      }
+    ],
+    "repair": {
+      "bugs": [
+        {
+          "cause": "cmd_init called load_json(args.config), but the init sub-parser only defines --schema and --out.",
+          "command": "init",
+          "file": "cli.py",
+          "fix": "Read args.schema.",
+          "function": "cmd_init",
+          "id": "BUG-1",
+          "symptom": "AttributeError: 'Namespace' object has no attribute 'config'"
+        },
+        {
+          "cause": "The output shape was hand-built as a nested document.",
+          "command": "init",
+          "file": "cli.py",
+          "fix": "Emit one flat object of scalars, and validate it against the schema before it is written.",
+          "function": "cmd_init",
+          "id": "BUG-2",
+          "symptom": "Emitted {\"settings\": {\"checksum\": ...}} \u2014 a nested object that violates the scalar-only contract and omits six required keys."
+        },
+        {
+          "cause": "The tool ignored defaults.json, env_overrides.json and the sample profiles entirely.",
+          "command": "init",
+          "file": "cli.py",
+          "fix": "Added --defaults, --env, --sample and --profile. Composition order is schema, then defaults (scalars, then the flattened base_config), then the sample profile, then the environment overrides; <key>_delta entries are added onto their base value.",
+          "function": "cmd_init",
+          "id": "BUG-3",
+          "symptom": "No code path could ever produce max_records, retry_limit, timeout_ms, mode or trailer, so a configuration satisfying required_keys was unreachable."
+        },
+        {
+          "cause": "data[args.key.upper()] case-folded the key.",
+          "command": "set",
+          "file": "cli.py",
+          "fix": "Use the key verbatim, and reject keys outside the schema when --schema is given.",
+          "function": "cmd_set",
+          "id": "BUG-4",
+          "symptom": "Setting max_records wrote the key MAX_RECORDS, so required_keys failed while the intended key stayed unset."
+        },
+        {
+          "cause": "The argparse string was assigned without coercion.",
+          "command": "set",
+          "file": "cli.py",
+          "fix": "Coerce to int, float, bool or string, with an explicit --type override; refuse any value that would make the document non-scalar.",
+          "function": "cmd_set",
+          "id": "BUG-5",
+          "symptom": "Every value was stored as a string, so max_records became \"100\" and the numeric keys were no longer integers."
+        },
+        {
+          "cause": "schema[\"required_keys\"].split(\",\") assumed the legacy comma separated string, but /app/data/config_schema.json stores a list.",
+          "command": "validate",
+          "file": "cli.py",
+          "fix": "Accept the list form and the legacy string form via one required_keys() helper.",
+          "function": "cmd_validate",
+          "id": "BUG-6",
+          "symptom": "AttributeError: 'list' object has no attribute 'split' when validating against the contract schema."
+        },
+        {
+          "cause": "scalar_only was never read.",
+          "command": "validate",
+          "file": "cli.py",
+          "fix": "Honour schema.scalar_only, and report unknown keys as a warning rather than an error.",
+          "function": "cmd_validate",
+          "id": "BUG-7",
+          "symptom": "Flatness was checked without consulting the schema, so a document the contract calls non-scalar could pass, and no distinction was drawn between errors and warnings."
+        },
+        {
+          "cause": "No --rules input existed.",
+          "command": "validate",
+          "file": "cli.py",
+          "fix": "Added --rules plus forbidden-key, permitted-profile, checksum-algorithm and integer-value checks, and an --artifacts directory check for the required artifact set and byte budget.",
+          "function": "cmd_validate",
+          "id": "BUG-8",
+          "symptom": "validation_rules.json was never read, so forbidden_keys, profiles, required_artifacts and max_artifact_bytes were all unchecked."
+        },
+        {
+          "cause": "No machine-readable output path.",
+          "command": "validate",
+          "file": "cli.py",
+          "fix": "Print a per-configuration text summary and write the full JSON report to --out; exit non-zero when anything fails. --config may be repeated.",
+          "function": "cmd_validate",
+          "id": "BUG-9",
+          "symptom": "Output was the bare word \"ok\", so nothing could be captured as a validation report."
+        },
+        {
+          "cause": "The report shape was a stub.",
+          "command": "export-report",
+          "file": "cli.py",
+          "fix": "Embed the configuration, a freshly computed validation of it, the recorded command transcript from the JSONL log, and structured notes. ok is derived from the validation result.",
+          "function": "cmd_report",
+          "id": "BUG-10",
+          "symptom": "Produced {\"ok\": true, \"config\": ..., \"commands\": \"unknown\"} \u2014 no usable transcript, and ok was asserted rather than established."
+        },
+        {
+          "cause": "add_subparsers(dest=\"command\") without required=True left args.func unset.",
+          "command": "(parser)",
+          "file": "cli.py",
+          "fix": "Require a sub-command, so the parser prints usage and exits 2.",
+          "function": "main",
+          "id": "BUG-11",
+          "symptom": "Running the tool with no sub-command crashed with AttributeError instead of showing usage."
+        },
+        {
+          "cause": "No input validation and no deterministic serialisation.",
+          "command": "(all)",
+          "file": "cli.py",
+          "fix": "Clean single-line errors with a non-zero exit, and deterministic indent-2 sorted output.",
+          "function": "load_json / write_json",
+          "id": "BUG-12",
+          "symptom": "A missing or malformed input produced a raw traceback, and output key order varied between runs."
+        }
+      ],
+      "extracted_to": "/app/tool",
+      "files_changed": [
+        {
+          "action": "repaired and extended",
+          "path": "cli.py",
+          "summary": "Fixed every command path plus the parser, and taught init to compose a complete configuration from the provided data files."
+        },
+        {
+          "action": "normalised",
+          "path": "schema.json",
+          "summary": "required_keys stored a comma separated string and scalar_only was absent; brought into the contract's list form used by /app/data/config_schema.json. The validator accepts both forms."
+        },
+        {
+          "action": "rewritten",
+          "path": "README.md",
+          "summary": "Documents the repaired command reference, the composition order and the delta convention."
+        },
+        {
+          "action": "added",
+          "path": "task-ctl",
+          "summary": "Executable entry point so the tool installs and runs as task-ctl rather than only via python3 cli.py."
+        }
+      ],
+      "source_archive": "/app/data/tool.zip",
+      "tool_name": "task-ctl",
+      "tool_version_after_repair": "1.1.0",
+      "verification": {
+        "note": "Each fixture reproduces one original defect's output and is rejected by the repaired validator with a non-zero exit.",
+        "regression_fixtures": [
+          "bad_nested.json \u2014 the old init output: fails required_keys_present and scalar_only",
+          "bad_missing.json \u2014 a key removed: fails required_keys_present",
+          "bad_forbidden.json \u2014 a forbidden key added: fails forbidden_keys_absent",
+          "bad_string.json \u2014 a numeric key stored as a string, the old set behaviour: fails numeric_keys_integer",
+          "bad_case.json \u2014 the old set key folding: fails required_keys_present",
+          "bad_profile.json \u2014 a profile outside the rules: fails profile_allowed"
+        ]
+      }
+    },
+    "run": {
+      "artifacts_directory": "/app/out",
+      "defaults": "/app/data/defaults.json",
+      "env_overrides": "/app/data/env_overrides.json",
+      "rules": "/app/data/validation_rules.json",
+      "sample_discovery": "For --profile dev and prod the sample document was resolved automatically as sample_config_<profile>.json next to the --env file; prod was also run once with an explicit --sample to confirm both paths agree.",
+      "sample_profiles": {
+        "dev": "/app/data/sample_config_dev.json",
+        "prod": "/app/data/sample_config_prod.json"
+      },
+      "schema": "/app/data/config_schema.json",
+      "transcript": "/app/out/run_transcript.jsonl",
+      "validate_passes": "validate ran twice. Pass one creates validation_report.json, which is itself a required artifact and therefore cannot be seen as present by a check that runs before it exists. Pass two is the authoritative result, taken once every required artifact was on disk."
+    }
+  },
+  "ok": true,
+  "tool": "task-ctl",
+  "tool_version": "1.1.0",
+  "validation": {
+    "checks": [
+      {
+        "detail": "all 9 required keys present (profile, producer, container, max_records, retry_limit, timeout_ms, checksum, mode, trailer)",
+        "name": "required_keys_present",
+        "status": "pass"
+      },
+      {
+        "detail": "every value is a scalar",
+        "name": "scalar_only",
+        "status": "pass"
+      },
+      {
+        "detail": "none of [timestamp, generated_at, uuid, random_seed] appear in the configuration",
+        "name": "forbidden_keys_absent",
+        "status": "pass"
+      },
+      {
+        "detail": "profile 'TASK' is permitted (TASK, dev, prod)",
+        "name": "profile_allowed",
+        "status": "pass"
+      },
+      {
+        "detail": "checksum algorithm is 'crc32'",
+        "name": "checksum_algorithm",
+        "status": "pass"
+      },
+      {
+        "detail": "configuration holds exactly the required key set",
+        "name": "unknown_keys",
+        "status": "pass"
+      },
+      {
+        "detail": "max_records, retry_limit, timeout_ms are integers",
+        "name": "numeric_keys_integer",
+        "status": "pass"
+      }
+    ],
+    "errors": [],
+    "key_count": 9,
+    "keys": [
+      "checksum",
+      "container",
+      "max_records",
+      "mode",
+      "producer",
+      "profile",
+      "retry_limit",
+      "timeout_ms",
+      "trailer"
+    ],
+    "ok": true,
+    "path": "/app/out/config.json",
+    "profile": "TASK",
+    "warnings": []
+  }
+}

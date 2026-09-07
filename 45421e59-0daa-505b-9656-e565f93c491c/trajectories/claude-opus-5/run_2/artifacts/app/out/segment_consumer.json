@@ -1,0 +1,32 @@
+{
+  "accepted_count": 35,
+  "by_component": {
+    "AURORA": 450919,
+    "BASALT": 329358,
+    "CIPHER": 609409,
+    "DYNAMO": 339454
+  },
+  "by_zone": {
+    "central": 300768,
+    "east": 329381,
+    "north": 441973,
+    "south": 244965,
+    "west": 412053
+  },
+  "modules": [
+    "AURORA-V1",
+    "AURORA-V2",
+    "AURORA-V3",
+    "BASALT-V1",
+    "BASALT-V2",
+    "CIPHER-V1",
+    "CIPHER-V2",
+    "CIPHER-V3",
+    "DYNAMO-V1",
+    "DYNAMO-V3"
+  ],
+  "tenant_segment": "consumer",
+  "total_bytes_uploaded": 1729140,
+  "total_cost_ns": 2263200,
+  "within_budget_count": 20
+}
