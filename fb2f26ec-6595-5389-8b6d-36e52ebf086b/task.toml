@@ -1,0 +1,39 @@
+schema_version = "1.1"
+artifacts = [
+    "/app/out/scorer.py",
+    "/app/out/board-gantry.json",
+    "/app/out/board-hurdle.json",
+    "/app/out/board-inglenook.json",
+    "/app/out/board-jetty.json",
+    "/app/out/board-kestrel.json",
+    "/app/out/board-lintel.json",
+]
+
+[task]
+name = "terminal-bench/fb2f26ec-6595-5389-8b6d-36e52ebf086b"
+description = "Recover the seven lost scoring decisions of a batch inference scorer from an archive that publishes only an opaque seal over each scoreboard, then deliver a scorer that reproduces those seals and holds on batches nobody ever scored."
+keywords = ["python", "inference", "batch-scoring", "argmax", "recovery", "sealed-evidence", "stdlib"]
+authors = [
+    "aditya.jainint17@ethara.ai",
+    "dinshi.jain@ethara.ai",
+]
+
+[metadata]
+difficulty = "hard"
+category = "Machine Learning"
+tags = ["python", "inference", "batch-scoring", "aggregation", "recovery", "relay", "stdlib"]
+estimated_duration_sec = 21600.0
+expert_time_estimate_min = 660.0
+junior_time_estimate_min = 2640.0
+
+[verifier]
+timeout_sec = 3600.0
+environment_mode = "separate"
+
+[agent]
+timeout_sec = 21600.0
+
+[environment]
+build_timeout_sec = 900.0
+allow_internet = true
+mcp_servers = []

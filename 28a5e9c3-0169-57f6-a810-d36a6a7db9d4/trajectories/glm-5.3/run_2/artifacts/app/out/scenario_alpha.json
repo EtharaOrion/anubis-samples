@@ -1,0 +1,58 @@
+{
+  "description": "Alpha is changed by planned CLI operations and a final local CLI bonus.",
+  "key": "alpha",
+  "name": "alpha",
+  "ok": true,
+  "operation_count": 3,
+  "operation_log": [
+    {
+      "action": "add",
+      "amount": 3,
+      "channel": "cli",
+      "http_status": 200,
+      "key": "alpha",
+      "op_id": "op01",
+      "state_after": {
+        "alpha": 3,
+        "beta": 0,
+        "mode_code": 0
+      }
+    },
+    {
+      "action": "multiply",
+      "amount": 2,
+      "channel": "cli",
+      "http_status": 200,
+      "key": "alpha",
+      "op_id": "op03",
+      "state_after": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      }
+    },
+    {
+      "action": "add",
+      "amount": 2,
+      "channel": "cli",
+      "http_status": 200,
+      "key": "alpha",
+      "op_id": "bonus_alpha",
+      "state_after": {
+        "alpha": 8,
+        "beta": 5,
+        "mode_code": 0
+      }
+    }
+  ],
+  "operations": [
+    "op01",
+    "op03",
+    "bonus_alpha"
+  ],
+  "source_channels": [
+    "cli"
+  ],
+  "trailer": "harbor:service-interaction:TASK:0000000000016386",
+  "value": 8
+}

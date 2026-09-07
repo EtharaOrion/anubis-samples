@@ -1,0 +1,47 @@
+{
+  "artifact_count": 7,
+  "artifacts": [
+    "final_state.json",
+    "report.json",
+    "scenario_alpha.json",
+    "scenario_beta.json",
+    "scenario_mode.json",
+    "summary.json",
+    "transcript_summary.json"
+  ],
+  "base_url": "http://127.0.0.1:8765",
+  "channels_used": [
+    "api",
+    "cli"
+  ],
+  "final_state": {
+    "alpha": 8,
+    "beta": 6,
+    "container": "",
+    "mode_code": 0,
+    "producer": "",
+    "service": "TASK",
+    "trailer": "harbor:service-interaction:TASK:0000000000016386"
+  },
+  "inputs": [
+    "data/api_contract.md",
+    "data/auth_policy.json",
+    "data/expected_schema.json",
+    "data/sample_requests.jsonl",
+    "data/scenarios.jsonl",
+    "data/seed_config.json",
+    "data/service.zip",
+    "service/client.py",
+    "service/plan.json",
+    "service/simulator.py"
+  ],
+  "ok": true,
+  "scenario_files": [
+    "scenario_alpha.json",
+    "scenario_beta.json",
+    "scenario_mode.json"
+  ],
+  "service": "TASK",
+  "state_sha256": "d186be97fae0c549e0ca171f295a3abb237b579d067d585cf5ce3cf2be9fde9a",
+  "trailer": "harbor:service-interaction:TASK:0000000000016386"
+}

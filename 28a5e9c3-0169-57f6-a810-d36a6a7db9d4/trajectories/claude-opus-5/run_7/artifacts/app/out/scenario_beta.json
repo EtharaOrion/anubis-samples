@@ -1,0 +1,29 @@
+{
+  "description": "Beta is changed by planned API operations and a final local API bonus.",
+  "expected_value": 6,
+  "key": "beta",
+  "name": "beta",
+  "operation_count": 2,
+  "operations": [
+    {
+      "action": "add",
+      "amount": 5,
+      "channel": "api",
+      "op_id": "op02",
+      "origin": "plan.json"
+    },
+    {
+      "action": "add",
+      "amount": 1,
+      "channel": "api",
+      "op_id": "op06",
+      "origin": "seed_config.json:beta_bonus"
+    }
+  ],
+  "service": "TASK",
+  "source_channels": [
+    "api"
+  ],
+  "trailer": "harbor:service-interaction:TASK:0000000000016386",
+  "value": 6
+}

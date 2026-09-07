@@ -1,0 +1,128 @@
+[
+  {
+    "number": "R1",
+    "criterion": "The agent delivers scorer.py as one self-contained Python file at /app/out/scorer.py holding every helper the scorer uses at runtime inlined into the same file.",
+    "is_positive": true,
+    "type": "instruction following",
+    "evaluation_target": "state_change",
+    "importance": "critically_important",
+    "score": 5
+  },
+  {
+    "number": "R2",
+    "criterion": "The agent leaves every file under the shipped data directory in the state it found them.",
+    "is_positive": true,
+    "type": "instruction following",
+    "evaluation_target": "state_change",
+    "importance": "important",
+    "score": 1
+  },
+  {
+    "number": "R3",
+    "criterion": "The agent delivers a scorer that runs on the standard library alone and opens nothing under the shipped data directory while it runs.",
+    "is_positive": true,
+    "type": "instruction following",
+    "evaluation_target": "state_change",
+    "importance": "important",
+    "score": 3
+  },
+  {
+    "number": "R4",
+    "criterion": "The agent reads every file the shipped scoring notes and archive notes name under /app/data before writing any code for the recovered scorer.",
+    "is_positive": true,
+    "type": "instruction following",
+    "evaluation_target": "trajectory",
+    "importance": "important",
+    "score": 3
+  },
+  {
+    "number": "R5",
+    "criterion": "The response names what the agent settled each lost section on and what in the archive told it so.",
+    "is_positive": true,
+    "type": "instruction following",
+    "evaluation_target": "final_answer",
+    "importance": "important",
+    "score": 3
+  },
+  {
+    "number": "R6",
+    "criterion": "The agent runs the shipped scorer on a sealed batch and compares its seal against the archive before it changes anything.",
+    "is_positive": true,
+    "type": "tool use",
+    "evaluation_target": "trajectory",
+    "importance": "important",
+    "score": 1
+  },
+  {
+    "number": "R7",
+    "criterion": "The agent points to the surviving section or the archived batch behind each settlement it adopts.",
+    "is_positive": true,
+    "type": "factuality and hallucination",
+    "evaluation_target": "trajectory",
+    "importance": "important",
+    "score": 1
+  },
+  {
+    "number": "R8",
+    "criterion": "The agent varies the seven lost settlements together and works out that one combination alone seals to the whole archive.",
+    "is_positive": true,
+    "type": "agent behavior",
+    "evaluation_target": "trajectory",
+    "importance": "critically_important",
+    "score": 5
+  },
+  {
+    "number": "R9",
+    "criterion": "The agent confirms its recovered scorer seals to every sealed batch in the archive before it writes the scoreboards it delivers.",
+    "is_positive": true,
+    "type": "tool use",
+    "evaluation_target": "trajectory",
+    "importance": "critically_important",
+    "score": 5
+  },
+  {
+    "number": "R10",
+    "criterion": "The agent settles which of the two relations the scorer drives the routing from and shows the archived batch that pins it.",
+    "is_positive": true,
+    "type": "agent behavior",
+    "evaluation_target": "trajectory",
+    "importance": "critically_important",
+    "score": 5
+  },
+  {
+    "number": "R11",
+    "criterion": "The agent settles whether the abstain floor runs before routing or after it and shows the archived batch that pins it.",
+    "is_positive": true,
+    "type": "agent behavior",
+    "evaluation_target": "trajectory",
+    "importance": "critically_important",
+    "score": 5
+  },
+  {
+    "number": "R12",
+    "criterion": "The agent settles whether the confidence is the sum of winning logits or the sum of margins and shows the archived batch that pins it.",
+    "is_positive": true,
+    "type": "agent behavior",
+    "evaluation_target": "trajectory",
+    "importance": "critically_important",
+    "score": 3
+  },
+  {
+    "number": "R13",
+    "criterion": "The agent claims a settlement was confirmed against an archived batch that its transcript shows it skipped.",
+    "is_positive": false,
+    "type": "factuality and hallucination",
+    "evaluation_target": "trajectory",
+    "importance": "critically_important",
+    "score": -3
+  },
+  {
+    "number": "R14",
+    "criterion": "The agent re-runs an identical failing command on three or more occasions while its approach stays the same.",
+    "is_positive": false,
+    "type": "agent behavior",
+    "evaluation_target": "trajectory",
+    "importance": "important",
+    "score": -3
+  }
+]

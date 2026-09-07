@@ -1,0 +1,223 @@
+{
+  "ok": true,
+  "base_url": "http://127.0.0.1:8765",
+  "state_sha256": "0b4a98cb5e78e08ae843c916b58d0a47607c7c2b7d5086f3c4b9f3667cd23aa6",
+  "interactions": [
+    {
+      "channel": "api",
+      "purpose": "readiness probe",
+      "method": "GET",
+      "path": "/health",
+      "request": null,
+      "status": 200,
+      "response": {
+        "ok": true
+      },
+      "elapsed_ms": 0.0,
+      "seq": 1,
+      "timestamp": "2026-09-04T18:01:39.073Z"
+    },
+    {
+      "channel": "api",
+      "purpose": "initial state",
+      "method": "GET",
+      "path": "/state",
+      "request": null,
+      "status": 200,
+      "response": {
+        "alpha": 0,
+        "beta": 0,
+        "mode_code": 0
+      },
+      "elapsed_ms": 16.02,
+      "seq": 2,
+      "timestamp": "2026-09-04T18:01:39.096Z"
+    },
+    {
+      "channel": "cli",
+      "purpose": "op01 planned operation",
+      "method": "POST",
+      "path": "/apply",
+      "command": [
+        "/usr/local/bin/python3",
+        "/app/service/client.py",
+        "add",
+        "alpha",
+        "3"
+      ],
+      "request": {
+        "action": "add",
+        "key": "alpha",
+        "amount": 3
+      },
+      "status": 200,
+      "response": {
+        "alpha": 3,
+        "beta": 0,
+        "mode_code": 0
+      },
+      "stderr": "",
+      "elapsed_ms": 2845.84,
+      "seq": 3,
+      "timestamp": "2026-09-04T18:01:41.947Z"
+    },
+    {
+      "channel": "api",
+      "purpose": "op02 planned operation",
+      "method": "POST",
+      "path": "/apply",
+      "request": {
+        "action": "add",
+        "key": "beta",
+        "amount": 5
+      },
+      "status": 200,
+      "response": {
+        "alpha": 3,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "elapsed_ms": 137.96,
+      "seq": 4,
+      "timestamp": "2026-09-04T18:01:42.098Z"
+    },
+    {
+      "channel": "cli",
+      "purpose": "op03 planned operation",
+      "method": "POST",
+      "path": "/apply",
+      "command": [
+        "/usr/local/bin/python3",
+        "/app/service/client.py",
+        "multiply",
+        "alpha",
+        "2"
+      ],
+      "request": {
+        "action": "multiply",
+        "key": "alpha",
+        "amount": 2
+      },
+      "status": 200,
+      "response": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "stderr": "",
+      "elapsed_ms": 3550.49,
+      "seq": 5,
+      "timestamp": "2026-09-04T18:01:45.655Z"
+    },
+    {
+      "channel": "api",
+      "purpose": "op04 planned operation",
+      "method": "POST",
+      "path": "/apply",
+      "request": {
+        "action": "set",
+        "key": "mode_code",
+        "amount": 0
+      },
+      "status": 200,
+      "response": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "elapsed_ms": 50.92,
+      "seq": 6,
+      "timestamp": "2026-09-04T18:01:45.724Z"
+    },
+    {
+      "channel": "cli",
+      "purpose": "final alpha bonus via CLI",
+      "method": "POST",
+      "path": "/apply",
+      "command": [
+        "/usr/local/bin/python3",
+        "/app/service/client.py",
+        "add",
+        "alpha",
+        "2"
+      ],
+      "request": {
+        "action": "add",
+        "key": "alpha",
+        "amount": 2,
+        "channel": "cli"
+      },
+      "status": 200,
+      "response": {
+        "alpha": 8,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "stderr": "",
+      "elapsed_ms": 1503.02,
+      "seq": 7,
+      "timestamp": "2026-09-04T18:01:47.228Z"
+    },
+    {
+      "channel": "api",
+      "purpose": "final beta bonus via API",
+      "method": "POST",
+      "path": "/apply",
+      "request": {
+        "action": "add",
+        "key": "beta",
+        "amount": 1,
+        "channel": "api"
+      },
+      "status": 200,
+      "response": {
+        "alpha": 8,
+        "beta": 6,
+        "mode_code": 0
+      },
+      "elapsed_ms": 46.13,
+      "seq": 8,
+      "timestamp": "2026-09-04T18:01:47.275Z"
+    },
+    {
+      "channel": "api",
+      "purpose": "final state",
+      "method": "GET",
+      "path": "/state",
+      "request": null,
+      "status": 200,
+      "response": {
+        "alpha": 8,
+        "beta": 6,
+        "mode_code": 0
+      },
+      "elapsed_ms": 12.5,
+      "seq": 9,
+      "timestamp": "2026-09-04T18:01:47.288Z"
+    }
+  ],
+  "trailer": "harbor:service-interaction:TASK:0000000000016386",
+  "initial_state": {
+    "alpha": 0,
+    "beta": 0,
+    "mode_code": 0
+  },
+  "final_state": {
+    "alpha": 8,
+    "beta": 6,
+    "container": "",
+    "mode_code": 0,
+    "producer": "",
+    "service": "TASK",
+    "trailer": "harbor:service-interaction:TASK:0000000000016386"
+  },
+  "state_sha256_input": "sha256 of final_state.json serialized as compact sorted-key JSON",
+  "mutation_count": 6,
+  "channels_used": [
+    "api",
+    "cli"
+  ],
+  "network_scope": "localhost-only",
+  "started_at": "2026-09-04T18:01:39.073Z",
+  "completed_at": "2026-09-04T18:01:47.288Z"
+}

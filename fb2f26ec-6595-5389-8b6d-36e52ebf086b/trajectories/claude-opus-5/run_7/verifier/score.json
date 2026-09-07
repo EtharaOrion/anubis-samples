@@ -1,0 +1,156 @@
+{
+  "model": "claude-opus-5",
+  "run_index": 7,
+  "rubric": [
+    {
+      "number": "R1",
+      "criterion": "The agent delivers scorer.py as one self-contained Python file at /app/out/scorer.py holding every helper the scorer uses at runtime inlined into the same file.",
+      "type": "instruction following",
+      "evaluation_target": "state_change",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R2",
+      "criterion": "The agent leaves every file under the shipped data directory in the state it found them.",
+      "type": "instruction following",
+      "evaluation_target": "state_change",
+      "importance": "important",
+      "score": 1,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R3",
+      "criterion": "The agent delivers a scorer that runs on the standard library alone and opens nothing under the shipped data directory while it runs.",
+      "type": "instruction following",
+      "evaluation_target": "state_change",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R4",
+      "criterion": "The agent reads every file the shipped scoring notes and archive notes name under /app/data before writing any code for the recovered scorer.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R5",
+      "criterion": "The response names what the agent settled each lost section on and what in the archive told it so.",
+      "type": "instruction following",
+      "evaluation_target": "final_answer",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R6",
+      "criterion": "The agent runs the shipped scorer on a sealed batch and compares its seal against the archive before it changes anything.",
+      "type": "tool use",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 1,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The agent never explicitly ran the shipped /app/data/scorer.py on a sealed batch and compared its output to the archive seals. The agent instead built search scripts from scratch. The transcript shows no invocation of python3 /app/data/scorer.py on a sealed batch."
+    },
+    {
+      "number": "R7",
+      "criterion": "The agent points to the surviving section or the archived batch behind each settlement it adopts.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 1,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R8",
+      "criterion": "The agent varies the seven lost settlements together and works out that one combination alone seals to the whole archive.",
+      "type": "agent behavior",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The agent ran extensive searches across millions of candidate payloads and hash families but explicitly states \"I could not reproduce them\" with zero hits across all seven sealed batches. No combination was found that seals to the archive."
+    },
+    {
+      "number": "R9",
+      "criterion": "The agent confirms its recovered scorer seals to every sealed batch in the archive before it writes the scoreboards it delivers.",
+      "type": "tool use",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The agent explicitly states it could not reproduce the seals (zero hits in all searches). The final verification test showed \"payloads tested: 182 hits: 0\" against the recovered scorer's outputs. No seal confirmation was achieved before or after writing the scoreboards."
+    },
+    {
+      "number": "R10",
+      "criterion": "The agent settles which of the two relations the scorer drives the routing from and shows the archived batch that pins it.",
+      "type": "agent behavior",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The agent settles on 'routes' driving, but this was derived from spec text reasoning (\u00a76 provides for empty buckets) not from matching an archived batch seal. The agent explicitly acknowledged it could not reproduce any seals, so no archived batch pinned this settlement."
+    },
+    {
+      "number": "R11",
+      "criterion": "The agent settles whether the abstain floor runs before routing or after it and shows the archived batch that pins it.",
+      "type": "agent behavior",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The agent settles on 'before_route' from spec text reasoning (\u00a75's \"each surviving item\" language), not from a sealed batch match. No archived batch is shown to pin this settlement since the seal-cracking effort failed completely."
+    },
+    {
+      "number": "R12",
+      "criterion": "The agent settles whether the confidence is the sum of winning logits or the sum of margins and shows the archived batch that pins it.",
+      "type": "agent behavior",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 3,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The agent settles on top_sum with a textual argument (margins already reported as total), not from a sealed batch match. The agent admits zero seal matches were found, so no archived batch pins this settlement."
+    },
+    {
+      "number": "R13",
+      "criterion": "The agent claims a settlement was confirmed against an archived batch that its transcript shows it skipped.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R14",
+      "criterion": "The agent re-runs an identical failing command on three or more occasions while its approach stays the same.",
+      "type": "agent behavior",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    }
+  ],
+  "rubric_weights_percentage": 40.0,
+  "test_weights_percentage": 4.11,
+  "final_reward": 22.05,
+  "judge_model": "gpt-5.6-sol"
+}

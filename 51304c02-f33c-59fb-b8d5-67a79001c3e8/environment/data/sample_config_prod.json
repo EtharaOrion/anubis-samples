@@ -1,5 +1,0 @@
-{
-  "profile": "prod",
-  "max_records_delta": 25,
-  "checksum": "crc32"
-}

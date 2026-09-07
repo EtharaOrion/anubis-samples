@@ -1,0 +1,189 @@
+{
+  "trailer": "harbor:service-interaction:TASK:0000000000016386",
+  "base_url": "http://127.0.0.1:8765",
+  "total_interactions": 9,
+  "mutations": 6,
+  "reads": 3,
+  "by_channel": {
+    "api": 6,
+    "cli": 3
+  },
+  "by_action": {
+    "add": 4,
+    "multiply": 1,
+    "set": 1
+  },
+  "by_key": {
+    "alpha": 3,
+    "beta": 2,
+    "mode_code": 1
+  },
+  "status_codes": {
+    "200": 9
+  },
+  "interactions": [
+    {
+      "seq": 1,
+      "timestamp": "2026-09-04T18:01:39.073Z",
+      "channel": "api",
+      "purpose": "readiness probe",
+      "method": "GET",
+      "path": "/health",
+      "request": null,
+      "status": 200,
+      "response": {
+        "ok": true
+      }
+    },
+    {
+      "seq": 2,
+      "timestamp": "2026-09-04T18:01:39.096Z",
+      "channel": "api",
+      "purpose": "initial state",
+      "method": "GET",
+      "path": "/state",
+      "request": null,
+      "status": 200,
+      "response": {
+        "alpha": 0,
+        "beta": 0,
+        "mode_code": 0
+      }
+    },
+    {
+      "seq": 3,
+      "timestamp": "2026-09-04T18:01:41.947Z",
+      "channel": "cli",
+      "purpose": "op01 planned operation",
+      "method": "POST",
+      "path": "/apply",
+      "request": {
+        "action": "add",
+        "key": "alpha",
+        "amount": 3
+      },
+      "status": 200,
+      "response": {
+        "alpha": 3,
+        "beta": 0,
+        "mode_code": 0
+      }
+    },
+    {
+      "seq": 4,
+      "timestamp": "2026-09-04T18:01:42.098Z",
+      "channel": "api",
+      "purpose": "op02 planned operation",
+      "method": "POST",
+      "path": "/apply",
+      "request": {
+        "action": "add",
+        "key": "beta",
+        "amount": 5
+      },
+      "status": 200,
+      "response": {
+        "alpha": 3,
+        "beta": 5,
+        "mode_code": 0
+      }
+    },
+    {
+      "seq": 5,
+      "timestamp": "2026-09-04T18:01:45.655Z",
+      "channel": "cli",
+      "purpose": "op03 planned operation",
+      "method": "POST",
+      "path": "/apply",
+      "request": {
+        "action": "multiply",
+        "key": "alpha",
+        "amount": 2
+      },
+      "status": 200,
+      "response": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      }
+    },
+    {
+      "seq": 6,
+      "timestamp": "2026-09-04T18:01:45.724Z",
+      "channel": "api",
+      "purpose": "op04 planned operation",
+      "method": "POST",
+      "path": "/apply",
+      "request": {
+        "action": "set",
+        "key": "mode_code",
+        "amount": 0
+      },
+      "status": 200,
+      "response": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      }
+    },
+    {
+      "seq": 7,
+      "timestamp": "2026-09-04T18:01:47.228Z",
+      "channel": "cli",
+      "purpose": "final alpha bonus via CLI",
+      "method": "POST",
+      "path": "/apply",
+      "request": {
+        "action": "add",
+        "key": "alpha",
+        "amount": 2,
+        "channel": "cli"
+      },
+      "status": 200,
+      "response": {
+        "alpha": 8,
+        "beta": 5,
+        "mode_code": 0
+      }
+    },
+    {
+      "seq": 8,
+      "timestamp": "2026-09-04T18:01:47.275Z",
+      "channel": "api",
+      "purpose": "final beta bonus via API",
+      "method": "POST",
+      "path": "/apply",
+      "request": {
+        "action": "add",
+        "key": "beta",
+        "amount": 1,
+        "channel": "api"
+      },
+      "status": 200,
+      "response": {
+        "alpha": 8,
+        "beta": 6,
+        "mode_code": 0
+      }
+    },
+    {
+      "seq": 9,
+      "timestamp": "2026-09-04T18:01:47.288Z",
+      "channel": "api",
+      "purpose": "final state",
+      "method": "GET",
+      "path": "/state",
+      "request": null,
+      "status": 200,
+      "response": {
+        "alpha": 8,
+        "beta": 6,
+        "mode_code": 0
+      }
+    }
+  ],
+  "mutations_by_channel": {
+    "cli": 3,
+    "api": 3
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "artifact_count": 7,
+  "artifacts": [
+    "/app/out/final_state.json",
+    "/app/out/report.json",
+    "/app/out/scenario_alpha.json",
+    "/app/out/scenario_beta.json",
+    "/app/out/scenario_mode.json",
+    "/app/out/transcript_summary.json",
+    "/app/out/summary.json"
+  ],
+  "base_url": "http://127.0.0.1:8765",
+  "channels_used": [
+    "api",
+    "cli"
+  ],
+  "final_state": {
+    "alpha": 8,
+    "beta": 6,
+    "mode_code": 0
+  },
+  "inputs": [
+    "/app/data/api_contract.md",
+    "/app/data/auth_policy.json",
+    "/app/data/expected_schema.json",
+    "/app/data/sample_requests.jsonl",
+    "/app/data/scenarios.jsonl",
+    "/app/data/seed_config.json",
+    "/app/data/service.zip",
+    "/app/service/simulator.py",
+    "/app/service/client.py",
+    "/app/service/plan.json"
+  ],
+  "operations_executed": 6,
+  "scenario_files": [
+    "/app/out/scenario_alpha.json",
+    "/app/out/scenario_beta.json",
+    "/app/out/scenario_mode.json"
+  ],
+  "scenario_outcomes": [
+    {
+      "key": "alpha",
+      "name": "alpha",
+      "operation_count": 3,
+      "source_channels": [
+        "cli"
+      ],
+      "value": 8
+    },
+    {
+      "key": "beta",
+      "name": "beta",
+      "operation_count": 2,
+      "source_channels": [
+        "api"
+      ],
+      "value": 6
+    },
+    {
+      "key": "mode_code",
+      "name": "mode",
+      "operation_count": 1,
+      "source_channels": [
+        "api"
+      ],
+      "value": 0
+    }
+  ],
+  "service": "TASK",
+  "trailer": "harbor:service-interaction:TASK:0000000000016386"
+}

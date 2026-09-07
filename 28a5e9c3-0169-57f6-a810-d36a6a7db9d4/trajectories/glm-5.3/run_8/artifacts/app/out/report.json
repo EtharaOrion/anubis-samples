@@ -1,0 +1,241 @@
+{
+  "base_url": "http://127.0.0.1:8765",
+  "channels_used": [
+    "api",
+    "cli"
+  ],
+  "final_state": {
+    "alpha": 8,
+    "beta": 6,
+    "mode_code": 0
+  },
+  "interaction_count": 6,
+  "interactions": [
+    {
+      "channel": "cli",
+      "channel_detail": "client.py subprocess issuing POST /apply",
+      "label": "op01",
+      "request": {
+        "body": {
+          "action": "add",
+          "amount": 3,
+          "key": "alpha"
+        },
+        "method": "POST",
+        "path": "/apply"
+      },
+      "response": {
+        "body": {
+          "alpha": 3,
+          "beta": 0,
+          "mode_code": 0
+        },
+        "status": 200
+      },
+      "state_after": {
+        "alpha": 3,
+        "beta": 0,
+        "mode_code": 0
+      },
+      "state_before": {
+        "alpha": 0,
+        "beta": 0,
+        "mode_code": 0
+      }
+    },
+    {
+      "channel": "api",
+      "channel_detail": "direct HTTP POST /apply",
+      "label": "op02",
+      "request": {
+        "body": {
+          "action": "add",
+          "amount": 5,
+          "key": "beta"
+        },
+        "method": "POST",
+        "path": "/apply"
+      },
+      "response": {
+        "body": {
+          "alpha": 3,
+          "beta": 5,
+          "mode_code": 0
+        },
+        "status": 200
+      },
+      "state_after": {
+        "alpha": 3,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "state_before": {
+        "alpha": 3,
+        "beta": 0,
+        "mode_code": 0
+      }
+    },
+    {
+      "channel": "cli",
+      "channel_detail": "client.py subprocess issuing POST /apply",
+      "label": "op03",
+      "request": {
+        "body": {
+          "action": "multiply",
+          "amount": 2,
+          "key": "alpha"
+        },
+        "method": "POST",
+        "path": "/apply"
+      },
+      "response": {
+        "body": {
+          "alpha": 6,
+          "beta": 5,
+          "mode_code": 0
+        },
+        "status": 200
+      },
+      "state_after": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "state_before": {
+        "alpha": 3,
+        "beta": 5,
+        "mode_code": 0
+      }
+    },
+    {
+      "channel": "api",
+      "channel_detail": "direct HTTP POST /apply",
+      "label": "op04",
+      "request": {
+        "body": {
+          "action": "set",
+          "amount": 0,
+          "key": "mode_code"
+        },
+        "method": "POST",
+        "path": "/apply"
+      },
+      "response": {
+        "body": {
+          "alpha": 6,
+          "beta": 5,
+          "mode_code": 0
+        },
+        "status": 200
+      },
+      "state_after": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "state_before": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      }
+    },
+    {
+      "channel": "cli",
+      "channel_detail": "client.py subprocess issuing POST /apply",
+      "label": "bonus_alpha",
+      "request": {
+        "body": {
+          "action": "add",
+          "amount": 2,
+          "key": "alpha"
+        },
+        "method": "POST",
+        "path": "/apply"
+      },
+      "response": {
+        "body": {
+          "alpha": 8,
+          "beta": 5,
+          "mode_code": 0
+        },
+        "status": 200
+      },
+      "state_after": {
+        "alpha": 8,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "state_before": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      }
+    },
+    {
+      "channel": "api",
+      "channel_detail": "direct HTTP POST /apply",
+      "label": "bonus_beta",
+      "request": {
+        "body": {
+          "action": "add",
+          "amount": 1,
+          "key": "beta"
+        },
+        "method": "POST",
+        "path": "/apply"
+      },
+      "response": {
+        "body": {
+          "alpha": 8,
+          "beta": 6,
+          "mode_code": 0
+        },
+        "status": 200
+      },
+      "state_after": {
+        "alpha": 8,
+        "beta": 6,
+        "mode_code": 0
+      },
+      "state_before": {
+        "alpha": 8,
+        "beta": 5,
+        "mode_code": 0
+      }
+    }
+  ],
+  "ok": true,
+  "plan": {
+    "op01_action": "add",
+    "op01_amount": 3,
+    "op01_channel": "cli",
+    "op01_key": "alpha",
+    "op02_action": "add",
+    "op02_amount": 5,
+    "op02_channel": "api",
+    "op02_key": "beta",
+    "op03_action": "multiply",
+    "op03_amount": 2,
+    "op03_channel": "cli",
+    "op03_key": "alpha",
+    "op04_action": "set",
+    "op04_amount": 0,
+    "op04_channel": "api",
+    "op04_key": "mode_code"
+  },
+  "simulator": {
+    "extracted_to": "/app/service",
+    "health_check": {
+      "ok": true
+    },
+    "host": "127.0.0.1",
+    "port": 8765,
+    "source_archive": "/app/data/service.zip"
+  },
+  "state_changes_via_api": 3,
+  "state_changes_via_cli": 3,
+  "state_sha256": "d186be97fae0c549e0ca171f295a3abb237b579d067d585cf5ce3cf2be9fde9a",
+  "state_sha256_input": "{\"alpha\":8,\"beta\":6,\"mode_code\":0}",
+  "state_sha256_note": "sha256 over the canonical JSON of the GET /state snapshot (sort_keys, separators(',',':')).",
+  "trailer": "harbor:service-interaction:TASK:0000000000016386"
+}

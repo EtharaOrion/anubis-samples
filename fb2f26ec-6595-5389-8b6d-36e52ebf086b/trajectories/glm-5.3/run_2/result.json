@@ -1,0 +1,121 @@
+{
+    "id": "d263b2ef-d779-43a7-8125-0088abc3881c",
+    "task_name": "terminal-bench/fb2f26ec-6595-5389-8b6d-36e52ebf086b",
+    "trial_name": "fb2f26ec-6595-5389-8b6d-36e52ebf086b__9Bq3y9x",
+    "trial_uri": "file://fb2f26ec-6595-5389-8b6d-36e52ebf086b/trajectories/glm-5.3/run_2",
+    "task_id": {
+        "path": "fb2f26ec-6595-5389-8b6d-36e52ebf086b"
+    },
+    "source": null,
+    "task_checksum": "30185af11805ff3a14aa640d1f01482293380192c44e35ed21caf6bbd7ba4726",
+    "config": {
+        "task": {
+            "path": "fb2f26ec-6595-5389-8b6d-36e52ebf086b",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "fb2f26ec-6595-5389-8b6d-36e52ebf086b__9Bq3y9x",
+        "trials_dir": "fb2f26ec-6595-5389-8b6d-36e52ebf086b/trajectories/glm-5.3",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": 2.0,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": 3.0,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "claude-code",
+            "import_path": null,
+            "model_name": "glm-5.3",
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {},
+            "mcp_servers": []
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {},
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "env": {
+                "REWARDKIT_JUDGE": "gpt-5.6-sol",
+                "OPENAI_API_BASE": "http://172.17.0.1:37753",
+                "OPENAI_BASE_URL": "http://172.17.0.1:37753",
+                "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+            },
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "job_id": "46c986fd-2640-4661-a788-4b4b9fa04f67",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "claude-code",
+        "version": "2.1.261",
+        "model_info": {
+            "name": "glm-5.3",
+            "provider": null
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 13180183,
+        "n_cache_tokens": 12729664,
+        "n_output_tokens": 245594,
+        "cost_usd": 15.221430999999995,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 0.0410958904109589
+        }
+    },
+    "verifier_environment_mode": "separate",
+    "exception_info": null,
+    "started_at": "2026-09-05T12:58:04.432287Z",
+    "finished_at": "2026-09-05T14:28:09.222821Z",
+    "environment_setup": {
+        "started_at": "2026-09-05T12:58:04.433641Z",
+        "finished_at": "2026-09-05T12:58:08.167564Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-09-05T12:58:08.167587Z",
+        "finished_at": "2026-09-05T12:58:20.724568Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-09-05T12:58:20.724640Z",
+        "finished_at": "2026-09-05T14:27:29.710926Z"
+    },
+    "verifier": {
+        "started_at": "2026-09-05T14:27:46.588897Z",
+        "finished_at": "2026-09-05T14:28:09.222810Z"
+    },
+    "step_results": null
+}

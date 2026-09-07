@@ -1,0 +1,46 @@
+{
+  "artifact_count": 7,
+  "artifacts": [
+    "final_state.json",
+    "report.json",
+    "scenario_alpha.json",
+    "scenario_beta.json",
+    "scenario_mode.json",
+    "summary.json",
+    "transcript_summary.json"
+  ],
+  "base_url": "http://127.0.0.1:8765",
+  "channels_used": [
+    "api",
+    "cli"
+  ],
+  "container": "5e1b7c506540",
+  "final_state": {
+    "alpha": 8,
+    "beta": 6,
+    "mode_code": 0
+  },
+  "inputs": {
+    "archive": "/app/data/service.zip",
+    "auth_policy": "/app/data/auth_policy.json",
+    "contract": "/app/data/api_contract.md",
+    "expected_schema": "/app/data/expected_schema.json",
+    "extracted_to": "/app/service",
+    "plan": "/app/service/plan.json",
+    "sample_requests": "/app/data/sample_requests.jsonl",
+    "scenarios": "/app/data/scenarios.jsonl",
+    "seed_config": "/app/data/seed_config.json"
+  },
+  "interactions": 8,
+  "ok": true,
+  "operation_count": 6,
+  "producer": "claude-code_2-1-259_agent",
+  "scenario_files": [
+    "scenario_alpha.json",
+    "scenario_beta.json",
+    "scenario_mode.json"
+  ],
+  "service": "TASK",
+  "state_sha256": "d186be97fae0c549e0ca171f295a3abb237b579d067d585cf5ce3cf2be9fde9a",
+  "trailer": "harbor:service-interaction:TASK:0000000000016386"
+}

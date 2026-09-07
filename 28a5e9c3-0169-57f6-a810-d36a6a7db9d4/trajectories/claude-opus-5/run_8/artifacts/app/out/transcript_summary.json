@@ -1,0 +1,184 @@
+{
+  "all_responses_ok": true,
+  "base_url": "http://127.0.0.1:8765",
+  "by_channel": {
+    "api": 5,
+    "cli": 3
+  },
+  "by_endpoint": {
+    "/apply": 6,
+    "/health": 1,
+    "/state": 1
+  },
+  "exchanges": [
+    {
+      "channel": "api",
+      "method": "GET",
+      "note": "readiness probe succeeded on attempt 1",
+      "request": null,
+      "response": {
+        "ok": true
+      },
+      "seq": 1,
+      "status": 200,
+      "target": "/health"
+    },
+    {
+      "channel": "cli",
+      "method": "POST",
+      "note": "op01 (plan.json): add alpha 3 via cli",
+      "request": {
+        "action": "add",
+        "amount": 3,
+        "argv": [
+          "/app/service/client.py",
+          "--base",
+          "http://127.0.0.1:8765",
+          "add",
+          "alpha",
+          "3"
+        ],
+        "key": "alpha"
+      },
+      "response": {
+        "alpha": 3,
+        "beta": 0,
+        "mode_code": 0
+      },
+      "seq": 2,
+      "status": 0,
+      "target": "/apply"
+    },
+    {
+      "channel": "api",
+      "method": "POST",
+      "note": "op02 (plan.json): add beta 5 via api",
+      "request": {
+        "action": "add",
+        "amount": 5,
+        "key": "beta"
+      },
+      "response": {
+        "alpha": 3,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "seq": 3,
+      "status": 200,
+      "target": "/apply"
+    },
+    {
+      "channel": "cli",
+      "method": "POST",
+      "note": "op03 (plan.json): multiply alpha 2 via cli",
+      "request": {
+        "action": "multiply",
+        "amount": 2,
+        "argv": [
+          "/app/service/client.py",
+          "--base",
+          "http://127.0.0.1:8765",
+          "multiply",
+          "alpha",
+          "2"
+        ],
+        "key": "alpha"
+      },
+      "response": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "seq": 4,
+      "status": 0,
+      "target": "/apply"
+    },
+    {
+      "channel": "api",
+      "method": "POST",
+      "note": "op04 (plan.json): set mode_code 0 via api",
+      "request": {
+        "action": "set",
+        "amount": 0,
+        "key": "mode_code"
+      },
+      "response": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "seq": 5,
+      "status": 200,
+      "target": "/apply"
+    },
+    {
+      "channel": "cli",
+      "method": "POST",
+      "note": "bonus_alpha (seed_config.json:alpha_bonus): add alpha 2 via cli",
+      "request": {
+        "action": "add",
+        "amount": 2,
+        "argv": [
+          "/app/service/client.py",
+          "--base",
+          "http://127.0.0.1:8765",
+          "add",
+          "alpha",
+          "2"
+        ],
+        "key": "alpha"
+      },
+      "response": {
+        "alpha": 8,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "seq": 6,
+      "status": 0,
+      "target": "/apply"
+    },
+    {
+      "channel": "api",
+      "method": "POST",
+      "note": "bonus_beta (seed_config.json:beta_bonus): add beta 1 via api",
+      "request": {
+        "action": "add",
+        "amount": 1,
+        "key": "beta"
+      },
+      "response": {
+        "alpha": 8,
+        "beta": 6,
+        "mode_code": 0
+      },
+      "seq": 7,
+      "status": 200,
+      "target": "/apply"
+    },
+    {
+      "channel": "api",
+      "method": "GET",
+      "note": "final state snapshot",
+      "request": null,
+      "response": {
+        "alpha": 8,
+        "beta": 6,
+        "mode_code": 0
+      },
+      "seq": 8,
+      "status": 200,
+      "target": "/state"
+    }
+  ],
+  "final_state": {
+    "alpha": 8,
+    "beta": 6,
+    "mode_code": 0
+  },
+  "read_only_exchanges": 2,
+  "sample_requests_covered": true,
+  "state_changing_exchanges": 6,
+  "state_sha256": "d186be97fae0c549e0ca171f295a3abb237b579d067d585cf5ce3cf2be9fde9a",
+  "total_exchanges": 8,
+  "trailer": "harbor:service-interaction:TASK:0000000000016386"
+}

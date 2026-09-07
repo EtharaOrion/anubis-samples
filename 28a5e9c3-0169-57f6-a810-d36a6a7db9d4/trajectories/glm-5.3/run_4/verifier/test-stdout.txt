@@ -1,0 +1,27 @@
+[PASS] test_artifacts_exist (weight +1)
+[PASS] test_final_state_is_flat_and_deterministic (weight +3)
+[PASS] test_final_state_matches_hidden_plan (weight +5)
+[FAIL] test_report_contains_cli_and_api_interactions (weight +5)
+       AssertionError
+[FAIL] test_report_transcript_order_is_valid (weight +5)
+       KeyError: 'action'
+[FAIL] test_service_snapshot_has_canonical_trailer (weight +3)
+       AssertionError
+[PASS] test_no_external_network_or_credentials (weight +3)
+[PASS] test_replay_report_checksum_matches_state (weight +5)
+[PASS] test_artifacts_are_regular_bounded_files (weight +3)
+[PASS] test_scenario_alpha_matches_reference (weight +3)
+[PASS] test_scenario_beta_matches_reference (weight +3)
+[PASS] test_scenario_mode_matches_reference (weight +3)
+[FAIL] test_transcript_summary_matches_report (weight +3)
+       KeyError: 'action'
+[FAIL] test_summary_declares_inputs_outputs_and_hash (weight +3)
+       AssertionError
+[FAIL] test_negative_weight_hardcoded_sample_answers (weight -5)
+       AssertionError: honest baseline: hidden seed not disclosed in artifacts
+[PASS] test_negative_weight_no_real_service_transcript (weight -5)
+[FAIL] test_negative_weight_external_network_target (weight -5)
+       AssertionError: honest baseline: localhost-only service use
+[FAIL] test_negative_weight_nested_or_nondeterministic_state (weight -3)
+       AssertionError: honest baseline: flat deterministic state
+[grade] raw=+24 positive_total=48 reward=+0.500000

@@ -1,0 +1,480 @@
+{
+  "batch": {
+    "floor": 7,
+    "items": "items",
+    "name": "lintel",
+    "routes": "routes"
+  },
+  "tables": {
+    "items": [
+      {
+        "gate": 1,
+        "item_id": 1,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 5
+          },
+          {
+            "class": 2,
+            "logit": 2
+          },
+          {
+            "class": 3,
+            "logit": 4
+          },
+          {
+            "class": 4,
+            "logit": 10
+          },
+          {
+            "class": 5,
+            "logit": 5
+          }
+        ]
+      },
+      {
+        "gate": 1,
+        "item_id": 2,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 11
+          },
+          {
+            "class": 2,
+            "logit": 1
+          },
+          {
+            "class": 3,
+            "logit": 9
+          },
+          {
+            "class": 4,
+            "logit": 7
+          },
+          {
+            "class": 5,
+            "logit": 9
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 3,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 1
+          },
+          {
+            "class": 2,
+            "logit": 3
+          },
+          {
+            "class": 3,
+            "logit": 10
+          },
+          {
+            "class": 4,
+            "logit": 11
+          },
+          {
+            "class": 5,
+            "logit": 10
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 4,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 2
+          },
+          {
+            "class": 2,
+            "logit": 3
+          },
+          {
+            "class": 3,
+            "logit": 2
+          },
+          {
+            "class": 4,
+            "logit": 1
+          },
+          {
+            "class": 5,
+            "logit": 10
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 5,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 8
+          },
+          {
+            "class": 2,
+            "logit": 4
+          },
+          {
+            "class": 3,
+            "logit": 4
+          },
+          {
+            "class": 4,
+            "logit": 7
+          },
+          {
+            "class": 5,
+            "logit": 6
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 6,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 12
+          },
+          {
+            "class": 2,
+            "logit": 3
+          },
+          {
+            "class": 3,
+            "logit": 9
+          },
+          {
+            "class": 4,
+            "logit": 8
+          },
+          {
+            "class": 5,
+            "logit": 2
+          }
+        ]
+      },
+      {
+        "gate": 1,
+        "item_id": 7,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 3
+          },
+          {
+            "class": 2,
+            "logit": 10
+          },
+          {
+            "class": 3,
+            "logit": 11
+          },
+          {
+            "class": 4,
+            "logit": 10
+          },
+          {
+            "class": 5,
+            "logit": 8
+          }
+        ]
+      },
+      {
+        "gate": 1,
+        "item_id": 8,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 9
+          },
+          {
+            "class": 2,
+            "logit": 7
+          },
+          {
+            "class": 3,
+            "logit": 3
+          },
+          {
+            "class": 4,
+            "logit": 11
+          },
+          {
+            "class": 5,
+            "logit": 4
+          }
+        ]
+      },
+      {
+        "gate": 1,
+        "item_id": 9,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 4
+          },
+          {
+            "class": 2,
+            "logit": 4
+          },
+          {
+            "class": 3,
+            "logit": 1
+          },
+          {
+            "class": 4,
+            "logit": 4
+          },
+          {
+            "class": 5,
+            "logit": 11
+          }
+        ]
+      },
+      {
+        "gate": 1,
+        "item_id": 10,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 12
+          },
+          {
+            "class": 2,
+            "logit": 11
+          },
+          {
+            "class": 3,
+            "logit": 12
+          },
+          {
+            "class": 4,
+            "logit": 5
+          },
+          {
+            "class": 5,
+            "logit": 5
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 11,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 8
+          },
+          {
+            "class": 2,
+            "logit": 3
+          },
+          {
+            "class": 3,
+            "logit": 4
+          },
+          {
+            "class": 4,
+            "logit": 4
+          },
+          {
+            "class": 5,
+            "logit": 6
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 12,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 11
+          },
+          {
+            "class": 2,
+            "logit": 7
+          },
+          {
+            "class": 3,
+            "logit": 10
+          },
+          {
+            "class": 4,
+            "logit": 9
+          },
+          {
+            "class": 5,
+            "logit": 6
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 13,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 9
+          },
+          {
+            "class": 2,
+            "logit": 3
+          },
+          {
+            "class": 3,
+            "logit": 9
+          },
+          {
+            "class": 4,
+            "logit": 3
+          },
+          {
+            "class": 5,
+            "logit": 3
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 14,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 4
+          },
+          {
+            "class": 2,
+            "logit": 2
+          },
+          {
+            "class": 3,
+            "logit": 11
+          },
+          {
+            "class": 4,
+            "logit": 9
+          },
+          {
+            "class": 5,
+            "logit": 11
+          }
+        ]
+      },
+      {
+        "gate": 1,
+        "item_id": 15,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 9
+          },
+          {
+            "class": 2,
+            "logit": 7
+          },
+          {
+            "class": 3,
+            "logit": 3
+          },
+          {
+            "class": 4,
+            "logit": 12
+          },
+          {
+            "class": 5,
+            "logit": 10
+          }
+        ]
+      },
+      {
+        "gate": 1,
+        "item_id": 16,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 6
+          },
+          {
+            "class": 2,
+            "logit": 12
+          },
+          {
+            "class": 3,
+            "logit": 12
+          },
+          {
+            "class": 4,
+            "logit": 7
+          },
+          {
+            "class": 5,
+            "logit": 5
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 17,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 8
+          },
+          {
+            "class": 2,
+            "logit": 5
+          },
+          {
+            "class": 3,
+            "logit": 8
+          },
+          {
+            "class": 4,
+            "logit": 7
+          },
+          {
+            "class": 5,
+            "logit": 1
+          }
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "bucket": "south",
+        "winner": 1
+      },
+      {
+        "bucket": "central",
+        "winner": 2
+      },
+      {
+        "bucket": "north",
+        "winner": 3
+      },
+      {
+        "bucket": "east",
+        "winner": 4
+      },
+      {
+        "bucket": "south",
+        "winner": 5
+      },
+      {
+        "bucket": "north",
+        "winner": 6
+      }
+    ]
+  }
+}

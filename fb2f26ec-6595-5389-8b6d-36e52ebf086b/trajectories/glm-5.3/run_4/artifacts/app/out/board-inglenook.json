@@ -1,0 +1,47 @@
+{
+  "batch": "inglenook",
+  "plan": {
+    "abstain": "after_route",
+    "buckets": 4,
+    "confidence": "top_sum",
+    "drive": "items",
+    "empty_bucket": "omit",
+    "null_order": "nulls_last",
+    "probe": "routes",
+    "tie_order": "by_join_id_asc"
+  },
+  "rows": [
+    {
+      "confidence": 62,
+      "key": "west",
+      "mean": 1,
+      "n": 6,
+      "top_row": 16004,
+      "total": 5
+    },
+    {
+      "confidence": 11,
+      "key": "east",
+      "mean": 1,
+      "n": 1,
+      "top_row": 18001,
+      "total": 1
+    },
+    {
+      "confidence": 118,
+      "key": "south",
+      "mean": 2,
+      "n": 11,
+      "top_row": 20006,
+      "total": 20
+    },
+    {
+      "confidence": 32,
+      "key": "central",
+      "mean": 2,
+      "n": 3,
+      "top_row": 21005,
+      "total": 7
+    }
+  ]
+}

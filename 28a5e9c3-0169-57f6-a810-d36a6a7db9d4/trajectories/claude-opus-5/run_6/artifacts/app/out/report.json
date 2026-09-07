@@ -1,0 +1,107 @@
+{
+  "base_url": "http://127.0.0.1:8765",
+  "channels": {
+    "api": {
+      "operations": 3,
+      "transport": "urllib -> POST /apply"
+    },
+    "cli": {
+      "operations": 3,
+      "transport": "client.py subprocess -> POST /apply"
+    }
+  },
+  "final_state": {
+    "alpha": 8,
+    "beta": 6,
+    "mode_code": 0
+  },
+  "health": {
+    "ok": true
+  },
+  "interactions": 8,
+  "network_scope": "localhost-only",
+  "ok": true,
+  "operations": [
+    {
+      "action": "add",
+      "amount": 3,
+      "channel": "cli",
+      "key": "alpha",
+      "op": "op01",
+      "source": "plan.json",
+      "state_after": {
+        "alpha": 3,
+        "beta": 0,
+        "mode_code": 0
+      }
+    },
+    {
+      "action": "add",
+      "amount": 5,
+      "channel": "api",
+      "key": "beta",
+      "op": "op02",
+      "source": "plan.json",
+      "state_after": {
+        "alpha": 3,
+        "beta": 5,
+        "mode_code": 0
+      }
+    },
+    {
+      "action": "multiply",
+      "amount": 2,
+      "channel": "cli",
+      "key": "alpha",
+      "op": "op03",
+      "source": "plan.json",
+      "state_after": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      }
+    },
+    {
+      "action": "set",
+      "amount": 0,
+      "channel": "api",
+      "key": "mode_code",
+      "op": "op04",
+      "source": "plan.json",
+      "state_after": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      }
+    },
+    {
+      "action": "add",
+      "amount": 2,
+      "channel": "cli",
+      "key": "alpha",
+      "op": "op05",
+      "source": "seed_config.alpha_bonus",
+      "state_after": {
+        "alpha": 8,
+        "beta": 5,
+        "mode_code": 0
+      }
+    },
+    {
+      "action": "add",
+      "amount": 1,
+      "channel": "api",
+      "key": "beta",
+      "op": "op06",
+      "source": "seed_config.beta_bonus",
+      "state_after": {
+        "alpha": 8,
+        "beta": 6,
+        "mode_code": 0
+      }
+    }
+  ],
+  "state_sha256": "d186be97fae0c549e0ca171f295a3abb237b579d067d585cf5ce3cf2be9fde9a",
+  "state_sha256_input": "sha256 of json.dumps(GET /state body, sort_keys=True, separators=(',',':'))",
+  "trailer": "harbor:service-interaction:TASK:0000000000016386"
+}

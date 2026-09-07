@@ -1,0 +1,20 @@
+{
+  "test_artifacts_exist": 1,
+  "test_final_state_is_flat_and_deterministic": 3,
+  "test_final_state_matches_hidden_plan": 5,
+  "test_report_contains_cli_and_api_interactions": 5,
+  "test_report_transcript_order_is_valid": 5,
+  "test_service_snapshot_has_canonical_trailer": 3,
+  "test_no_external_network_or_credentials": 3,
+  "test_replay_report_checksum_matches_state": 5,
+  "test_artifacts_are_regular_bounded_files": 3,
+  "test_scenario_alpha_matches_reference": 3,
+  "test_scenario_beta_matches_reference": 3,
+  "test_scenario_mode_matches_reference": 3,
+  "test_transcript_summary_matches_report": 3,
+  "test_summary_declares_inputs_outputs_and_hash": 3,
+  "test_negative_weight_hardcoded_sample_answers": -5,
+  "test_negative_weight_no_real_service_transcript": -5,
+  "test_negative_weight_external_network_target": -5,
+  "test_negative_weight_nested_or_nondeterministic_state": -3
+}

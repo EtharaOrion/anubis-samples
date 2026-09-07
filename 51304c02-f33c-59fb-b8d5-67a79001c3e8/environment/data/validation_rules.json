@@ -1,6 +1,0 @@
-{
-  "profiles": ["dev", "prod"],
-  "forbidden_keys": ["timestamp", "generated_at", "uuid", "random_seed"],
-  "required_artifacts": ["config.json", "report.json", "tool.zip", "profile_dev.json", "profile_prod.json", "validation_report.json", "summary.json"],
-  "max_artifact_bytes": 1048576
-}

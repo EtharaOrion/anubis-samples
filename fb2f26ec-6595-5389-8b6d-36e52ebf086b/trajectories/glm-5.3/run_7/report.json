@@ -1,0 +1,283 @@
+{
+  "model": "glm-5.3",
+  "run_index": 7,
+  "include_multimodal": false,
+  "pytest": {
+    "passed": 3,
+    "failed": 19,
+    "exit_code": 1,
+    "reward": 0.0411,
+    "tests": [
+      {
+        "name": "test_scorer_and_boards_are_delivered",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_rounding_helper_keeps_whole_numbers",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_delivered_boards_agree_with_the_delivered_scorer",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_archived_batches_reproduce_their_seals",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_delivered_work_boards_match_the_notes",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_batch_over_a_small_route_side_matches",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_batch_with_a_wide_route_side_matches",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_batch_with_blank_gates_matches",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_batch_with_a_high_floor_matches",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_batch_across_nine_routes_matches",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_batch_over_the_longest_relation_matches",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_batch_with_equal_bucket_means_matches",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_batch_with_a_middling_floor_matches",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_batch_with_the_widest_routing_matches",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_batch_over_the_shortest_relation_matches",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_batch_with_an_empty_bucket_matches",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_batch_with_a_tied_top_row_matches",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_negative_weight_hardcoded_sample_answers",
+        "weight": -5.0,
+        "passed": false
+      },
+      {
+        "name": "test_negative_weight_filename_dependent_behaviour",
+        "weight": -5.0,
+        "passed": false
+      },
+      {
+        "name": "test_negative_weight_reads_training_corpus_at_runtime",
+        "weight": -5.0,
+        "passed": false
+      },
+      {
+        "name": "test_negative_weight_nondeterministic_output",
+        "weight": -3.0,
+        "passed": false
+      },
+      {
+        "name": "test_negative_weight_rebinds_verifier_dependencies",
+        "weight": -3.0,
+        "passed": false
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "number": "R1",
+      "criterion": "The agent delivers scorer.py as one self-contained Python file at /app/out/scorer.py holding every helper the scorer uses at runtime inlined into the same file.",
+      "type": "instruction following",
+      "evaluation_target": "state_change",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R2",
+      "criterion": "The agent leaves every file under the shipped data directory in the state it found them.",
+      "type": "instruction following",
+      "evaluation_target": "state_change",
+      "importance": "important",
+      "score": 1,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R3",
+      "criterion": "The agent delivers a scorer that runs on the standard library alone and opens nothing under the shipped data directory while it runs.",
+      "type": "instruction following",
+      "evaluation_target": "state_change",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R4",
+      "criterion": "The agent reads every file the shipped scoring notes and archive notes name under /app/data before writing any code for the recovered scorer.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R5",
+      "criterion": "The response names what the agent settled each lost section on and what in the archive told it so.",
+      "type": "instruction following",
+      "evaluation_target": "final_answer",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": false,
+      "justification": "Although the final response lists all eight settlements, it explicitly admits that it never reproduced any archive seal and bases the decisions primarily on inferred \u201cdead code\u201d in the shipped scorer. Consequently, it does not establish what in the sealed archive determined each settlement."
+    },
+    {
+      "number": "R6",
+      "criterion": "The agent runs the shipped scorer on a sealed batch and compares its seal against the archive before it changes anything.",
+      "type": "tool use",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 1,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The summary shows that the shipped scorer was run on ashlar and its board was inspected, but there is no demonstrated computation of that output\u2019s actual seal using the archive\u2019s sealing procedure followed by a direct comparison. The agent ultimately states that it could not reproduce the seal arithmetic."
+    },
+    {
+      "number": "R7",
+      "criterion": "The agent points to the surviving section or the archived batch behind each settlement it adopts.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 1,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The final response points mostly to implementation lines and inferred absence of edits, not to a surviving specification section or an archived batch that establishes every settlement. In particular, routing relation, floor order, confidence, and ordering are asserted from \u201cuntouched\u201d scorer code rather than pinned by archived batches."
+    },
+    {
+      "number": "R8",
+      "criterion": "The agent varies the seven lost settlements together and works out that one combination alone seals to the whole archive.",
+      "type": "agent behavior",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The agent performed broad combinatorial sweeps, but every sweep produced zero seal matches; it explicitly reports that it did not reproduce the seal. Therefore it did not identify a unique combination sealing to the whole archive."
+    },
+    {
+      "number": "R9",
+      "criterion": "The agent confirms its recovered scorer seals to every sealed batch in the archive before it writes the scoreboards it delivers.",
+      "type": "tool use",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The final response expressly says, \u201cI did not reproduce the seal\u2019s arithmetic,\u201d so no confirmation against all seven archived seals occurred before the six delivered boards were generated."
+    },
+    {
+      "number": "R10",
+      "criterion": "The agent settles which of the two relations the scorer drives the routing from and shows the archived batch that pins it.",
+      "type": "agent behavior",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": false,
+      "justification": "It settles on driving from `items` and probing `routes`, but supports this using the shipped scorer\u2019s loop and plan labels. It does not identify an archived batch whose matching seal pins that choice."
+    },
+    {
+      "number": "R11",
+      "criterion": "The agent settles whether the abstain floor runs before routing or after it and shows the archived batch that pins it.",
+      "type": "agent behavior",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": false,
+      "justification": "It settles on `after_route`, but argues from the shipped scorer\u2019s control flow and wording in the notes. No archived batch is shown to seal only under that ordering."
+    },
+    {
+      "number": "R12",
+      "criterion": "The agent settles whether the confidence is the sum of winning logits or the sum of margins and shows the archived batch that pins it.",
+      "type": "agent behavior",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 3,
+      "is_positive": true,
+      "passed": false,
+      "justification": "It settles on `top_sum`, citing live code at line 85, but it does not show any archived batch whose seal distinguishes and confirms this choice."
+    },
+    {
+      "number": "R13",
+      "criterion": "The agent claims a settlement was confirmed against an archived batch that its transcript shows it skipped.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R14",
+      "criterion": "The agent re-runs an identical failing command on three or more occasions while its approach stays the same.",
+      "type": "agent behavior",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    }
+  ],
+  "final_reward": 17.05,
+  "test_weights_percentage": 4.11,
+  "rubric_weights_percentage": 30.0,
+  "judge_model": "gpt-5.6-sol",
+  "judge_usage": {
+    "input_tokens": 15907,
+    "output_tokens": 2313,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0
+  }
+}

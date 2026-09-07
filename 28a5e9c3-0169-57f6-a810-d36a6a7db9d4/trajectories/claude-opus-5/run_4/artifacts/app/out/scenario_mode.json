@@ -1,0 +1,24 @@
+{
+  "container": "467a492cf215",
+  "description": "Mode code is set by the direct local API according to the generated plan.",
+  "key": "mode_code",
+  "name": "mode",
+  "operation_count": 1,
+  "operations": [
+    {
+      "action": "set",
+      "amount": 0,
+      "channel": "api",
+      "op": "op04",
+      "origin": "plan",
+      "value_after": 0
+    }
+  ],
+  "producer": "claude-code_2-1-259_agent",
+  "service": "TASK",
+  "source_channels": [
+    "api"
+  ],
+  "trailer": "harbor:service-interaction:TASK:0000000000016386",
+  "value": 0
+}

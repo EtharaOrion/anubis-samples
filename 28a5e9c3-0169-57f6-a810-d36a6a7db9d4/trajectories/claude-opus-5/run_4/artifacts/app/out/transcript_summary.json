@@ -1,0 +1,173 @@
+{
+  "all_ok": true,
+  "base_url": "http://127.0.0.1:8765",
+  "by_channel": {
+    "api": 6,
+    "cli": 3
+  },
+  "by_kind": {
+    "apply": 6,
+    "health": 1,
+    "state": 2
+  },
+  "container": "467a492cf215",
+  "endpoints": [
+    "GET /health",
+    "GET /state",
+    "POST /apply"
+  ],
+  "exchanges": [
+    {
+      "channel": "api",
+      "index": 1,
+      "kind": "health",
+      "request": {
+        "method": "GET",
+        "path": "/health"
+      },
+      "response": {
+        "ok": true
+      },
+      "status": 200
+    },
+    {
+      "channel": "api",
+      "index": 2,
+      "kind": "state",
+      "request": {
+        "method": "GET",
+        "path": "/state"
+      },
+      "response": {
+        "alpha": 0,
+        "beta": 0,
+        "mode_code": 0
+      },
+      "status": 200
+    },
+    {
+      "channel": "cli",
+      "index": 3,
+      "kind": "apply",
+      "request": {
+        "action": "add",
+        "amount": 3,
+        "key": "alpha",
+        "op": "op01"
+      },
+      "response": {
+        "alpha": 3,
+        "beta": 0,
+        "mode_code": 0
+      },
+      "status": 200
+    },
+    {
+      "channel": "api",
+      "index": 4,
+      "kind": "apply",
+      "request": {
+        "action": "add",
+        "amount": 5,
+        "key": "beta",
+        "op": "op02"
+      },
+      "response": {
+        "alpha": 3,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "status": 200
+    },
+    {
+      "channel": "cli",
+      "index": 5,
+      "kind": "apply",
+      "request": {
+        "action": "multiply",
+        "amount": 2,
+        "key": "alpha",
+        "op": "op03"
+      },
+      "response": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "status": 200
+    },
+    {
+      "channel": "api",
+      "index": 6,
+      "kind": "apply",
+      "request": {
+        "action": "set",
+        "amount": 0,
+        "key": "mode_code",
+        "op": "op04"
+      },
+      "response": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "status": 200
+    },
+    {
+      "channel": "cli",
+      "index": 7,
+      "kind": "apply",
+      "request": {
+        "action": "add",
+        "amount": 2,
+        "key": "alpha",
+        "op": "bonus_alpha"
+      },
+      "response": {
+        "alpha": 8,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "status": 200
+    },
+    {
+      "channel": "api",
+      "index": 8,
+      "kind": "apply",
+      "request": {
+        "action": "add",
+        "amount": 1,
+        "key": "beta",
+        "op": "bonus_beta"
+      },
+      "response": {
+        "alpha": 8,
+        "beta": 6,
+        "mode_code": 0
+      },
+      "status": 200
+    },
+    {
+      "channel": "api",
+      "index": 9,
+      "kind": "state",
+      "request": {
+        "method": "GET",
+        "path": "/state"
+      },
+      "response": {
+        "alpha": 8,
+        "beta": 6,
+        "mode_code": 0
+      },
+      "status": 200
+    }
+  ],
+  "producer": "claude-code_2-1-259_agent",
+  "service": "TASK",
+  "statuses": [
+    200
+  ],
+  "total_exchanges": 9,
+  "trailer": "harbor:service-interaction:TASK:0000000000016386"
+}

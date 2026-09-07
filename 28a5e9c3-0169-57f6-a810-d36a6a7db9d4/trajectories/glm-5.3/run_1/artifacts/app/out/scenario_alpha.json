@@ -1,0 +1,10 @@
+{
+  "name": "alpha",
+  "key": "alpha",
+  "value": 8,
+  "source_channels": [
+    "cli"
+  ],
+  "operation_count": 3,
+  "trailer": "harbor:service-interaction:TASK:0000000000016386"
+}

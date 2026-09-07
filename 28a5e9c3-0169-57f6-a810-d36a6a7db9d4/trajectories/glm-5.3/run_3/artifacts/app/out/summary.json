@@ -1,0 +1,39 @@
+{
+  "artifact_count": 7,
+  "artifacts": [
+    "/app/out/final_state.json",
+    "/app/out/report.json",
+    "/app/out/scenario_alpha.json",
+    "/app/out/scenario_beta.json",
+    "/app/out/scenario_mode.json",
+    "/app/out/summary.json",
+    "/app/out/transcript_summary.json"
+  ],
+  "base_url": "http://127.0.0.1:8765",
+  "final_state": {
+    "alpha": 8,
+    "beta": 6,
+    "mode_code": 0
+  },
+  "inputs": [
+    "/app/data/api_contract.md",
+    "/app/data/auth_policy.json",
+    "/app/data/expected_schema.json",
+    "/app/data/sample_requests.jsonl",
+    "/app/data/scenarios.jsonl",
+    "/app/data/seed_config.json",
+    "/app/data/service.zip",
+    "/app/service/plan.json"
+  ],
+  "planned_operations_executed": 4,
+  "scenario_bonuses_applied": {
+    "alpha": 2,
+    "beta": 1
+  },
+  "scenario_files": [
+    "/app/out/scenario_alpha.json",
+    "/app/out/scenario_beta.json",
+    "/app/out/scenario_mode.json"
+  ],
+  "trailer": "harbor:service-interaction:TASK:0000000000016386"
+}

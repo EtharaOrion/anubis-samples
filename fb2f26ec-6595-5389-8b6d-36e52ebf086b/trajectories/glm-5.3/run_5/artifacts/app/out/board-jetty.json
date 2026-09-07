@@ -1,0 +1,47 @@
+{
+  "batch": "jetty",
+  "plan": {
+    "abstain": "after_route",
+    "buckets": 4,
+    "confidence": "top_sum",
+    "drive": "items",
+    "empty_bucket": "report",
+    "null_order": "nulls_last",
+    "probe": "routes",
+    "tie_order": "by_join_id_asc"
+  },
+  "rows": [
+    {
+      "confidence": 52,
+      "key": "east",
+      "mean": 2,
+      "n": 5,
+      "top_row": 10001,
+      "total": 11
+    },
+    {
+      "confidence": 51,
+      "key": "north",
+      "mean": 3,
+      "n": 5,
+      "top_row": 14004,
+      "total": 15
+    },
+    {
+      "confidence": 48,
+      "key": "west",
+      "mean": 4,
+      "n": 5,
+      "top_row": 15002,
+      "total": 19
+    },
+    {
+      "confidence": 0,
+      "key": "south",
+      "mean": null,
+      "n": 0,
+      "top_row": null,
+      "total": 0
+    }
+  ]
+}

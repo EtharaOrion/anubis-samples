@@ -1,0 +1,10 @@
+{
+  "key": "beta",
+  "name": "beta",
+  "operation_count": 2,
+  "source_channels": [
+    "api"
+  ],
+  "trailer": "harbor:service-interaction:TASK:0000000000016386",
+  "value": 6
+}

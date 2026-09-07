@@ -1,0 +1,39 @@
+{
+  "batch": "gantry",
+  "plan": {
+    "abstain": "before_route",
+    "buckets": 3,
+    "confidence": "margin_sum",
+    "drive": "routes",
+    "empty_bucket": "include",
+    "null_order": "nulls_first",
+    "probe": "items",
+    "tie_order": "by_join_id_desc"
+  },
+  "rows": [
+    {
+      "confidence": 8,
+      "key": "central",
+      "mean": 1,
+      "n": 6,
+      "top_row": 17005,
+      "total": 8
+    },
+    {
+      "confidence": 15,
+      "key": "south",
+      "mean": 2,
+      "n": 8,
+      "top_row": 18001,
+      "total": 15
+    },
+    {
+      "confidence": 12,
+      "key": "north",
+      "mean": 3,
+      "n": 4,
+      "top_row": 15002,
+      "total": 12
+    }
+  ]
+}

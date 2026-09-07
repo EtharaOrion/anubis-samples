@@ -1,0 +1,165 @@
+{
+  "base_url": "http://127.0.0.1:8765",
+  "by_channel": {
+    "api": 3,
+    "cli": 3
+  },
+  "container": "26d3c344d6f5",
+  "endpoints": {
+    "GET /health": 1,
+    "GET /state": 2,
+    "POST /apply": 6
+  },
+  "failures": 0,
+  "producer": "claude-code_2-1-259_agent",
+  "read_requests": 3,
+  "request_count": 9,
+  "service": "TASK",
+  "state_change_requests": 6,
+  "state_sha256": "d186be97fae0c549e0ca171f295a3abb237b579d067d585cf5ce3cf2be9fde9a",
+  "statuses": {
+    "200": 9
+  },
+  "trailer": "harbor:service-interaction:TASK:0000000000016386",
+  "transcript": [
+    {
+      "channel": "api",
+      "endpoint": "/health",
+      "method": "GET",
+      "request": null,
+      "response": {
+        "ok": true
+      },
+      "seq": 1,
+      "status": 200
+    },
+    {
+      "channel": "api",
+      "endpoint": "/state",
+      "method": "GET",
+      "request": null,
+      "response": {
+        "alpha": 0,
+        "beta": 0,
+        "mode_code": 0
+      },
+      "seq": 2,
+      "status": 200
+    },
+    {
+      "channel": "cli",
+      "endpoint": "/apply",
+      "method": "POST",
+      "request": {
+        "action": "add",
+        "amount": 3,
+        "key": "alpha"
+      },
+      "response": {
+        "alpha": 3,
+        "beta": 0,
+        "mode_code": 0
+      },
+      "seq": 3,
+      "status": 200
+    },
+    {
+      "channel": "api",
+      "endpoint": "/apply",
+      "method": "POST",
+      "request": {
+        "action": "add",
+        "amount": 5,
+        "key": "beta"
+      },
+      "response": {
+        "alpha": 3,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "seq": 4,
+      "status": 200
+    },
+    {
+      "channel": "cli",
+      "endpoint": "/apply",
+      "method": "POST",
+      "request": {
+        "action": "multiply",
+        "amount": 2,
+        "key": "alpha"
+      },
+      "response": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "seq": 5,
+      "status": 200
+    },
+    {
+      "channel": "api",
+      "endpoint": "/apply",
+      "method": "POST",
+      "request": {
+        "action": "set",
+        "amount": 0,
+        "key": "mode_code"
+      },
+      "response": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "seq": 6,
+      "status": 200
+    },
+    {
+      "channel": "cli",
+      "endpoint": "/apply",
+      "method": "POST",
+      "request": {
+        "action": "add",
+        "amount": 2,
+        "key": "alpha"
+      },
+      "response": {
+        "alpha": 8,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "seq": 7,
+      "status": 200
+    },
+    {
+      "channel": "api",
+      "endpoint": "/apply",
+      "method": "POST",
+      "request": {
+        "action": "add",
+        "amount": 1,
+        "key": "beta"
+      },
+      "response": {
+        "alpha": 8,
+        "beta": 6,
+        "mode_code": 0
+      },
+      "seq": 8,
+      "status": 200
+    },
+    {
+      "channel": "api",
+      "endpoint": "/state",
+      "method": "GET",
+      "request": null,
+      "response": {
+        "alpha": 8,
+        "beta": 6,
+        "mode_code": 0
+      },
+      "seq": 9,
+      "status": 200
+    }
+  ]
+}

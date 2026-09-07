@@ -1,0 +1,21 @@
+{
+  "task": {
+    "path": "fb2f26ec-6595-5389-8b6d-36e52ebf086b"
+  },
+  "trial_name": "fb2f26ec-6595-5389-8b6d-36e52ebf086b__Gz8XeSm",
+  "trials_dir": "fb2f26ec-6595-5389-8b6d-36e52ebf086b/trajectories/claude-opus-5",
+  "agent_setup_timeout_multiplier": 3.0,
+  "agent": {
+    "name": "claude-code",
+    "model_name": "claude-opus-5"
+  },
+  "verifier": {
+    "env": {
+      "REWARDKIT_JUDGE": "gpt-5.6-sol",
+      "OPENAI_API_BASE": "http://172.17.0.1:39525",
+      "OPENAI_BASE_URL": "http://172.17.0.1:39525",
+      "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+    }
+  },
+  "job_id": "36fb42d5-35be-4a50-8745-ee74afc89f38"
+}

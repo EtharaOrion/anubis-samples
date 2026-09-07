@@ -1,0 +1,39 @@
+{
+  "batch": "kestrel",
+  "plan": {
+    "abstain": "after_route",
+    "buckets": 3,
+    "confidence": "top_sum",
+    "drive": "items",
+    "empty_bucket": "report",
+    "null_order": "nulls_last",
+    "probe": "routes",
+    "tie_order": "by_join_id_asc"
+  },
+  "rows": [
+    {
+      "confidence": 61,
+      "key": "east",
+      "mean": 1,
+      "n": 6,
+      "top_row": 15004,
+      "total": 6
+    },
+    {
+      "confidence": 45,
+      "key": "north",
+      "mean": 2,
+      "n": 4,
+      "top_row": 13002,
+      "total": 7
+    },
+    {
+      "confidence": 97,
+      "key": "central",
+      "mean": 2,
+      "n": 9,
+      "top_row": 19005,
+      "total": 16
+    }
+  ]
+}

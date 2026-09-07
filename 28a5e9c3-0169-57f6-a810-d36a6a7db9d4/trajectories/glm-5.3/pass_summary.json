@@ -1,0 +1,65 @@
+{
+  "model": "glm-5.3",
+  "runs": 8,
+  "average_combined_score": 13.69,
+  "average_test_weights_percentage": 31.77,
+  "average_rubric_weights_percentage": -4.39,
+  "per_run": [
+    {
+      "run_index": 1,
+      "include_multimodal": false,
+      "test_weights_percentage": 39.58,
+      "rubric_weights_percentage": -3.51,
+      "combined_score": 18.04
+    },
+    {
+      "run_index": 2,
+      "include_multimodal": false,
+      "test_weights_percentage": 37.5,
+      "rubric_weights_percentage": -12.28,
+      "combined_score": 12.61
+    },
+    {
+      "run_index": 3,
+      "include_multimodal": false,
+      "test_weights_percentage": 37.5,
+      "rubric_weights_percentage": -8.77,
+      "combined_score": 14.37
+    },
+    {
+      "run_index": 4,
+      "include_multimodal": false,
+      "test_weights_percentage": 50.0,
+      "rubric_weights_percentage": 5.26,
+      "combined_score": 27.63
+    },
+    {
+      "run_index": 5,
+      "include_multimodal": false,
+      "test_weights_percentage": 20.83,
+      "rubric_weights_percentage": -8.77,
+      "combined_score": 6.03
+    },
+    {
+      "run_index": 6,
+      "include_multimodal": false,
+      "test_weights_percentage": 20.83,
+      "rubric_weights_percentage": -3.51,
+      "combined_score": 8.66
+    },
+    {
+      "run_index": 7,
+      "include_multimodal": false,
+      "test_weights_percentage": 20.83,
+      "rubric_weights_percentage": 5.26,
+      "combined_score": 13.04
+    },
+    {
+      "run_index": 8,
+      "include_multimodal": false,
+      "test_weights_percentage": 27.08,
+      "rubric_weights_percentage": -8.77,
+      "combined_score": 9.15
+    }
+  ]
+}

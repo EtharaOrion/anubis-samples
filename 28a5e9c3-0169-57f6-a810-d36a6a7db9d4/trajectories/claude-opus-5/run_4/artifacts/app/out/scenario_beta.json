@@ -1,0 +1,32 @@
+{
+  "container": "467a492cf215",
+  "description": "Beta is changed by planned API operations and a final local API bonus.",
+  "key": "beta",
+  "name": "beta",
+  "operation_count": 2,
+  "operations": [
+    {
+      "action": "add",
+      "amount": 5,
+      "channel": "api",
+      "op": "op02",
+      "origin": "plan",
+      "value_after": 5
+    },
+    {
+      "action": "add",
+      "amount": 1,
+      "channel": "api",
+      "op": "bonus_beta",
+      "origin": "seed_bonus",
+      "value_after": 6
+    }
+  ],
+  "producer": "claude-code_2-1-259_agent",
+  "service": "TASK",
+  "source_channels": [
+    "api"
+  ],
+  "trailer": "harbor:service-interaction:TASK:0000000000016386",
+  "value": 6
+}

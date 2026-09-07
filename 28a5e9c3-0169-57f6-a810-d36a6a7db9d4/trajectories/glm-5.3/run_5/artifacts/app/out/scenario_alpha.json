@@ -1,0 +1,35 @@
+{
+  "description": "Alpha is changed by planned CLI operations and a final local CLI bonus.",
+  "file": "scenario_alpha.json",
+  "key": "alpha",
+  "name": "alpha",
+  "operation_count": 3,
+  "operations": [
+    {
+      "action": "add",
+      "amount": 3,
+      "channel": "cli",
+      "key": "alpha",
+      "seq": 3
+    },
+    {
+      "action": "multiply",
+      "amount": 2,
+      "channel": "cli",
+      "key": "alpha",
+      "seq": 5
+    },
+    {
+      "action": "add",
+      "amount": 2,
+      "channel": "cli",
+      "key": "alpha",
+      "seq": 7
+    }
+  ],
+  "source_channels": [
+    "cli"
+  ],
+  "trailer": "harbor:service-interaction:TASK:0000000000016386",
+  "value": 8
+}

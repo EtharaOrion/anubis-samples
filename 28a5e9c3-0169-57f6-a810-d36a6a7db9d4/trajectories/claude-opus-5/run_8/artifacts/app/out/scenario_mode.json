@@ -1,0 +1,20 @@
+{
+  "description": "Mode code is set by the direct local API according to the generated plan.",
+  "key": "mode_code",
+  "name": "mode",
+  "operation_count": 1,
+  "operations": [
+    {
+      "action": "set",
+      "amount": 0,
+      "channel": "api",
+      "id": "op04",
+      "value_after": 0
+    }
+  ],
+  "source_channels": [
+    "api"
+  ],
+  "trailer": "harbor:service-interaction:TASK:0000000000016386",
+  "value": 0
+}

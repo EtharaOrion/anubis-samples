@@ -1,0 +1,672 @@
+{
+  "batch": {
+    "floor": 6,
+    "items": "items",
+    "name": "inglenook",
+    "routes": "routes"
+  },
+  "tables": {
+    "items": [
+      {
+        "gate": 0,
+        "item_id": 1,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 10
+          },
+          {
+            "class": 2,
+            "logit": 4
+          },
+          {
+            "class": 3,
+            "logit": 3
+          },
+          {
+            "class": 4,
+            "logit": 10
+          },
+          {
+            "class": 5,
+            "logit": 1
+          },
+          {
+            "class": 6,
+            "logit": 2
+          }
+        ]
+      },
+      {
+        "gate": 1,
+        "item_id": 2,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 1
+          },
+          {
+            "class": 2,
+            "logit": 4
+          },
+          {
+            "class": 3,
+            "logit": 2
+          },
+          {
+            "class": 4,
+            "logit": 1
+          },
+          {
+            "class": 5,
+            "logit": 11
+          },
+          {
+            "class": 6,
+            "logit": 5
+          }
+        ]
+      },
+      {
+        "gate": 1,
+        "item_id": 3,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 9
+          },
+          {
+            "class": 2,
+            "logit": 12
+          },
+          {
+            "class": 3,
+            "logit": 7
+          },
+          {
+            "class": 4,
+            "logit": 4
+          },
+          {
+            "class": 5,
+            "logit": 7
+          },
+          {
+            "class": 6,
+            "logit": 8
+          }
+        ]
+      },
+      {
+        "gate": 1,
+        "item_id": 4,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 8
+          },
+          {
+            "class": 2,
+            "logit": 6
+          },
+          {
+            "class": 3,
+            "logit": 3
+          },
+          {
+            "class": 4,
+            "logit": 9
+          },
+          {
+            "class": 5,
+            "logit": 4
+          },
+          {
+            "class": 6,
+            "logit": 5
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 5,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 8
+          },
+          {
+            "class": 2,
+            "logit": 7
+          },
+          {
+            "class": 3,
+            "logit": 3
+          },
+          {
+            "class": 4,
+            "logit": 8
+          },
+          {
+            "class": 5,
+            "logit": 1
+          },
+          {
+            "class": 6,
+            "logit": 11
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 6,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 7
+          },
+          {
+            "class": 2,
+            "logit": 1
+          },
+          {
+            "class": 3,
+            "logit": 7
+          },
+          {
+            "class": 4,
+            "logit": 5
+          },
+          {
+            "class": 5,
+            "logit": 3
+          },
+          {
+            "class": 6,
+            "logit": 9
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 7,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 10
+          },
+          {
+            "class": 2,
+            "logit": 1
+          },
+          {
+            "class": 3,
+            "logit": 10
+          },
+          {
+            "class": 4,
+            "logit": 11
+          },
+          {
+            "class": 5,
+            "logit": 10
+          },
+          {
+            "class": 6,
+            "logit": 7
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 8,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 2
+          },
+          {
+            "class": 2,
+            "logit": 2
+          },
+          {
+            "class": 3,
+            "logit": 4
+          },
+          {
+            "class": 4,
+            "logit": 8
+          },
+          {
+            "class": 5,
+            "logit": 5
+          },
+          {
+            "class": 6,
+            "logit": 11
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 9,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 2
+          },
+          {
+            "class": 2,
+            "logit": 6
+          },
+          {
+            "class": 3,
+            "logit": 12
+          },
+          {
+            "class": 4,
+            "logit": 12
+          },
+          {
+            "class": 5,
+            "logit": 10
+          },
+          {
+            "class": 6,
+            "logit": 2
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 10,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 10
+          },
+          {
+            "class": 2,
+            "logit": 9
+          },
+          {
+            "class": 3,
+            "logit": 3
+          },
+          {
+            "class": 4,
+            "logit": 6
+          },
+          {
+            "class": 5,
+            "logit": 11
+          },
+          {
+            "class": 6,
+            "logit": 12
+          }
+        ]
+      },
+      {
+        "gate": 1,
+        "item_id": 11,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 6
+          },
+          {
+            "class": 2,
+            "logit": 6
+          },
+          {
+            "class": 3,
+            "logit": 12
+          },
+          {
+            "class": 4,
+            "logit": 1
+          },
+          {
+            "class": 5,
+            "logit": 9
+          },
+          {
+            "class": 6,
+            "logit": 11
+          }
+        ]
+      },
+      {
+        "gate": 1,
+        "item_id": 12,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 4
+          },
+          {
+            "class": 2,
+            "logit": 9
+          },
+          {
+            "class": 3,
+            "logit": 1
+          },
+          {
+            "class": 4,
+            "logit": 6
+          },
+          {
+            "class": 5,
+            "logit": 10
+          },
+          {
+            "class": 6,
+            "logit": 9
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 13,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 1
+          },
+          {
+            "class": 2,
+            "logit": 11
+          },
+          {
+            "class": 3,
+            "logit": 9
+          },
+          {
+            "class": 4,
+            "logit": 11
+          },
+          {
+            "class": 5,
+            "logit": 1
+          },
+          {
+            "class": 6,
+            "logit": 8
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 14,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 6
+          },
+          {
+            "class": 2,
+            "logit": 9
+          },
+          {
+            "class": 3,
+            "logit": 2
+          },
+          {
+            "class": 4,
+            "logit": 4
+          },
+          {
+            "class": 5,
+            "logit": 6
+          },
+          {
+            "class": 6,
+            "logit": 11
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 15,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 1
+          },
+          {
+            "class": 2,
+            "logit": 6
+          },
+          {
+            "class": 3,
+            "logit": 11
+          },
+          {
+            "class": 4,
+            "logit": 2
+          },
+          {
+            "class": 5,
+            "logit": 8
+          },
+          {
+            "class": 6,
+            "logit": 9
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 16,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 1
+          },
+          {
+            "class": 2,
+            "logit": 2
+          },
+          {
+            "class": 3,
+            "logit": 1
+          },
+          {
+            "class": 4,
+            "logit": 9
+          },
+          {
+            "class": 5,
+            "logit": 6
+          },
+          {
+            "class": 6,
+            "logit": 3
+          }
+        ]
+      },
+      {
+        "gate": 1,
+        "item_id": 17,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 7
+          },
+          {
+            "class": 2,
+            "logit": 10
+          },
+          {
+            "class": 3,
+            "logit": 11
+          },
+          {
+            "class": 4,
+            "logit": 9
+          },
+          {
+            "class": 5,
+            "logit": 4
+          },
+          {
+            "class": 6,
+            "logit": 7
+          }
+        ]
+      },
+      {
+        "gate": 1,
+        "item_id": 18,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 11
+          },
+          {
+            "class": 2,
+            "logit": 8
+          },
+          {
+            "class": 3,
+            "logit": 9
+          },
+          {
+            "class": 4,
+            "logit": 1
+          },
+          {
+            "class": 5,
+            "logit": 10
+          },
+          {
+            "class": 6,
+            "logit": 3
+          }
+        ]
+      },
+      {
+        "gate": 1,
+        "item_id": 19,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 5
+          },
+          {
+            "class": 2,
+            "logit": 2
+          },
+          {
+            "class": 3,
+            "logit": 7
+          },
+          {
+            "class": 4,
+            "logit": 5
+          },
+          {
+            "class": 5,
+            "logit": 3
+          },
+          {
+            "class": 6,
+            "logit": 4
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 20,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 6
+          },
+          {
+            "class": 2,
+            "logit": 11
+          },
+          {
+            "class": 3,
+            "logit": 11
+          },
+          {
+            "class": 4,
+            "logit": 1
+          },
+          {
+            "class": 5,
+            "logit": 8
+          },
+          {
+            "class": 6,
+            "logit": 11
+          }
+        ]
+      },
+      {
+        "gate": 0,
+        "item_id": 21,
+        "logits": [
+          {
+            "class": 1,
+            "logit": 7
+          },
+          {
+            "class": 2,
+            "logit": 9
+          },
+          {
+            "class": 3,
+            "logit": 11
+          },
+          {
+            "class": 4,
+            "logit": 5
+          },
+          {
+            "class": 5,
+            "logit": 11
+          },
+          {
+            "class": 6,
+            "logit": 4
+          }
+        ]
+      }
+    ],
+    "routes": [
+      {
+        "bucket": "east",
+        "winner": 1
+      },
+      {
+        "bucket": "south",
+        "winner": 2
+      },
+      {
+        "bucket": "south",
+        "winner": 3
+      },
+      {
+        "bucket": "west",
+        "winner": 4
+      },
+      {
+        "bucket": "central",
+        "winner": 5
+      },
+      {
+        "bucket": "south",
+        "winner": 6
+      },
+      {
+        "bucket": "south",
+        "winner": 7
+      }
+    ]
+  }
+}

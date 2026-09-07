@@ -1,0 +1,93 @@
+{
+  "artifact_count": 7,
+  "artifacts": [
+    "final_state.json",
+    "report.json",
+    "scenario_alpha.json",
+    "scenario_beta.json",
+    "scenario_mode.json",
+    "transcript_summary.json",
+    "summary.json"
+  ],
+  "inputs": [
+    "/app/data/api_contract.md",
+    "/app/data/auth_policy.json",
+    "/app/data/expected_schema.json",
+    "/app/data/sample_requests.jsonl",
+    "/app/data/scenarios.jsonl",
+    "/app/data/seed_config.json",
+    "/app/data/service.zip",
+    "/app/service/simulator.py",
+    "/app/service/client.py",
+    "/app/service/plan.json"
+  ],
+  "scenario_files": [
+    "scenario_alpha.json",
+    "scenario_beta.json",
+    "scenario_mode.json"
+  ],
+  "trailer": "harbor:service-interaction:TASK:0000000000016386",
+  "service": "TASK",
+  "base_url": "http://127.0.0.1:8765",
+  "ok": true,
+  "final_state": {
+    "alpha": 8,
+    "beta": 6,
+    "container": "",
+    "mode_code": 0,
+    "producer": "",
+    "service": "TASK",
+    "trailer": "harbor:service-interaction:TASK:0000000000016386"
+  },
+  "operation_count": 6,
+  "operations_by_channel": {
+    "api": 3,
+    "cli": 3
+  },
+  "scenario_count": 3,
+  "scenarios": [
+    {
+      "name": "alpha",
+      "key": "alpha",
+      "value": 8,
+      "source_channels": [
+        "cli"
+      ],
+      "operation_count": 3
+    },
+    {
+      "name": "beta",
+      "key": "beta",
+      "value": 6,
+      "source_channels": [
+        "api"
+      ],
+      "operation_count": 2
+    },
+    {
+      "name": "mode",
+      "key": "mode_code",
+      "value": 0,
+      "source_channels": [
+        "api"
+      ],
+      "operation_count": 1
+    }
+  ],
+  "verification": {
+    "final_state_required_fields": [
+      "alpha",
+      "beta",
+      "container",
+      "mode_code",
+      "producer",
+      "service",
+      "trailer"
+    ],
+    "all_operations_ok": true,
+    "both_channels_used": true,
+    "state_matches_expected": true
+  },
+  "network_scope": "localhost-only (127.0.0.1); no external hosts contacted",
+  "tooling": "Python 3 standard library only (urllib.request, http.server, json, hashlib, subprocess)"
+}

@@ -1,0 +1,43 @@
+{
+  "description": "Alpha is changed by planned CLI operations and a final local CLI bonus.",
+  "key": "alpha",
+  "name": "alpha",
+  "operation_count": 3,
+  "operations": [
+    {
+      "channel": "cli",
+      "origin": "plan:op01",
+      "request": {
+        "action": "add",
+        "amount": 3,
+        "key": "alpha"
+      },
+      "seq": 1
+    },
+    {
+      "channel": "cli",
+      "origin": "plan:op03",
+      "request": {
+        "action": "multiply",
+        "amount": 2,
+        "key": "alpha"
+      },
+      "seq": 3
+    },
+    {
+      "channel": "cli",
+      "origin": "scenario:alpha",
+      "request": {
+        "action": "add",
+        "amount": 2,
+        "key": "alpha"
+      },
+      "seq": 5
+    }
+  ],
+  "source_channels": [
+    "cli"
+  ],
+  "trailer": "harbor:service-interaction:TASK:0000000000016386",
+  "value": 8
+}

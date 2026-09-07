@@ -1,0 +1,192 @@
+{
+  "api_operation_count": 3,
+  "base_url": "http://127.0.0.1:8765",
+  "channels_used": [
+    "api",
+    "cli"
+  ],
+  "cli_operation_count": 3,
+  "container": "f55b7147063d",
+  "credential_policy": "none-required",
+  "expected_state": {
+    "alpha": 8,
+    "beta": 6,
+    "mode_code": 0
+  },
+  "final_state": {
+    "alpha": 8,
+    "beta": 6,
+    "mode_code": 0
+  },
+  "host": "127.0.0.1",
+  "initial_state": {
+    "alpha": 0,
+    "beta": 0,
+    "mode_code": 0
+  },
+  "interactions": [
+    {
+      "channel": "api",
+      "endpoint": "/health",
+      "method": "GET",
+      "ok": true,
+      "op_id": "health",
+      "request": null,
+      "response": {
+        "ok": true
+      },
+      "seq": 0,
+      "status": 200
+    },
+    {
+      "channel": "cli",
+      "endpoint": "/apply",
+      "invocation": "/app/service/client.py --base http://127.0.0.1:8765 add alpha 3",
+      "method": "CLI",
+      "ok": true,
+      "op_id": "op01",
+      "origin": "plan.json",
+      "request": {
+        "action": "add",
+        "amount": 3,
+        "key": "alpha"
+      },
+      "response": {
+        "alpha": 3,
+        "beta": 0,
+        "mode_code": 0
+      },
+      "seq": 1,
+      "status": 200
+    },
+    {
+      "channel": "api",
+      "endpoint": "/apply",
+      "invocation": "POST /apply {\"action\":\"add\",\"amount\":5,\"key\":\"beta\"}",
+      "method": "POST",
+      "ok": true,
+      "op_id": "op02",
+      "origin": "plan.json",
+      "request": {
+        "action": "add",
+        "amount": 5,
+        "key": "beta"
+      },
+      "response": {
+        "alpha": 3,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "seq": 2,
+      "status": 200
+    },
+    {
+      "channel": "cli",
+      "endpoint": "/apply",
+      "invocation": "/app/service/client.py --base http://127.0.0.1:8765 multiply alpha 2",
+      "method": "CLI",
+      "ok": true,
+      "op_id": "op03",
+      "origin": "plan.json",
+      "request": {
+        "action": "multiply",
+        "amount": 2,
+        "key": "alpha"
+      },
+      "response": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "seq": 3,
+      "status": 200
+    },
+    {
+      "channel": "api",
+      "endpoint": "/apply",
+      "invocation": "POST /apply {\"action\":\"set\",\"amount\":0,\"key\":\"mode_code\"}",
+      "method": "POST",
+      "ok": true,
+      "op_id": "op04",
+      "origin": "plan.json",
+      "request": {
+        "action": "set",
+        "amount": 0,
+        "key": "mode_code"
+      },
+      "response": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "seq": 4,
+      "status": 200
+    },
+    {
+      "channel": "cli",
+      "endpoint": "/apply",
+      "invocation": "/app/service/client.py --base http://127.0.0.1:8765 add alpha 2",
+      "method": "CLI",
+      "ok": true,
+      "op_id": "op05",
+      "origin": "seed_config.json:alpha_bonus",
+      "request": {
+        "action": "add",
+        "amount": 2,
+        "key": "alpha"
+      },
+      "response": {
+        "alpha": 8,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "seq": 5,
+      "status": 200
+    },
+    {
+      "channel": "api",
+      "endpoint": "/apply",
+      "invocation": "POST /apply {\"action\":\"add\",\"amount\":1,\"key\":\"beta\"}",
+      "method": "POST",
+      "ok": true,
+      "op_id": "op06",
+      "origin": "seed_config.json:beta_bonus",
+      "request": {
+        "action": "add",
+        "amount": 1,
+        "key": "beta"
+      },
+      "response": {
+        "alpha": 8,
+        "beta": 6,
+        "mode_code": 0
+      },
+      "seq": 6,
+      "status": 200
+    },
+    {
+      "channel": "api",
+      "endpoint": "/state",
+      "method": "GET",
+      "ok": true,
+      "op_id": "final_state",
+      "request": null,
+      "response": {
+        "alpha": 8,
+        "beta": 6,
+        "mode_code": 0
+      },
+      "seq": 7,
+      "status": 200
+    }
+  ],
+  "network_scope": "localhost-only",
+  "ok": true,
+  "operation_count": 6,
+  "port": 8765,
+  "producer": "claude-code_2-1-259_agent",
+  "service": "TASK",
+  "state_matches_expected": true,
+  "state_sha256": "d186be97fae0c549e0ca171f295a3abb237b579d067d585cf5ce3cf2be9fde9a",
+  "trailer": "harbor:service-interaction:TASK:0000000000016386"
+}

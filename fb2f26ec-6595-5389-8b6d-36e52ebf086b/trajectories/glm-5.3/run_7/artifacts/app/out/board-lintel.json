@@ -1,0 +1,47 @@
+{
+  "batch": "lintel",
+  "plan": {
+    "abstain": "after_route",
+    "buckets": 4,
+    "confidence": "top_sum",
+    "drive": "items",
+    "empty_bucket": "report",
+    "null_order": "nulls_last",
+    "probe": "routes",
+    "tie_order": "by_join_id_asc"
+  },
+  "rows": [
+    {
+      "confidence": 22,
+      "key": "north",
+      "mean": 0,
+      "n": 2,
+      "top_row": 14003,
+      "total": 1
+    },
+    {
+      "confidence": 12,
+      "key": "central",
+      "mean": 0,
+      "n": 1,
+      "top_row": 16002,
+      "total": 0
+    },
+    {
+      "confidence": 44,
+      "key": "east",
+      "mean": 2,
+      "n": 4,
+      "top_row": 15004,
+      "total": 10
+    },
+    {
+      "confidence": 100,
+      "key": "south",
+      "mean": 2,
+      "n": 10,
+      "top_row": 17001,
+      "total": 23
+    }
+  ]
+}

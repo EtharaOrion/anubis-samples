@@ -1,0 +1,6 @@
+{
+  "network_scope": "localhost-only",
+  "credential_policy": "none-required",
+  "allowed_channels": ["cli", "api"],
+  "allowed_hosts": ["127.0.0.1", "localhost"]
+}

@@ -1,0 +1,104 @@
+{
+  "artifact_count": 7,
+  "artifacts": [
+    {
+      "file": "final_state.json",
+      "path": "/app/out/final_state.json"
+    },
+    {
+      "file": "report.json",
+      "path": "/app/out/report.json"
+    },
+    {
+      "file": "scenario_alpha.json",
+      "path": "/app/out/scenario_alpha.json"
+    },
+    {
+      "file": "scenario_beta.json",
+      "path": "/app/out/scenario_beta.json"
+    },
+    {
+      "file": "scenario_mode.json",
+      "path": "/app/out/scenario_mode.json"
+    },
+    {
+      "file": "summary.json",
+      "path": "/app/out/summary.json"
+    },
+    {
+      "file": "transcript_summary.json",
+      "path": "/app/out/transcript_summary.json"
+    }
+  ],
+  "base_url": "http://127.0.0.1:8765",
+  "channels_used": [
+    "api",
+    "cli"
+  ],
+  "final_state": {
+    "alpha": 8,
+    "beta": 6,
+    "mode_code": 0
+  },
+  "inputs": [
+    "/app/data/api_contract.md",
+    "/app/data/auth_policy.json",
+    "/app/data/expected_schema.json",
+    "/app/data/plan.json",
+    "/app/data/sample_requests.jsonl",
+    "/app/data/scenarios.jsonl",
+    "/app/data/seed_config.json",
+    "/app/data/service.zip"
+  ],
+  "ok": true,
+  "operation_totals": {
+    "applies": 6,
+    "by_channel": {
+      "api": 3,
+      "cli": 3
+    },
+    "by_key": {
+      "alpha": 3,
+      "beta": 2,
+      "mode_code": 1
+    },
+    "reads": 3
+  },
+  "scenario_files": [
+    "/app/out/scenario_alpha.json",
+    "/app/out/scenario_beta.json",
+    "/app/out/scenario_mode.json"
+  ],
+  "scenario_results": [
+    {
+      "key": "alpha",
+      "name": "alpha",
+      "operation_count": 3,
+      "source_channels": [
+        "cli"
+      ],
+      "value": 8
+    },
+    {
+      "key": "beta",
+      "name": "beta",
+      "operation_count": 2,
+      "source_channels": [
+        "api"
+      ],
+      "value": 6
+    },
+    {
+      "key": "mode_code",
+      "name": "mode",
+      "operation_count": 1,
+      "source_channels": [
+        "api"
+      ],
+      "value": 0
+    }
+  ],
+  "service": "TASK",
+  "state_sha256": "0b4a98cb5e78e08ae843c916b58d0a47607c7c2b7d5086f3c4b9f3667cd23aa6",
+  "trailer": "harbor:service-interaction:TASK:0000000000016386"
+}

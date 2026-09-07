@@ -1,0 +1,110 @@
+{
+  "results": {
+    "tool": {
+      "name": "pytest",
+      "version": "8.3.4"
+    },
+    "summary": {
+      "tests": 18,
+      "passed": 7,
+      "failed": 11,
+      "pending": 0,
+      "skipped": 0,
+      "other": 0,
+      "overall_score": 0.2708,
+      "weighted_percentage": 27.0833
+    },
+    "tests": [
+      {
+        "name": "test_artifacts_exist",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_final_state_is_flat_and_deterministic",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_final_state_matches_hidden_plan",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_report_contains_cli_and_api_interactions",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_report_transcript_order_is_valid",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_service_snapshot_has_canonical_trailer",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_no_external_network_or_credentials",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_replay_report_checksum_matches_state",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_artifacts_are_regular_bounded_files",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_scenario_alpha_matches_reference",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_scenario_beta_matches_reference",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_scenario_mode_matches_reference",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_transcript_summary_matches_report",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_summary_declares_inputs_outputs_and_hash",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_hardcoded_sample_answers",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_no_real_service_transcript",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_external_network_target",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_nested_or_nondeterministic_state",
+        "status": "failed",
+        "duration": 0
+      }
+    ]
+  }
+}

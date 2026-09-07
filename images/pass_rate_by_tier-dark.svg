@@ -37,8 +37,8 @@
   <line x1="348.3" y1="150" x2="348.3" y2="770" stroke="rgba(190,225,218,0.12)" stroke-width="1" stroke-dasharray="4 8"/>
   <line x1="825.0" y1="150" x2="825.0" y2="770" stroke="rgba(190,225,218,0.12)" stroke-width="1" stroke-dasharray="4 8"/>
   <line x1="1301.7" y1="150" x2="1301.7" y2="770" stroke="rgba(190,225,218,0.12)" stroke-width="1" stroke-dasharray="4 8"/>
-  <polyline points="348.3,269.8 825.0,425.1 1301.7,603.5" fill="none" stroke="#e2ac52" stroke-width="3.5" stroke-dasharray="9 7"/>
-  <polyline points="348.3,320.7 825.0,412.8 1301.7,533.3" fill="none" stroke="#35d0ba" stroke-width="4"/>
+  <polyline points="348.3,269.8 825.0,595.5 1301.7,628.5" fill="none" stroke="#e2ac52" stroke-width="3.5" stroke-dasharray="9 7"/>
+  <polyline points="348.3,320.7 825.0,404.3 1301.7,620.8" fill="none" stroke="#35d0ba" stroke-width="4"/>
   <circle cx="348.3" cy="320.7" r="9" fill="#35d0ba" opacity="0.28" filter="url(#glow)"/>
   <polygon points="348.33333333333337,260.7633333333334 357.33333333333337,269.7633333333334 348.33333333333337,278.7633333333334 339.33333333333337,269.7633333333334" fill="#e2ac52" opacity="0.28" filter="url(#glow)"/>
   <polygon points="348.33333333333337,260.7633333333334 357.33333333333337,269.7633333333334 348.33333333333337,278.7633333333334 339.33333333333337,269.7633333333334" fill="url(#hatch)" stroke="#0f2723" stroke-width="2.5"/>
@@ -47,20 +47,20 @@
   <text x="348.3" y="247.8" text-anchor="middle" font-family="'JetBrains Mono','SF Mono','Berkeley Mono',ui-monospace,'Courier New',monospace" font-size="21" font-weight="bold" fill="#e2ac52">48.41%</text>
   <text x="348.3" y="810" text-anchor="middle" font-family="Georgia, 'Iowan Old Style', 'Times New Roman', ui-serif, serif" font-size="26" fill="#eef2ea">medium</text>
   <text x="348.3" y="838" text-anchor="middle" font-family="'JetBrains Mono','SF Mono','Berkeley Mono',ui-monospace,'Courier New',monospace" font-size="18" fill="#9fc4bc">n=1</text>
-  <circle cx="825.0" cy="412.8" r="9" fill="#35d0ba" opacity="0.28" filter="url(#glow)"/>
-  <polygon points="825.0,416.0733333333333 834.0,425.0733333333333 825.0,434.0733333333333 816.0,425.0733333333333" fill="#e2ac52" opacity="0.28" filter="url(#glow)"/>
-  <polygon points="825.0,416.0733333333333 834.0,425.0733333333333 825.0,434.0733333333333 816.0,425.0733333333333" fill="url(#hatch)" stroke="#0f2723" stroke-width="2.5"/>
-  <circle cx="825.0" cy="412.8" r="8" fill="#35d0ba" stroke="#0f2723" stroke-width="3"/>
-  <text x="851.0" y="372.8" text-anchor="start" font-family="'JetBrains Mono','SF Mono','Berkeley Mono',ui-monospace,'Courier New',monospace" font-size="21" font-weight="bold" fill="#35d0ba">34.57%</text>
-  <text x="851.0" y="396.8" text-anchor="start" font-family="'JetBrains Mono','SF Mono','Berkeley Mono',ui-monospace,'Courier New',monospace" font-size="21" font-weight="bold" fill="#e2ac52">33.38%</text>
+  <circle cx="825.0" cy="404.3" r="9" fill="#35d0ba" opacity="0.28" filter="url(#glow)"/>
+  <polygon points="825.0,586.47 834.0,595.47 825.0,604.47 816.0,595.47" fill="#e2ac52" opacity="0.28" filter="url(#glow)"/>
+  <polygon points="825.0,586.47 834.0,595.47 825.0,604.47 816.0,595.47" fill="url(#hatch)" stroke="#0f2723" stroke-width="2.5"/>
+  <circle cx="825.0" cy="404.3" r="8" fill="#35d0ba" stroke="#0f2723" stroke-width="3"/>
+  <text x="825.0" y="382.3" text-anchor="middle" font-family="'JetBrains Mono','SF Mono','Berkeley Mono',ui-monospace,'Courier New',monospace" font-size="21" font-weight="bold" fill="#35d0ba">35.39%</text>
+  <text x="825.0" y="629.5" text-anchor="middle" font-family="'JetBrains Mono','SF Mono','Berkeley Mono',ui-monospace,'Courier New',monospace" font-size="21" font-weight="bold" fill="#e2ac52">16.89%</text>
   <text x="825.0" y="810" text-anchor="middle" font-family="Georgia, 'Iowan Old Style', 'Times New Roman', ui-serif, serif" font-size="26" fill="#eef2ea">hard</text>
   <text x="825.0" y="838" text-anchor="middle" font-family="'JetBrains Mono','SF Mono','Berkeley Mono',ui-monospace,'Courier New',monospace" font-size="18" fill="#9fc4bc">n=1</text>
-  <circle cx="1301.7" cy="533.3" r="9" fill="#35d0ba" opacity="0.28" filter="url(#glow)"/>
-  <polygon points="1301.6666666666667,594.53 1310.6666666666667,603.53 1301.6666666666667,612.53 1292.6666666666667,603.53" fill="#e2ac52" opacity="0.28" filter="url(#glow)"/>
-  <polygon points="1301.6666666666667,594.53 1310.6666666666667,603.53 1301.6666666666667,612.53 1292.6666666666667,603.53" fill="url(#hatch)" stroke="#0f2723" stroke-width="2.5"/>
-  <circle cx="1301.7" cy="533.3" r="8" fill="#35d0ba" stroke="#0f2723" stroke-width="3"/>
-  <text x="1301.7" y="511.3" text-anchor="middle" font-family="'JetBrains Mono','SF Mono','Berkeley Mono',ui-monospace,'Courier New',monospace" font-size="21" font-weight="bold" fill="#35d0ba">22.91%</text>
-  <text x="1301.7" y="637.5" text-anchor="middle" font-family="'JetBrains Mono','SF Mono','Berkeley Mono',ui-monospace,'Courier New',monospace" font-size="21" font-weight="bold" fill="#e2ac52">16.11%</text>
+  <circle cx="1301.7" cy="620.8" r="9" fill="#35d0ba" opacity="0.28" filter="url(#glow)"/>
+  <polygon points="1301.6666666666667,619.5366666666666 1310.6666666666667,628.5366666666666 1301.6666666666667,637.5366666666666 1292.6666666666667,628.5366666666666" fill="#e2ac52" opacity="0.28" filter="url(#glow)"/>
+  <polygon points="1301.6666666666667,619.5366666666666 1310.6666666666667,628.5366666666666 1301.6666666666667,637.5366666666666 1292.6666666666667,628.5366666666666" fill="url(#hatch)" stroke="#0f2723" stroke-width="2.5"/>
+  <circle cx="1301.7" cy="620.8" r="8" fill="#35d0ba" stroke="#0f2723" stroke-width="3"/>
+  <text x="1275.7" y="580.8" text-anchor="end" font-family="'JetBrains Mono','SF Mono','Berkeley Mono',ui-monospace,'Courier New',monospace" font-size="21" font-weight="bold" fill="#35d0ba">14.44%</text>
+  <text x="1275.7" y="604.8" text-anchor="end" font-family="'JetBrains Mono','SF Mono','Berkeley Mono',ui-monospace,'Courier New',monospace" font-size="21" font-weight="bold" fill="#e2ac52">13.69%</text>
   <text x="1301.7" y="810" text-anchor="middle" font-family="Georgia, 'Iowan Old Style', 'Times New Roman', ui-serif, serif" font-size="26" fill="#eef2ea">expert</text>
   <text x="1301.7" y="838" text-anchor="middle" font-family="'JetBrains Mono','SF Mono','Berkeley Mono',ui-monospace,'Courier New',monospace" font-size="18" fill="#9fc4bc">n=1</text>
   <text x="110" y="876" font-family="'JetBrains Mono','SF Mono','Berkeley Mono',ui-monospace,'Courier New',monospace" font-size="16" fill="#9fc4bc">one task per tier; lines are a visual guide across categories, not a continuous trend</text>

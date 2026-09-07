@@ -1,0 +1,164 @@
+{
+  "base_url": "http://127.0.0.1:8765",
+  "channel_counts": {
+    "api": 3,
+    "cli": 3
+  },
+  "container": "26d3c344d6f5",
+  "credential_policy": "none-required",
+  "final_state": {
+    "alpha": 8,
+    "beta": 6,
+    "mode_code": 0
+  },
+  "health": {
+    "ok": true
+  },
+  "initial_state": {
+    "alpha": 0,
+    "beta": 0,
+    "mode_code": 0
+  },
+  "interaction_count": 6,
+  "interactions": [
+    {
+      "channel": "cli",
+      "duration_ms": 1913.75,
+      "endpoint": "/apply",
+      "label": "op01",
+      "method": "POST",
+      "observed_value": 3,
+      "ok": true,
+      "origin": "plan.json",
+      "request": {
+        "action": "add",
+        "amount": 3,
+        "key": "alpha"
+      },
+      "response": {
+        "alpha": 3,
+        "beta": 0,
+        "mode_code": 0
+      },
+      "response_status": 200,
+      "transport": "subprocess:client.py -> POST /apply"
+    },
+    {
+      "channel": "api",
+      "duration_ms": 62.256,
+      "endpoint": "/apply",
+      "label": "op02",
+      "method": "POST",
+      "observed_value": 5,
+      "ok": true,
+      "origin": "plan.json",
+      "request": {
+        "action": "add",
+        "amount": 5,
+        "key": "beta"
+      },
+      "response": {
+        "alpha": 3,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "response_status": 200,
+      "transport": "urllib -> POST /apply"
+    },
+    {
+      "channel": "cli",
+      "duration_ms": 1040.473,
+      "endpoint": "/apply",
+      "label": "op03",
+      "method": "POST",
+      "observed_value": 6,
+      "ok": true,
+      "origin": "plan.json",
+      "request": {
+        "action": "multiply",
+        "amount": 2,
+        "key": "alpha"
+      },
+      "response": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "response_status": 200,
+      "transport": "subprocess:client.py -> POST /apply"
+    },
+    {
+      "channel": "api",
+      "duration_ms": 86.974,
+      "endpoint": "/apply",
+      "label": "op04",
+      "method": "POST",
+      "observed_value": 0,
+      "ok": true,
+      "origin": "plan.json",
+      "request": {
+        "action": "set",
+        "amount": 0,
+        "key": "mode_code"
+      },
+      "response": {
+        "alpha": 6,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "response_status": 200,
+      "transport": "urllib -> POST /apply"
+    },
+    {
+      "channel": "cli",
+      "duration_ms": 5575.033,
+      "endpoint": "/apply",
+      "label": "bonus_alpha",
+      "method": "POST",
+      "observed_value": 8,
+      "ok": true,
+      "origin": "seed_config.json:alpha_bonus",
+      "request": {
+        "action": "add",
+        "amount": 2,
+        "key": "alpha"
+      },
+      "response": {
+        "alpha": 8,
+        "beta": 5,
+        "mode_code": 0
+      },
+      "response_status": 200,
+      "transport": "subprocess:client.py -> POST /apply"
+    },
+    {
+      "channel": "api",
+      "duration_ms": 165.338,
+      "endpoint": "/apply",
+      "label": "bonus_beta",
+      "method": "POST",
+      "observed_value": 6,
+      "ok": true,
+      "origin": "seed_config.json:beta_bonus",
+      "request": {
+        "action": "add",
+        "amount": 1,
+        "key": "beta"
+      },
+      "response": {
+        "alpha": 8,
+        "beta": 6,
+        "mode_code": 0
+      },
+      "response_status": 200,
+      "transport": "urllib -> POST /apply"
+    }
+  ],
+  "network_scope": "localhost-only",
+  "ok": true,
+  "producer": "claude-code_2-1-259_agent",
+  "service": "TASK",
+  "state_sha256": "d186be97fae0c549e0ca171f295a3abb237b579d067d585cf5ce3cf2be9fde9a",
+  "state_sha256_input": "{\"alpha\":8,\"beta\":6,\"mode_code\":0}",
+  "trailer": "harbor:service-interaction:TASK:0000000000016386"
+}
