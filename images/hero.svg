@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1760" height="532" viewBox="0 0 1760 532" role="img" aria-label="ANUBIS: sealed terminal tasks, recorded trajectories, two scored channels">
   <title>ANUBIS</title>
-  <desc>An editorial banner. On the left, the ANUBIS wordmark in serif capitals above a rule and a monospace subtitle reading SEALED TASKS, RECORDED TRAJECTORIES, TWO CHANNELS. On the right, faint dashed evidence traces converge from the left edge into a faceted hexagonal seal rendered in gold, with a single scored trace leaving it toward the lower right. A measurement scale runs along the bottom right.</desc>
+  <desc>An editorial banner. On the left, the ANUBIS wordmark in serif capitals above a rule and a monospace subtitle reading TERMINAL TASKS, 48 ROLLOUTS, PYTEST + RUBRIC. On the right, faint dashed evidence traces converge from the left edge into a faceted hexagonal seal rendered in gold, with a single scored trace leaving it toward the lower right. A measurement scale runs along the bottom right.</desc>
 
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -85,7 +85,7 @@
 
     <line x1="115" y1="300" x2="700" y2="300" stroke="#35d0ba" stroke-opacity="0.4" stroke-width="1.5"/>
 
-    <text x="114" y="336" font-family="'JetBrains Mono','SF Mono','Berkeley Mono',ui-monospace,'Courier New',monospace" font-size="27" letter-spacing="5.5" fill="#35d0ba" fill-opacity="0.92">SEALED TASKS · RECORDED TRAJECTORIES · TWO CHANNELS</text>
+    <text x="114" y="336" font-family="'JetBrains Mono','SF Mono','Berkeley Mono',ui-monospace,'Courier New',monospace" font-size="27" letter-spacing="5.5" fill="#35d0ba" fill-opacity="0.92">TERMINAL TASKS · 48 ROLLOUTS · PYTEST + RUBRIC</text>
 
     <g transform="translate(1140,472)" font-family="'JetBrains Mono','SF Mono','Berkeley Mono',ui-monospace,'Courier New',monospace" font-size="15" fill="#9fc4bc" fill-opacity="0.75">
       <line x1="0" y1="0" x2="500" y2="0" stroke="#9fc4bc" stroke-opacity="0.3" stroke-width="1.2"/>
