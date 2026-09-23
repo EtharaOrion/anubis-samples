@@ -1,0 +1,205 @@
+# nonce window absolute floor per class (informational cross-check)
+[class.0]
+floor_ms = 100
+status = "ADOPTED"
+
+[class.1]
+floor_ms = 100
+status = "ADOPTED"
+
+[class.2]
+floor_ms = 100
+status = "ADOPTED"
+
+[class.3]
+floor_ms = 100
+status = "ADOPTED"
+
+[class.4]
+floor_ms = 100
+status = "ADOPTED"
+
+[class.0.draft]
+floor_ms = 999
+status = "DRAFT"
+
+[class.1.draft]
+floor_ms = 999
+status = "DRAFT"
+
+[class.2.draft]
+floor_ms = 999
+status = "DRAFT"
+
+[class.3.draft]
+floor_ms = 999
+status = "DRAFT"
+
+[class.4.draft]
+floor_ms = 999
+status = "DRAFT"
+
+# nonce note 0
+# nonce note 1
+# nonce note 2
+# nonce note 3
+# nonce note 4
+# nonce note 5
+# nonce note 6
+# nonce note 7
+# nonce note 8
+# nonce note 9
+# nonce note 10
+# nonce note 11
+# nonce note 12
+# nonce note 13
+# nonce note 14
+# nonce note 15
+# nonce note 16
+# nonce note 17
+# nonce note 18
+# nonce note 19
+# nonce note 20
+# nonce note 21
+# nonce note 22
+# nonce note 23
+# nonce note 24
+# nonce note 25
+# nonce note 26
+# nonce note 27
+# nonce note 28
+# nonce note 29
+# nonce note 30
+# nonce note 31
+# nonce note 32
+# nonce note 33
+# nonce note 34
+# nonce note 35
+# nonce note 36
+# nonce note 37
+# nonce note 38
+# nonce note 39
+# nonce note 40
+# nonce note 41
+# nonce note 42
+# nonce note 43
+# nonce note 44
+# nonce note 45
+# nonce note 46
+# nonce note 47
+# nonce note 48
+# nonce note 49
+# nonce note 50
+# nonce note 51
+# nonce note 52
+# nonce note 53
+# nonce note 54
+# nonce note 55
+# nonce note 56
+# nonce note 57
+# nonce note 58
+# nonce note 59
+# nonce note 60
+# nonce note 61
+# nonce note 62
+# nonce note 63
+# nonce note 64
+# nonce note 65
+# nonce note 66
+# nonce note 67
+# nonce note 68
+# nonce note 69
+# nonce note 70
+# nonce note 71
+# nonce note 72
+# nonce note 73
+# nonce note 74
+# nonce note 75
+# nonce note 76
+# nonce note 77
+# nonce note 78
+# nonce note 79
+# nonce note 80
+# nonce note 81
+# nonce note 82
+# nonce note 83
+# nonce note 84
+# nonce note 85
+# nonce note 86
+# nonce note 87
+# nonce note 88
+# nonce note 89
+# nonce note 90
+# nonce note 91
+# nonce note 92
+# nonce note 93
+# nonce note 94
+# nonce note 95
+# nonce note 96
+# nonce note 97
+# nonce note 98
+# nonce note 99
+# nonce note 100
+# nonce note 101
+# nonce note 102
+# nonce note 103
+# nonce note 104
+# nonce note 105
+# nonce note 106
+# nonce note 107
+# nonce note 108
+# nonce note 109
+# nonce note 110
+# nonce note 111
+# nonce note 112
+# nonce note 113
+# nonce note 114
+# nonce note 115
+# nonce note 116
+# nonce note 117
+# nonce note 118
+# nonce note 119
+# nonce note 120
+# nonce note 121
+# nonce note 122
+# nonce note 123
+# nonce note 124
+# nonce note 125
+# nonce note 126
+# nonce note 127
+# nonce note 128
+# nonce note 129
+# nonce note 130
+# nonce note 131
+# nonce note 132
+# nonce note 133
+# nonce note 134
+# nonce note 135
+# nonce note 136
+# nonce note 137
+# nonce note 138
+# nonce note 139
+# nonce note 140
+# nonce note 141
+# nonce note 142
+# nonce note 143
+# nonce note 144
+# nonce note 145
+# nonce note 146
+# nonce note 147
+# nonce note 148
+# nonce note 149
+# nonce note 150
+# nonce note 151
+# nonce note 152
+# nonce note 153
+# nonce note 154
+# nonce note 155
+# nonce note 156
+# nonce note 157
+# nonce note 158
+# nonce note 159
+# nonce note 160
+# nonce note 161
+# nonce note 162
+# nonce note 163

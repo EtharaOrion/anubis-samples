@@ -1,0 +1,5 @@
+{
+  "profile": "enforce",
+  "checksum": "crc32",
+  "note": "non-authoritative context sample; the authoritative enforce deltas live in profile_deltas.json and the resolved precedence layers"
+}

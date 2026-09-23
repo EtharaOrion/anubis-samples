@@ -1,0 +1,27 @@
+{
+  "edges": [
+    {
+      "edge_id": "E1",
+      "from": "PH1",
+      "hardness": "hard",
+      "to": "PH2"
+    },
+    {
+      "edge_id": "E2",
+      "from": "PH2",
+      "hardness": "hard",
+      "to": "PH3"
+    },
+    {
+      "edge_id": "E3",
+      "from": "PH3",
+      "hardness": "soft",
+      "to": "PH1"
+    }
+  ],
+  "phases": [
+    "PH1",
+    "PH2",
+    "PH3"
+  ]
+}

@@ -1,0 +1,395 @@
+{
+  "command_count": 28,
+  "commands": [
+    {
+      "argv": [
+        "task-ctl",
+        "init",
+        "--schema",
+        "/app/tool/schema.json",
+        "--out",
+        "/app/work/seed.json"
+      ],
+      "command": "init"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "derive",
+        "--out",
+        "/app/out/config.json"
+      ],
+      "command": "derive"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "enforcement_profile",
+        "--value",
+        "main"
+      ],
+      "command": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "validate",
+        "--schema",
+        "/app/tool/schema.json",
+        "--config",
+        "/app/out/config.json"
+      ],
+      "command": "validate"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "profile",
+        "--name",
+        "canary",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/profile_canary.json"
+      ],
+      "command": "profile"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "profile",
+        "--name",
+        "enforce",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/profile_enforce.json"
+      ],
+      "command": "profile"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "validate",
+        "--schema",
+        "/app/tool/schema.json",
+        "--config",
+        "/app/out/profile_canary.json"
+      ],
+      "command": "validate"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "validate",
+        "--schema",
+        "/app/tool/schema.json",
+        "--config",
+        "/app/out/profile_enforce.json"
+      ],
+      "command": "validate"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "profile_delta_report",
+        "--config",
+        "/app/out/config.json",
+        "--canary",
+        "/app/out/profile_canary.json",
+        "--enforce",
+        "/app/out/profile_enforce.json",
+        "--out",
+        "/app/out/profile_delta_report.json"
+      ],
+      "command": "emit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "class_ordering",
+        "--config",
+        "/app/out/config.json",
+        "--canary",
+        "/app/out/profile_canary.json",
+        "--enforce",
+        "/app/out/profile_enforce.json",
+        "--out",
+        "/app/out/class_ordering.tsv"
+      ],
+      "command": "emit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "admission_matrix",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/admission_matrix.csv"
+      ],
+      "command": "emit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "rate_limit_plan",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/rate_limit_plan.ini"
+      ],
+      "command": "emit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "scope_reconciliation",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/scope_reconciliation.tsv"
+      ],
+      "command": "emit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "hardening_fold_trace",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/hardening_fold_trace.psv"
+      ],
+      "command": "emit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "quorum_plan",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/quorum_plan.kv"
+      ],
+      "command": "emit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "risk_ledger",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/risk_ledger.env"
+      ],
+      "command": "emit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "precedence_resolution",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/precedence_resolution.properties"
+      ],
+      "command": "emit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "privilege_map",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/privilege_map.ndjson"
+      ],
+      "command": "emit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "seccomp_summary",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/seccomp_summary.tsv"
+      ],
+      "command": "emit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "tls_floor",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/tls_floor.env"
+      ],
+      "command": "emit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "retention_schedule",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/retention_schedule.csv"
+      ],
+      "command": "emit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "derivation_audit",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/derivation_audit.xml"
+      ],
+      "command": "emit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "convergence_report",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/convergence_report.txt"
+      ],
+      "command": "emit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "input_census",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/input_census.ndjson"
+      ],
+      "command": "emit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "export-report",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/report.json",
+        "--digest",
+        "eca4b09dd179dda6c58808f34ca10f6e40af2041937a39ef622de18c7e24acee",
+        "--commands",
+        "/app/work/commands.json"
+      ],
+      "command": "export-report"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "validation_report",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/validation_report.json"
+      ],
+      "command": "emit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "summary",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/summary.json"
+      ],
+      "command": "emit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit",
+        "--kind",
+        "reproducibility_manifest",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/reproducibility_manifest.json"
+      ],
+      "command": "emit"
+    }
+  ],
+  "config": {
+    "active_class": 1,
+    "audit_retention_days": 90,
+    "burst_ceiling": 900,
+    "checksum": "crc32",
+    "control_plane": "admission-broker",
+    "effective_scope_count": 4,
+    "enforcement_profile": "main",
+    "hardening_baseline": 80,
+    "image_runtime": "oci-runc",
+    "ingress_rate_limit_qps": 300,
+    "max_concurrent_sessions": 96,
+    "mode": "strict-local",
+    "nonce_window_ms": 500,
+    "privilege_drop_uid": 2600,
+    "profile": "TASK",
+    "quorum_threshold": 3,
+    "retry_backoff_base_ms": 330,
+    "risk_index": 20,
+    "seccomp_allowed_count": 6,
+    "session_ttl_seconds": 3000,
+    "tls_floor_score": 80,
+    "trailer": "harbor:cli-config:TASK:000000002e552977"
+  },
+  "config_sha256": "eca4b09dd179dda6c58808f34ca10f6e40af2041937a39ef622de18c7e24acee",
+  "ok": true,
+  "tool": "task-ctl",
+  "trailer": "harbor:cli-config:TASK:000000002e552977"
+}

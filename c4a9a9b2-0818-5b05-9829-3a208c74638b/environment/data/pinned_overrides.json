@@ -1,0 +1,33 @@
+{
+  "_comment": "highest precedence layer; a class override applies ONLY when pinned==true; pinned==false entries are inert and must be ignored by the resolver",
+  "class_0": {
+    "pinned": true,
+    "session_ttl_seconds": 2100,
+    "nonce_window_ms": 300,
+    "max_concurrent_sessions": 40
+  },
+  "class_1": {
+    "pinned": false,
+    "session_ttl_seconds": 9999,
+    "nonce_window_ms": 999,
+    "max_concurrent_sessions": 999
+  },
+  "class_2": {
+    "pinned": true,
+    "session_ttl_seconds": 4200,
+    "nonce_window_ms": 200,
+    "max_concurrent_sessions": 160
+  },
+  "class_3": {
+    "pinned": false,
+    "session_ttl_seconds": 111,
+    "nonce_window_ms": 111,
+    "max_concurrent_sessions": 11
+  },
+  "class_4": {
+    "pinned": true,
+    "session_ttl_seconds": 720,
+    "nonce_window_ms": 800,
+    "max_concurrent_sessions": 16
+  }
+}

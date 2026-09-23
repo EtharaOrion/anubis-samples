@@ -1,0 +1,4 @@
+{
+  "adjacency_limit": 2,
+  "max_seq_tokens": 900
+}

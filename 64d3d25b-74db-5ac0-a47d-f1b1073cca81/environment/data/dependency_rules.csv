@@ -1,0 +1,5 @@
+from_object,to_object,edge_priority
+OBJ01,OBJ02,10
+OBJ02,OBJ03,12
+OBJ03,OBJ01,14
+OBJ05,OBJ06,8

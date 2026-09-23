@@ -1,0 +1,16 @@
+{
+  "order": [
+    "placed_objects",
+    "unschedulable_penalty",
+    "contention_penalty",
+    "cycles_broken",
+    "total_residual"
+  ],
+  "sense": [
+    "max",
+    "min",
+    "min",
+    "min",
+    "min"
+  ]
+}

@@ -1,0 +1,7 @@
+scope	base	overlay	deny	effective	uid
+admin	0	0	1	0	
+exec	0	1	0	1	2600
+list	1	0	0	1	3800
+read	1	0	0	1	4000
+write	1	0	0	1	3200
+effective_scope_count				4	2600

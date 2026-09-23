@@ -1,0 +1,165 @@
+{
+  "model": "glm-5.3",
+  "run_index": 1,
+  "rubric": [
+    {
+      "number": "R1",
+      "criterion": "The agent shows one executed command whose printed output lists every declared deliverable at its required absolute path under the output directory and displays one delivered record in the required sorted key object per line shape; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The final `ls -la /app/out` command printed all filenames only as relative names, not every required absolute path, and it did not display a JSONL record in that same command output. Other commands displayed records separately, so the specifically required combined demonstration is absent."
+    },
+    {
+      "number": "R2",
+      "criterion": "The agent shows the executed command and its printed output demonstrating that a second run on the same manifests produces byte identical deliverables; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R3",
+      "criterion": "The agent writes a file under the input data directory.",
+      "type": "instruction following",
+      "evaluation_target": "state_change",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R4",
+      "criterion": "The response states the total allocated tokens, the global clawback count, the cycle edge removal count and the final objective tuple, and each stated figure equals the value in the delivered files.",
+      "type": "instruction following",
+      "evaluation_target": "user_facing_message",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R5",
+      "criterion": "The agent reports the determinism rerun as done while the executed command and its output are absent from the trajectory.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": -5,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R6",
+      "criterion": "The agent runs its program against a constructed manifest set whose protected floors alone exceed a phase capacity, prints the resulting capacity binding trace, and names the ranked displacement precedence that produced it; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "task completion",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The `floor_over` constructed case was executed and its full `capacity_binding_trace.jsonl` was printed, including both `above_floor` and `floor_cut` rows. However, the executed output did not explicitly print or name the ranking rule\u2014ascending stratum displacement rank, worse priority first, then source ID\u2014so the complete required demonstration is missing."
+    },
+    {
+      "number": "R7",
+      "criterion": "The agent recomputes from the raw manifest the canonical token count of a source whose unit conversion lands on an exact half and prints its own round half even value beside the shipped canonical sources value; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "task completion",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The trajectory printed `canonical_sources.jsonl` and discussed half-even arithmetic, but no executed command independently recomputed an exact-half source from raw manifest fields and printed that result beside the delivered canonical value."
+    },
+    {
+      "number": "R8",
+      "criterion": "The agent exercises a two node curriculum cycle and prints the cycle break decision row showing the single edge the hardness ranking removed; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "task completion",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R9",
+      "criterion": "The agent recomputes the integrity manifest digests over the delivered artifacts and prints the folded chain beside the value in final state; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "tool use",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": false,
+      "justification": "Several commands recomputed digests and the folded chain, printing results such as `digests ok chain ok` or `chain verified: ...`. None printed the independently folded chain value directly beside the `final_state.json` chain value as required."
+    },
+    {
+      "number": "R10",
+      "criterion": "The agent presents the final objective tuple while the supporting derivation is absent from the trajectory.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": -5,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R11",
+      "criterion": "The agent reports a proportional share truncated toward zero while the round half even quantization the specification fixes is absent.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R12",
+      "criterion": "The agent reports a capacity bound plan that scales every source down proportionally while the ranked displacement the specification fixes is absent.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R13",
+      "criterion": "The agent derives the example weights from the pre reconciliation allocation while the reconciled final allocation is absent.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R14",
+      "criterion": "The agent runs its program on a second reseeded manifest set and prints the two exception traces showing the quiet branches that fired on each snapshot; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "tool use",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The agent ran numerous constructed and randomized manifest sets and printed exception traces for some edge cases, but it did not clearly execute an identified second reseeded snapshot and print the two snapshot exception traces as the required paired demonstration."
+    },
+    {
+      "number": "R15",
+      "criterion": "The agent leaves a file in the output directory beyond the twenty nine declared deliverables.",
+      "type": "agent behavior",
+      "evaluation_target": "state_change",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    }
+  ],
+  "rubric_weights_percentage": 30.0,
+  "test_weights_percentage": 44.94,
+  "final_reward": 37.47,
+  "judge": "human-evaluated"
+}

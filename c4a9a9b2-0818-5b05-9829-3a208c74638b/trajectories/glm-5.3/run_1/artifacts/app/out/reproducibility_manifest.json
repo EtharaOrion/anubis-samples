@@ -1,0 +1,31 @@
+{
+  "active_class": 1,
+  "arithmetic": "integer round-half-even",
+  "artifacts": {
+    "admission_matrix.csv": "13a32ba7ea9135a061ddfbea4f0ca66d40cc02ebf3b45a44163c86cc09ca209f",
+    "class_ordering.tsv": "3ffe09e19ddfc2d7c8c3932b4d85b02cfe46aec1fc32f322ef4227772e19e7de",
+    "config.json": "de4e10f0aaabfed99bdd8d57465b3e9e84ed3acb31f331ddd45de3725d368841",
+    "convergence_report.txt": "34fa33fa8049179e024a443f75d3dcf0ca796d44a99a838e02ceb507be167ad5",
+    "derivation_audit.xml": "cb93c82b0b6ac38ee2e4f452379e50599f30bbd45725cd2de4df6ca4c2414930",
+    "hardening_fold_trace.psv": "96f0be31245c73c829db78a659bd8359d3f89b988ae50619971a6d08512ef80d",
+    "input_census.ndjson": "fb5d22a84727917910e7fc71fa4eb95cf5072ae98308afc3f84977dbfb79ede8",
+    "precedence_resolution.properties": "358d7b725a8695cc2d84e4f37b8ff9ea5c0a8800cd9e1bc8effb4d1bd345a2fc",
+    "privilege_map.ndjson": "cc1723f66b5d862b13d96df9e4b49711668b3fd483d6099c801e38c23686ee9b",
+    "profile_canary.json": "c60434397a5b726ef9e45107fb461d3c05eed036689c4615a3c52c05d4cbd506",
+    "profile_delta_report.json": "74fac86fd2c55e24c4c354d2c1902b2e997cbce93ba09d016f02efcbb0ed0fde",
+    "profile_enforce.json": "6e6a16708344a94ab61e5620389ba5c3af552e9cbbe4bb2885ec7406b913a32d",
+    "quorum_plan.kv": "11c6067b97d55800e3545818b7ea27b5cabc9cd0205eccee2d985beb735b1c9e",
+    "rate_limit_plan.ini": "ca3950730cd43187a2d14d47a2d142bdd96749e4e35d7f0f06f3ec910850fcc4",
+    "report.json": "3f24940937f82812e5a632d7cfa98927e72a9af43f6792c943d301c8c03fe4dd",
+    "retention_schedule.csv": "6ebdfaf13f37807f8552a08c37490a3de6f2a8be05dc91cafce4daa07e14b867",
+    "risk_ledger.env": "eeaf7599ded519a209a1624e08de994df44a7dd4acffa6b2acb391788a907aac",
+    "scope_reconciliation.tsv": "5c115c2d5c0788832441d4dcadd0d1be350bf6b02329603bcede575bdbb47ee2",
+    "seccomp_summary.tsv": "cbc4b5a42e9fbba3d0f264828fd390f99cdef79ce0cd92717a08dfae2163dac9",
+    "tls_floor.env": "4995e1e53820cbd49e52b8a381e340de5dbf493de6f439e390fadbd8caa7f0ef",
+    "tool.zip": "afe26756b07d7cd24a0d6cecfce0b48a09ea580bfcef62fea1db49098fad92c4"
+  },
+  "config_digest": "de4e10f0aaabfed99bdd8d57465b3e9e84ed3acb31f331ddd45de3725d368841",
+  "profile": "TASK",
+  "tool": "task-ctl",
+  "trailer": "harbor:cli-config:TASK:000000002e552977"
+}

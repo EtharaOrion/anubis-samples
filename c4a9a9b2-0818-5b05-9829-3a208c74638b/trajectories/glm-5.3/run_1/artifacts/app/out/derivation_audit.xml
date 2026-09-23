@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<derivation_audit tool="task-ctl" profile="TASK" control_plane="admission-broker" trailer="harbor:cli-config:TASK:000000002e552977">
+  <active_class id="1" budget="50" budget_span="185" max_records="235"/>
+  <ingress qps="240" burst_permille="1250" scaled_qps="300" rate_step="25" rate_limit_qps="300" window_seconds="3" burst_ceiling="900"/>
+  <scopes base="3" overlay="1" deny="1" effective="4" uid_floor="1000" privilege_drop_uid="2600">
+    <scope name="exec"/>
+    <scope name="list"/>
+    <scope name="read"/>
+    <scope name="write"/>
+  </scopes>
+  <hardening fold_score="104" floor="40" ceil="90" clamped="90" quant_step="5" baseline="90" weight_sum="82"/>
+  <risk baseline="90" complement="100" severity_permille="1000" divisor="1000" risk_index="10"/>
+  <quorum healthy_voters="5" permille="667" threshold="3"/>
+  <tls_floor score="80"/>
+  <seccomp allowed_count="6"/>
+  <retention days="90"/>
+  <precedence field="session_ttl_seconds" default="1800" resolved="3000" source="layer_override" pinned="false"/>
+  <precedence field="nonce_window_ms" default="400" resolved="500" source="layer_override" pinned="false"/>
+  <precedence field="max_concurrent_sessions" default="64" resolved="96" source="layer_override" pinned="false"/>
+  <retry timeout_ms="2359" retry_limit="6" step="10" backoff_base_ms="2060"/>
+  <cross_checks total="20" agreed="20">
+    <mirror name="bounds_alt.fixed" ok="true" detail="bounds=(40, 90)"/>
+    <mirror name="burst_alt.properties" ok="true" detail="permille=1250"/>
+    <mirror name="burst_mirror.hex2" ok="true" detail="permille=1250"/>
+    <mirror name="controls_alt.psv3" ok="true" detail="weight_sum=82"/>
+    <mirror name="gran_mirror.fixed2" ok="true" detail="gran=25"/>
+    <mirror name="ingress_alt.jsonl2" ok="true" detail="qps=240"/>
+    <mirror name="ingress_mirror.pipe" ok="true" detail="qps=240"/>
+    <mirror name="privilege_bits.b64" ok="true" detail="uid=2600"/>
+    <mirror name="quorum_mirror.rst2" ok="true" detail="permille=667"/>
+    <mirror name="retention_alt.kv2" ok="true" detail="days=90"/>
+    <mirror name="retention_mirror.psv4" ok="true" detail="days=90"/>
+    <mirror name="risk_curve.sexp" ok="true" detail="permille=1000"/>
+    <mirror name="scope_census.edn" ok="true" detail="{:class 1 :base 3 :overlay 1 :deny 1 :status &quot;ADOPTED&quot;}"/>
+    <mirror name="scopecount_mirror.tsv3" ok="true" detail="scopes=4"/>
+    <mirror name="seccomp_allow.tsv" ok="true" detail="count=6"/>
+    <mirror name="severity_mirror.caret2" ok="true" detail="permille=1000"/>
+    <mirror name="tls_mirror.tilde3" ok="true" detail="score=80"/>
+    <mirror name="voter_roster.html2" ok="true" detail="voters=5"/>
+    <mirror name="voters_mirror.kv4" ok="true" detail="voters=5"/>
+    <mirror name="window_mirror.scsv3" ok="true" detail="window=3"/>
+  </cross_checks>
+</derivation_audit>

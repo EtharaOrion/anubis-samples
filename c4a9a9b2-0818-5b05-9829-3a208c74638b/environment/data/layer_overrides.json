@@ -1,0 +1,28 @@
+{
+  "_comment": "middle precedence layer; overrides defaults.layer_defaults per enforcement class; pinned_overrides.json may override this where pinned==true",
+  "class_0": {
+    "session_ttl_seconds": 2400,
+    "nonce_window_ms": 350,
+    "max_concurrent_sessions": 48
+  },
+  "class_1": {
+    "session_ttl_seconds": 3000,
+    "nonce_window_ms": 500,
+    "max_concurrent_sessions": 96
+  },
+  "class_2": {
+    "session_ttl_seconds": 3600,
+    "nonce_window_ms": 250,
+    "max_concurrent_sessions": 128
+  },
+  "class_3": {
+    "session_ttl_seconds": 1200,
+    "nonce_window_ms": 600,
+    "max_concurrent_sessions": 32
+  },
+  "class_4": {
+    "session_ttl_seconds": 900,
+    "nonce_window_ms": 700,
+    "max_concurrent_sessions": 24
+  }
+}

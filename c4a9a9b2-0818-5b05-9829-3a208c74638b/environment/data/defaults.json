@@ -1,0 +1,18 @@
+{
+  "_doc": "base admission-control tuning layer; overlays in layer_overrides.json and pinned_overrides.json refine the precedence fields",
+  "checksum": "crc32",
+  "control_plane": "admission-broker",
+  "image_runtime": "oci-runc",
+  "mode": "strict-local",
+  "base_config": {
+    "max_records": 235,
+    "retry_limit": 6,
+    "timeout_ms": 2359,
+    "trailer": "harbor:cli-config:TASK:000000002e552977"
+  },
+  "layer_defaults": {
+    "session_ttl_seconds": 1800,
+    "nonce_window_ms": 400,
+    "max_concurrent_sessions": 64
+  }
+}

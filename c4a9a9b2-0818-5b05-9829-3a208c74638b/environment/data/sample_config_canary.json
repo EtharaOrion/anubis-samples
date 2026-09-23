@@ -1,0 +1,5 @@
+{
+  "profile": "canary",
+  "checksum": "crc32",
+  "note": "non-authoritative context sample; the authoritative canary deltas live in profile_deltas.json and the resolved precedence layers"
+}

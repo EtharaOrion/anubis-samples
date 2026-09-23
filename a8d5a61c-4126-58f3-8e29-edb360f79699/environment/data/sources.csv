@@ -1,0 +1,15 @@
+source_id,language,domain,source_class,safety_stratum,priority,raw_amount,raw_unit
+S01,de,incident,primary,auxiliary,5,36,kb
+S02,en,manual,secondary,auxiliary,2,35,min
+S03,fr,maint,synthetic,critical,5,57,seg
+S04,ja,qa,primary,critical,2,70,tok
+S05,zh,reg,secondary,standard,3,30,kb
+S06,de,synthetic,synthetic,standard,1,51,min
+S07,en,translated,primary,auxiliary,1,23,seg
+S08,fr,incident,secondary,auxiliary,2,24,tok
+S09,ja,manual,synthetic,critical,1,22,kb
+S10,zh,maint,primary,critical,1,27,min
+S11,de,qa,secondary,standard,4,29,seg
+S12,en,reg,synthetic,standard,3,47,tok
+S13,fr,synthetic,primary,auxiliary,4,42,kb
+S14,ja,translated,secondary,auxiliary,5,87,min

@@ -1,0 +1,64 @@
+schema_version = "1.4"
+artifacts = [
+    "/app/out/plan.py",
+    "/app/out/canonical_sources.jsonl",
+    "/app/out/eligibility_ledger.jsonl",
+    "/app/out/demand_score_ledger.jsonl",
+    "/app/out/phase_membership.jsonl",
+    "/app/out/proportional_allocation.jsonl",
+    "/app/out/protected_floor_ledger.jsonl",
+    "/app/out/capacity_binding_trace.jsonl",
+    "/app/out/precedence_closure.jsonl",
+    "/app/out/cycle_report.jsonl",
+    "/app/out/cycle_break_decisions.jsonl",
+    "/app/out/precedence_overturn_trace.jsonl",
+    "/app/out/carry_state_ledger.jsonl",
+    "/app/out/pre_reconciliation_ledger.jsonl",
+    "/app/out/global_reconciliation_trace.jsonl",
+    "/app/out/final_allocation.jsonl",
+    "/app/out/language_allocation_summary.jsonl",
+    "/app/out/safety_allocation_summary.jsonl",
+    "/app/out/source_allocation_summary.jsonl",
+    "/app/out/rational_example_weights.jsonl",
+    "/app/out/fixed_point_weights.jsonl",
+    "/app/out/rounding_residual_ledger.jsonl",
+    "/app/out/microbatch_manifest.jsonl",
+    "/app/out/phase_token_totals.jsonl",
+    "/app/out/invariant_report.jsonl",
+    "/app/out/exception_trace.jsonl",
+    "/app/out/objective_tuple.json",
+    "/app/out/integrity_manifest.json",
+    "/app/out/final_state.json",
+]
+
+[task]
+name = "terminal-bench/a8d5a61c-4126-58f3-8e29-edb360f79699"
+description = "Compile a deterministic training mixture allocation certificate from fragmented source manifests, policies, curriculum dependencies, token budgets and a written specification. Canonicalize units into integer tokens under a pervasive round half even rule, project eligibility, score demand, and derive a per source per phase token allocation spine through proportional shares, protected floors, capacity binding displacement, precedence closure with a deterministic cycle break, carry state and a global reconciliation that repairs over allocated sources, then materialize per example integer weights and microbatch manifests, ending in twenty eight byte exact artifacts and a folded chain state."
+keywords = ["python", "allocation", "constraint-compiler", "determinism", "stdlib"]
+authors = [{name = "Harshank Kanungo", email = "harshank.kanungo@ethara.ai"}]
+
+[metadata]
+difficulty = "medium"
+category = "Optimization"
+tags = ["allocation", "precedence", "rounding", "determinism", "integrity"]
+estimated_duration_sec = 7200.0
+expert_time_estimate_min = 420.0
+junior_time_estimate_min = 1320.0
+
+[verifier]
+timeout_sec = 3600.0
+environment_mode = "separate"
+network_mode = "no-network"
+
+[verifier.environment]
+docker_image = "426628337772.dkr.ecr.ap-south-1.amazonaws.com/anubis:a8d5a61c-4126-58f3-8e29-edb360f79699-verifier@sha256:e530fb8e2585f9cbe90a9b5e8ec4f4fc5f72997ea8028a8b855182cd111bcda3"
+network_mode = "no-network"
+
+[agent]
+timeout_sec = 7200.0
+
+[environment]
+docker_image = "426628337772.dkr.ecr.ap-south-1.amazonaws.com/anubis:a8d5a61c-4126-58f3-8e29-edb360f79699-env@sha256:b20070627d2ea1811c2aa0e5e90ca79095155e860eca18cbb6b8ad59252fcf07"
+build_timeout_sec = 900.0
+network_mode = "no-network"
+mcp_servers = []

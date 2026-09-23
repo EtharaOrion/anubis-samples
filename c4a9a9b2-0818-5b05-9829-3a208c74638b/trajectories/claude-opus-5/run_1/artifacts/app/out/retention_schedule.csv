@@ -1,0 +1,2 @@
+class,audit_retention_days,tls_floor_score,seccomp_allowed_count
+1,90,80,6

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<derivation_audit>
+  <active_class>1</active_class>
+  <rounding>half-even</rounding>
+  <trailer>harbor:cli-config:TASK:000000002e552977</trailer>
+  <steps>
+    <step field="active_class" value="1"><rule>max_records 235 reduced over the adopted selector bands</rule></step>
+    <step field="ingress_rate_limit_qps" value="300"><rule>quantize_floor(round_half_even(240*1250,1000),25)</rule></step>
+    <step field="burst_ceiling" value="900"><rule>300*3</rule></step>
+    <step field="effective_scope_count" value="4"><rule>|(base union overlay) minus deny|</rule></step>
+    <step field="privilege_drop_uid" value="2600"><rule>max(min(granted_uids),floor=1000)</rule></step>
+    <step field="hardening_baseline" value="80"><rule>quantize_floor(clamp(fold=83,40,90),5)</rule></step>
+    <step field="risk_index" value="20"><rule>round_half_even((100-80)*1000,1000)</rule></step>
+    <step field="quorum_threshold" value="3"><rule>clamp(round_half_even(5*667,1000),1,5)</rule></step>
+    <step field="tls_floor_score" value="80"><rule>adopted enabled suite score</rule></step>
+    <step field="seccomp_allowed_count" value="6"><rule>adopted allow minus adopted deny</rule></step>
+    <step field="audit_retention_days" value="90"><rule>adopted retention block</rule></step>
+    <step field="session_ttl_seconds" value="3000"><rule>base then overlay then pinned</rule></step>
+    <step field="nonce_window_ms" value="500"><rule>base then overlay then pinned, floor bounded</rule></step>
+    <step field="max_concurrent_sessions" value="96"><rule>base then overlay then pinned, ceiling bounded</rule></step>
+    <step field="retry_backoff_base_ms" value="330"><rule>quantize_floor(round_half_even(2359,7),10)</rule></step>
+  </steps>
+</derivation_audit>

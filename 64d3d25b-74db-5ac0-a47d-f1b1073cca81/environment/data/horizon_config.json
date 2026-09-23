@@ -1,0 +1,7 @@
+{
+  "chain_seed": "0000000000000000000000000000000000000000000000000000000000000000",
+  "clearance_unit": "MM",
+  "conservation_end_convention": "inclusive",
+  "setup_div": 700,
+  "venue_end_convention": "exclusive"
+}

@@ -1,0 +1,16 @@
+{
+  "strata": {
+    "auxiliary": {
+      "floor_tokens": 0,
+      "protected": false
+    },
+    "critical": {
+      "floor_tokens": 300,
+      "protected": true
+    },
+    "standard": {
+      "floor_tokens": 150,
+      "protected": true
+    }
+  }
+}

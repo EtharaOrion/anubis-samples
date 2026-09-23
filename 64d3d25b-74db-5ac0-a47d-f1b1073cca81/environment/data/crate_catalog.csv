@@ -1,0 +1,4 @@
+crate_class,inner_w,inner_h,inner_d,count,transport_mode
+CR_S,900,1100,800,2,AIR
+CR_M,1300,1500,1200,3,ROAD
+CR_L,1900,2000,1600,24,ROAD

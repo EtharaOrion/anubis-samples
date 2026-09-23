@@ -1,3 +1,0 @@
-{"name":"alpha","key":"alpha","description":"Alpha is changed by planned CLI operations and a final local CLI bonus."}
-{"name":"beta","key":"beta","description":"Beta is changed by planned API operations and a final local API bonus."}
-{"name":"mode","key":"mode_code","description":"Mode code is set by the direct local API according to the generated plan."}

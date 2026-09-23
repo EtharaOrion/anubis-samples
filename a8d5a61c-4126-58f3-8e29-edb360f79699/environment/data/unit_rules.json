@@ -1,0 +1,23 @@
+{
+  "rounding": "half_even",
+  "scale": 10000,
+  "units": {
+    "kb": {
+      "den": 8,
+      "num": 2050
+    },
+    "min": {
+      "den": 2,
+      "num": 1801
+    },
+    "seg": {
+      "den": 2,
+      "num": 1025
+    },
+    "tok": {
+      "den": 1,
+      "num": 1
+    }
+  },
+  "zero_denominator": "empty_group"
+}

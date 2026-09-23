@@ -1,0 +1,13 @@
+{
+  "_comment": "profile overlays applied on top of the derived main configuration; ttl_scale_permille scales the resolved session_ttl_seconds BEFORE granularity quantization; quorum_delta and risk_delta are signed adjustments applied after the main derivation",
+  "canary": {
+    "ttl_scale_permille": 750,
+    "quorum_delta": 1,
+    "risk_delta": 2
+  },
+  "enforce": {
+    "ttl_scale_permille": 1200,
+    "quorum_delta": 0,
+    "risk_delta": -1
+  }
+}

@@ -1,0 +1,24 @@
+convergence report
+==================
+active_class=1
+fold_score=83
+hardening_baseline=80
+risk_index=20
+quorum_threshold=3
+healthy_voters=5
+effective_scope_count=4
+privilege_drop_uid=2600
+ingress_rate_limit_qps=300
+burst_ceiling=900
+tls_floor_score=80
+seccomp_allowed_count=6
+audit_retention_days=90
+session_ttl_seconds=3000
+nonce_window_ms=500
+max_concurrent_sessions=96
+retry_backoff_base_ms=330
+iterations=1
+converged=true
+float_operations=0
+rounding=half-even
+trailer=harbor:cli-config:TASK:000000002e552977

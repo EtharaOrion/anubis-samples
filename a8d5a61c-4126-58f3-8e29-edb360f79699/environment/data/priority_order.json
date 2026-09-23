@@ -1,0 +1,12 @@
+{
+  "stratum_displacement_rank": {
+    "auxiliary": 0,
+    "critical": 2,
+    "standard": 1
+  },
+  "tie_break": [
+    "stratum_rank",
+    "priority_worst_first",
+    "source_id"
+  ]
+}

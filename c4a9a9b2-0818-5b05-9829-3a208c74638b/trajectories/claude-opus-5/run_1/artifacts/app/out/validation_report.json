@@ -1,0 +1,14 @@
+{
+  "artifacts_expected": 24,
+  "artifacts_present": 24,
+  "checks": {
+    "all_keys_present": true,
+    "flat": true,
+    "no_floats": true,
+    "no_forbidden_keys": true,
+    "trailer_intact": true
+  },
+  "missing_keys": [],
+  "ok": true,
+  "required_key_count": 22
+}

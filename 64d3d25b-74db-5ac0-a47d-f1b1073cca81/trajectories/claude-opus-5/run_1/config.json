@@ -1,0 +1,22 @@
+{
+  "task": {
+    "path": "/Users/macbookpro/Desktop/Anubis_QC_22_Sept/anubis-samples/64d3d25b-74db-5ac0-a47d-f1b1073cca81"
+  },
+  "trial_name": "64d3d25b-74db-5ac0-a47d-f1b1073c__ek8ZkEX",
+  "trials_dir": "/Users/macbookpro/Desktop/Anubis_QC_22_Sept/anubis-samples/64d3d25b-74db-5ac0-a47d-f1b1073cca81/trajectories/claude-opus-5/run_1",
+  "agent": {
+    "name": "openhands-sdk",
+    "model_name": "claude-opus-5",
+    "extra_allowed_hosts": [
+      "172.17.0.1"
+    ],
+    "env": {
+      "LLM_NUM_RETRIES": "8",
+      "LLM_MODEL": "anthropic/claude-opus-5",
+      "LLM_TEMPERATURE": "1.0",
+      "LLM_MAX_OUTPUT_TOKENS": "****",
+      "MAX_ITERATIONS": "350",
+      "LLM_EXTENDED_THINKING_BUDGET": "32000"
+    }
+  }
+}

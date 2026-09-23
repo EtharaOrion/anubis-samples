@@ -1,0 +1,7 @@
+{
+  "blocked_domains": [],
+  "min_quality": {
+    "den": 2,
+    "num": 1
+  }
+}

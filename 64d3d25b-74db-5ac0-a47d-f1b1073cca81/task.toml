@@ -1,0 +1,60 @@
+schema_version = "1.4"
+artifacts = [
+    "/app/out/plan.py",
+    "/app/out/canonical_objects.jsonl",
+    "/app/out/normalized_geometry.jsonl",
+    "/app/out/admissibility_matrix.jsonl",
+    "/app/out/bay_candidate_matrix.jsonl",
+    "/app/out/selected_placement.jsonl",
+    "/app/out/rejected_placement.jsonl",
+    "/app/out/conservation_adjusted.jsonl",
+    "/app/out/crate_candidate_matrix.jsonl",
+    "/app/out/crate_assignment.jsonl",
+    "/app/out/crate_capacity_ledger.jsonl",
+    "/app/out/crate_contention_report.jsonl",
+    "/app/out/transport_leg_manifest.jsonl",
+    "/app/out/dependency_edges.jsonl",
+    "/app/out/cycle_resolution_audit.jsonl",
+    "/app/out/install_order.jsonl",
+    "/app/out/crew_requirement_ledger.jsonl",
+    "/app/out/install_window_table.jsonl",
+    "/app/out/unschedulable_report.jsonl",
+    "/app/out/gallery_occupancy_map.jsonl",
+    "/app/out/deterministic_audit.jsonl",
+    "/app/out/penalty_summary.json",
+    "/app/out/objective_tuple.json",
+    "/app/out/integrity_manifest.json",
+    "/app/out/final_state.json",
+]
+
+[task]
+name = "terminal-bench/64d3d25b-74db-5ac0-a47d-f1b1073cca81"
+description = "Rebuild the corrected installation dossier for a travelling museum exhibition from a fragmented loan, object, gallery, crate, conservation and dependency snapshot and a written specification. Canonicalize identity and units, derive per object geometry, placement, conservation adjustment, shared crate assignment, transport, a dependency graph and its cycle resolution, install order, crew, windows and the final dossier, honouring inclusive and exclusive fit boundaries, a stateful crate contention rule that overturns a locally optimal choice, a deterministic cycle break, a pervasive round half up rule, and twenty four byte exact artifacts ending in a hashed manifest and a folded chain state."
+keywords = ["python", "derivation", "state-machine", "precedence", "stdlib"]
+authors = [{name = "Ayush Sah", email = "ayush.sah@ethara.ai"}]
+
+[metadata]
+difficulty = "hard"
+category = "Data Processing"
+tags = ["derivation", "precedence", "determinism", "geometry", "integrity"]
+estimated_duration_sec = 7200.0
+expert_time_estimate_min = 480.0
+junior_time_estimate_min = 1440.0
+
+[verifier]
+timeout_sec = 3600.0
+environment_mode = "separate"
+network_mode = "no-network"
+
+[verifier.environment]
+docker_image = "426628337772.dkr.ecr.ap-south-1.amazonaws.com/anubis:64d3d25b-74db-5ac0-a47d-f1b1073cca81-verifier@sha256:ee47614f5c647341b64b1c83b35f053910a2a67855f46629a9db8b36f7a139fa"
+network_mode = "no-network"
+
+[agent]
+timeout_sec = 7200.0
+
+[environment]
+docker_image = "426628337772.dkr.ecr.ap-south-1.amazonaws.com/anubis:64d3d25b-74db-5ac0-a47d-f1b1073cca81-env@sha256:5994da93fcbe1ae5697099c76529a7d627632252cef228c667c25fb41cb2c88a"
+build_timeout_sec = 900.0
+network_mode = "no-network"
+mcp_servers = []

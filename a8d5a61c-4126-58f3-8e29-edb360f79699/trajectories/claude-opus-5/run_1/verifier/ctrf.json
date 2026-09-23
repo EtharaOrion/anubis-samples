@@ -1,0 +1,395 @@
+{
+  "results": {
+    "tool": {
+      "name": "pytest",
+      "version": "unknown"
+    },
+    "summary": {
+      "tests": 75,
+      "passed": 36,
+      "failed": 39,
+      "pending": 0,
+      "skipped": 0,
+      "other": 0,
+      "overall_score": 0.412,
+      "weighted_percentage": 41.1985
+    },
+    "tests": [
+      {
+        "name": "test_all_declared_artifacts_exist",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_all_final_batches_have_members",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_canonical_sources_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_carry_state_ledger_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_demand_score_ledger_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_eligibility_codes_in_enum",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_eligibility_ledger_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_eval_cycle_and_carry_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_eval_final_allocation_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_eval_remaining_artifacts_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_eval_objective_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_eval_summaries_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_every_binding_event_has_single_phase",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_exception_codes_in_enum",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_final_alloc_sums_to_source_summary",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_final_state_chain_folds_manifest",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_final_state_has_required_keys",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_fixture_alloc_equals_cap",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_fixture_cycle_len2",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_fixture_empty_group",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_fixture_floor_over_cap",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_fixture_lang_excluded",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_fixture_single_example",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_fixture_zero_denom",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_hidden_a_carry_state_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_hidden_a_exception_trace_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_hidden_a_final_allocation_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_hidden_a_microbatch_manifest_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_hidden_a_objective_and_state_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_hidden_b_capacity_binding_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_hidden_b_demand_and_eligibility_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_hidden_b_final_allocation_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_hidden_b_fixed_point_weights_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_hidden_b_reconciliation_trace_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_integrity_manifest_covers_declared_set",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_json_artifacts_parse",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_json_serialization_is_canonical",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_jsonl_artifacts_parse_line_by_line",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_jsonl_serialization_is_canonical",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_language_allocation_summary_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_manifest_digests_match_files",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_filename_dependent_behaviour",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_hardcoded_sample_answers",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_nondeterministic_output",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_reads_training_corpus_at_runtime",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_objective_recomputed_from_raw_outputs",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_objective_tuple_has_five_components",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_phase_membership_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_phase_token_totals_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_phase_totals_respect_effective_cap",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_pre_reconciliation_ledger_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_precedence_closure_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_program_is_a_runnable_script",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_proportional_allocation_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_protected_floor_ledger_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_rational_example_weights_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_rational_weights_are_reduced_fractions",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_rounding_residual_ledger_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_safety_allocation_summary_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_source_allocation_summary_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_source_summary_within_supply",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_binding_actually_happened",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_capacity_binding_trace_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_cycle_break_decisions_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_cycle_report_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_exception_trace_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_final_allocation_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_final_state_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_fixed_point_weights_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_global_reconciliation_trace_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_integrity_manifest_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_invariant_report_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_microbatch_manifest_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_objective_tuple_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_precedence_overturn_trace_match",
+        "status": "passed",
+        "duration": 0
+      }
+    ]
+  }
+}

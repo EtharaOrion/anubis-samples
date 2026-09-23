@@ -1,0 +1,39 @@
+{
+  "languages": {
+    "de": {
+      "balance_bp": 10500,
+      "floor_tokens": 60,
+      "max_share_bp": 4000,
+      "min_share_bp": 800,
+      "precedence": 0
+    },
+    "en": {
+      "balance_bp": 12000,
+      "floor_tokens": 100,
+      "max_share_bp": 4000,
+      "min_share_bp": 800,
+      "precedence": 1
+    },
+    "fr": {
+      "balance_bp": 9500,
+      "floor_tokens": 40,
+      "max_share_bp": 4000,
+      "min_share_bp": 800,
+      "precedence": 2
+    },
+    "ja": {
+      "balance_bp": 11000,
+      "floor_tokens": 80,
+      "max_share_bp": 4000,
+      "min_share_bp": 800,
+      "precedence": 3
+    },
+    "zh": {
+      "balance_bp": 10000,
+      "floor_tokens": 60,
+      "max_share_bp": 4000,
+      "min_share_bp": 800,
+      "precedence": 4
+    }
+  }
+}

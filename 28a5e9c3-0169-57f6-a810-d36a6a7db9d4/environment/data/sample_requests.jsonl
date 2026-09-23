@@ -1,4 +1,0 @@
-{"channel":"cli","action":"add","key":"alpha","amount":3}
-{"channel":"api","action":"add","key":"beta","amount":5}
-{"channel":"cli","action":"multiply","key":"alpha","amount":2}
-{"channel":"api","action":"set","key":"mode_code","amount":0}

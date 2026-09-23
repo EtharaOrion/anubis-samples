@@ -1,0 +1,4 @@
+value_class,min_value,unschedulable_penalty,contention_penalty
+VC_HIGH,120000,9,4
+VC_MID,70000,5,2
+VC_LOW,0,2,1

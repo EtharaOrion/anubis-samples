@@ -1,0 +1,4 @@
+lender_id,insurance_rate_num,insurance_rate_den,pref_mode
+LDR_ALPHA,3,700,ROAD
+LDR_BETA,5,1100,AIR
+LDR_GAMMA,2,900,ROAD

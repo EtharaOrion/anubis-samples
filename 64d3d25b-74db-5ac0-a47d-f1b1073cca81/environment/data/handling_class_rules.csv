@@ -1,0 +1,4 @@
+handling_class,clearance_w,clearance_d,clearance_h,handle_margin,crew_class,setup_base
+H_LIGHT,5,5,8,3,CREW_A,40
+H_STD,8,8,12,5,CREW_B,55
+H_HEAVY,12,12,18,8,CREW_C,70

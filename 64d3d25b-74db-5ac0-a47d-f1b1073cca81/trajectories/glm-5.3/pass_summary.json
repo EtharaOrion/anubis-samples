@@ -1,0 +1,16 @@
+{
+  "model": "glm-5.3",
+  "runs": 1,
+  "average_combined_score": 45.41,
+  "average_test_weights_percentage": 40.81,
+  "average_rubric_weights_percentage": 50.0,
+  "per_run": [
+    {
+      "run_index": 1,
+      "include_multimodal": false,
+      "test_weights_percentage": 40.81,
+      "rubric_weights_percentage": 50.0,
+      "combined_score": 45.41
+    }
+  ]
+}

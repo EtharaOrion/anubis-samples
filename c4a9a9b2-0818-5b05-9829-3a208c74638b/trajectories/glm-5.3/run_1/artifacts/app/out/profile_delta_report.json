@@ -1,0 +1,11 @@
+{
+  "canary": {
+    "quorum_threshold": 1,
+    "risk_index": 2,
+    "session_ttl_seconds": -750
+  },
+  "enforce": {
+    "risk_index": -1,
+    "session_ttl_seconds": 600
+  }
+}

@@ -1,0 +1,205 @@
+# hardening baseline clamp bounds per class; [class.N] blocks canonical
+[class.0]
+floor = 40
+ceil = 90
+status = "ADOPTED"
+
+[class.1]
+floor = 40
+ceil = 90
+status = "ADOPTED"
+
+[class.2]
+floor = 45
+ceil = 95
+status = "ADOPTED"
+
+[class.3]
+floor = 40
+ceil = 85
+status = "ADOPTED"
+
+[class.4]
+floor = 50
+ceil = 95
+status = "ADOPTED"
+
+[class.0.draft]
+floor = 30
+ceil = 100
+status = "DRAFT"
+
+[class.1.draft]
+floor = 30
+ceil = 100
+status = "DRAFT"
+
+[class.2.draft]
+floor = 35
+ceil = 105
+status = "DRAFT"
+
+[class.3.draft]
+floor = 30
+ceil = 95
+status = "DRAFT"
+
+[class.4.draft]
+floor = 40
+ceil = 105
+status = "DRAFT"
+
+# staging bound note 0 floor 10 ceil 200
+# staging bound note 1 floor 11 ceil 201
+# staging bound note 2 floor 12 ceil 202
+# staging bound note 3 floor 13 ceil 203
+# staging bound note 4 floor 14 ceil 204
+# staging bound note 5 floor 15 ceil 205
+# staging bound note 6 floor 16 ceil 206
+# staging bound note 7 floor 17 ceil 207
+# staging bound note 8 floor 18 ceil 208
+# staging bound note 9 floor 19 ceil 209
+# staging bound note 10 floor 20 ceil 210
+# staging bound note 11 floor 21 ceil 211
+# staging bound note 12 floor 22 ceil 212
+# staging bound note 13 floor 23 ceil 213
+# staging bound note 14 floor 24 ceil 214
+# staging bound note 15 floor 25 ceil 215
+# staging bound note 16 floor 26 ceil 216
+# staging bound note 17 floor 27 ceil 217
+# staging bound note 18 floor 28 ceil 218
+# staging bound note 19 floor 29 ceil 219
+# staging bound note 20 floor 30 ceil 220
+# staging bound note 21 floor 31 ceil 221
+# staging bound note 22 floor 32 ceil 222
+# staging bound note 23 floor 33 ceil 223
+# staging bound note 24 floor 34 ceil 224
+# staging bound note 25 floor 35 ceil 225
+# staging bound note 26 floor 36 ceil 226
+# staging bound note 27 floor 37 ceil 227
+# staging bound note 28 floor 38 ceil 228
+# staging bound note 29 floor 39 ceil 229
+# staging bound note 30 floor 40 ceil 230
+# staging bound note 31 floor 41 ceil 231
+# staging bound note 32 floor 42 ceil 232
+# staging bound note 33 floor 43 ceil 233
+# staging bound note 34 floor 44 ceil 234
+# staging bound note 35 floor 45 ceil 235
+# staging bound note 36 floor 46 ceil 236
+# staging bound note 37 floor 47 ceil 237
+# staging bound note 38 floor 48 ceil 238
+# staging bound note 39 floor 49 ceil 239
+# staging bound note 40 floor 50 ceil 240
+# staging bound note 41 floor 51 ceil 241
+# staging bound note 42 floor 52 ceil 242
+# staging bound note 43 floor 53 ceil 243
+# staging bound note 44 floor 54 ceil 244
+# staging bound note 45 floor 55 ceil 245
+# staging bound note 46 floor 56 ceil 246
+# staging bound note 47 floor 57 ceil 247
+# staging bound note 48 floor 58 ceil 248
+# staging bound note 49 floor 59 ceil 249
+# staging bound note 50 floor 60 ceil 250
+# staging bound note 51 floor 61 ceil 251
+# staging bound note 52 floor 62 ceil 252
+# staging bound note 53 floor 63 ceil 253
+# staging bound note 54 floor 64 ceil 254
+# staging bound note 55 floor 65 ceil 255
+# staging bound note 56 floor 66 ceil 256
+# staging bound note 57 floor 67 ceil 257
+# staging bound note 58 floor 68 ceil 258
+# staging bound note 59 floor 69 ceil 259
+# staging bound note 60 floor 70 ceil 260
+# staging bound note 61 floor 71 ceil 261
+# staging bound note 62 floor 72 ceil 262
+# staging bound note 63 floor 73 ceil 263
+# staging bound note 64 floor 74 ceil 264
+# staging bound note 65 floor 75 ceil 265
+# staging bound note 66 floor 76 ceil 266
+# staging bound note 67 floor 77 ceil 267
+# staging bound note 68 floor 78 ceil 268
+# staging bound note 69 floor 79 ceil 269
+# staging bound note 70 floor 80 ceil 270
+# staging bound note 71 floor 81 ceil 271
+# staging bound note 72 floor 82 ceil 272
+# staging bound note 73 floor 83 ceil 273
+# staging bound note 74 floor 84 ceil 274
+# staging bound note 75 floor 85 ceil 275
+# staging bound note 76 floor 86 ceil 276
+# staging bound note 77 floor 87 ceil 277
+# staging bound note 78 floor 88 ceil 278
+# staging bound note 79 floor 89 ceil 279
+# staging bound note 80 floor 90 ceil 280
+# staging bound note 81 floor 91 ceil 281
+# staging bound note 82 floor 92 ceil 282
+# staging bound note 83 floor 93 ceil 283
+# staging bound note 84 floor 94 ceil 284
+# staging bound note 85 floor 95 ceil 285
+# staging bound note 86 floor 96 ceil 286
+# staging bound note 87 floor 97 ceil 287
+# staging bound note 88 floor 98 ceil 288
+# staging bound note 89 floor 99 ceil 289
+# staging bound note 90 floor 100 ceil 290
+# staging bound note 91 floor 101 ceil 291
+# staging bound note 92 floor 102 ceil 292
+# staging bound note 93 floor 103 ceil 293
+# staging bound note 94 floor 104 ceil 294
+# staging bound note 95 floor 105 ceil 295
+# staging bound note 96 floor 106 ceil 296
+# staging bound note 97 floor 107 ceil 297
+# staging bound note 98 floor 108 ceil 298
+# staging bound note 99 floor 109 ceil 299
+# staging bound note 100 floor 110 ceil 300
+# staging bound note 101 floor 111 ceil 301
+# staging bound note 102 floor 112 ceil 302
+# staging bound note 103 floor 113 ceil 303
+# staging bound note 104 floor 114 ceil 304
+# staging bound note 105 floor 115 ceil 305
+# staging bound note 106 floor 116 ceil 306
+# staging bound note 107 floor 117 ceil 307
+# staging bound note 108 floor 118 ceil 308
+# staging bound note 109 floor 119 ceil 309
+# staging bound note 110 floor 120 ceil 310
+# staging bound note 111 floor 121 ceil 311
+# staging bound note 112 floor 122 ceil 312
+# staging bound note 113 floor 123 ceil 313
+# staging bound note 114 floor 124 ceil 314
+# staging bound note 115 floor 125 ceil 315
+# staging bound note 116 floor 126 ceil 316
+# staging bound note 117 floor 127 ceil 317
+# staging bound note 118 floor 128 ceil 318
+# staging bound note 119 floor 129 ceil 319
+# staging bound note 120 floor 130 ceil 320
+# staging bound note 121 floor 131 ceil 321
+# staging bound note 122 floor 132 ceil 322
+# staging bound note 123 floor 133 ceil 323
+# staging bound note 124 floor 134 ceil 324
+# staging bound note 125 floor 135 ceil 325
+# staging bound note 126 floor 136 ceil 326
+# staging bound note 127 floor 137 ceil 327
+# staging bound note 128 floor 138 ceil 328
+# staging bound note 129 floor 139 ceil 329
+# staging bound note 130 floor 140 ceil 330
+# staging bound note 131 floor 141 ceil 331
+# staging bound note 132 floor 142 ceil 332
+# staging bound note 133 floor 143 ceil 333
+# staging bound note 134 floor 144 ceil 334
+# staging bound note 135 floor 145 ceil 335
+# staging bound note 136 floor 146 ceil 336
+# staging bound note 137 floor 147 ceil 337
+# staging bound note 138 floor 148 ceil 338
+# staging bound note 139 floor 149 ceil 339
+# staging bound note 140 floor 150 ceil 340
+# staging bound note 141 floor 151 ceil 341
+# staging bound note 142 floor 152 ceil 342
+# staging bound note 143 floor 153 ceil 343
+# staging bound note 144 floor 154 ceil 344
+# staging bound note 145 floor 155 ceil 345
+# staging bound note 146 floor 156 ceil 346
+# staging bound note 147 floor 157 ceil 347
+# staging bound note 148 floor 158 ceil 348
+# staging bound note 149 floor 159 ceil 349
+# staging bound note 150 floor 160 ceil 350
+# staging bound note 151 floor 161 ceil 351
+# staging bound note 152 floor 162 ceil 352
+# staging bound note 153 floor 163 ceil 353

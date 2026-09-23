@@ -1,0 +1,59 @@
+schema_version = "1.4"
+artifacts = [
+    "/app/out/config.json",
+    "/app/out/report.json",
+    "/app/out/tool.zip",
+    "/app/out/validation_report.json",
+    "/app/out/summary.json",
+    "/app/out/profile_canary.json",
+    "/app/out/profile_enforce.json",
+    "/app/out/profile_delta_report.json",
+    "/app/out/admission_matrix.csv",
+    "/app/out/rate_limit_plan.ini",
+    "/app/out/scope_reconciliation.tsv",
+    "/app/out/hardening_fold_trace.psv",
+    "/app/out/quorum_plan.kv",
+    "/app/out/risk_ledger.env",
+    "/app/out/precedence_resolution.properties",
+    "/app/out/privilege_map.ndjson",
+    "/app/out/seccomp_summary.tsv",
+    "/app/out/tls_floor.env",
+    "/app/out/retention_schedule.csv",
+    "/app/out/derivation_audit.xml",
+    "/app/out/convergence_report.txt",
+    "/app/out/reproducibility_manifest.json",
+    "/app/out/input_census.ndjson",
+    "/app/out/class_ordering.tsv",
+]
+
+[task]
+name = "terminal-bench/c4a9a9b2-0818-5b05-9829-3a208c74638b"
+description = "Repair a broken offline container-image admission-control hardening compiler and derive a deterministic hardened admission configuration for the active enforcement class from interacting numeric policy layers, emitting a flat configuration plus a full derivation audit."
+keywords = ["python", "cli", "configuration", "security", "admission-control", "hardening", "derivation"]
+authors = [{ name = "Aniket Datta", email = "aniket.dattaint17@ethara.ai" }]
+
+[metadata]
+difficulty = "easy"
+category = "Security"
+tags = ["python", "cli", "configuration", "security", "admission-control", "hardening", "derivation"]
+estimated_duration_sec = 7200.0
+expert_time_estimate_min = 480.0
+junior_time_estimate_min = 1440.0
+
+[verifier]
+timeout_sec = 2700.0
+environment_mode = "separate"
+network_mode = "no-network"
+
+[verifier.environment]
+docker_image = "426628337772.dkr.ecr.ap-south-1.amazonaws.com/anubis:c4a9a9b2-0818-5b05-9829-3a208c74638b-verifier@sha256:92651e0b107dfb3632edc9e75b0db5520f5a3cb2a593df1ed1433d68460bd13a"
+network_mode = "no-network"
+
+[agent]
+timeout_sec = 7200.0
+
+[environment]
+docker_image = "426628337772.dkr.ecr.ap-south-1.amazonaws.com/anubis:c4a9a9b2-0818-5b05-9829-3a208c74638b-env@sha256:b78065d25ca218b9df6583ee774246ddb026ab1af5afd8838772a2568b07de41"
+build_timeout_sec = 900.0
+network_mode = "no-network"
+mcp_servers = []

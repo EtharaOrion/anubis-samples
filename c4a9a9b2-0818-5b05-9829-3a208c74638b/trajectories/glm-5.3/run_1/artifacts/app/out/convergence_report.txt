@@ -1,0 +1,42 @@
+task-ctl convergence report
+profile=TASK control_plane=admission-broker mode=strict-local
+trailer=harbor:cli-config:TASK:000000002e552977
+active_class=1 (budget=50 % span=185)
+
+ingress: qps=240 burst_permille=1250 scaled=300 step=25 -> rate_limit=300 ; window=3 -> burst_ceiling=900
+scopes: base=list,read,write overlay=exec deny=admin -> effective=exec,list,read,write (count=4)
+privilege: uid_floor=1000 granted=2600,3200,3800,4000 -> privilege_drop_uid=2600
+hardening: fold_score=104 bounds=[40,90] clamped=90 step=5 -> baseline=90
+risk: (100 - 90) * 1000 / 1000 -> risk_index=10
+quorum: voters=5 permille=667 -> threshold=3
+tls_floor_score=80 seccomp_allowed_count=6 audit_retention_days=90
+retry: timeout_ms=2359 retry_limit=6 step=10 -> retry_backoff_base_ms=2060
+
+precedence resolution:
+  session_ttl_seconds default=1800 resolved=3000 source=layer_override pinned=false
+  nonce_window_ms default=400 resolved=500 source=layer_override pinned=false
+  max_concurrent_sessions default=64 resolved=96 source=layer_override pinned=false
+
+mirror cross-checks: 20/20 agreed
+  OK bounds_alt.fixed (bounds=(40, 90))
+  OK burst_alt.properties (permille=1250)
+  OK burst_mirror.hex2 (permille=1250)
+  OK controls_alt.psv3 (weight_sum=82)
+  OK gran_mirror.fixed2 (gran=25)
+  OK ingress_alt.jsonl2 (qps=240)
+  OK ingress_mirror.pipe (qps=240)
+  OK privilege_bits.b64 (uid=2600)
+  OK quorum_mirror.rst2 (permille=667)
+  OK retention_alt.kv2 (days=90)
+  OK retention_mirror.psv4 (days=90)
+  OK risk_curve.sexp (permille=1000)
+  OK scope_census.edn ({:class 1 :base 3 :overlay 1 :deny 1 :status "ADOPTED"})
+  OK scopecount_mirror.tsv3 (scopes=4)
+  OK seccomp_allow.tsv (count=6)
+  OK severity_mirror.caret2 (permille=1000)
+  OK tls_mirror.tilde3 (score=80)
+  OK voter_roster.html2 (voters=5)
+  OK voters_mirror.kv4 (voters=5)
+  OK window_mirror.scsv3 (window=3)
+
+status: converged
