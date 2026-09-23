@@ -3890,6 +3890,6 @@
     "total_prompt_tokens": 8271252,
     "total_completion_tokens": 103264,
     "total_cached_tokens": 8135616,
-    "total_cost_usd": 0.0
+    "total_cost_usd": 2.56962176
   }
 }

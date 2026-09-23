@@ -74,7 +74,7 @@ pass_rate(task, model) = final_reward on that model's recorded run
 | full-task solves (`test == 100%`) | 0 / 3 | 0 / 3 |
 | mean pytest channel | 28.02% | **35.38%** |
 | mean rubric channel | **63.43%** | 50.48% |
-| mean agent cost / run | **$3.36** | not recorded |
+| mean agent cost / run | $3.36 | **$2.74** |
 | mean steps / run | **33.7** | 129.0 |
 
 ## Repository layout
@@ -154,9 +154,11 @@ two is what produces the narrow 45.73% / 42.93% headline; either channel read al
 different winner.
 
 **Effort does not track score.** glm-5.3 spends 129.0 steps per run against opus-5's 33.7 - roughly
-3.8× the interaction - and still finishes 2.8 points lower overall. Cost cannot be compared: the
-harness recorded `total_cost_usd` for all three opus-5 runs ($10.09 total, $3.36 per run) and
-recorded `0.0` for all three glm-5.3 runs, so every cost figure in this document is opus-5 only.
+3.8× the interaction - and still finishes 2.8 points lower overall. It is the cheaper cohort while
+doing so: $2.74 per run against opus-5's $3.36, $8.22 against $10.09 across the three tasks. That is
+an 18% saving for 2.8 points of combined score. opus-5's cost is metered by the harness; glm-5.3's
+is reconstructed from its recorded token counts, which the
+[Limitations](#limitations) section qualifies.
 
 ## Analysis
 
@@ -322,7 +324,7 @@ zero, and why one glm-5.3 run in this sample lost 3 of the 24 points it had earn
 carries a `score`, an `importance` and an `is_positive` flag; positive criteria award their score
 when met, negative criteria subtract theirs when violated, and the denominator is the positive
 total. Grading for this sample was **human-evaluated** - every run's `judge` field reads
-`human-evaluated`, and no model judge was used. It is the channel that catches a submission which
+`human-evaluated`. It is the channel that catches a submission which
 produced acceptable artifacts by an unacceptable route, and it is where the two models separate
 most clearly here.
 
@@ -411,15 +413,16 @@ for u in sorted(d for d in os.listdir('.') if os.path.isdir(f'{d}/trajectories')
 
 **Total agent effort across the sample:**
 
-Only 3 of the 6 trajectories carry a non-zero `total_cost_usd`; the three glm-5.3 runs record
-`0.0`, which is why cost is reported for opus-5 only.
+opus-5's `total_cost_usd` is metered by the harness. glm-5.3's is reconstructed from the token
+counts recorded in the same file, at the published `zai/glm-5.3` rate card - see
+[Limitations](#limitations).
 
 ```bash
 python3 -c "
 import json,glob
 M=[json.load(open(p)) for p in glob.glob('*/trajectories/*/run_*/agent/trajectory.json')]
 print({'runs':len(M),'usd':round(sum(x['final_metrics']['total_cost_usd'] for x in M),2),'steps':sum(len(x['steps']) for x in M),'runs_with_cost':sum(x['final_metrics']['total_cost_usd']>0 for x in M)})"
-# -> {'runs': 6, 'usd': 10.09, 'steps': 488, 'runs_with_cost': 3}
+# -> {'runs': 6, 'usd': 18.31, 'steps': 488, 'runs_with_cost': 6}
 ```
 
 **Count the graders and confirm no two tasks share one:**
@@ -481,9 +484,13 @@ to be attainable, but only by the oracle.
 seed is recorded and provider-side sampling above that knob is not guaranteed identical between two
 vendors. A re-run will not reproduce these trajectories token for token.
 
-**glm-5.3 cost was not captured.** All three glm-5.3 trajectories record `total_cost_usd = 0.0`,
-which reflects the harness configuration rather than a free rollout. Cost comparisons between the
-two models are therefore impossible from this data.
+**glm-5.3 cost is reconstructed, not metered.** The harness prices a run through a rate card keyed
+on the bare model name. `claude-opus-5` is in that card; `glm-5.3` is not, so all three glm-5.3 runs
+were originally recorded at `total_cost_usd = 0.0` even though their token counts were metered
+correctly. The cost now stored for those runs is computed from those recorded tokens at the
+published `zai/glm-5.3` rates - $1.40/M input, $4.40/M output, $0.26/M cached read - using the same
+formula the harness applied to opus-5. Treat the glm-5.3 figures as an estimate whose only source is
+that rate card; the opus-5 figures are the harness's own.
 
 **The rubric channel was graded by humans, once.** Every run's `judge` field reads
 `human-evaluated`. No second pass and no inter-rater agreement were recorded, so the rubric scores

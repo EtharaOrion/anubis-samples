@@ -90,7 +90,7 @@
     "n_input_tokens": 11408128,
     "n_cache_tokens": 11229248,
     "n_output_tokens": 76052,
-    "cost_usd": 0.0,
+    "cost_usd": 3.25423328,
     "rollout_details": null,
     "metadata": null
   },
