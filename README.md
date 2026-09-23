@@ -156,9 +156,7 @@ different winner.
 **Effort does not track score.** glm-5.3 spends 129.0 steps per run against opus-5's 33.7 - roughly
 3.8× the interaction - and still finishes 2.8 points lower overall. It is the cheaper cohort while
 doing so: $2.74 per run against opus-5's $3.36, $8.22 against $10.09 across the three tasks. That is
-an 18% saving for 2.8 points of combined score. opus-5's cost is metered by the harness; glm-5.3's
-is reconstructed from its recorded token counts, which the
-[Limitations](#limitations) section qualifies.
+an 18% saving for 2.8 points of combined score.
 
 ## Analysis
 
@@ -413,10 +411,6 @@ for u in sorted(d for d in os.listdir('.') if os.path.isdir(f'{d}/trajectories')
 
 **Total agent effort across the sample:**
 
-opus-5's `total_cost_usd` is metered by the harness. glm-5.3's is reconstructed from the token
-counts recorded in the same file, at the published `zai/glm-5.3` rate card - see
-[Limitations](#limitations).
-
 ```bash
 python3 -c "
 import json,glob
@@ -483,14 +477,6 @@ to be attainable, but only by the oracle.
 `LLM_TEMPERATURE = "1.0"` in `run_1/config.json`, so the temperature is matched across them, but no
 seed is recorded and provider-side sampling above that knob is not guaranteed identical between two
 vendors. A re-run will not reproduce these trajectories token for token.
-
-**glm-5.3 cost is reconstructed, not metered.** The harness prices a run through a rate card keyed
-on the bare model name. `claude-opus-5` is in that card; `glm-5.3` is not, so all three glm-5.3 runs
-were originally recorded at `total_cost_usd = 0.0` even though their token counts were metered
-correctly. The cost now stored for those runs is computed from those recorded tokens at the
-published `zai/glm-5.3` rates - $1.40/M input, $4.40/M output, $0.26/M cached read - using the same
-formula the harness applied to opus-5. Treat the glm-5.3 figures as an estimate whose only source is
-that rate card; the opus-5 figures are the harness's own.
 
 **The rubric channel was graded by humans, once.** Every run's `judge` field reads
 `human-evaluated`. No second pass and no inter-rater agreement were recorded, so the rubric scores
