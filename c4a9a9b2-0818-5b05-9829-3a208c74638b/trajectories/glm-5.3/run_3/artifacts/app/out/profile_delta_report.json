@@ -1,0 +1,13 @@
+{
+  "canary": {
+    "enforcement_profile": "main -> canary",
+    "quorum_threshold": 1,
+    "risk_index": 2,
+    "session_ttl_seconds": -525
+  },
+  "enforce": {
+    "enforcement_profile": "main -> enforce",
+    "risk_index": -1,
+    "session_ttl_seconds": 420
+  }
+}

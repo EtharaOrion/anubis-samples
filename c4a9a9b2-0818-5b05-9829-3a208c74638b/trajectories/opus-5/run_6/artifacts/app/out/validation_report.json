@@ -1,0 +1,138 @@
+{
+  "checks": [
+    {
+      "check": "required_keys_present",
+      "detail": "22/22 keys present",
+      "ok": true
+    },
+    {
+      "check": "flat_scalars",
+      "detail": "no nested containers",
+      "ok": true
+    },
+    {
+      "check": "no_floats",
+      "detail": "integer arithmetic only",
+      "ok": true
+    },
+    {
+      "check": "trailer_intact",
+      "detail": "harbor:cli-config:TASK:000000002e552977",
+      "ok": true
+    },
+    {
+      "check": "active_class_from_budget",
+      "detail": "selector 50 of span 185 -> class 1",
+      "ok": true
+    },
+    {
+      "check": "hardening_within_bounds",
+      "detail": "80 in [40,90]",
+      "ok": true
+    },
+    {
+      "check": "hardening_quantized",
+      "detail": "step 5",
+      "ok": true
+    },
+    {
+      "check": "rate_quantized",
+      "detail": "step 25",
+      "ok": true
+    },
+    {
+      "check": "burst_from_rate_and_window",
+      "detail": "900 = 300 * 3",
+      "ok": true
+    },
+    {
+      "check": "quorum_bounded",
+      "detail": "3 of 5 healthy voters",
+      "ok": true
+    },
+    {
+      "check": "scope_count_matches",
+      "detail": "exec,list,read,write",
+      "ok": true
+    },
+    {
+      "check": "privilege_uid_mirror",
+      "detail": "uid 2600 agrees with privilege_bits.b64",
+      "ok": true
+    },
+    {
+      "check": "uid_above_floor",
+      "detail": "floor 1000",
+      "ok": true
+    },
+    {
+      "check": "nonce_above_floor",
+      "detail": "floor 100",
+      "ok": true
+    },
+    {
+      "check": "sessions_below_ceiling",
+      "detail": "ceiling 512",
+      "ok": true
+    },
+    {
+      "check": "retry_quantized",
+      "detail": "step 10",
+      "ok": true
+    },
+    {
+      "check": "risk_index_matches_baseline",
+      "detail": "severity 1000 permille",
+      "ok": true
+    },
+    {
+      "check": "profile_canary_trailer",
+      "detail": "harbor:cli-config:TASK:000000002e552977",
+      "ok": true
+    },
+    {
+      "check": "profile_canary_keys",
+      "detail": "22 required keys",
+      "ok": true
+    },
+    {
+      "check": "profile_canary_flat",
+      "detail": "flat scalars",
+      "ok": true
+    },
+    {
+      "check": "profile_enforce_trailer",
+      "detail": "harbor:cli-config:TASK:000000002e552977",
+      "ok": true
+    },
+    {
+      "check": "profile_enforce_keys",
+      "detail": "22 required keys",
+      "ok": true
+    },
+    {
+      "check": "profile_enforce_flat",
+      "detail": "flat scalars",
+      "ok": true
+    },
+    {
+      "check": "derivation_artifacts_present",
+      "detail": "19/19 emitted",
+      "ok": true
+    },
+    {
+      "check": "artifact_size_bounded",
+      "detail": "within limit",
+      "ok": true
+    },
+    {
+      "check": "schema_validation",
+      "detail": "ok",
+      "ok": true
+    }
+  ],
+  "failed": 0,
+  "ok": true,
+  "passed": 26,
+  "total": 26
+}

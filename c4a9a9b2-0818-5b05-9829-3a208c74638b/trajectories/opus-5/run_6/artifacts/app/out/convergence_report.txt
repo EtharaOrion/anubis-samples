@@ -1,0 +1,11 @@
+active_class: 1
+convergence: stable
+float_operations_on_graded_values: 0
+hardening_baseline: 80
+identical_rederivations: 3
+ingress_rate_limit_qps: 300
+quorum_threshold: 3
+rederivation_runs: 3
+risk_index: 20
+rounding_mode: round-half-even
+trailer: harbor:cli-config:TASK:000000002e552977

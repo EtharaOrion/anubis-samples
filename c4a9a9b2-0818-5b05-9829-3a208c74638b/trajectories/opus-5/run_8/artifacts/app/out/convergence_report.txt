@@ -1,0 +1,15 @@
+convergence report
+active_class=1
+fold_score=90
+hardening_baseline=90
+risk_index=10
+quorum_threshold=3
+effective_scope_count=4
+privilege_drop_uid=2600
+ingress_rate_limit_qps=300
+burst_ceiling=900
+iterations=1
+stable=true
+float_operations=0
+rounding=half-even
+converged=true

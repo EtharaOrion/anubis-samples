@@ -1,0 +1,2 @@
+class,rate_limit,window_seconds,burst_ceiling,scope_count,privilege_drop_uid,tls_floor_score,retention_days
+0,200,2,400,3,3600,70,30

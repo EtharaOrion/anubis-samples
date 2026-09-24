@@ -1,0 +1,71 @@
+task-ctl convergence report
+active class: 0 (selector 24)
+rounding: exact integer arithmetic, round-half-even
+binding rows: status == ADOPTED for the active class
+
+layer agreements:
+  ingress throughput: 120 qps (ingress_rate.tsv == ingress_mirror.pipe == ingress_alt.jsonl2)
+  burst factor: 1600 permille (burst_multiplier.ini == burst_alt.properties == burst_mirror.hex2)
+  window seconds: 2 (window_seconds.conf == window_mirror.scsv3 == burst_multiplier.ini)
+  rate step: 25 (rate_gran.caret == gran_mirror.fixed2)
+  scope count: 3 (reconciliation == scopecount_mirror.tsv3)
+  severity: 800 permille (severity_weight.kv == severity_mirror.caret2 == risk_curve.sexp)
+  quorum permille: 667 (quorum_permille.tilde == quorum_mirror.rst2)
+  healthy voters: 3 (voter_health.ndjson == voters_mirror.kv4)
+  tls floor: 70 (tls_matrix.csv == tls_mirror.tilde3 == tls_suites.rst)
+  privilege uid: 3600 (uid_map.env minimum == privilege_bits.b64 ADOPTED witness)
+  retention: 30 days (retention.ini == retention_alt.kv2 == retention_mirror.psv4)
+
+hardening fold trace:
+  order=0 control=c-seccomp weight=20 carry=0 status=ADOPTED running=20
+  order=1 control=c-nonroot weight=15 carry=0 status=ADOPTED running=35
+  order=2 control=c-readonly weight=12 carry=1 status=ADOPTED running=47
+  order=3 control=c-caps weight=18 carry=0 status=ADOPTED running=77
+  order=4 control=c-apparmor weight=10 carry=1 status=ADOPTED running=87
+  order=98 control=c-ghost weight=40 carry=1 status=DRAFT running=skip
+  order=99 control=c-decoy weight=50 carry=0 status=SHADOW running=skip
+  order=206 control=c-f6 weight=6 carry=0 status=DRAFT running=skip
+  order=214 control=c-f14 weight=14 carry=0 status=DRAFT running=skip
+  order=215 control=c-f15 weight=15 carry=1 status=SHADOW running=skip
+  order=216 control=c-f16 weight=16 carry=0 status=REVOKED running=skip
+  order=223 control=c-f23 weight=23 carry=1 status=REVOKED running=skip
+  order=227 control=c-f27 weight=27 carry=1 status=SUPERSEDED running=skip
+  order=229 control=c-f29 weight=29 carry=1 status=REVOKED running=skip
+  order=232 control=c-f32 weight=2 carry=0 status=SHADOW running=skip
+  order=237 control=c-f37 weight=7 carry=1 status=REVOKED running=skip
+  order=245 control=c-f45 weight=15 carry=1 status=REVOKED running=skip
+  order=251 control=c-f51 weight=21 carry=1 status=REVOKED running=skip
+  order=262 control=c-f62 weight=2 carry=0 status=REVOKED running=skip
+  order=268 control=c-f68 weight=8 carry=0 status=SUPERSEDED running=skip
+  order=269 control=c-f69 weight=9 carry=1 status=SHADOW running=skip
+  order=283 control=c-f83 weight=23 carry=1 status=DRAFT running=skip
+  order=292 control=c-f92 weight=2 carry=0 status=REVOKED running=skip
+  order=295 control=c-f95 weight=5 carry=1 status=SHADOW running=skip
+  order=303 control=c-f103 weight=13 carry=1 status=SUPERSEDED running=skip
+  order=310 control=c-f110 weight=20 carry=0 status=REVOKED running=skip
+  order=314 control=c-f114 weight=24 carry=0 status=DRAFT running=skip
+  order=317 control=c-f117 weight=27 carry=1 status=SUPERSEDED running=skip
+  order=320 control=c-f120 weight=0 carry=0 status=DRAFT running=skip
+  order=324 control=c-f124 weight=4 carry=0 status=SUPERSEDED running=skip
+  order=328 control=c-f128 weight=8 carry=0 status=DRAFT running=skip
+  order=329 control=c-f129 weight=9 carry=1 status=DRAFT running=skip
+  order=330 control=c-f130 weight=10 carry=0 status=SHADOW running=skip
+  order=331 control=c-f131 weight=11 carry=1 status=SUPERSEDED running=skip
+  order=333 control=c-f133 weight=13 carry=1 status=SUPERSEDED running=skip
+  order=334 control=c-f134 weight=14 carry=0 status=SHADOW running=skip
+  order=337 control=c-f137 weight=17 carry=1 status=DRAFT running=skip
+  order=339 control=c-f139 weight=19 carry=1 status=SUPERSEDED running=skip
+  order=343 control=c-f143 weight=23 carry=1 status=DRAFT running=skip
+  order=351 control=c-f151 weight=1 carry=1 status=SUPERSEDED running=skip
+  order=357 control=c-f157 weight=7 carry=1 status=SUPERSEDED running=skip
+  order=359 control=c-f159 weight=9 carry=1 status=SHADOW running=skip
+  order=362 control=c-f162 weight=12 carry=0 status=DRAFT running=skip
+  order=363 control=c-f163 weight=13 carry=1 status=SUPERSEDED running=skip
+  order=364 control=c-f164 weight=14 carry=0 status=SUPERSEDED running=skip
+  order=369 control=c-f169 weight=19 carry=1 status=DRAFT running=skip
+  order=370 control=c-f170 weight=20 carry=0 status=SUPERSEDED running=skip
+
+folded=87 bounds=40..90 hardening_baseline=85
+precedence resolution: session_ttl_seconds 1800->2100, nonce_window_ms 400->300, max_concurrent_sessions 64->40
+profile ordering (ascending risk index): enforce=11, main=12, canary=14
+status: converged

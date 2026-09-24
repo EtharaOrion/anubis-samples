@@ -1,1039 +1,864 @@
 #!/usr/bin/env python3
-"""Derive the travelling exhibition installation dossier from a snapshot.
+"""Installation dossier derivation.
 
 Usage: python3 plan.py <DATA_DIR> <OUT_DIR>
 
-Implements the staged derivation written in rules.md / schema.md /
-constants.md / reason_codes.md that ship inside the data directory.  All
-arithmetic is integer or exact rational; no float is produced, compared or
-written anywhere.
+Derives the twenty four dossier artifacts from a snapshot directory using only
+integer and exact rational arithmetic, per the specification shipped with the
+snapshot (rules.md, schema.md, constants.md, reason_codes.md).
 """
 
 import csv
 import hashlib
-import itertools
 import json
-import math
 import os
 import sys
+from fractions import Fraction
+from math import ceil, gcd
 
-LEN_FACTORS = {"MM": 1000, "CM": 10000, "IN": 25400}
-MASS_FACTORS = {"G": 1, "KG": 1000}
+# Fixed scale factors and quanta from constants.md.
+LENGTH_FACTOR = {'MM': 1000, 'CM': 10000, 'IN': 25400}
+MASS_FACTOR = {'G': 1, 'KG': 1000}
 SECONDS_PER_DAY = 3600
-DEFAULT_SETUP_DIV = 700
-DEFAULT_CHAIN_SEED = "0" * 64
 
-# Ascending removal precedence: a bay size edge goes first, an explicit rule last.
-KIND_RANK = {"D_BAYSIZE": 0, "D_CONSERVATION": 1, "D_RULE": 2}
+# Dependency kinds in ascending removal precedence (removed first first).
+KIND_RANK = {'D_BAYSIZE': 0, 'D_CONSERVATION': 1, 'D_RULE': 2}
 
 
-# ---------------------------------------------------------------- utilities
+def sensitivity(class_code):
+    """Conservation sensitivity rank; lower means more sensitive."""
+    digits = ''.join(ch for ch in str(class_code) if ch.isdigit())
+    if digits:
+        return -int(digits)
+    return str(class_code)
 
 
-def round_half_up(num, den):
-    """Round num/den half up; a zero denominator yields the zero sentinel."""
+def ratio(num, den):
+    """Exact ratio; a zero denominator yields the sentinel zero over one."""
     if den == 0:
-        return 0
-    quot, rem = divmod(num, den)
-    if 2 * rem >= den:
-        quot += 1
-    return quot
+        return Fraction(0)
+    return Fraction(num, den)
 
 
-def reduce_ratio(num, den):
-    """Reduce to lowest terms; a zero denominator yields the 0/1 sentinel."""
+def round_half_up(numerator, denominator, quantum=1):
+    """Round numerator/denominator times quantum to an integer, half up."""
+    total = Fraction(numerator, denominator if denominator else 1) * quantum
+    quotient, remainder = divmod(total.numerator, total.denominator)
+    if 2 * remainder >= total.denominator:
+        quotient += 1
+    return quotient
+
+
+def reduced_pair(num, den):
     if den == 0:
         return 0, 1
-    gcd = math.gcd(num, den)
-    if gcd:
-        num //= gcd
-        den //= gcd
-    return num, den
+    g = gcd(num, den)
+    return num // g, den // g
 
 
-def to_int(text, default=0):
-    text = (text or "").strip()
-    if text == "":
-        return default
-    return int(text)
-
-
-def load_csv(path):
+def read_rows(data_dir, name):
+    path = os.path.join(data_dir, name)
     if not os.path.exists(path):
         return []
-    with open(path, "r", encoding="utf-8", newline="") as handle:
-        return [row for row in csv.DictReader(handle)]
+    with open(path, newline='', encoding='utf-8') as handle:
+        return [dict(row) for row in csv.DictReader(handle)]
 
 
-def load_json(path):
-    with open(path, "r", encoding="utf-8") as handle:
+def load_json(data_dir, name):
+    path = os.path.join(data_dir, name)
+    with open(path, encoding='utf-8') as handle:
         return json.load(handle)
 
 
-def write_bytes(path, payload):
-    with open(path, "wb") as handle:
-        handle.write(payload)
-
-
-def jsonl_bytes(rows):
-    parts = []
-    for row in rows:
-        parts.append(json.dumps(row, sort_keys=True, separators=(",", ":")))
-        parts.append("\n")
-    return "".join(parts).encode("utf-8")
-
-
-def json_bytes(value):
-    return (json.dumps(value, sort_keys=True, indent=2) + "\n").encode("utf-8")
-
-
-def sha256_hex(payload):
-    return hashlib.sha256(payload).hexdigest()
-
-
-# ---------------------------------------------------------------- stage 1
-
-
-def canonicalize(data_dir):
-    horizon = load_json(os.path.join(data_dir, "horizon_config.json"))
-    setup_div = int(horizon.get("setup_div", DEFAULT_SETUP_DIV))
-    chain_seed = str(horizon.get("chain_seed", DEFAULT_CHAIN_SEED))
-
-    order_ids = []
-    master = {}
-    for row in load_csv(os.path.join(data_dir, "object_master.csv")):
-        oid = (row.get("object_id") or "").strip()
-        if not oid or oid in master:  # stale duplicate rows lose to the first
-            continue
-        master[oid] = {
-            "lender_id": (row.get("lender_id") or "").strip(),
-            "material_code": (row.get("material_code") or "").strip(),
-        }
-        order_ids.append(oid)
-
-    versions = {}
-    for row in load_csv(os.path.join(data_dir, "object_version_map.csv")):
-        oid = (row.get("object_id") or "").strip()
-        if not oid:
-            continue
-        version = to_int(row.get("version"), 0)
-        versions[oid] = max(versions.get(oid, version), version)
-
-    dims = {}
-    for row in load_csv(os.path.join(data_dir, "object_dimensions.csv")):
-        oid = (row.get("object_id") or "").strip()
-        if not oid:
-            continue
-        factor = LEN_FACTORS[(row.get("dim_unit") or "MM").strip()]
-        dims[oid] = (
-            to_int(row.get("width")) * factor,
-            to_int(row.get("height")) * factor,
-            to_int(row.get("depth")) * factor,
-        )
-
-    masses = {}
-    for row in load_csv(os.path.join(data_dir, "object_mass.csv")):
-        oid = (row.get("object_id") or "").strip()
-        if not oid:
-            continue
-        factor = MASS_FACTORS[(row.get("mass_unit") or "G").strip()]
-        masses[oid] = to_int(row.get("mass")) * factor
-
-    values = {}
-    for row in load_csv(os.path.join(data_dir, "object_value.csv")):
-        oid = (row.get("object_id") or "").strip()
-        if not oid:
-            continue
-        values[oid] = to_int(row.get("declared_value")) * 100
-
-    turns = {}
-    for row in load_csv(os.path.join(data_dir, "object_orientation.csv")):
-        oid = (row.get("object_id") or "").strip()
-        if not oid:
-            continue
-        turns[oid] = (to_int(row.get("tip_allowed")), to_int(row.get("rotate_allowed")))
-
-    objects = []
-    for oid in order_ids:
-        width, height, depth = dims.get(oid, (0, 0, 0))
-        tip, rotate = turns.get(oid, (0, 0))
-        objects.append(
-            {
-                "object_id": oid,
-                "lender_id": master[oid]["lender_id"],
-                "material_code": master[oid]["material_code"],
-                "version": versions.get(oid, 0),
-                "declared_value_cents": values.get(oid, 0),
-                "mass_g": masses.get(oid, 0),
-                "width": width,
-                "height": height,
-                "depth": depth,
-                "tip_allowed": tip,
-                "rotate_allowed": rotate,
-            }
-        )
-    return objects, setup_div, chain_seed
-
-
-def load_reference(data_dir):
-    ref = {}
-
-    materials = {}
-    for row in load_csv(os.path.join(data_dir, "material_rules.csv")):
-        code = (row.get("material_code") or "").strip()
-        if not code or code in materials:
-            continue
-        materials[code] = {
-            "conservation_class": (row.get("conservation_class") or "").strip(),
-            "max_lux": to_int(row.get("max_lux")),
-            "handling_class": (row.get("handling_class") or "").strip(),
-        }
-    ref["material"] = materials
-
-    handling = {}
-    for row in load_csv(os.path.join(data_dir, "handling_class_rules.csv")):
-        code = (row.get("handling_class") or "").strip()
-        if not code or code in handling:
-            continue
-        handling[code] = {
-            "clearance_w": to_int(row.get("clearance_w")) * 1000,
-            "clearance_d": to_int(row.get("clearance_d")) * 1000,
-            "clearance_h": to_int(row.get("clearance_h")) * 1000,
-            "handle_margin": to_int(row.get("handle_margin")) * 1000,
-            "crew_class": (row.get("crew_class") or "").strip(),
-            "setup_base": to_int(row.get("setup_base")),
-        }
-    ref["handling"] = handling
-
-    bays = {}
-    for row in load_csv(os.path.join(data_dir, "gallery_bays.csv")):
-        bay_id = (row.get("bay_id") or "").strip()
-        if not bay_id or bay_id in bays:
-            continue
-        bays[bay_id] = {
-            "interior_w": to_int(row.get("interior_w")) * 1000,
-            "interior_h": to_int(row.get("interior_h")) * 1000,
-            "interior_d": to_int(row.get("interior_d")) * 1000,
-            "lux_level": to_int(row.get("lux_level")),
-            "bay_priority": to_int(row.get("bay_priority")),
-        }
-    ref["bays"] = bays
-
-    blocked = {}
-    for row in load_csv(os.path.join(data_dir, "bay_exceptions.csv")):
-        bay = (row.get("bay_id") or "").strip()
-        cls = (row.get("blocked_class") or "").strip()
-        if bay and cls:
-            blocked.setdefault(bay, set()).add(cls)
-    ref["blocked"] = blocked
-
-    crates = {}
-    for row in load_csv(os.path.join(data_dir, "crate_catalog.csv")):
-        cls = (row.get("crate_class") or "").strip()
-        if not cls or cls in crates:
-            continue
-        crates[cls] = {
-            "inner": sorted(
-                (
-                    to_int(row.get("inner_w")) * 1000,
-                    to_int(row.get("inner_h")) * 1000,
-                    to_int(row.get("inner_d")) * 1000,
-                )
-            ),
-            "count": to_int(row.get("count")),
-            "transport_mode": (row.get("transport_mode") or "").strip(),
-        }
-    ref["crates"] = crates
-
-    reservations = {}
-    for row in load_csv(os.path.join(data_dir, "crate_reservations.csv")):
-        key = (
-            (row.get("crate_class") or "").strip(),
-            (row.get("lender_id") or "").strip(),
-        )
-        if all(key):
-            reservations[key] = (
-                reservations.get(key, 0) + to_int(row.get("reserved_count"))
-            )
-    ref["reservations"] = reservations
-
-    prior = {}
-    for row in load_csv(os.path.join(data_dir, "prior_state.csv")):
-        cls = (row.get("crate_class") or "").strip()
-        if cls:
-            prior[cls] = prior.get(cls, 0) + to_int(row.get("consumed_count"))
-    ref["prior"] = prior
-
-    conservation = {}
-    for row in load_csv(os.path.join(data_dir, "conservation_rules.csv")):
-        code = (row.get("conservation_class") or "").strip()
-        if not code or code in conservation:
-            continue
-        conservation[code] = {
-            "setup_start": to_int(row.get("setup_start")),
-            "setup_end": to_int(row.get("setup_end")),
-            "needs_dark": to_int(row.get("needs_dark")),
-        }
-    ref["conservation"] = conservation
-
-    venue = {}
-    for row in load_csv(os.path.join(data_dir, "venue_windows.csv")):
-        bay_id = (row.get("bay_id") or "").strip()
-        if not bay_id or bay_id in venue:
-            continue
-        venue[bay_id] = {
-            "access_start": to_int(row.get("access_start")),
-            "access_end": to_int(row.get("access_end")),
-        }
-    ref["venue"] = venue
-
-    crew = {}
-    for row in load_csv(os.path.join(data_dir, "crew_roster.csv")):
-        code = (row.get("crew_class") or "").strip()
-        if not code or code in crew:
-            continue
-        crew[code] = {
-            "avail_start": to_int(row.get("avail_start")),
-            "avail_end": to_int(row.get("avail_end")),
-        }
-    ref["crew"] = crew
-
-    transport = {}
-    for row in load_csv(os.path.join(data_dir, "transport_rules.csv")):
-        code = (row.get("lender_id") or "").strip()
-        if not code or code in transport:
-            continue
-        transport[code] = {
-            "forbidden_mode": (row.get("forbidden_mode") or "").strip(),
-            "fallback_mode": (row.get("fallback_mode") or "").strip(),
-        }
-    ref["transport"] = transport
-
-    lenders = {}
-    for row in load_csv(os.path.join(data_dir, "lender_master.csv")):
-        code = (row.get("lender_id") or "").strip()
-        if not code or code in lenders:
-            continue
-        lenders[code] = {
-            "insurance_rate_num": to_int(row.get("insurance_rate_num")),
-            "insurance_rate_den": to_int(row.get("insurance_rate_den")),
-            "pref_mode": (row.get("pref_mode") or "").strip(),
-        }
-    ref["lender"] = lenders
-
-    ref["value_class"] = sorted(
-        (
-            {
-                "value_class": (row.get("value_class") or "").strip(),
-                "min_value": to_int(row.get("min_value")),
-                "unschedulable_penalty": to_int(row.get("unschedulable_penalty")),
-                "contention_penalty": to_int(row.get("contention_penalty")),
-            }
-            for row in load_csv(os.path.join(data_dir, "value_class_rules.csv"))
-        ),
-        key=lambda r: (-r["min_value"], r["value_class"]),
-    )
-
-    ref["dep_rules"] = [
-        {
-            "from": (row.get("from_object") or "").strip(),
-            "to": (row.get("to_object") or "").strip(),
-            "edge_priority": to_int(row.get("edge_priority")),
-        }
-        for row in load_csv(os.path.join(data_dir, "dependency_rules.csv"))
-    ]
-
-    return ref
-
-
-# ---------------------------------------------------------------- stages 2-6
-
-
-NO_MATERIAL = {
-    "conservation_class": "",
-    "max_lux": 10 ** 18,
-    "handling_class": "",
-}
-NO_HANDLING = {
-    "clearance_w": 0,
-    "clearance_d": 0,
-    "clearance_h": 0,
-    "handle_margin": 0,
-    "crew_class": "",
-    "setup_base": 0,
-}
-UNBOUNDED = {"start": -(10 ** 18), "end": 10 ** 18}
-
-
-def normalize(objects, ref):
-    for obj in objects:
-        material = ref["material"].get(obj["material_code"], NO_MATERIAL)
-        handling = ref["handling"].get(material["handling_class"], NO_HANDLING)
-        obj["conservation_class"] = material["conservation_class"]
-        obj["max_lux"] = material["max_lux"]
-        obj["handling"] = handling
-
-        obj["clearance_w"] = obj["width"] + 2 * handling["clearance_w"]
-        obj["clearance_d"] = obj["depth"] + 2 * handling["clearance_d"]
-        obj["clearance_h"] = obj["height"] + handling["clearance_h"]
-        obj["aspect_num"], obj["aspect_den"] = reduce_ratio(
-            obj["height"], obj["width"]
-        )
-
-        orientations = [0]
-        if obj["rotate_allowed"]:
-            orientations.append(1)
-        if obj["tip_allowed"]:
-            orientations.extend([2, 3])
-        obj["orientations"] = orientations
-
-        margin = handling["handle_margin"]
-        obj["handling_dims"] = (
-            obj["width"] + 2 * margin,
-            obj["height"] + 2 * margin,
-            obj["depth"] + 2 * margin,
-        )
-        obj["handling_volume"] = (
-            obj["handling_dims"][0] * obj["handling_dims"][1] * obj["handling_dims"][2]
-        )
-
-
-def oriented(obj, index):
-    """Return (footprint width, footprint depth, vertical extent)."""
-    cw, ch, cd = obj["clearance_w"], obj["clearance_h"], obj["clearance_d"]
-    if index == 0:
-        return cw, cd, ch
-    if index == 1:
-        return cd, cw, ch
-    if index == 2:
-        return cw, ch, cd
-    return ch, cw, cd
-
-
-def orientation_fits(obj, index, bay):
-    fw, fd, vert = oriented(obj, index)
-    return fw <= bay["interior_w"] and fd < bay["interior_d"] and vert <= bay["interior_h"]
-
-
-def smallest_fitting(obj, bay):
-    for index in obj["orientations"]:
-        if orientation_fits(obj, index, bay):
-            return index
-    return None
-
-
-def passes_conservation(obj, bay_id, ref):
-    bay = ref["bays"][bay_id]
-    if bay["lux_level"] > obj["max_lux"]:
-        return False
-    if obj["conservation_class"] and obj["conservation_class"] in ref["blocked"].get(
-        bay_id, ()
-    ):
-        return False
-    rules = ref["conservation"].get(obj["conservation_class"])
-    if rules and rules["needs_dark"] and bay["lux_level"] > 0:
-        return False
-    return True
-
-
-def place(objects, ref):
-    scan = sorted(ref["bays"], key=lambda b: (ref["bays"][b]["bay_priority"], b))
-    for obj in objects:
-        primary_bay, primary_orient = None, None
-        for bay_id in scan:
-            index = smallest_fitting(obj, ref["bays"][bay_id])
-            if index is not None:
-                primary_bay, primary_orient = bay_id, index
-                break
-        obj["primary_bay"] = primary_bay
-        obj["primary_orientation"] = primary_orient
-        obj["placement_code"] = "P_OK" if primary_bay is not None else (
-            "P_NO_ORIENTATION" if obj["orientations"] == [0] else "P_NO_FIT"
-        )
-        if primary_bay is None:
-            obj["bay_id"] = None
-            obj["orientation"] = None
-            obj["conservation_code"] = obj["placement_code"]
-            continue
-
-        cons_bay, cons_orient = None, None
-        for bay_id in scan:
-            index = smallest_fitting(obj, ref["bays"][bay_id])
-            if index is None:
-                continue
-            if passes_conservation(obj, bay_id, ref):
-                cons_bay, cons_orient = bay_id, index
-                break
-        obj["bay_id"] = cons_bay
-        obj["orientation"] = cons_orient
-        obj["conservation_code"] = (
-            "P_OK" if cons_bay is not None else "P_CONSERVATION_BLOCK"
-        )
-
-
-# ---------------------------------------------------------------- stage 7
-
-
-def crate_candidates(objects, ref):
-    for obj in objects:
-        dims = sorted(obj["handling_dims"])
-        volume = obj["handling_volume"]
-        fits = {}
-        for cls, crate in ref["crates"].items():
-            inner = crate["inner"]
-            if all(dims[i] <= inner[i] for i in range(3)):
-                fits[cls] = inner[0] * inner[1] * inner[2] - volume
-        obj["crate_fits"] = fits
-        obj["primary_crate"] = (
-            min(fits, key=lambda cls: (fits[cls], cls)) if fits else ""
-        )
-
-
-# ---------------------------------------------------------------- stages 10-12
-
-
-def build_graph(objects, ref, order_ids):
-    by_id = {obj["object_id"]: obj for obj in objects}
-    edges = {}
-
-    def add(src, dst, kind, weight):
-        key = (src, dst)
-        if key in edges and KIND_RANK[edges[key]["kind"]] >= KIND_RANK[kind]:
-            return  # the higher precedence kind already occupies this pair
-        edges[key] = {"from": src, "to": dst, "kind": kind, "weight": weight}
-
-    for rule in ref["dep_rules"]:
-        if rule["from"] in by_id and rule["to"] in by_id:
-            add(rule["from"], rule["to"], "D_RULE", rule["edge_priority"])
-
-    bays = {}
-    for oid in order_ids:
-        bay = by_id[oid]["bay_id"]
-        if bay:
-            bays.setdefault(bay, []).append(oid)
-    for members in bays.values():
-        for left, right in itertools.combinations(sorted(members), 2):
-            a, b = by_id[left], by_id[right]
-            # bay size: larger handling volume installs first, ties by lower id
-            if a["handling_volume"] >= b["handling_volume"]:
-                add(left, right, "D_BAYSIZE", a["handling_volume"])
-            else:
-                add(right, left, "D_BAYSIZE", b["handling_volume"])
-            # conservation: the more sensitive class installs first
-            if a["conservation_class"] != b["conservation_class"]:
-                first, second = (
-                    (a, b)
-                    if a["conservation_class"] > b["conservation_class"]
-                    else (b, a)
-                )
-                add(
-                    first["object_id"],
-                    second["object_id"],
-                    "D_CONSERVATION",
-                    first["handling_volume"],
-                )
-    return edges
-
-
-def find_cycle(nodes, adjacency):
-    """Deterministic DFS: nodes and successors visited in ascending order."""
-    state = {}
-    for root in nodes:
-        if state.get(root):
-            continue
-        state[root] = 1
-        path = [root]
-        stack = [(root, iter(adjacency.get(root, ())))]
-        while stack:
-            node, children = stack[-1]
-            advanced = False
-            for child in children:
-                if state.get(child) is None:
-                    state[child] = 1
-                    path.append(child)
-                    stack.append((child, iter(adjacency.get(child, ()))))
-                    advanced = True
-                    break
-                if state.get(child) == 1:
-                    return path[path.index(child):] + [child]
-            if not advanced:
-                state[node] = 2
-                stack.pop()
-                path.pop()
-    return None
-
-
-def resolve_cycles(edges, nodes):
-    """Remove the lowest priority edge of each cycle until acyclic.
-
-    Returns (removed edges in removal order, cycles left, whether it converged).
-    """
-    removed = []
-    while True:
-        adjacency = {}
-        for edge in edges.values():
-            adjacency.setdefault(edge["from"], []).append(edge["to"])
-        for key in adjacency:
-            adjacency[key].sort()
-        cycle = find_cycle(nodes, adjacency)
-        if cycle is None:
-            return removed, 0, True
-        pairs = set(zip(cycle, cycle[1:]))
-        candidates = [e for e in edges.values() if (e["from"], e["to"]) in pairs]
-        if not candidates:  # cannot happen for a real cycle; guards the loop
-            return removed, 1, False
-        victim = min(
-            candidates,
-            key=lambda e: (KIND_RANK[e["kind"]], e["weight"], e["from"], e["to"]),
-        )
-        del edges[(victim["from"], victim["to"])]
-        removed.append(dict(victim))
-
-
-def install_order(objects, edges, order_ids):
-    by_id = {obj["object_id"]: obj for obj in objects}
-    installed = set()
-    predecessors = {oid: set() for oid in order_ids}
-    for edge in edges.values():
-        predecessors.setdefault(edge["to"], set()).add(edge["from"])
-    remaining = sorted(order_ids)
-    ordered = []
-    position = 1
-    while remaining:
-        ready = [oid for oid in remaining if predecessors[oid] <= installed]
-        if not ready:  # unreachable once the graph is acyclic
-            ready = [remaining[0]]
-        choice = min(ready, key=lambda oid: (by_id[oid]["setup_seconds"], oid))
-        by_id[choice]["install_position"] = position
-        ordered.append(choice)
-        installed.add(choice)
-        remaining.remove(choice)
-        position += 1
-    return ordered
-
-
-# ---------------------------------------------------------------- stage 8
-
-
-def assign_crates(objects, ref, ordered):
-    by_id = {obj["object_id"]: obj for obj in objects}
-    remaining = {
-        cls: crate["count"] - ref["prior"].get(cls, 0)
-        for cls, crate in ref["crates"].items()
-    }
-    reservations = dict(ref["reservations"])
-    for oid in ordered:
-        obj = by_id[oid]
-        available = [
-            cls for cls in obj["crate_fits"] if remaining.get(cls, 0) > 0
-        ]
-        if not available:
-            obj["crate_class"] = ""
-            obj["crate_code"] = "C_NO_CRATE"
-            continue
-        choice = min(
-            available,
-            key=lambda cls: (
-                0 if reservations.get((cls, obj["lender_id"]), 0) > 0 else 1,
-                obj["crate_fits"][cls],
-                cls,
-            ),
-        )
-        remaining[choice] -= 1
-        if reservations.get((choice, obj["lender_id"]), 0) > 0:
-            reservations[(choice, obj["lender_id"])] -= 1
-        obj["crate_class"] = choice
-        obj["crate_code"] = (
-            "C_PRIMARY" if choice == obj["primary_crate"] else "C_DISPLACED"
-        )
-    return remaining
-
-
-# ---------------------------------------------------------------- stage 13
-
-
-def compute_setup(objects, ref, setup_div):
-    """Stage 13 setup half: crew class, rounded setup seconds, required days."""
-    for obj in objects:
-        handling = obj["handling"]
-        obj["crew_class"] = handling["crew_class"]
-        obj["setup_seconds"] = round_half_up(
-            handling["setup_base"] * obj["mass_g"], setup_div
-        )
-        obj["required_days"] = -(-obj["setup_seconds"] // SECONDS_PER_DAY)
-
-
-def compute_windows(objects, ref):
-    """Stage 13 window half; runs after crate assignment, which can gate it."""
-    for obj in objects:
-        if not obj["bay_id"]:
-            obj["window_start"] = 0
-            obj["window_end"] = 0
-            obj["window_code"] = "S_NO_PLACEMENT"
-        elif obj.get("crate_code") == "C_NO_CRATE":
-            obj["window_start"] = 0
-            obj["window_end"] = 0
-            obj["window_code"] = "S_NO_CRATE"
-        else:
-            cons = ref["conservation"].get(obj["conservation_class"], {
-                "setup_start": UNBOUNDED["start"], "setup_end": UNBOUNDED["end"],
-            })
-            crew = ref["crew"].get(obj["crew_class"], {
-                "avail_start": UNBOUNDED["start"], "avail_end": UNBOUNDED["end"],
-            })
-            lows = [cons["setup_start"], crew["avail_start"]]
-            highs = [cons["setup_end"], crew["avail_end"]]
-            venue = ref["venue"].get(obj["bay_id"])
-            if venue is not None:
-                lows.append(venue["access_start"])
-                highs.append(venue["access_end"] - 1)  # venue end is exclusive
-            low, high = max(lows), min(highs)
-            days = high - low + 1
-            if days <= 0:
-                obj["window_code"] = "S_NO_WINDOW"
-            elif obj["required_days"] > days:
-                obj["window_code"] = "S_SHORT_WINDOW"
-            else:
-                obj["window_code"] = "S_OK"
-            obj["window_start"] = low
-            obj["window_end"] = high
-
-
-def schedule(objects, ref, setup_div):
-    compute_setup(objects, ref, setup_div)
-    compute_windows(objects, ref)
-
-
-# ---------------------------------------------------------------- stage 14
-
-
-def value_class_of(obj, ref):
-    declared = obj["declared_value_cents"]
-    for entry in ref["value_class"]:
-        if declared >= entry["min_value"] * 100:
-            return entry
-    return ref["value_class"][-1]
-
-
-def derive(data_dir, out_dir):
-    objects, setup_div, chain_seed = canonicalize(data_dir)
-    ref = load_reference(data_dir)
-    order_ids = [obj["object_id"] for obj in objects]
-    by_id = {obj["object_id"]: obj for obj in objects}
-
-    normalize(objects, ref)
-    place(objects, ref)
-    crate_candidates(objects, ref)
-    edges = build_graph(objects, ref, order_ids)
-    edge_rows = sorted(
-        (dict(e) for e in edges.values()), key=lambda e: (e["from"], e["to"])
-    )
-    removed, cycles_left, converged = resolve_cycles(edges, sorted(order_ids))
-    compute_setup(objects, ref, setup_div)
-    ordered = install_order(objects, edges, order_ids)
-    remaining = assign_crates(objects, ref, ordered)
-    compute_windows(objects, ref)
-
-    canonical_rows = [
-        {
-            "object_id": o["object_id"],
-            "lender_id": o["lender_id"],
-            "material_code": o["material_code"],
-            "version": o["version"],
-            "declared_value_cents": o["declared_value_cents"],
-            "mass_g": o["mass_g"],
-        }
-        for o in objects
-    ]
-    geometry_rows = [
-        {
-            "object_id": o["object_id"],
-            "clearance_w": o["clearance_w"],
-            "clearance_h": o["clearance_h"],
-            "clearance_d": o["clearance_d"],
-            "aspect_num": o["aspect_num"],
-            "aspect_den": o["aspect_den"],
-        }
-        for o in objects
-    ]
-    admissibility_rows = [
-        {
-            "object_id": o["object_id"],
-            "orientations": o["orientations"],
-            "tip_allowed": o["tip_allowed"],
-            "rotate_allowed": o["rotate_allowed"],
-        }
-        for o in objects
-    ]
-    bay_candidate_rows = []
-    for obj in objects:
-        for bay_id in sorted(ref["bays"]):
-            index = smallest_fitting(obj, ref["bays"][bay_id])
-            bay_candidate_rows.append(
-                {
-                    "object_id": obj["object_id"],
-                    "bay_id": bay_id,
-                    "fits": index is not None,
-                    "orientation": -1 if index is None else index,
-                }
-            )
-    selected_rows = [
-        {
-            "object_id": o["object_id"],
-            "bay_id": o["primary_bay"] or "",
-            "orientation": -1 if o["primary_orientation"] is None else o["primary_orientation"],
-            "code": o["placement_code"],
-        }
-        for o in objects
-    ]
-    conservation_rows = [
-        {
-            "object_id": o["object_id"],
-            "bay_id": o["bay_id"] or "",
-            "orientation": -1 if o["orientation"] is None else o["orientation"],
-            "code": o["conservation_code"],
-        }
-        for o in objects
-    ]
-    rejected_rows = sorted(
-        (
-            {"object_id": o["object_id"], "code": o["conservation_code"]}
-            for o in objects
-            if o["conservation_code"] != "P_OK"
-        ),
-        key=lambda r: (r["object_id"], r["code"]),
-    )
-    crate_candidate_rows = []
-    for oid in sorted(order_ids):
-        fits = by_id[oid]["crate_fits"]
-        for cls in sorted(fits, key=lambda c: (fits[c], c)):
-            crate_candidate_rows.append(
-                {"object_id": oid, "crate_class": cls, "residual": fits[cls]}
-            )
-    assignment_rows = [
-        {
-            "object_id": o["object_id"],
-            "crate_class": o["crate_class"],
-            "code": o["crate_code"],
-            "primary_class": o["primary_crate"],
-        }
-        for o in sorted(objects, key=lambda x: x["object_id"])
-    ]
-    ledger_rows = [
-        {
-            "crate_class": cls,
-            "catalog_count": ref["crates"][cls]["count"],
-            "prior_consumed": ref["prior"].get(cls, 0),
-            "remaining": remaining[cls],
-        }
-        for cls in sorted(ref["crates"])
-    ]
-    contention_rows = [
-        {
-            "object_id": o["object_id"],
-            "wanted_class": o["primary_crate"],
-            "assigned_class": o["crate_class"],
-        }
-        for o in sorted(objects, key=lambda x: x["object_id"])
-        if o["crate_code"] == "C_DISPLACED"
-    ]
-    transport_rows = []
-    for obj in objects:
-        if not obj["crate_class"]:
-            continue
-        mode = ref["crates"][obj["crate_class"]]["transport_mode"]
-        rule = ref["transport"].get(obj["lender_id"])
-        exception = bool(rule and rule["forbidden_mode"] == mode)
-        if exception:
-            mode = rule["fallback_mode"]
-        transport_rows.append(
-            {
-                "object_id": obj["object_id"],
-                "crate_class": obj["crate_class"],
-                "mode": mode,
-                "exception": exception,
-            }
-        )
-    install_rows = sorted(
-        ({"position": by_id[oid]["install_position"], "object_id": oid} for oid in ordered),
-        key=lambda r: r["position"],
-    )
-    crew_rows = [
-        {
-            "object_id": o["object_id"],
-            "crew_class": o["crew_class"],
-            "setup_seconds": o["setup_seconds"],
-        }
-        for o in objects
-    ]
-    window_rows = [
-        {
-            "object_id": o["object_id"],
-            "bay_id": o["bay_id"] or "",
-            "window_start": o["window_start"],
-            "window_end": o["window_end"],
-            "required_days": o["required_days"],
-            "code": o["window_code"],
-        }
-        for o in objects
-    ]
-    unschedulable_rows = sorted(
-        (
-            {"object_id": o["object_id"], "code": o["window_code"]}
-            for o in objects
-            if o["window_code"] != "S_OK"
-        ),
-        key=lambda r: (r["object_id"], r["code"]),
-    )
-    occupancy = {bay_id: [] for bay_id in ref["bays"]}
-    for obj in objects:
-        if obj["bay_id"]:
-            occupancy.setdefault(obj["bay_id"], []).append(obj["object_id"])
-    occupancy_rows = [
-        {
-            "bay_id": bay_id,
-            "object_count": len(occupancy[bay_id]),
-            "objects": sorted(occupancy[bay_id]),
-        }
-        for bay_id in sorted(occupancy)
-    ]
-
-    total_insurance = 0
-    for obj in objects:
-        lender = ref["lender"].get(obj["lender_id"], {
-            "insurance_rate_num": 0, "insurance_rate_den": 1, "pref_mode": "",
-        })
-        obj["insurance_cents"] = round_half_up(
-            obj["declared_value_cents"] * lender["insurance_rate_num"],
-            lender["insurance_rate_den"],
-        )
-        total_insurance += obj["insurance_cents"]
-
-    audit_rows = [
-        {
-            "object_id": o["object_id"],
-            "placed_bay": o["bay_id"] or "",
-            "crate_class": o["crate_class"],
-            "displaced": o["crate_code"] == "C_DISPLACED",
-            "scheduled": o["window_code"] == "S_OK",
-            "install_position": o["install_position"],
-            "setup_seconds": o["setup_seconds"],
-            "insurance_cents": o["insurance_cents"],
-        }
-        for o in objects
-    ]
-
-    unschedulable_penalty = sum(
-        value_class_of(by_id[row["object_id"]], ref)["unschedulable_penalty"]
-        for row in unschedulable_rows
-    )
-    contention_penalty = sum(
-        value_class_of(o, ref)["contention_penalty"]
-        for o in objects
-        if o["crate_code"] == "C_DISPLACED"
-    )
-    total_residual = sum(
-        o["crate_fits"][o["crate_class"]]
-        for o in objects
-        if o["crate_class"] in o["crate_fits"]
-    )
-    scheduled_count = sum(1 for o in objects if o["window_code"] == "S_OK")
-    displacement_count = sum(1 for o in objects if o["crate_code"] == "C_DISPLACED")
-    total_setup = sum(o["setup_seconds"] for o in objects)
-
-    objective = [
-        scheduled_count,
-        unschedulable_penalty,
-        contention_penalty,
-        len(removed),
-        total_residual,
-    ]
-    objective_names = list(
-        load_json(os.path.join(data_dir, "objective_order.json")).get("order", [])
-    )
-    penalty_summary = {
-        "unschedulable_penalty": unschedulable_penalty,
-        "contention_penalty": contention_penalty,
-        "cycles_broken": len(removed),
-        "total_insurance_cents": total_insurance,
-    }
-
-    payloads = {
-        "canonical_objects.jsonl": jsonl_bytes(canonical_rows),
-        "normalized_geometry.jsonl": jsonl_bytes(geometry_rows),
-        "admissibility_matrix.jsonl": jsonl_bytes(admissibility_rows),
-        "bay_candidate_matrix.jsonl": jsonl_bytes(bay_candidate_rows),
-        "selected_placement.jsonl": jsonl_bytes(selected_rows),
-        "rejected_placement.jsonl": jsonl_bytes(rejected_rows),
-        "conservation_adjusted.jsonl": jsonl_bytes(conservation_rows),
-        "crate_candidate_matrix.jsonl": jsonl_bytes(crate_candidate_rows),
-        "crate_assignment.jsonl": jsonl_bytes(assignment_rows),
-        "crate_capacity_ledger.jsonl": jsonl_bytes(ledger_rows),
-        "crate_contention_report.jsonl": jsonl_bytes(contention_rows),
-        "transport_leg_manifest.jsonl": jsonl_bytes(transport_rows),
-        "dependency_edges.jsonl": jsonl_bytes(edge_rows),
-        "cycle_resolution_audit.jsonl": jsonl_bytes(removed),
-        "install_order.jsonl": jsonl_bytes(install_rows),
-        "crew_requirement_ledger.jsonl": jsonl_bytes(crew_rows),
-        "install_window_table.jsonl": jsonl_bytes(window_rows),
-        "unschedulable_report.jsonl": jsonl_bytes(unschedulable_rows),
-        "gallery_occupancy_map.jsonl": jsonl_bytes(occupancy_rows),
-        "deterministic_audit.jsonl": jsonl_bytes(audit_rows),
-        "penalty_summary.json": json_bytes(penalty_summary),
-        "objective_tuple.json": json_bytes({"objective": objective, "order": objective_names}),
-    }
-
-    os.makedirs(out_dir, exist_ok=True)
-    program_path = os.path.abspath(__file__)
-    target_program = os.path.join(out_dir, "plan.py")
-    with open(program_path, "rb") as handle:
-        program_bytes = handle.read()
-    if os.path.abspath(target_program) != program_path:
-        write_bytes(target_program, program_bytes)
-    payloads["plan.py"] = program_bytes
-    for name, payload in payloads.items():
-        write_bytes(os.path.join(out_dir, name), payload)
-
-    manifest = {name: sha256_hex(payload) for name, payload in payloads.items()}
-    write_bytes(os.path.join(out_dir, "integrity_manifest.json"), json_bytes(manifest))
-
-    chain = chain_seed
-    for name in sorted(manifest):
-        chain = sha256_hex((chain + manifest[name]).encode("utf-8"))
-
-    final_state = {
-        "chain": chain,
-        "repair_converged": converged,
-        "cycle_edges_removed": len(removed),
-        "final_cycle_count": cycles_left,
-        "displacement_count": displacement_count,
-        "unschedulable_count": len(unschedulable_rows),
-        "placed_objects": scheduled_count,
-        "total_setup_seconds": total_setup,
-        "total_insurance_cents": total_insurance,
-        "objective": objective,
-    }
-    write_bytes(os.path.join(out_dir, "final_state.json"), json_bytes(final_state))
-    return final_state
+class Snapshot(object):
+    """Parsed and typed snapshot records."""
+
+    def __init__(self, data_dir):
+        self.horizon = load_json(data_dir, 'horizon_config.json')
+        self.objective_order = load_json(data_dir, 'objective_order.json')
+        self.master_rows = read_rows(data_dir, 'object_master.csv')
+        self.dimensions = {r['object_id']: r for r in read_rows(data_dir, 'object_dimensions.csv')}
+        self.mass = {r['object_id']: r for r in read_rows(data_dir, 'object_mass.csv')}
+        self.value = {r['object_id']: r for r in read_rows(data_dir, 'object_value.csv')}
+        self.orientation = {r['object_id']: r for r in read_rows(data_dir, 'object_orientation.csv')}
+        self.version_map = read_rows(data_dir, 'object_version_map.csv')
+        self.materials = {r['material_code']: r for r in read_rows(data_dir, 'material_rules.csv')}
+        self.handling = {r['handling_class']: r for r in read_rows(data_dir, 'handling_class_rules.csv')}
+        self.bays = read_rows(data_dir, 'gallery_bays.csv')
+        self.bay_exceptions = read_rows(data_dir, 'bay_exceptions.csv')
+        self.crates = read_rows(data_dir, 'crate_catalog.csv')
+        self.reservations = read_rows(data_dir, 'crate_reservations.csv')
+        self.prior_state = read_rows(data_dir, 'prior_state.csv')
+        self.conservation = {r['conservation_class']: r for r in read_rows(data_dir, 'conservation_rules.csv')}
+        self.venue_windows = {r['bay_id']: r for r in read_rows(data_dir, 'venue_windows.csv')}
+        self.dependency_rules = read_rows(data_dir, 'dependency_rules.csv')
+        self.crew = {r['crew_class']: r for r in read_rows(data_dir, 'crew_roster.csv')}
+        self.transport = {r['lender_id']: r for r in read_rows(data_dir, 'transport_rules.csv')}
+        self.lenders = {r['lender_id']: r for r in read_rows(data_dir, 'lender_master.csv')}
+        self.value_classes = read_rows(data_dir, 'value_class_rules.csv')
 
 
 def main(argv):
     if len(argv) != 3:
-        sys.stderr.write("usage: plan.py <DATA_DIR> <OUT_DIR>\n")
+        sys.stderr.write('usage: plan.py <DATA_DIR> <OUT_DIR>\n')
         return 2
-    state = derive(argv[1], argv[2])
-    sys.stdout.write(
-        "placed_objects={0} unschedulable={1} displaced={2} cycles_broken={3} "
-        "objective={4}\n".format(
-            state["placed_objects"],
-            state["unschedulable_count"],
-            state["displacement_count"],
-            state["cycle_edges_removed"],
-            state["objective"],
-        )
-    )
+    data_dir, out_dir = argv[1], argv[2]
+    snap = Snapshot(data_dir)
+    setup_div = int(snap.horizon['setup_div'])
+    venue_end_exclusive = snap.horizon.get('venue_end_convention') == 'exclusive'
+    cons_end_inclusive = snap.horizon.get('conservation_end_convention') == 'inclusive'
+
+    # ---- Stage 1: canonical identity and units -----------------------------
+    objects = []
+    seen_ids = set()
+    for row in snap.master_rows:
+        oid = row['object_id']
+        if oid in seen_ids:
+            continue
+        seen_ids.add(oid)
+        dim = snap.dimensions[oid]
+        factor = LENGTH_FACTOR[dim['dim_unit']]
+        width = int(dim['width']) * factor
+        height = int(dim['height']) * factor
+        depth = int(dim['depth']) * factor
+        mass_row = snap.mass[oid]
+        mass_g = int(mass_row['mass']) * MASS_FACTOR[mass_row['mass_unit']]
+        material = snap.materials[row['material_code']]
+        obj = {
+            'object_id': oid,
+            'lender_id': row['lender_id'],
+            'material_code': row['material_code'],
+            'version': 0,
+            'declared_value_cents': int(snap.value[oid]['declared_value']) * 100,
+            'mass_g': mass_g,
+            'width': width,
+            'height': height,
+            'depth': depth,
+            'conservation_class': material['conservation_class'],
+            'max_lux': int(material['max_lux']),
+            'handling_class': material['handling_class'],
+        }
+        objects.append(obj)
+    object_ids = [o['object_id'] for o in objects]
+    by_id = {o['object_id']: o for o in objects}
+
+    version = {}
+    for row in snap.version_map:
+        oid = row['object_id']
+        value = int(row['version'])
+        version[oid] = max(version.get(oid, value), value)
+    for obj in objects:
+        obj['version'] = version.get(obj['object_id'], 0)
+
+    # ---- Stage 2: normalized geometry -------------------------------------
+    blocked_classes = {}
+    for row in snap.bay_exceptions:
+        blocked_classes.setdefault(row['bay_id'], set()).add(row['blocked_class'])
+
+    needs_dark = {}
+    for code, rule in snap.conservation.items():
+        needs_dark[code] = int(rule.get('needs_dark', 0)) == 1
+
+    for obj in objects:
+        rules = snap.handling[obj['handling_class']]
+        cw_margin = int(rules['clearance_w']) * 1000
+        cd_margin = int(rules['clearance_d']) * 1000
+        ch_margin = int(rules['clearance_h']) * 1000
+        obj['clearance_w'] = obj['width'] + 2 * cw_margin
+        obj['clearance_d'] = obj['depth'] + 2 * cd_margin
+        obj['clearance_h'] = obj['height'] + ch_margin
+        obj['aspect_num'], obj['aspect_den'] = reduced_pair(obj['height'], obj['width'])
+        handle_margin = int(rules['handle_margin']) * 1000
+        obj['handle_dims'] = sorted([
+            obj['width'] + 2 * handle_margin,
+            obj['height'] + 2 * handle_margin,
+            obj['depth'] + 2 * handle_margin,
+        ])
+        obj['handling_volume'] = obj['handle_dims'][0] * obj['handle_dims'][1] * obj['handle_dims'][2]
+        obj['crew_class'] = rules['crew_class']
+        obj['setup_base'] = int(rules['setup_base'])
+        obj['setup_seconds'] = round_half_up(
+            obj['setup_base'] * obj['mass_g'], setup_div)
+
+    # ---- Stage 3: orientation admissibility -------------------------------
+    orientation_rows = []
+    for obj in objects:
+        row = snap.orientation[obj['object_id']]
+        tip = int(row['tip_allowed']) == 1
+        rotate = int(row['rotate_allowed']) == 1
+        orientations = [0]
+        if rotate:
+            orientations.append(1)
+        if tip:
+            orientations.extend([2, 3])
+        obj['orientations'] = orientations
+        obj['tip_allowed'] = tip
+        obj['rotate_allowed'] = rotate
+        orientation_rows.append({
+            'object_id': obj['object_id'],
+            'orientations': orientations,
+            'tip_allowed': tip,
+            'rotate_allowed': rotate,
+        })
+
+    def footprint(obj, index):
+        cw, ch, cd = obj['clearance_w'], obj['clearance_h'], obj['clearance_d']
+        if index == 0:
+            return cw, cd, ch
+        if index == 1:
+            return cd, cw, ch
+        if index == 2:
+            return cw, ch, cd
+        return ch, cw, cd
+
+    bay_records = []
+    for bay in snap.bays:
+        bay_records.append({
+            'bay_id': bay['bay_id'],
+            'interior_w': int(bay['interior_w']) * 1000,
+            'interior_h': int(bay['interior_h']) * 1000,
+            'interior_d': int(bay['interior_d']) * 1000,
+            'lux_level': int(bay['lux_level']),
+            'bay_priority': int(bay['bay_priority']),
+            'blocked': blocked_classes.get(bay['bay_id'], set()),
+        })
+    bays_by_id = sorted(bay_records, key=lambda b: b['bay_id'])
+    bays_by_scan = sorted(bay_records, key=lambda b: (b['bay_priority'], b['bay_id']))
+
+    def fitting_orientation(obj, bay):
+        """Smallest admissible orientation that fits, or None."""
+        for index in obj['orientations']:
+            fw, fd, fh = footprint(obj, index)
+            if fw <= bay['interior_w'] and fd < bay['interior_d'] and fh <= bay['interior_h']:
+                return index
+        return None
+
+    # ---- Stage 4: bay candidate matrix ------------------------------------
+    bay_candidate_rows = []
+    for obj in objects:
+        for bay in bays_by_id:
+            index = fitting_orientation(obj, bay)
+            bay_candidate_rows.append({
+                'object_id': obj['object_id'],
+                'bay_id': bay['bay_id'],
+                'fits': index is not None,
+                'orientation': index if index is not None else -1,
+            })
+
+    # ---- Stage 5: selected placement (geometry only) ----------------------
+    selected_rows = []
+    rejected_rows = []
+    for obj in objects:
+        chosen = None
+        for bay in bays_by_scan:
+            index = fitting_orientation(obj, bay)
+            if index is not None:
+                chosen = (bay['bay_id'], index)
+                break
+        if chosen is None:
+            code = 'P_NO_ORIENTATION' if obj['orientations'] == [0] else 'P_NO_FIT'
+            obj['geometric_bay'] = None
+            obj['geometric_orientation'] = -1
+            obj['geometric_code'] = code
+            rejected_rows.append({'object_id': obj['object_id'], 'code': code})
+        else:
+            obj['geometric_bay'] = chosen[0]
+            obj['geometric_orientation'] = chosen[1]
+            obj['geometric_code'] = 'P_OK'
+            selected_rows.append({
+                'object_id': obj['object_id'],
+                'bay_id': chosen[0],
+                'orientation': chosen[1],
+                'code': 'P_OK',
+            })
+
+    # ---- Stage 6: conservation adjustment ---------------------------------
+    conservation_rows = []
+    for obj in objects:
+        chosen = None
+        blocked = False
+        for bay in bays_by_scan:
+            index = fitting_orientation(obj, bay)
+            if index is None:
+                continue
+            blocked = True
+            cons_class = obj['conservation_class']
+            if bay['lux_level'] > obj['max_lux']:
+                continue
+            if cons_class in bay['blocked']:
+                continue
+            if needs_dark.get(cons_class, False) and bay['lux_level'] > 0:
+                continue
+            chosen = (bay['bay_id'], index)
+            break
+        if chosen is not None:
+            obj['bay_id'] = chosen[0]
+            obj['orientation'] = chosen[1]
+            obj['conservation_code'] = 'P_OK'
+            conservation_rows.append({
+                'object_id': obj['object_id'],
+                'bay_id': chosen[0],
+                'orientation': chosen[1],
+                'code': 'P_OK',
+            })
+        else:
+            obj['bay_id'] = None
+            obj['orientation'] = -1
+            code = 'P_CONSERVATION_BLOCK' if blocked else obj['geometric_code']
+            obj['conservation_code'] = code
+            conservation_rows.append({
+                'object_id': obj['object_id'],
+                'bay_id': '',
+                'orientation': -1,
+                'code': code,
+            })
+    placed = [o for o in objects if o['bay_id'] is not None]
+
+    # ---- Stage 7: crate candidates ----------------------------------------
+    crate_records = {}
+    for crate in snap.crates:
+        inner = sorted([
+            int(crate['inner_w']) * 1000,
+            int(crate['inner_h']) * 1000,
+            int(crate['inner_d']) * 1000,
+        ])
+        crate_records[crate['crate_class']] = {
+            'crate_class': crate['crate_class'],
+            'inner': inner,
+            'interior_volume': inner[0] * inner[1] * inner[2],
+            'catalog_count': int(crate['count']),
+            'transport_mode': crate['transport_mode'],
+        }
+    crate_ids = sorted(crate_records)
+
+    for obj in objects:
+        fits = []
+        for cid in crate_ids:
+            record = crate_records[cid]
+            if all(obj['handle_dims'][i] <= record['inner'][i] for i in range(3)):
+                fits.append((record['interior_volume'] - obj['handling_volume'], cid))
+        obj['crate_fits'] = fits
+        obj['primary_crate'] = sorted(fits)[0][1] if fits else None
+
+    crate_candidate_rows = []
+    for oid in sorted(by_id):
+        fits = sorted(by_id[oid]['crate_fits'])
+        for residual, cid in fits:
+            crate_candidate_rows.append({
+                'object_id': oid,
+                'crate_class': cid,
+                'residual': residual,
+            })
+
+    # ---- Stage 10: dependency edges ---------------------------------------
+    edges = {}
+    for rule in snap.dependency_rules:
+        key = (rule['from_object'], rule['to_object'])
+        if key[0] not in by_id or key[1] not in by_id:
+            continue
+        edges[key] = {
+            'from': key[0],
+            'to': key[1],
+            'kind': 'D_RULE',
+            'weight': int(rule['edge_priority']),
+        }
+
+    by_bay = {}
+    for obj in placed:
+        by_bay.setdefault(obj['bay_id'], []).append(obj)
+
+    for bay_id in sorted(by_bay):
+        members = by_bay[bay_id]
+        for earlier in members:
+            for later in members:
+                if earlier['object_id'] == later['object_id']:
+                    continue
+                ekey = (earlier['object_id'], later['object_id'])
+                if earlier['handling_volume'] > later['handling_volume']:
+                    candidate = {
+                        'from': ekey[0],
+                        'to': ekey[1],
+                        'kind': 'D_BAYSIZE',
+                        'weight': earlier['handling_volume'],
+                    }
+                    if ekey not in edges or KIND_RANK[edges[ekey]['kind']] < KIND_RANK['D_BAYSIZE']:
+                        edges[ekey] = candidate
+                if sensitivity(earlier['conservation_class']) < sensitivity(later['conservation_class']):
+                    candidate = {
+                        'from': ekey[0],
+                        'to': ekey[1],
+                        'kind': 'D_CONSERVATION',
+                        'weight': earlier['handling_volume'],
+                    }
+                    if ekey not in edges or KIND_RANK[edges[ekey]['kind']] < KIND_RANK['D_CONSERVATION']:
+                        edges[ekey] = candidate
+
+    edge_list = sorted(edges.values(), key=lambda e: (e['from'], e['to']))
+
+    # ---- Stage 11: cycle resolution ---------------------------------------
+    def find_cycle(adjacency):
+        """First cycle found by depth first search from the lowest node id."""
+        state = {node: 0 for node in adjacency}
+        for start in sorted(adjacency):
+            if state[start] != 0:
+                continue
+            path = [start]
+            frames = [(start, iter(sorted(adjacency[start])))]
+            state[start] = 1
+            while frames:
+                node, iterator = frames[-1]
+                nxt = next(iterator, None)
+                if nxt is None:
+                    state[node] = 2
+                    path.pop()
+                    frames.pop()
+                    continue
+                if state[nxt] == 0:
+                    state[nxt] = 1
+                    path.append(nxt)
+                    frames.append((nxt, iter(sorted(adjacency[nxt]))))
+                elif state[nxt] == 1:
+                    return path[path.index(nxt):]
+        return None
+
+    def count_independent_cycles(adjacency):
+        """Number of vertex sets still strongly connected beyond one node."""
+        index = {}
+        low = {}
+        stack = []
+        on_stack = set()
+        counter = [0]
+        found = [0]
+
+        for root in sorted(adjacency):
+            if root in index:
+                continue
+            work = [(root, iter(sorted(adjacency[root])))]
+            index[root] = low[root] = counter[0]
+            counter[0] += 1
+            stack.append(root)
+            on_stack.add(root)
+            while work:
+                node, iterator = work[-1]
+                advanced = False
+                for nxt in iterator:
+                    if nxt not in adjacency:
+                        continue
+                    if nxt not in index:
+                        index[nxt] = low[nxt] = counter[0]
+                        counter[0] += 1
+                        stack.append(nxt)
+                        on_stack.add(nxt)
+                        work.append((nxt, iter(sorted(adjacency[nxt]))))
+                        advanced = True
+                        break
+                    elif nxt in on_stack:
+                        low[node] = min(low[node], index[nxt])
+                if advanced:
+                    continue
+                work.pop()
+                if work:
+                    parent = work[-1][0]
+                    low[parent] = min(low[parent], low[node])
+                if low[node] == index[node]:
+                    component = []
+                    while True:
+                        member = stack.pop()
+                        on_stack.discard(member)
+                        component.append(member)
+                        if member == node:
+                            break
+                    if len(component) > 1:
+                        found[0] += 1
+        return found[0]
+
+    adjacency = {oid: set() for oid in object_ids}
+    for edge in edge_list:
+        if edge['from'] in adjacency and edge['to'] in adjacency:
+            adjacency[edge['from']].add(edge['to'])
+
+    removed_edges = []
+    converged = False
+    guard = len(edge_list) + 1
+    while guard > 0:
+        guard -= 1
+        cycle = find_cycle(adjacency)
+        if cycle is None:
+            converged = True
+            break
+        cycle_edges = []
+        for i in range(len(cycle)):
+            src = cycle[i]
+            dst = cycle[(i + 1) % len(cycle)]
+            cycle_edges.append(edges[(src, dst)])
+        victim = min(cycle_edges, key=lambda e: (
+            KIND_RANK[e['kind']], e['weight'], e['from'], e['to']))
+        adjacency[victim['from']].discard(victim['to'])
+        removed_edges.append(victim)
+
+    final_cycle_count = count_independent_cycles(adjacency) if converged else 1
+
+    # ---- Stage 12: install order ------------------------------------------
+    incoming = {oid: set() for oid in object_ids}
+    for edge in edge_list:
+        if edge['from'] in adjacency and edge['to'] in adjacency[edge['from']]:
+            incoming[edge['to']].add(edge['from'])
+
+    install_order = []
+    installed = set()
+    remaining = set(object_ids)
+    while remaining:
+        ready = [oid for oid in remaining if not (incoming[oid] - installed)]
+        if not ready:
+            ready = sorted(remaining, key=lambda oid: (by_id[oid]['setup_seconds'], oid))
+        choice = min(ready, key=lambda oid: (by_id[oid]['setup_seconds'], oid))
+        install_order.append(choice)
+        installed.add(choice)
+        remaining.discard(choice)
+    position_of = {oid: i + 1 for i, oid in enumerate(install_order)}
+
+    # ---- Stage 8: shared crate capacity -----------------------------------
+    available = {}
+    prior_consumed = {}
+    for cid in crate_ids:
+        available[cid] = crate_records[cid]['catalog_count']
+        prior_consumed[cid] = 0
+    for row in snap.prior_state:
+        cid = row['crate_class']
+        if cid in available:
+            prior_consumed[cid] += int(row['consumed_count'])
+    for cid in crate_ids:
+        available[cid] = crate_records[cid]['catalog_count'] - prior_consumed[cid]
+
+    reservations = {}
+    for row in snap.reservations:
+        key = (row['crate_class'], row['lender_id'])
+        reservations[key] = reservations.get(key, 0) + int(row['reserved_count'])
+
+    for obj in objects:
+        obj['crate_class'] = None
+        obj['crate_code'] = None
+
+    assignment = {}
+    for oid in install_order:
+        obj = by_id[oid]
+        if obj['bay_id'] is None:
+            continue
+        candidates = []
+        for residual, cid in obj['crate_fits']:
+            if available.get(cid, 0) > 0:
+                candidates.append((cid, residual))
+        if not candidates:
+            obj['crate_class'] = None
+            obj['crate_code'] = 'C_NO_CRATE'
+            continue
+        def rank(item):
+            cid, residual = item
+            reserved = 1 if reservations.get((cid, obj['lender_id']), 0) > 0 else 0
+            return (0 if reserved else 1, residual, cid)
+        chosen_class, _ = min(candidates, key=rank)
+        obj['crate_class'] = chosen_class
+        obj['crate_code'] = 'C_PRIMARY' if chosen_class == obj['primary_crate'] else 'C_DISPLACED'
+        available[chosen_class] -= 1
+        key = (chosen_class, obj['lender_id'])
+        if reservations.get(key, 0) > 0:
+            reservations[key] -= 1
+        assignment[oid] = chosen_class
+
+    crate_assignment_rows = []
+    for oid in sorted(by_id):
+        obj = by_id[oid]
+        if obj['bay_id'] is None:
+            continue
+        crate_assignment_rows.append({
+            'object_id': oid,
+            'crate_class': obj['crate_class'] if obj['crate_class'] else '',
+            'code': obj['crate_code'],
+            'primary_class': obj['primary_crate'] if obj['primary_crate'] else '',
+        })
+
+    capacity_rows = []
+    for cid in crate_ids:
+        capacity_rows.append({
+            'crate_class': cid,
+            'catalog_count': crate_records[cid]['catalog_count'],
+            'prior_consumed': prior_consumed[cid],
+            'remaining': available[cid],
+        })
+
+    contention_rows = []
+    for oid in sorted(by_id):
+        obj = by_id[oid]
+        if obj.get('crate_code') != 'C_DISPLACED':
+            continue
+        contention_rows.append({
+            'object_id': oid,
+            'wanted_class': obj['primary_crate'] if obj['primary_crate'] else '',
+            'assigned_class': obj['crate_class'] if obj['crate_class'] else '',
+        })
+
+    # ---- Stage 9: transport legs ------------------------------------------
+    transport_rows = []
+    for oid in sorted(by_id):
+        obj = by_id[oid]
+        if obj['bay_id'] is None or obj['crate_class'] is None:
+            continue
+        mode = crate_records[obj['crate_class']]['transport_mode']
+        exception = False
+        rule = snap.transport.get(obj['lender_id'])
+        if rule is not None and rule['forbidden_mode'] == mode:
+            mode = rule['fallback_mode']
+            exception = True
+        transport_rows.append({
+            'object_id': oid,
+            'crate_class': obj['crate_class'],
+            'mode': mode,
+            'exception': exception,
+        })
+
+    # ---- Stage 13: crew, setup and windows --------------------------------
+    crew_rows = []
+    for obj in objects:
+        crew_rows.append({
+            'object_id': obj['object_id'],
+            'crew_class': obj['crew_class'],
+            'setup_seconds': obj['setup_seconds'],
+        })
+
+    window_rows = []
+    unschedulable_rows = []
+    for obj in objects:
+        required_days = ceil(ratio(obj['setup_seconds'], SECONDS_PER_DAY)) if SECONDS_PER_DAY else 0
+        obj['required_days'] = required_days
+        obj['scheduled'] = False
+        if obj['bay_id'] is None:
+            code = 'S_NO_PLACEMENT'
+            start = end = 0
+        elif obj['crate_class'] is None:
+            code = 'S_NO_CRATE'
+            start, end = obj['window_start'], obj['window_end'] = compute_window(
+                obj, snap, venue_end_exclusive, cons_end_inclusive, needs_dark)
+        else:
+            start, end = compute_window(
+                obj, snap, venue_end_exclusive, cons_end_inclusive, needs_dark)
+            obj['window_start'], obj['window_end'] = start, end
+            days_available = end - start + 1
+            if days_available <= 0:
+                code = 'S_NO_WINDOW'
+            elif required_days > days_available:
+                code = 'S_SHORT_WINDOW'
+            else:
+                code = 'S_OK'
+                obj['scheduled'] = True
+        obj['window_code'] = code
+        window_rows.append({
+            'object_id': obj['object_id'],
+            'bay_id': obj['bay_id'] if obj['bay_id'] else '',
+            'window_start': start,
+            'window_end': end,
+            'required_days': required_days,
+            'code': code,
+        })
+        if code != 'S_OK':
+            unschedulable_rows.append({'object_id': obj['object_id'], 'code': code})
+    unschedulable_rows.sort(key=lambda r: (r['object_id'], r['code']))
+
+    # ---- Stage 14: dossier ------------------------------------------------
+    occupancy_rows = []
+    for bay in bays_by_id:
+        members = sorted(o['object_id'] for o in placed if o['bay_id'] == bay['bay_id'])
+        occupancy_rows.append({
+            'bay_id': bay['bay_id'],
+            'object_count': len(members),
+            'objects': members,
+        })
+
+    def value_class_row(obj):
+        class_by_min = {int(r['min_value']): r for r in snap.value_classes}
+        declared = obj['declared_value_cents'] // 100
+        eligible = [m for m in class_by_min if declared >= m]
+        if not eligible:
+            return {'unschedulable_penalty': 0, 'contention_penalty': 0}
+        return class_by_min[max(eligible)]
+
+    unschedulable_penalty = 0
+    contention_penalty = 0
+    for obj in objects:
+        row = value_class_row(obj)
+        if not obj['scheduled']:
+            unschedulable_penalty += int(row['unschedulable_penalty'])
+        if obj.get('crate_code') == 'C_DISPLACED':
+            contention_penalty += int(row['contention_penalty'])
+
+    displacement_count = sum(1 for o in objects if o.get('crate_code') == 'C_DISPLACED')
+    total_residual = 0
+    for obj in objects:
+        if obj['crate_class'] is not None:
+            for residual, cid in obj['crate_fits']:
+                if cid == obj['crate_class']:
+                    total_residual += residual
+                    break
+
+    total_setup_seconds = sum(o['setup_seconds'] for o in objects)
+    total_insurance_cents = 0
+    for obj in objects:
+        lender = snap.lenders.get(obj['lender_id'])
+        if lender is None or int(lender['insurance_rate_den']) == 0:
+            premium = 0
+        else:
+            premium = round_half_up(
+                obj['declared_value_cents'] * int(lender['insurance_rate_num']),
+                int(lender['insurance_rate_den']))
+        obj['insurance_cents'] = premium
+        total_insurance_cents += premium
+
+    audit_rows = []
+    for obj in objects:
+        audit_rows.append({
+            'object_id': obj['object_id'],
+            'placed_bay': obj['bay_id'] if obj['bay_id'] else '',
+            'crate_class': obj['crate_class'] if obj['crate_class'] else '',
+            'displaced': obj.get('crate_code') == 'C_DISPLACED',
+            'scheduled': obj['scheduled'],
+            'install_position': position_of[obj['object_id']],
+            'setup_seconds': obj['setup_seconds'],
+            'insurance_cents': obj['insurance_cents'],
+        })
+
+    placed_objects = sum(1 for o in objects if o['scheduled'])
+    objective = [
+        placed_objects,
+        unschedulable_penalty,
+        contention_penalty,
+        len(removed_edges),
+        total_residual,
+    ]
+    order_names = list(snap.objective_order['order'])
+    senses = list(snap.objective_order['sense'])
+
+    penalty_summary = {
+        'unschedulable_penalty': unschedulable_penalty,
+        'contention_penalty': contention_penalty,
+        'cycles_broken': len(removed_edges),
+        'total_insurance_cents': total_insurance_cents,
+    }
+    objective_tuple = {'objective': objective, 'order': order_names}
+
+    artifacts = {
+        'canonical_objects.jsonl': [
+            {'object_id': o['object_id'], 'lender_id': o['lender_id'],
+             'material_code': o['material_code'], 'version': o['version'],
+             'declared_value_cents': o['declared_value_cents'], 'mass_g': o['mass_g']}
+            for o in objects],
+        'normalized_geometry.jsonl': [
+            {'object_id': o['object_id'], 'clearance_w': o['clearance_w'],
+             'clearance_h': o['clearance_h'], 'clearance_d': o['clearance_d'],
+             'aspect_num': o['aspect_num'], 'aspect_den': o['aspect_den']}
+            for o in objects],
+        'admissibility_matrix.jsonl': orientation_rows,
+        'bay_candidate_matrix.jsonl': bay_candidate_rows,
+        'selected_placement.jsonl': selected_rows,
+        'rejected_placement.jsonl': sorted(rejected_rows, key=lambda r: (r['object_id'], r['code'])),
+        'conservation_adjusted.jsonl': conservation_rows,
+        'crate_candidate_matrix.jsonl': crate_candidate_rows,
+        'crate_assignment.jsonl': crate_assignment_rows,
+        'crate_capacity_ledger.jsonl': capacity_rows,
+        'crate_contention_report.jsonl': contention_rows,
+        'transport_leg_manifest.jsonl': transport_rows,
+        'dependency_edges.jsonl': edge_list,
+        'cycle_resolution_audit.jsonl': removed_edges,
+        'install_order.jsonl': [
+            {'position': i + 1, 'object_id': oid} for i, oid in enumerate(install_order)],
+        'crew_requirement_ledger.jsonl': crew_rows,
+        'install_window_table.jsonl': window_rows,
+        'unschedulable_report.jsonl': unschedulable_rows,
+        'gallery_occupancy_map.jsonl': occupancy_rows,
+        'deterministic_audit.jsonl': audit_rows,
+    }
+
+    if not os.path.isdir(out_dir):
+        os.makedirs(out_dir)
+
+    for name, rows in artifacts.items():
+        path = os.path.join(out_dir, name)
+        with open(path, 'w', encoding='utf-8', newline='') as handle:
+            for row in rows:
+                handle.write(json.dumps(row, sort_keys=True, separators=(',', ':')))
+                handle.write('\n')
+
+    write_json(out_dir, 'penalty_summary.json', penalty_summary)
+    write_json(out_dir, 'objective_tuple.json', objective_tuple)
+
+    program_path = os.path.abspath(__file__)
+    with open(program_path, 'rb') as handle:
+        program_digest = hashlib.sha256(handle.read()).hexdigest()
+    manifest = {}
+    for name in artifacts:
+        manifest[name] = sha256_file(os.path.join(out_dir, name))
+    manifest['penalty_summary.json'] = sha256_file(os.path.join(out_dir, 'penalty_summary.json'))
+    manifest['objective_tuple.json'] = sha256_file(os.path.join(out_dir, 'objective_tuple.json'))
+    # The program is hashed under its fixed artifact name so the manifest does not
+    # depend on where the program file itself lives.
+    manifest['plan.py'] = program_digest
+    write_json(out_dir, 'integrity_manifest.json', manifest)
+
+    chain = str(snap.horizon.get('chain_seed', '0' * 64))
+    for name in sorted(manifest):
+        chain = hashlib.sha256((chain + manifest[name]).encode('utf-8')).hexdigest()
+
+    final_state = {
+        'chain': chain,
+        'repair_converged': converged,
+        'cycle_edges_removed': len(removed_edges),
+        'final_cycle_count': final_cycle_count,
+        'displacement_count': displacement_count,
+        'unschedulable_count': len(unschedulable_rows),
+        'placed_objects': placed_objects,
+        'total_setup_seconds': total_setup_seconds,
+        'total_insurance_cents': total_insurance_cents,
+        'objective': objective,
+    }
+    write_json(out_dir, 'final_state.json', final_state)
     return 0
 
 
-if __name__ == "__main__":
+def compute_window(obj, snap, venue_end_exclusive, cons_end_inclusive, needs_dark):
+    cons = snap.conservation.get(obj['conservation_class'])
+    venue = snap.venue_windows.get(obj['bay_id'])
+    crew = snap.crew.get(obj['crew_class'])
+    starts = []
+    ends = []
+    if cons is not None:
+        starts.append(int(cons['setup_start']))
+        end = int(cons['setup_end'])
+        if not cons_end_inclusive:
+            end -= 1
+        ends.append(end)
+    if venue is not None:
+        starts.append(int(venue['access_start']))
+        end = int(venue['access_end'])
+        if venue_end_exclusive:
+            end -= 1
+        ends.append(end)
+    if crew is not None:
+        starts.append(int(crew['avail_start']))
+        ends.append(int(crew['avail_end']))
+    if not starts:
+        return 0, 0
+    return max(starts), min(ends)
+
+
+def write_json(out_dir, name, value):
+    path = os.path.join(out_dir, name)
+    with open(path, 'w', encoding='utf-8', newline='') as handle:
+        handle.write(json.dumps(value, sort_keys=True, indent=2))
+        handle.write('\n')
+
+
+def sha256_file(path):
+    with open(path, 'rb') as handle:
+        return hashlib.sha256(handle.read()).hexdigest()
+
+
+if __name__ == '__main__':
     sys.exit(main(sys.argv))

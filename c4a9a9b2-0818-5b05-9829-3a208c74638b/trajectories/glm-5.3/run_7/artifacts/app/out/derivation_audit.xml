@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<derivation_audit>
+  <active_class value="1"/>
+  <base_budget max_records="235" retry_limit="6" timeout_ms="2359"/>
+  <ingress qps="240" burst_permille="1250" window_seconds="3" rate_step="25" rate_limit="300" burst_ceiling="900"/>
+  <scopes base="3" overlay="1" deny="1" effective="4" uid_floor="1000" privilege_drop_uid="2600"/>
+  <effective_scope name="exec" uid="2600"/>
+  <effective_scope name="list" uid="3800"/>
+  <effective_scope name="read" uid="4000"/>
+  <effective_scope name="write" uid="3200"/>
+  <hardening fold_score="97" floor="40" ceil="90" quantize_step="5" baseline="90" severity_permille="1000" risk_index="10"/>
+  <quorum healthy_voters="5" permille="667" quorum_threshold="3"/>
+  <tls_floor_score value="80"/>
+  <seccomp_allowed_count value="6"/>
+  <audit_retention_days value="90"/>
+  <precedence session_ttl_seconds="3000" nonce_window_ms="500" max_concurrent_sessions="96"/>
+  <retry timeout_ms="2359" retry_limit="6" step="10" backoff_ms="2060"/>
+  <trailer value="harbor:cli-config:TASK:000000002e552977"/>
+</derivation_audit>

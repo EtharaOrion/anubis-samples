@@ -1,108 +1,42 @@
 {
+  "checksum": "crc32",
   "commands": [
-    [
-      "python3",
-      "cli.py",
-      "derive",
-      "--schema",
-      "/app/tool/schema.json",
-      "--config",
-      "/app/run/work.json",
-      "--out",
-      "/app/out/config.json",
-      "--outdir",
-      "/app/out",
-      "--trace",
-      "/app/run/trace.json"
-    ],
-    [
-      "python3",
-      "cli.py",
-      "profile",
-      "--name",
-      "canary",
-      "--config",
-      "/app/out/config.json",
-      "--trace",
-      "/app/run/trace.json",
-      "--out",
-      "/app/out/profile_canary.json"
-    ],
-    [
-      "python3",
-      "cli.py",
-      "profile",
-      "--name",
-      "enforce",
-      "--config",
-      "/app/out/config.json",
-      "--trace",
-      "/app/run/trace.json",
-      "--out",
-      "/app/out/profile_enforce.json"
-    ],
-    [
-      "python3",
-      "cli.py",
-      "package",
-      "--src",
-      "/app/tool",
-      "--out",
-      "/app/out/tool.zip"
-    ],
-    [
-      "python3",
-      "cli.py",
-      "export-report",
-      "--config",
-      "/app/out/config.json",
-      "--out",
-      "/app/out/report.json",
-      "--digest",
-      "<sha256 of /app/out/config.json>",
-      "--commands",
-      "/app/tool/commands.json"
-    ],
-    [
-      "python3",
-      "cli.py",
-      "finalize",
-      "--schema",
-      "/app/tool/schema.json",
-      "--config",
-      "/app/out/config.json",
-      "--outdir",
-      "/app/out",
-      "--trace",
-      "/app/run/trace.json"
-    ],
-    [
-      "python3",
-      "cli.py",
-      "validate",
-      "--schema",
-      "/app/tool/schema.json",
-      "--config",
-      "/app/out/config.json"
-    ],
-    [
-      "python3",
-      "cli.py",
-      "validate",
-      "--schema",
-      "/app/tool/schema.json",
-      "--config",
-      "/app/out/profile_canary.json"
-    ],
-    [
-      "python3",
-      "cli.py",
-      "validate",
-      "--schema",
-      "/app/tool/schema.json",
-      "--config",
-      "/app/out/profile_enforce.json"
-    ]
+    {
+      "argv": "task-ctl build --out-dir /app/out",
+      "seq": 1
+    },
+    {
+      "argv": "task-ctl derive --out /app/out/config.json",
+      "seq": 2
+    },
+    {
+      "argv": "task-ctl profile --name canary --config /app/out/config.json --out /app/out/profile_canary.json",
+      "seq": 3
+    },
+    {
+      "argv": "task-ctl profile --name enforce --config /app/out/config.json --out /app/out/profile_enforce.json",
+      "seq": 4
+    },
+    {
+      "argv": "task-ctl validate --schema /app/data/config_schema.json --config /app/out/config.json",
+      "seq": 5
+    },
+    {
+      "argv": "task-ctl validate --schema /app/data/config_schema.json --config /app/out/profile_canary.json",
+      "seq": 6
+    },
+    {
+      "argv": "task-ctl validate --schema /app/data/config_schema.json --config /app/out/profile_enforce.json",
+      "seq": 7
+    },
+    {
+      "argv": "task-ctl package --out /app/out/tool.zip",
+      "seq": 8
+    },
+    {
+      "argv": "task-ctl export-report --config /app/out/config.json --out /app/out/report.json --digest d043bb1de0b75656a6f24be9d05f4a286a739694cd05c905a183a3a559ca8bd9 --commands /app/out/.commands.json",
+      "seq": 9
+    }
   ],
   "config": {
     "active_class": 1,
@@ -112,7 +46,7 @@
     "control_plane": "admission-broker",
     "effective_scope_count": 4,
     "enforcement_profile": "main",
-    "hardening_baseline": 90,
+    "hardening_baseline": 85,
     "image_runtime": "oci-runc",
     "ingress_rate_limit_qps": 300,
     "max_concurrent_sessions": 96,
@@ -122,17 +56,40 @@
     "profile": "TASK",
     "quorum_threshold": 3,
     "retry_backoff_base_ms": 2060,
-    "risk_index": 10,
+    "risk_index": 15,
     "seccomp_allowed_count": 6,
     "session_ttl_seconds": 3000,
     "tls_floor_score": 80,
     "trailer": "harbor:cli-config:TASK:000000002e552977"
   },
-  "control_plane": "admission-broker",
-  "digest": "de4e10f0aaabfed99bdd8d57465b3e9e84ed3acb31f331ddd45de3725d368841",
-  "mode": "strict-local",
+  "digest": "d043bb1de0b75656a6f24be9d05f4a286a739694cd05c905a183a3a559ca8bd9",
+  "digest_algorithm": "sha256",
+  "flat": true,
   "ok": true,
-  "profile": "TASK",
-  "tool": "task-ctl",
+  "profile": "main",
+  "schema_keys": [
+    "active_class",
+    "audit_retention_days",
+    "burst_ceiling",
+    "checksum",
+    "control_plane",
+    "effective_scope_count",
+    "enforcement_profile",
+    "hardening_baseline",
+    "image_runtime",
+    "ingress_rate_limit_qps",
+    "max_concurrent_sessions",
+    "mode",
+    "nonce_window_ms",
+    "privilege_drop_uid",
+    "profile",
+    "quorum_threshold",
+    "retry_backoff_base_ms",
+    "risk_index",
+    "seccomp_allowed_count",
+    "session_ttl_seconds",
+    "tls_floor_score",
+    "trailer"
+  ],
   "trailer": "harbor:cli-config:TASK:000000002e552977"
 }

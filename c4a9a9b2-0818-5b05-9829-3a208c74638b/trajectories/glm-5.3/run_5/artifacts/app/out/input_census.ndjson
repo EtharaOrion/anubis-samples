@@ -1,0 +1,29 @@
+{"bytes": 4114, "input": "class_index.tsv2", "purpose": "class selector ranges", "sha256": "2ff73d38d283476b10290fd5e0f614b4260b485cf5b6480c187a890bbcb3512f"}
+{"bytes": 5628, "input": "ingress_rate.tsv", "purpose": "per-class throughput", "sha256": "317d84e84bd711d150b094820cde7230a2a8d7b32f66724ac54c917bd2b7c094"}
+{"bytes": 10112, "input": "burst_multiplier.ini", "purpose": "burst factor and window", "sha256": "ae254270055859578be6f21fe457a6f0cb20c0485a8d3fb3f997915c6ba40f7f"}
+{"bytes": 2632, "input": "rate_gran.caret", "purpose": "rate quantization step", "sha256": "c28a22f7444fe309d42af1f74f8e14b7087f389d69ebdd51d1cc84e6ae0ab054"}
+{"bytes": 3916, "input": "window_seconds.conf", "purpose": "per-class window", "sha256": "c79f5e4c1430c6b2101783d0052b398561ab69dbba743b92950348628bd7f1dd"}
+{"bytes": 14829, "input": "scope_base.jsonl", "purpose": "base scopes", "sha256": "ad2e2e50caa1cd688055b5efef8ae9df63c8da979c0d587b271452bf91f9aae7"}
+{"bytes": 15308, "input": "scope_overlay.ndjson", "purpose": "overlay scopes", "sha256": "08e9e6ec3515cf8bcec5f2b459aa5040bc50c49653526fa7fd41f7b6b2ced5fa"}
+{"bytes": 4599, "input": "scope_deny.psv", "purpose": "deny scopes", "sha256": "8a32da4b7925b42992b13656eaaf7a18206d68490a28e5e40672e48a926f8db2"}
+{"bytes": 6218, "input": "uid_map.env", "purpose": "scope uid grants", "sha256": "0a6211a0c040bae119d15b1c61a4e24801e93e6e6b4966aa702a782712c131a5"}
+{"bytes": 2745, "input": "uid_floor.hex", "purpose": "privilege drop uid floor", "sha256": "031259362e9ad0784802314564ea9ace85bba706f3345be64a40b0cbece34204"}
+{"bytes": 5311, "input": "baseline_controls.scsv", "purpose": "ordered hardening controls", "sha256": "00f2ab88984c8c6431c2182bb1dbc8a3bceb81316572b666652adb6f6f1f1272"}
+{"bytes": 7182, "input": "hardening_bounds.toml", "purpose": "hardening clamp bounds", "sha256": "5d16bfad30d7151136f9352670cd1580880c4003d879dbd8ec2b052b8d29ae05"}
+{"bytes": 4119, "input": "severity_weight.kv", "purpose": "per-class severity weight", "sha256": "e35d33f12f67a68aed9fe58ea0e678d232555307c9a80d9f843ac2ec508e0ec8"}
+{"bytes": 3751, "input": "risk_const.env2", "purpose": "risk constants", "sha256": "ababd4a53b131fc39ee25c951c74cf9dfb4e7353479337bd145354edc6438beb"}
+{"bytes": 15516, "input": "voter_health.ndjson", "purpose": "authoritative voter health", "sha256": "b0d7e34653de9eb1e9dff2826b418d521b02d499f3dad11d113eb67c762b96ad"}
+{"bytes": 2852, "input": "quorum_permille.tilde", "purpose": "quorum permille", "sha256": "b0206d67bfe2cb49f05811c80deb9b9269be46c7d4f33ca0c4eacf1493dfa45d"}
+{"bytes": 4893, "input": "tls_matrix.csv", "purpose": "tls suite scores", "sha256": "4ea00c700b8eeca4fb006b936b635ce0a68a5b8eb8c89998ef0995b3266cac35"}
+{"bytes": 3217, "input": "seccomp_allow.tsv", "purpose": "seccomp allowlist", "sha256": "8f3af6d6ddbfb4aa3c712d4cfcc3b5262c00d15d150f2d632d985c2623cea654"}
+{"bytes": 3426, "input": "seccomp_deny.psv", "purpose": "seccomp denylist", "sha256": "8a54e67be4477217aa88f615736a84982cc2cf310a4c50724e89859b2196fedd"}
+{"bytes": 8100, "input": "retention.ini", "purpose": "audit retention days", "sha256": "1fb9197e697239cdcf0b87fe985712751ab653ea019ce5ec2181bbd2460ed379"}
+{"bytes": 532, "input": "defaults.json", "purpose": "base budget and layer defaults", "sha256": "edf2bbfbf633ef434491ebe7b1e7538b225adf489b340afa633474abd319ec77"}
+{"bytes": 736, "input": "layer_overrides.json", "purpose": "middle precedence layer", "sha256": "845783815595db5e79f95d35ca86fe6c1124659a60359931d9a6087ed1142d77"}
+{"bytes": 840, "input": "pinned_overrides.json", "purpose": "pinned precedence layer", "sha256": "2c539bafd9625d62d61bfbc4cc00f27f168737902594848ed07bab77aa012ca3"}
+{"bytes": 3216, "input": "nonce_bounds.toml2", "purpose": "nonce window floor", "sha256": "75ce734f71b5207b85fe713a550df45174bc9eba8ef808b2a1e0d834daec63c2"}
+{"bytes": 2798, "input": "sessions_cap.csv2", "purpose": "concurrent session ceiling", "sha256": "faf5b73bbb598ad6a09b0d46999119626b64670deb50d4c3be45734a36902467"}
+{"bytes": 2996, "input": "retry_backoff.psv2", "purpose": "retry quantization step", "sha256": "1c6bfc51d156013995b5b28716336b0eebb35bf84b9427a6f6e54919f424b9c0"}
+{"bytes": 453, "input": "profile_deltas.json", "purpose": "per-profile deltas", "sha256": "23d74fe78fa9f0fdebbb7edf36b7c07622aec1abe78f10fa282946f7b625e079"}
+{"bytes": 702, "input": "config_schema.json", "purpose": "required key set", "sha256": "4599cb67d720a180857e6d04c129fd89055580e2401cda633afe504cc8ab335c"}
+{"bytes": 827, "input": "validation_rules.json", "purpose": "artifact and validation rules", "sha256": "f46427f575282e5b4b94da942ca4cee0cdb6b2f778bad1c33923a10b0f2b3e4f"}

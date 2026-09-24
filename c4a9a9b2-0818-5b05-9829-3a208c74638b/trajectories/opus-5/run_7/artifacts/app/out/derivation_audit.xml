@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<derivation_audit>
+  <active_class>1</active_class>
+  <fields>
+    <field name="active_class" value="1"/>
+    <field name="audit_retention_days" value="90"/>
+    <field name="burst_ceiling" value="900"/>
+    <field name="checksum" value="crc32"/>
+    <field name="control_plane" value="admission-broker"/>
+    <field name="effective_scope_count" value="4"/>
+    <field name="enforcement_profile" value="main"/>
+    <field name="hardening_baseline" value="90"/>
+    <field name="image_runtime" value="oci-runc"/>
+    <field name="ingress_rate_limit_qps" value="300"/>
+    <field name="max_concurrent_sessions" value="96"/>
+    <field name="mode" value="strict-local"/>
+    <field name="nonce_window_ms" value="500"/>
+    <field name="privilege_drop_uid" value="2600"/>
+    <field name="profile" value="TASK"/>
+    <field name="quorum_threshold" value="3"/>
+    <field name="retry_backoff_base_ms" value="390"/>
+    <field name="risk_index" value="10"/>
+    <field name="seccomp_allowed_count" value="6"/>
+    <field name="session_ttl_seconds" value="3000"/>
+    <field name="tls_floor_score" value="80"/>
+    <field name="trailer" value="harbor:cli-config:TASK:000000002e552977"/>
+  </fields>
+  <inputs>
+    <input name="burst_multiplier_permille" value="1250"/>
+    <input name="hardening_ceil" value="90"/>
+    <input name="hardening_floor" value="40"/>
+    <input name="hardening_fold_score" value="90"/>
+    <input name="healthy_voters" value="5"/>
+    <input name="ingress_qps" value="240"/>
+    <input name="max_records" value="235"/>
+    <input name="quorum_permille" value="667"/>
+    <input name="rate_granularity" value="25"/>
+    <input name="retry_limit" value="6"/>
+    <input name="retry_step" value="10"/>
+    <input name="selector" value="50"/>
+    <input name="selector_span" value="185"/>
+    <input name="severity_permille" value="1000"/>
+    <input name="timeout_ms" value="2359"/>
+    <input name="uid_floor" value="1000"/>
+    <input name="window_seconds" value="3"/>
+  </inputs>
+  <rounding>round-half-even</rounding>
+  <trailer>harbor:cli-config:TASK:000000002e552977</trailer>
+</derivation_audit>

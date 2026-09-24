@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<derivationAudit>
+  <activeClass>0</activeClass>
+  <selector>24</selector>
+  <rounding>round-half-even (banker's), exact integer arithmetic</rounding>
+  <bindingRule>only rows with status ADOPTED bind; SUPERSEDED, DRAFT, SHADOW, REVOKED are decoys</bindingRule>
+  <steps>
+    <step name="selector" rule="base budget selector (max_records // 37) + 3 * retry_limit" value="24"/>
+    <step name="active_class" rule="ADOPTED selector range lookup in class_index.tsv2" value="0"/>
+    <step name="throughput_qps" rule="ADOPTED ingress throughput for the active class" value="120"/>
+    <step name="burst_permille" rule="ADOPTED burst factor permille" value="1600"/>
+    <step name="window_seconds" rule="ADOPTED per-class window" value="2"/>
+    <step name="rate_step" rule="ADOPTED rate quantization step" value="25"/>
+    <step name="scaled_rate" rule="throughput * burst factor, round-half-even" value="192"/>
+    <step name="ingress_rate_limit_qps" rule="scaled rate quantized to the class rate step" value="200"/>
+    <step name="burst_ceiling" rule="resolved rate limit * class window" value="400"/>
+    <step name="scope_base" rule="base scopes unioned" value="list read"/>
+    <step name="scope_overlay" rule="overlay scopes unioned" value="attest"/>
+    <step name="scope_deny" rule="deny scopes removed" value="write"/>
+    <step name="scope_effective" rule="reconciled effective scope set" value="attest list read"/>
+    <step name="effective_scope_count" rule="cardinality of the effective scope set" value="3"/>
+    <step name="uid_floor" rule="ADOPTED privilege uid floor" value="1000"/>
+    <step name="min_granted_uid" rule="minimum uid granted over the effective scope set" value="3600"/>
+    <step name="privilege_drop_uid" rule="minimum granted uid subject to the floor" value="3600"/>
+    <step name="hardening_fold" rule="carry-aware fold over ADOPTED controls" value="87"/>
+    <step name="hardening_bounds" rule="ADOPTED per-class clamp bounds" value="40..90"/>
+    <step name="hardening_baseline" rule="clamped fold quantized to the hardening step" value="85"/>
+    <step name="severity_permille" rule="ADOPTED severity weight permille" value="800"/>
+    <step name="risk_index" rule="(complement - baseline) * severity / divisor" value="12"/>
+    <step name="healthy_voters" rule="healthy ADOPTED voters for the class" value="3"/>
+    <step name="quorum_permille" rule="ADOPTED quorum permille" value="667"/>
+    <step name="quorum_threshold" rule="voters * quorum permille clamped to [1, voters]" value="2"/>
+    <step name="tls_floor_score" rule="enabled ADOPTED TLS suite score" value="70"/>
+    <step name="seccomp_allowed_count" rule="ADOPTED allowed syscalls minus ADOPTED denied" value="5"/>
+    <step name="audit_retention_days" rule="ADOPTED retention days" value="30"/>
+    <step name="session_ttl_seconds" rule="precedence-resolved session TTL" value="2100"/>
+    <step name="nonce_window_ms" rule="precedence-resolved nonce window" value="300"/>
+    <step name="max_concurrent_sessions" rule="precedence-resolved session cap" value="40"/>
+    <step name="retry_backoff_base_ms" rule="timeout * (retry_limit + 1) / 8 quantized to the class step" value="2060"/>
+  </steps>
+  <profiles>
+    <profile name="enforce" riskIndex="11"/>
+    <profile name="main" riskIndex="12"/>
+    <profile name="canary" riskIndex="14"/>
+  </profiles>
+</derivationAudit>

@@ -1,0 +1,19 @@
+{
+  "capacity_displacements": 2,
+  "chain": "3bd43fa2a3db306117fae5278ac81b760baf5500ae3d97b1614adae622fa7a0e",
+  "cycle_edges_removed": 1,
+  "examples_placed": 34,
+  "global_clawbacks": 4,
+  "invariants_hold": true,
+  "microbatches": 20,
+  "objective": [
+    18863,
+    4,
+    1,
+    2,
+    20
+  ],
+  "precedence_overturns": 0,
+  "quiet_branches": 18,
+  "total_tokens": 18863
+}

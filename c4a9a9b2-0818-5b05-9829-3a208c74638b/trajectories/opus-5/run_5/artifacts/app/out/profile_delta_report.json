@@ -1,0 +1,61 @@
+{
+  "base": "config.json",
+  "profiles": {
+    "canary": {
+      "changed_keys": [
+        "enforcement_profile",
+        "quorum_threshold",
+        "risk_index",
+        "session_ttl_seconds"
+      ],
+      "deltas": {
+        "enforcement_profile": {
+          "delta": null,
+          "main": "main",
+          "profile": "canary"
+        },
+        "quorum_threshold": {
+          "delta": 1,
+          "main": 3,
+          "profile": 4
+        },
+        "risk_index": {
+          "delta": 2,
+          "main": 20,
+          "profile": 22
+        },
+        "session_ttl_seconds": {
+          "delta": -750,
+          "main": 3000,
+          "profile": 2250
+        }
+      },
+      "trailer": "harbor:cli-config:TASK:000000002e552977"
+    },
+    "enforce": {
+      "changed_keys": [
+        "enforcement_profile",
+        "risk_index",
+        "session_ttl_seconds"
+      ],
+      "deltas": {
+        "enforcement_profile": {
+          "delta": null,
+          "main": "main",
+          "profile": "enforce"
+        },
+        "risk_index": {
+          "delta": -1,
+          "main": 20,
+          "profile": 19
+        },
+        "session_ttl_seconds": {
+          "delta": 600,
+          "main": 3000,
+          "profile": 3600
+        }
+      },
+      "trailer": "harbor:cli-config:TASK:000000002e552977"
+    }
+  }
+}

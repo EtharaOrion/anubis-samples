@@ -1,8 +1,8 @@
 order|control_id|weight|carry|status|running
 0|c-seccomp|25|0|ADOPTED|25
 1|c-nonroot|20|0|ADOPTED|45
-2|c-readonly|15|1|ADOPTED|82
-3|c-caps|22|0|ADOPTED|104
+2|c-readonly|15|1|ADOPTED|60
+3|c-caps|22|0|ADOPTED|83
 98|c-ghost|40|1|DRAFT|skip
 99|c-decoy|50|0|SHADOW|skip
 203|c-f3|3|1|SHADOW|skip

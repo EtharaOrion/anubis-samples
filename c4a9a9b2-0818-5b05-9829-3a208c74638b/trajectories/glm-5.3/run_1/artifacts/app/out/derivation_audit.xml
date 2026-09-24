@@ -1,43 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<derivation_audit tool="task-ctl" profile="TASK" control_plane="admission-broker" trailer="harbor:cli-config:TASK:000000002e552977">
-  <active_class id="1" budget="50" budget_span="185" max_records="235"/>
-  <ingress qps="240" burst_permille="1250" scaled_qps="300" rate_step="25" rate_limit_qps="300" window_seconds="3" burst_ceiling="900"/>
-  <scopes base="3" overlay="1" deny="1" effective="4" uid_floor="1000" privilege_drop_uid="2600">
-    <scope name="exec"/>
-    <scope name="list"/>
-    <scope name="read"/>
-    <scope name="write"/>
+<derivationAudit>
+  <tool>task-ctl</tool>
+  <activeClass selector="50" span="185">1</activeClass>
+  <ingress>
+    <throughputQps>240</throughputQps>
+    <burstPermille>1250</burstPermille>
+    <scaledQps>300</scaledQps>
+    <rateStep>25</rateStep>
+    <ingressRateLimitQps>300</ingressRateLimitQps>
+    <windowSeconds>3</windowSeconds>
+    <burstCeiling>900</burstCeiling>
+  </ingress>
+  <scopes>
+    <base>list read write</base>
+    <overlay>exec</overlay>
+    <deny>admin</deny>
+    <effective count="4">exec list read write</effective>
+    <uidFloor>1000</uidFloor>
+    <privilegeDropUid>2600</privilegeDropUid>
   </scopes>
-  <hardening fold_score="104" floor="40" ceil="90" clamped="90" quant_step="5" baseline="90" weight_sum="82"/>
-  <risk baseline="90" complement="100" severity_permille="1000" divisor="1000" risk_index="10"/>
-  <quorum healthy_voters="5" permille="667" threshold="3"/>
-  <tls_floor score="80"/>
-  <seccomp allowed_count="6"/>
-  <retention days="90"/>
-  <precedence field="session_ttl_seconds" default="1800" resolved="3000" source="layer_override" pinned="false"/>
-  <precedence field="nonce_window_ms" default="400" resolved="500" source="layer_override" pinned="false"/>
-  <precedence field="max_concurrent_sessions" default="64" resolved="96" source="layer_override" pinned="false"/>
-  <retry timeout_ms="2359" retry_limit="6" step="10" backoff_base_ms="2060"/>
-  <cross_checks total="20" agreed="20">
-    <mirror name="bounds_alt.fixed" ok="true" detail="bounds=(40, 90)"/>
-    <mirror name="burst_alt.properties" ok="true" detail="permille=1250"/>
-    <mirror name="burst_mirror.hex2" ok="true" detail="permille=1250"/>
-    <mirror name="controls_alt.psv3" ok="true" detail="weight_sum=82"/>
-    <mirror name="gran_mirror.fixed2" ok="true" detail="gran=25"/>
-    <mirror name="ingress_alt.jsonl2" ok="true" detail="qps=240"/>
-    <mirror name="ingress_mirror.pipe" ok="true" detail="qps=240"/>
-    <mirror name="privilege_bits.b64" ok="true" detail="uid=2600"/>
-    <mirror name="quorum_mirror.rst2" ok="true" detail="permille=667"/>
-    <mirror name="retention_alt.kv2" ok="true" detail="days=90"/>
-    <mirror name="retention_mirror.psv4" ok="true" detail="days=90"/>
-    <mirror name="risk_curve.sexp" ok="true" detail="permille=1000"/>
-    <mirror name="scope_census.edn" ok="true" detail="{:class 1 :base 3 :overlay 1 :deny 1 :status &quot;ADOPTED&quot;}"/>
-    <mirror name="scopecount_mirror.tsv3" ok="true" detail="scopes=4"/>
-    <mirror name="seccomp_allow.tsv" ok="true" detail="count=6"/>
-    <mirror name="severity_mirror.caret2" ok="true" detail="permille=1000"/>
-    <mirror name="tls_mirror.tilde3" ok="true" detail="score=80"/>
-    <mirror name="voter_roster.html2" ok="true" detail="voters=5"/>
-    <mirror name="voters_mirror.kv4" ok="true" detail="voters=5"/>
-    <mirror name="window_mirror.scsv3" ok="true" detail="window=3"/>
-  </cross_checks>
-</derivation_audit>
+  <hardening>
+    <control order="0" id="c-seccomp" weight="25" carry="0" status="ADOPTED" running="25"/>
+    <control order="1" id="c-nonroot" weight="20" carry="0" status="ADOPTED" running="45"/>
+    <control order="2" id="c-readonly" weight="15" carry="1" status="ADOPTED" running="60"/>
+    <control order="3" id="c-caps" weight="22" carry="0" status="ADOPTED" running="83"/>
+    <control order="98" id="c-ghost" weight="40" carry="1" status="DRAFT" running="skip"/>
+    <control order="99" id="c-decoy" weight="50" carry="0" status="SHADOW" running="skip"/>
+    <control order="203" id="c-f3" weight="3" carry="1" status="SHADOW" running="skip"/>
+    <control order="204" id="c-f4" weight="4" carry="0" status="SUPERSEDED" running="skip"/>
+    <control order="209" id="c-f9" weight="9" carry="1" status="SUPERSEDED" running="skip"/>
+    <control order="213" id="c-f13" weight="13" carry="1" status="DRAFT" running="skip"/>
+    <control order="219" id="c-f19" weight="19" carry="1" status="REVOKED" running="skip"/>
+    <control order="226" id="c-f26" weight="26" carry="0" status="SHADOW" running="skip"/>
+    <control order="233" id="c-f33" weight="3" carry="1" status="SHADOW" running="skip"/>
+    <control order="244" id="c-f44" weight="14" carry="0" status="DRAFT" running="skip"/>
+    <control order="248" id="c-f48" weight="18" carry="0" status="REVOKED" running="skip"/>
+    <control order="261" id="c-f61" weight="1" carry="1" status="SUPERSEDED" running="skip"/>
+    <control order="275" id="c-f75" weight="15" carry="1" status="DRAFT" running="skip"/>
+    <control order="277" id="c-f77" weight="17" carry="1" status="DRAFT" running="skip"/>
+    <control order="279" id="c-f79" weight="19" carry="1" status="SHADOW" running="skip"/>
+    <control order="280" id="c-f80" weight="20" carry="0" status="DRAFT" running="skip"/>
+    <control order="284" id="c-f84" weight="24" carry="0" status="REVOKED" running="skip"/>
+    <control order="285" id="c-f85" weight="25" carry="1" status="SUPERSEDED" running="skip"/>
+    <control order="304" id="c-f104" weight="14" carry="0" status="SHADOW" running="skip"/>
+    <control order="306" id="c-f106" weight="16" carry="0" status="DRAFT" running="skip"/>
+    <control order="308" id="c-f108" weight="18" carry="0" status="SUPERSEDED" running="skip"/>
+    <control order="315" id="c-f115" weight="25" carry="1" status="SHADOW" running="skip"/>
+    <control order="319" id="c-f119" weight="29" carry="1" status="REVOKED" running="skip"/>
+    <control order="323" id="c-f123" weight="3" carry="1" status="SHADOW" running="skip"/>
+    <control order="325" id="c-f125" weight="5" carry="1" status="SHADOW" running="skip"/>
+    <control order="326" id="c-f126" weight="6" carry="0" status="REVOKED" running="skip"/>
+    <control order="335" id="c-f135" weight="15" carry="1" status="REVOKED" running="skip"/>
+    <control order="336" id="c-f136" weight="16" carry="0" status="SUPERSEDED" running="skip"/>
+    <control order="341" id="c-f141" weight="21" carry="1" status="DRAFT" running="skip"/>
+    <control order="344" id="c-f144" weight="24" carry="0" status="DRAFT" running="skip"/>
+    <control order="348" id="c-f148" weight="28" carry="0" status="SHADOW" running="skip"/>
+    <control order="350" id="c-f150" weight="0" carry="0" status="SHADOW" running="skip"/>
+    <control order="354" id="c-f154" weight="4" carry="0" status="DRAFT" running="skip"/>
+    <control order="356" id="c-f156" weight="6" carry="0" status="DRAFT" running="skip"/>
+    <control order="367" id="c-f167" weight="17" carry="1" status="DRAFT" running="skip"/>
+    <control order="368" id="c-f168" weight="18" carry="0" status="SHADOW" running="skip"/>
+    <folded>83</folded>
+    <bounds floor="40" ceil="90"/>
+    <clamped>83</clamped>
+    <quantizationStep>5</quantizationStep>
+    <baseline>85</baseline>
+  </hardening>
+  <risk>
+    <baselineComplement>100</baselineComplement>
+    <severityPermille>1000</severityPermille>
+    <divisor>1000</divisor>
+    <riskIndex>15</riskIndex>
+  </risk>
+  <quorum>
+    <permille>667</permille>
+    <healthyVoters>5</healthyVoters>
+    <threshold lowerBound="1" upperBound="5">3</threshold>
+  </quorum>
+  <bounds>
+    <tlsFloorScore>80</tlsFloorScore>
+    <seccompAllowedCount>6</seccompAllowedCount>
+    <auditRetentionDays>90</auditRetentionDays>
+  </bounds>
+  <precedence>
+    <field name="session_ttl_seconds" default="1800" override="3000" pinned="false" resolved="3000"/>
+    <field name="nonce_window_ms" default="400" override="500" pinned="false" resolved="500"/>
+    <field name="max_concurrent_sessions" default="64" override="96" pinned="false" resolved="96"/>
+    <retryBackoff timeoutMs="2359" retryLimit="6" step="10" base="2060"/>
+  </precedence>
+  <profiles>
+    <profile name="canary" ttlScalePermille="750" sessionTtlSeconds="2250" quorumDelta="1" quorumThreshold="4" riskDelta="2" riskIndex="17"/>
+    <profile name="enforce" ttlScalePermille="1200" sessionTtlSeconds="3600" quorumDelta="0" quorumThreshold="3" riskDelta="-1" riskIndex="14"/>
+  </profiles>
+  <trailer>harbor:cli-config:TASK:000000002e552977</trailer>
+  <commandTranscript>
+    <command seq="1">task-ctl build --out-dir /app/out</command>
+    <command seq="2">task-ctl derive --out /app/out/config.json</command>
+    <command seq="3">task-ctl profile --name canary --config /app/out/config.json --out /app/out/profile_canary.json</command>
+    <command seq="4">task-ctl profile --name enforce --config /app/out/config.json --out /app/out/profile_enforce.json</command>
+    <command seq="5">task-ctl validate --schema /app/data/config_schema.json --config /app/out/config.json</command>
+    <command seq="6">task-ctl validate --schema /app/data/config_schema.json --config /app/out/profile_canary.json</command>
+    <command seq="7">task-ctl validate --schema /app/data/config_schema.json --config /app/out/profile_enforce.json</command>
+    <command seq="8">task-ctl package --out /app/out/tool.zip</command>
+    <command seq="9">task-ctl export-report --config /app/out/config.json --out /app/out/report.json --digest d043bb1de0b75656a6f24be9d05f4a286a739694cd05c905a183a3a559ca8bd9 --commands /app/out/.commands.json</command>
+  </commandTranscript>
+</derivationAudit>

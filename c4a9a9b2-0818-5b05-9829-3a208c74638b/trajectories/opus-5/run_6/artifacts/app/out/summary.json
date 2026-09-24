@@ -1,0 +1,81 @@
+{
+  "active_class": 1,
+  "artifacts": [
+    "admission_matrix.csv",
+    "class_ordering.tsv",
+    "config.json",
+    "convergence_report.txt",
+    "derivation_audit.xml",
+    "hardening_fold_trace.psv",
+    "input_census.ndjson",
+    "precedence_resolution.properties",
+    "privilege_map.ndjson",
+    "profile_canary.json",
+    "profile_delta_report.json",
+    "profile_enforce.json",
+    "quorum_plan.kv",
+    "rate_limit_plan.ini",
+    "report.json",
+    "reproducibility_manifest.json",
+    "retention_schedule.csv",
+    "risk_ledger.env",
+    "scope_reconciliation.tsv",
+    "seccomp_summary.tsv",
+    "summary.json",
+    "tls_floor.env",
+    "tool.zip",
+    "validation_report.json"
+  ],
+  "config_digest": "eca4b09dd179dda6c58808f34ca10f6e40af2041937a39ef622de18c7e24acee",
+  "derived": {
+    "active_class": 1,
+    "audit_retention_days": 90,
+    "burst_ceiling": 900,
+    "checksum": "crc32",
+    "control_plane": "admission-broker",
+    "effective_scope_count": 4,
+    "enforcement_profile": "main",
+    "hardening_baseline": 80,
+    "image_runtime": "oci-runc",
+    "ingress_rate_limit_qps": 300,
+    "max_concurrent_sessions": 96,
+    "mode": "strict-local",
+    "nonce_window_ms": 500,
+    "privilege_drop_uid": 2600,
+    "profile": "TASK",
+    "quorum_threshold": 3,
+    "retry_backoff_base_ms": 330,
+    "risk_index": 20,
+    "seccomp_allowed_count": 6,
+    "session_ttl_seconds": 3000,
+    "tls_floor_score": 80,
+    "trailer": "harbor:cli-config:TASK:000000002e552977"
+  },
+  "effective_scopes": [
+    "exec",
+    "list",
+    "read",
+    "write"
+  ],
+  "healthy_voters": 5,
+  "ok": true,
+  "profiles": {
+    "canary": {
+      "quorum_threshold": 4,
+      "risk_index": 22,
+      "session_ttl_seconds": 2250
+    },
+    "enforce": {
+      "quorum_threshold": 3,
+      "risk_index": 19,
+      "session_ttl_seconds": 3600
+    }
+  },
+  "rounding_mode": "round-half-even",
+  "trailer": "harbor:cli-config:TASK:000000002e552977",
+  "validation": {
+    "failed": 0,
+    "passed": 26,
+    "total": 26
+  }
+}

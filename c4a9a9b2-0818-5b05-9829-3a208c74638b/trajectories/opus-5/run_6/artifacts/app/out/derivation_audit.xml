@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<derivation_audit tool="task-ctl">
+  <active_class>1</active_class>
+  <selector span="185">50</selector>
+  <trailer>harbor:cli-config:TASK:000000002e552977</trailer>
+  <fields>
+    <field name="active_class" value="1" formula="selector = max_records mod 185 resolved through class_index.tsv2"/>
+    <field name="audit_retention_days" value="90" formula="retention.ini [class.1] retention_days"/>
+    <field name="burst_ceiling" value="900" formula="ingress_rate_limit_qps * window_seconds(3)"/>
+    <field name="effective_scope_count" value="4" formula="count((base union overlay) minus deny)"/>
+    <field name="hardening_baseline" value="80" formula="quantize_floor(clamp(carry_fold=83,40,90),5)"/>
+    <field name="ingress_rate_limit_qps" value="300" formula="quantize_floor(round_half_even(240*1250,1000),25)"/>
+    <field name="max_concurrent_sessions" value="96" formula="precedence(layer_overrides) capped at 512"/>
+    <field name="nonce_window_ms" value="500" formula="precedence(layer_overrides) floored at 100"/>
+    <field name="privilege_drop_uid" value="2600" formula="max(min(effective scope uids),uid_floor=1000)"/>
+    <field name="quorum_threshold" value="3" formula="clamp(round_half_even(5*667,1000),1,5)"/>
+    <field name="retry_backoff_base_ms" value="330" formula="quantize_floor(round_half_even(2359,7),10)"/>
+    <field name="risk_index" value="20" formula="round_half_even((100-hardening_baseline)*1000,1000)"/>
+    <field name="seccomp_allowed_count" value="6" formula="count(allow minus deny)"/>
+    <field name="session_ttl_seconds" value="3000" formula="precedence(layer_overrides)"/>
+    <field name="tls_floor_score" value="80" formula="tls_matrix.csv adopted enabled suite score"/>
+  </fields>
+  <profiles>
+    <profile name="canary" session_ttl_seconds="2250" quorum_threshold="4" risk_index="22"/>
+    <profile name="enforce" session_ttl_seconds="3600" quorum_threshold="3" risk_index="19"/>
+  </profiles>
+</derivation_audit>

@@ -1,12 +1,11 @@
 {
   "model": "glm-5.3",
   "run_index": 1,
-  "include_multimodal": false,
   "pytest": {
-    "passed": 37,
-    "failed": 39,
+    "passed": 35,
+    "failed": 41,
     "exit_code": 1,
-    "reward": 0.4081,
+    "reward": 0.3787,
     "tests": [
       {
         "name": "test_all_declared_artifacts_exist",
@@ -81,7 +80,7 @@
       {
         "name": "test_admissibility_matrix_match",
         "weight": 3.0,
-        "passed": true
+        "passed": false
       },
       {
         "name": "test_bay_candidate_matrix_match",
@@ -341,7 +340,7 @@
       {
         "name": "test_fixture_single_orientation",
         "weight": 5.0,
-        "passed": true
+        "passed": false
       },
       {
         "name": "test_fixture_exact_bay_boundary",
@@ -429,8 +428,7 @@
       "importance": "important",
       "score": 3,
       "is_positive": true,
-      "passed": false,
-      "justification": "Before creating `plan.py`, the agent successfully displayed `rules.md`, `constants.md`, and `worked_example.md`, but the calls to view `schema.md` and `reason_codes.md` have no successful tool results in the trajectory. Because all specification documents must be evidenced as read, this is not fully established."
+      "passed": true
     },
     {
       "number": "R5",
@@ -450,7 +448,8 @@
       "importance": "important",
       "score": 3,
       "is_positive": true,
-      "passed": true
+      "passed": false,
+      "justification": "Although `/tmp/sercheck.py` prints `MISSING: []` and `EXTRA: []`, its output explicitly reports serialization issues for `rejected_placement.jsonl` (`no trailing newline` and `empty`) rather than confirming every file without issue. No later complete shape check prints an all-clear for all 24 files."
     },
     {
       "number": "R7",
@@ -460,7 +459,8 @@
       "importance": "important",
       "score": 3,
       "is_positive": true,
-      "passed": true
+      "passed": false,
+      "justification": "Earlier commands print `DETERMINISTIC` or `IDENTICAL UNDER RENAME`, but the agent subsequently edits `plan.py` again with `str_replace` to change contention-row generation and regenerates the final artifacts only once. Thus no displayed second-run byte comparison covers the delivered final program bytes and final artifacts."
     },
     {
       "number": "R8",
@@ -481,7 +481,7 @@
       "score": 3,
       "is_positive": true,
       "passed": false,
-      "justification": "The synthetic run printed `fits:false` for the equal-depth bay, and the final prose mentions the exclusive depth boundary, but no executed diagnostic prints the inclusive counterfactual beside the result and names the rule as required."
+      "justification": "The constructed `snap2` actually makes OBJ21\u2019s clearance width equal to the boundary while its clearance depth is 1,499,000 versus a 1,500,000 bay depth, and the printed result shows it fits BAY_1. The exact-depth case is present only in the shipped OBJ11 data, and no synthetic-run output prints the required inclusive-versus-exclusive placement divergence."
     },
     {
       "number": "R10",
@@ -492,7 +492,7 @@
       "score": 3,
       "is_positive": true,
       "passed": false,
-      "justification": "The final integrity command recomputes and asserts the chain, but prints only `manifest + chain verified in place`; it does not print the recomputed and delivered chain values beside each other."
+      "justification": "The final check recomputes the chain but prints only `chain reproduces: True`; it does not print the independently computed chain value beside the delivered `final_state.json` value."
     },
     {
       "number": "R11",
@@ -502,8 +502,7 @@
       "importance": "important",
       "score": 3,
       "is_positive": true,
-      "passed": false,
-      "justification": "A synthetic snapshot contains `OBJD` with 10 CM dimensions and prints clearance geometry, but it never prints the raw converted dimensions as 100,000 micrometres or explicitly demonstrates the 10,000 scale factor in executed output."
+      "passed": true
     },
     {
       "number": "R12",
@@ -514,7 +513,7 @@
       "score": 3,
       "is_positive": true,
       "passed": false,
-      "justification": "The integrity command recomputes each digest and asserts equality, but only prints a generic verification message rather than printing recomputed digests beside manifest entries."
+      "justification": "The digest checks print only summaries such as `all on-disk digests match: True` or mismatch names. They never print each recomputed SHA-256 value beside its manifest entry."
     },
     {
       "number": "R13",
@@ -557,8 +556,8 @@
       "passed": true
     }
   ],
-  "final_reward": 45.41,
-  "test_weights_percentage": 40.81,
+  "final_reward": 43.94,
+  "test_weights_percentage": 37.87,
   "rubric_weights_percentage": 50.0,
-  "judge": "human-evaluated"
+  "evaluated_by": "sugam.agrawal@ethara.ai"
 }

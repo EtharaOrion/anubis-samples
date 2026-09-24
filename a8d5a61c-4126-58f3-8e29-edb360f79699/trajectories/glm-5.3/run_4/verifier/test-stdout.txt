@@ -1,0 +1,116 @@
+[PASS] test_all_declared_artifacts_exist (weight +1)
+[PASS] test_all_final_batches_have_members (weight +5)
+[FAIL] test_canonical_sources_match (weight +3)
+       AssertionError: canonical_sources.jsonl
+[PASS] test_carry_state_ledger_match (weight +3)
+[PASS] test_demand_score_ledger_match (weight +3)
+[PASS] test_eligibility_codes_in_enum (weight +1)
+[PASS] test_eligibility_ledger_match (weight +3)
+[FAIL] test_eval_cycle_and_carry_match (weight +5)
+       AssertionError: ('eval', 'carry_state_ledger.jsonl')
+[FAIL] test_eval_final_allocation_match (weight +5)
+       AssertionError: ('eval', 'final_allocation.jsonl')
+[FAIL] test_eval_remaining_artifacts_match (weight +5)
+       AssertionError: canonical_sources.jsonl
+[FAIL] test_eval_objective_match (weight +5)
+       AssertionError: ('eval', 'objective_tuple.json')
+[FAIL] test_eval_summaries_match (weight +5)
+       AssertionError: ('eval', 'language_allocation_summary.jsonl')
+[PASS] test_every_binding_event_has_single_phase (weight +5)
+[PASS] test_exception_codes_in_enum (weight +1)
+[PASS] test_final_alloc_sums_to_source_summary (weight +3)
+[PASS] test_final_state_chain_folds_manifest (weight +3)
+[PASS] test_final_state_has_required_keys (weight +1)
+[FAIL] test_fixture_alloc_equals_cap (weight +5)
+       AssertionError: final_allocation.jsonl
+[PASS] test_fixture_cycle_len2 (weight +5)
+[FAIL] test_fixture_empty_group (weight +5)
+       AssertionError: rational_example_weights.jsonl
+[FAIL] test_fixture_floor_over_cap (weight +5)
+       AssertionError: capacity_binding_trace.jsonl
+[FAIL] test_fixture_lang_excluded (weight +5)
+       AssertionError: final_allocation.jsonl
+[FAIL] test_fixture_single_example (weight +5)
+       AssertionError: fixed_point_weights.jsonl
+[FAIL] test_fixture_zero_denom (weight +5)
+       AssertionError: final_allocation.jsonl
+[PASS] test_hidden_a_carry_state_match (weight +5)
+[FAIL] test_hidden_a_exception_trace_match (weight +5)
+       AssertionError: ('hidden_a', 'exception_trace.jsonl')
+[FAIL] test_hidden_a_final_allocation_match (weight +5)
+       AssertionError: ('hidden_a', 'final_allocation.jsonl')
+[FAIL] test_hidden_a_microbatch_manifest_match (weight +5)
+       AssertionError: ('hidden_a', 'microbatch_manifest.jsonl')
+[FAIL] test_hidden_a_objective_and_state_match (weight +5)
+       AssertionError: ('hidden_a', 'objective_tuple.json')
+[FAIL] test_hidden_b_capacity_binding_match (weight +5)
+       AssertionError: ('hidden_b', 'capacity_binding_trace.jsonl')
+[PASS] test_hidden_b_demand_and_eligibility_match (weight +5)
+[FAIL] test_hidden_b_final_allocation_match (weight +5)
+       AssertionError: ('hidden_b', 'final_allocation.jsonl')
+[FAIL] test_hidden_b_fixed_point_weights_match (weight +5)
+       AssertionError: ('hidden_b', 'fixed_point_weights.jsonl')
+[PASS] test_hidden_b_reconciliation_trace_match (weight +5)
+[PASS] test_integrity_manifest_covers_declared_set (weight +1)
+[PASS] test_json_artifacts_parse (weight +1)
+[PASS] test_json_serialization_is_canonical (weight +1)
+[PASS] test_jsonl_artifacts_parse_line_by_line (weight +1)
+[PASS] test_jsonl_serialization_is_canonical (weight +1)
+[FAIL] test_language_allocation_summary_match (weight +3)
+       AssertionError: language_allocation_summary.jsonl
+[PASS] test_manifest_digests_match_files (weight +3)
+[FAIL] test_negative_weight_filename_dependent_behaviour (weight -5)
+       AssertionError: output identical under both names
+[FAIL] test_negative_weight_hardcoded_sample_answers (weight -5)
+       AssertionError
+[FAIL] test_negative_weight_nondeterministic_output (weight -3)
+       AssertionError: four runs produced identical bytes
+[FAIL] test_negative_weight_reads_training_corpus_at_runtime (weight -5)
+       AssertionError
+[PASS] test_objective_recomputed_from_raw_outputs (weight +5)
+[PASS] test_objective_tuple_has_five_components (weight +1)
+[FAIL] test_phase_membership_match (weight +3)
+       AssertionError: phase_membership.jsonl
+[FAIL] test_phase_token_totals_match (weight +3)
+       AssertionError: phase_token_totals.jsonl
+[FAIL] test_phase_totals_respect_effective_cap (weight +3)
+       AssertionError: {'allocated': 4716, 'budget': 7000, 'cap': 4200, 'phase': 'PH2'}
+[FAIL] test_pre_reconciliation_ledger_match (weight +3)
+       AssertionError: pre_reconciliation_ledger.jsonl
+[PASS] test_precedence_closure_match (weight +3)
+[PASS] test_program_is_a_runnable_script (weight +1)
+[PASS] test_proportional_allocation_match (weight +3)
+[PASS] test_protected_floor_ledger_match (weight +3)
+[FAIL] test_rational_example_weights_match (weight +3)
+       AssertionError: rational_example_weights.jsonl
+[PASS] test_rational_weights_are_reduced_fractions (weight +1)
+[PASS] test_rounding_residual_ledger_match (weight +3)
+[FAIL] test_safety_allocation_summary_match (weight +3)
+       AssertionError: safety_allocation_summary.jsonl
+[FAIL] test_source_allocation_summary_match (weight +3)
+       AssertionError: source_allocation_summary.jsonl
+[PASS] test_source_summary_within_supply (weight +3)
+[PASS] test_visible_binding_actually_happened (weight +5)
+[FAIL] test_visible_capacity_binding_trace_match (weight +5)
+       AssertionError: capacity_binding_trace.jsonl
+[PASS] test_visible_cycle_break_decisions_match (weight +5)
+[PASS] test_visible_cycle_report_match (weight +5)
+[FAIL] test_visible_exception_trace_match (weight +5)
+       AssertionError: exception_trace.jsonl
+[FAIL] test_visible_final_allocation_match (weight +5)
+       AssertionError: final_allocation.jsonl
+[FAIL] test_visible_final_state_match (weight +5)
+       AssertionError: final_state.json
+[FAIL] test_visible_fixed_point_weights_match (weight +5)
+       AssertionError: fixed_point_weights.jsonl
+[PASS] test_visible_global_reconciliation_trace_match (weight +5)
+[FAIL] test_visible_integrity_manifest_match (weight +5)
+       AssertionError: integrity_manifest.json
+[PASS] test_visible_invariant_report_match (weight +5)
+[FAIL] test_visible_microbatch_manifest_match (weight +5)
+       AssertionError: microbatch_manifest.jsonl
+[FAIL] test_visible_objective_tuple_match (weight +5)
+       AssertionError: objective_tuple.json
+[FAIL] test_visible_precedence_overturn_trace_match (weight +5)
+       AssertionError: precedence_overturn_trace.jsonl
+[grade] raw=+105  positive_total=267  reward=+0.393258

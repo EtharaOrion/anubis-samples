@@ -1,0 +1,21 @@
+{
+  "task": {
+    "path": "/anubis-samples/a8d5a61c-4126-58f3-8e29-edb360f79699"
+  },
+  "trial_name": "a8d5a61c-4126-58f3-8e29-edb360f7__eUd4Ve8",
+  "trials_dir": "/anubis-samples/a8d5a61c-4126-58f3-8e29-edb360f79699/trajectories/opus-5/run_6",
+  "agent": {
+    "name": "openhands-sdk",
+    "model_name": "opus-5",
+    "extra_allowed_hosts": [
+      "172.17.0.1"
+    ],
+    "env": {
+      "LLM_MODEL": "anthropic/claude-opus-5",
+      "LLM_TEMPERATURE": "1.0",
+      "LLM_MAX_OUTPUT_TOKENS": "****",
+      "MAX_ITERATIONS": "350",
+      "LLM_EXTENDED_THINKING_BUDGET": "32000"
+    }
+  }
+}

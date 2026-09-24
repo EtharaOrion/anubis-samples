@@ -1,0 +1,6 @@
+class,active,scopes,rate_limit_qps,burst_ceiling,hardening_baseline,risk_index,quorum_threshold,privilege_drop_uid,tls_floor_score,seccomp_allowed_count,audit_retention_days
+0,no,3,175,350,85,12,2,3600,70,5,30
+1,yes,4,300,900,90,10,3,2600,80,6,90
+2,no,5,500,2000,95,6,5,2200,90,4,180
+3,no,4,875,4375,75,38,3,3200,75,7,14
+4,no,5,875,8750,95,10,6,1200,95,3,365

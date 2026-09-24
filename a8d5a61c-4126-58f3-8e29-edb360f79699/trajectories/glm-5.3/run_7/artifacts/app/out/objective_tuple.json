@@ -1,0 +1,16 @@
+{
+  "objective": [
+    18863,
+    3,
+    1,
+    2,
+    20
+  ],
+  "order": [
+    "total_tokens",
+    "global_clawbacks",
+    "cycle_edges_removed",
+    "capacity_displacements",
+    "microbatches"
+  ]
+}

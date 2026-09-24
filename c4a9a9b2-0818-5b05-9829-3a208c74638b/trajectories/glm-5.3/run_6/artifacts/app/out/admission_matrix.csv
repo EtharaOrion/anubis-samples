@@ -1,0 +1,23 @@
+field,value,source
+active_class,1,class_index.tsv2 selector over ADOPTED ranges
+audit_retention_days,90,retention.ini adopted class block
+burst_ceiling,900,resolved rate x window_seconds.conf
+checksum,crc32,defaults.json contract strings
+control_plane,admission-broker,defaults.json contract strings
+effective_scope_count,4,scope_base.jsonl | scope_overlay.ndjson - scope_deny.psv
+enforcement_profile,main,defaults.json contract strings
+hardening_baseline,90,baseline_controls.scsv carry fold clamped by hardening_bounds.toml
+image_runtime,oci-runc,defaults.json contract strings
+ingress_rate_limit_qps,300,ingress_rate.tsv x burst_multiplier.ini quantised by rate_gran.caret
+max_concurrent_sessions,96,defaults < layer_overrides < pinned_overrides
+mode,strict-local,defaults.json contract strings
+nonce_window_ms,500,defaults < layer_overrides < pinned_overrides
+privilege_drop_uid,2600,min granted uid over uid_map.env bounded by uid_floor.hex
+profile,TASK,defaults.json contract strings
+quorum_threshold,3,voter_health.ndjson healthy x quorum_permille.tilde
+retry_backoff_base_ms,2060,defaults.json timeout_ms/retry_limit quantised by retry_backoff.psv2
+risk_index,10,risk_const.env2 complement x severity_weight.kv
+seccomp_allowed_count,6,seccomp_allow.tsv adopted rows
+session_ttl_seconds,3000,defaults < layer_overrides < pinned_overrides
+tls_floor_score,80,tls_matrix.csv adopted enabled suite
+trailer,harbor:cli-config:TASK:000000002e552977,defaults.json base_config.trailer

@@ -1,0 +1,4 @@
+{"scope": "exec", "uid": 2600}
+{"scope": "list", "uid": 3800}
+{"scope": "read", "uid": 4000}
+{"scope": "write", "uid": 3200}

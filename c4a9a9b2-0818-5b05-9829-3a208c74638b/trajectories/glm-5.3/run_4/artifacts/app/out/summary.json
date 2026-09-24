@@ -1,0 +1,27 @@
+{
+  "active_class": 0,
+  "artifacts": 24,
+  "burst_ceiling": 400,
+  "effective_scope_count": 3,
+  "enforcement_profile": "main",
+  "hardening_baseline": 90,
+  "ingress_rate_limit_qps": 200,
+  "profiles": {
+    "canary": {
+      "quorum_threshold": 3,
+      "risk_index": 10,
+      "session_ttl_seconds": 1575
+    },
+    "enforce": {
+      "quorum_threshold": 2,
+      "risk_index": 7,
+      "session_ttl_seconds": 2520
+    }
+  },
+  "quorum_threshold": 2,
+  "risk_index": 8,
+  "rounding": "round_half_even",
+  "tool": "task-ctl",
+  "trailer": "harbor:cli-config:TASK:000000002e552977",
+  "validation_ok": true
+}

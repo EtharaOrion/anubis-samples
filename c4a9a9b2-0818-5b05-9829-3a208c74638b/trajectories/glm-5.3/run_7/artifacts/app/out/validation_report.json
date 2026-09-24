@@ -1,0 +1,1 @@
+{"active_class": 1, "config_keys": 22, "config_path": "config.json", "flat": true, "missing_keys": [], "required_keys": 22, "result": "ok", "schema": "/app/data/config_schema.json", "tool": "task-ctl"}

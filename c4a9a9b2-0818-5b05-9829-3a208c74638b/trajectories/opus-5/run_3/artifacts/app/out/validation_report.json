@@ -1,0 +1,110 @@
+{
+  "checks": {
+    "all_required_keys_present": true,
+    "flat_scalar_only": true,
+    "no_forbidden_keys": true,
+    "trailer_intact": true,
+    "values_match_derivation": true
+  },
+  "extra_keys": [],
+  "forbidden_keys_present": [],
+  "missing_keys": [],
+  "non_scalar_keys": [],
+  "ok": true,
+  "required_artifacts": {
+    "admission_matrix.csv": {
+      "bytes": 513,
+      "present": true
+    },
+    "class_ordering.tsv": {
+      "bytes": 47,
+      "present": true
+    },
+    "config.json": {
+      "bytes": 650,
+      "present": true
+    },
+    "convergence_report.txt": {
+      "bytes": 909,
+      "present": true
+    },
+    "derivation_audit.xml": {
+      "bytes": 2543,
+      "present": true
+    },
+    "hardening_fold_trace.psv": {
+      "bytes": 1151,
+      "present": true
+    },
+    "input_census.ndjson": {
+      "bytes": 7705,
+      "present": true
+    },
+    "precedence_resolution.properties": {
+      "bytes": 195,
+      "present": true
+    },
+    "privilege_map.ndjson": {
+      "bytes": 125,
+      "present": true
+    },
+    "profile_canary.json": {
+      "bytes": 652,
+      "present": true
+    },
+    "profile_delta_report.json": {
+      "bytes": 836,
+      "present": true
+    },
+    "profile_enforce.json": {
+      "bytes": 652,
+      "present": true
+    },
+    "quorum_plan.kv": {
+      "bytes": 36,
+      "present": true
+    },
+    "rate_limit_plan.ini": {
+      "bytes": 66,
+      "present": true
+    },
+    "report.json": {
+      "bytes": 2314,
+      "present": true
+    },
+    "reproducibility_manifest.json": {
+      "emitted_after_check": true
+    },
+    "retention_schedule.csv": {
+      "bytes": 32,
+      "present": true
+    },
+    "risk_ledger.env": {
+      "bytes": 59,
+      "present": true
+    },
+    "scope_reconciliation.tsv": {
+      "bytes": 110,
+      "present": true
+    },
+    "seccomp_summary.tsv": {
+      "bytes": 32,
+      "present": true
+    },
+    "summary.json": {
+      "emitted_after_check": true
+    },
+    "tls_floor.env": {
+      "bytes": 19,
+      "present": true
+    },
+    "tool.zip": {
+      "bytes": 10662,
+      "present": true
+    },
+    "validation_report.json": {
+      "emitted_after_check": true
+    }
+  },
+  "required_key_count": 22
+}

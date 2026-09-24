@@ -1,0 +1,10 @@
+layer	scope	included
+base	list	yes
+base	read	yes
+base	write	yes
+overlay	exec	yes
+deny	admin	no
+effective	exec	yes
+effective	list	yes
+effective	read	yes
+effective	write	yes

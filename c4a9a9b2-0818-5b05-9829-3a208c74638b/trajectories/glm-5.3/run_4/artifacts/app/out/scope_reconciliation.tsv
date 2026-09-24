@@ -1,0 +1,2 @@
+class	base_scopes	overlay_scopes	deny_scopes	effective_scopes	effective_scope_count	privilege_drop_uid
+0	list,read	attest	write	attest,list,read	3	3600

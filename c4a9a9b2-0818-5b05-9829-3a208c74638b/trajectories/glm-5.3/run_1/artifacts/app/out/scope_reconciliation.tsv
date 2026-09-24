@@ -1,6 +1,2 @@
-scope	in_base	in_overlay	denied	effective
-admin	0	0	1	0
-exec	0	1	0	1
-list	1	0	0	1
-read	1	0	0	1
-write	1	0	0	1
+class	base_count	overlay_count	deny_count	effective_scope_count	privilege_drop_uid	scopes
+1	3	1	1	4	2600	exec list read write

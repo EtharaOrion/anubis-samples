@@ -31,10 +31,10 @@ artifacts = [
 name = "terminal-bench/64d3d25b-74db-5ac0-a47d-f1b1073cca81"
 description = "Rebuild the corrected installation dossier for a travelling museum exhibition from a fragmented loan, object, gallery, crate, conservation and dependency snapshot and a written specification. Canonicalize identity and units, derive per object geometry, placement, conservation adjustment, shared crate assignment, transport, a dependency graph and its cycle resolution, install order, crew, windows and the final dossier, honouring inclusive and exclusive fit boundaries, a stateful crate contention rule that overturns a locally optimal choice, a deterministic cycle break, a pervasive round half up rule, and twenty four byte exact artifacts ending in a hashed manifest and a folded chain state."
 keywords = ["python", "derivation", "state-machine", "precedence", "stdlib"]
-authors = [{name = "Ayush Sah", email = "ayush.sah@ethara.ai"}]
+authors = [{name = "Ayush Sah", email = "ayush.sah@ethara.ai"}, {name = "Sugam Agrawal", email = "sugam.agrawal@ethara.ai"}]
 
 [metadata]
-difficulty = "hard"
+difficulty = "medium"
 category = "Data Processing"
 tags = ["derivation", "precedence", "determinism", "geometry", "integrity"]
 estimated_duration_sec = 7200.0

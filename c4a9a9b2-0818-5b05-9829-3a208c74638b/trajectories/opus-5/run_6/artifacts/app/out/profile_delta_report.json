@@ -1,0 +1,42 @@
+{
+  "canary": {
+    "deltas": {
+      "max_concurrent_sessions": 0,
+      "nonce_window_ms": 0,
+      "quorum_threshold": 1,
+      "risk_index": 2,
+      "session_ttl_seconds": -750
+    },
+    "values": {
+      "max_concurrent_sessions": 96,
+      "nonce_window_ms": 500,
+      "quorum_threshold": 4,
+      "risk_index": 22,
+      "session_ttl_seconds": 2250
+    }
+  },
+  "enforce": {
+    "deltas": {
+      "max_concurrent_sessions": 0,
+      "nonce_window_ms": 0,
+      "quorum_threshold": 0,
+      "risk_index": -1,
+      "session_ttl_seconds": 600
+    },
+    "values": {
+      "max_concurrent_sessions": 96,
+      "nonce_window_ms": 500,
+      "quorum_threshold": 3,
+      "risk_index": 19,
+      "session_ttl_seconds": 3600
+    }
+  },
+  "main": {
+    "max_concurrent_sessions": 96,
+    "nonce_window_ms": 500,
+    "quorum_threshold": 3,
+    "risk_index": 20,
+    "session_ttl_seconds": 3000
+  },
+  "trailer": "harbor:cli-config:TASK:000000002e552977"
+}

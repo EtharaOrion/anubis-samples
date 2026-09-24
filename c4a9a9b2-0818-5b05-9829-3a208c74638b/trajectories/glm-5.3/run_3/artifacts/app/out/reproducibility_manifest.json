@@ -1,0 +1,127 @@
+{
+  "artifact_count": 23,
+  "artifacts": [
+    {
+      "artifact": "admission_matrix.csv",
+      "bytes": 405,
+      "sha256": "d6e68ff0824bd2c7a65d1ff1c4b548b2a93db0ddb56ef4a28fc1ae2478120de1"
+    },
+    {
+      "artifact": "class_ordering.tsv",
+      "bytes": 48,
+      "sha256": "20dfb45f4b93c6011babbaaf7ea172e72bc6278c0ed734ef1e2b7de0587c9a6e"
+    },
+    {
+      "artifact": "config.json",
+      "bytes": 651,
+      "sha256": "9cc30edec97c557654c95fea7d2447d97e0ec9f1e909eacb7899197b38290246"
+    },
+    {
+      "artifact": "convergence_report.txt",
+      "bytes": 4710,
+      "sha256": "cedbd98204af91c8ff78dbb749c4502334fde1ac048eaa146438e0ddccfe8f00"
+    },
+    {
+      "artifact": "derivation_audit.xml",
+      "bytes": 3419,
+      "sha256": "5bf3651bf609a4c19c5a3045b276fa2215ed8d154dfc6e63e5f3d25fb779e8b9"
+    },
+    {
+      "artifact": "hardening_fold_trace.psv",
+      "bytes": 1376,
+      "sha256": "3cc8f2a9a5db4f82e87ad17e71fbda79c4e416f41cb6ea63f19473022184a867"
+    },
+    {
+      "artifact": "input_census.ndjson",
+      "bytes": 6933,
+      "sha256": "9d3992761f542e693a2e5b2fc66d3f3c3ceada3b7625e3be7159acd131573d49"
+    },
+    {
+      "artifact": "precedence_resolution.properties",
+      "bytes": 195,
+      "sha256": "183013430ea5170ab30e5bbc6f818de2431e27ccee1204122755ddc8cd87c999"
+    },
+    {
+      "artifact": "privilege_map.ndjson",
+      "bytes": 95,
+      "sha256": "c7c879599017443159afde180a4c06b5229a2884842ba857a24265ddf2f80e71"
+    },
+    {
+      "artifact": "profile_canary.json",
+      "bytes": 653,
+      "sha256": "3fa99f486b0517bd3acd8f71a06beb5c4b34f6eda6513583a0e662017d9a1a72"
+    },
+    {
+      "artifact": "profile_delta_report.json",
+      "bytes": 266,
+      "sha256": "88daeeffe6f6dac7e3a972ebc5775de83d562d63ec92ea8e6fe19b3222cbec3e"
+    },
+    {
+      "artifact": "profile_enforce.json",
+      "bytes": 654,
+      "sha256": "521b1359ee8d3ba7959747d00cacfd2070022ab2dcdb2a5e4ecd66203aef007b"
+    },
+    {
+      "artifact": "quorum_plan.kv",
+      "bytes": 36,
+      "sha256": "5981549da44713e0253588c5581ba67a583d6182bccac3a643538f353364f293"
+    },
+    {
+      "artifact": "rate_limit_plan.ini",
+      "bytes": 66,
+      "sha256": "25ffa6674be0a8cc99f92ae967a279d320d2a669ff001a3ef2f30587307df47e"
+    },
+    {
+      "artifact": "report.json",
+      "bytes": 3745,
+      "sha256": "e76f13ccb2c9ac617aafd7f9254a3f8f8bf824e0950af7844c9ab058ae1ba4c5"
+    },
+    {
+      "artifact": "retention_schedule.csv",
+      "bytes": 32,
+      "sha256": "19ab4156da6b6b2a4f05347d85fdfa9c6631003278b563387742bab48fe926e1"
+    },
+    {
+      "artifact": "risk_ledger.env",
+      "bytes": 58,
+      "sha256": "92187ee9d10015cc4983ebe4ca2461278f670d24ae82e6855d346ab30636937c"
+    },
+    {
+      "artifact": "scope_reconciliation.tsv",
+      "bytes": 109,
+      "sha256": "b5ea4d206ae671c0eceb4d625ace77566ad89c77c5f88ed947e9b401cfc7e10d"
+    },
+    {
+      "artifact": "seccomp_summary.tsv",
+      "bytes": 32,
+      "sha256": "103add224042f7b724c4d007389ff38a501b2a5640b0fe31bf3926624062f091"
+    },
+    {
+      "artifact": "summary.json",
+      "bytes": 1539,
+      "sha256": "e317bf5f00eb8fbb7333efc297bbd605703f507fcd43251eeee0726889a20b1d"
+    },
+    {
+      "artifact": "tls_floor.env",
+      "bytes": 19,
+      "sha256": "9f11cc6b7c0e64ee65bd2e093ac53e6716fad7ff1ec236c08dfb950fb4e0eb3f"
+    },
+    {
+      "artifact": "tool.zip",
+      "bytes": 17310,
+      "sha256": "4aa98e025e68983e4b720c002e04996ad5a1d30056c2f82fee9377e9bb8bd7b7"
+    },
+    {
+      "artifact": "validation_report.json",
+      "bytes": 1722,
+      "sha256": "6c2ca561367225fa768c84a61e2ea7448a02a0808e0dc70df3496a8f35da96e3"
+    }
+  ],
+  "command_count": 10,
+  "deterministic": true,
+  "hash": "sha256",
+  "key_order": "sorted",
+  "newlines": "LF",
+  "rounding": "round-half-even exact integer arithmetic",
+  "tool": "task-ctl"
+}

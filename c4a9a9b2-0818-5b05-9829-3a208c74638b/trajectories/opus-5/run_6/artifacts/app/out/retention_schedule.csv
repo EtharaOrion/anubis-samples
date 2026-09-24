@@ -1,0 +1,4 @@
+profile,class,audit_retention_days
+canary,1,90
+enforce,1,90
+main,1,90

@@ -1,0 +1,5 @@
+{"scope": "admin", "uid": 1200}
+{"scope": "exec", "uid": 2600}
+{"scope": "read", "uid": 4000}
+{"scope": "sign", "uid": 2200}
+{"scope": "write", "uid": 3200}

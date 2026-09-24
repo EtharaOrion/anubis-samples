@@ -1,0 +1,122 @@
+{
+  "id": "b1bbe264-b552-4c70-8326-a5fab5dc078f",
+  "task_name": "terminal-bench/64d3d25b-74db-5ac0-a47d-f1b1073cca81",
+  "trial_name": "64d3d25b-74db-5ac0-a47d-f1b1073c__FvDUYqK",
+  "trial_uri": "file:///anubis-samples/64d3d25b-74db-5ac0-a47d-f1b1073cca81/trajectories/glm-5.3/run_3/64d3d25b-74db-5ac0-a47d-f1b1073c__FvDUYqK",
+  "task_id": {
+    "path": "/anubis-samples/64d3d25b-74db-5ac0-a47d-f1b1073cca81"
+  },
+  "source": null,
+  "task_checksum": "812d600f7767f920a8a3a7bba479740b5a8adf62d828ae462b350eb9f940a230",
+  "config": {
+    "task": {
+      "path": "/anubis-samples/64d3d25b-74db-5ac0-a47d-f1b1073cca81",
+      "git_url": null,
+      "git_commit_id": null,
+      "name": null,
+      "ref": null,
+      "overwrite": false,
+      "download_dir": null,
+      "source": null
+    },
+    "trial_name": "64d3d25b-74db-5ac0-a47d-f1b1073c__FvDUYqK",
+    "trials_dir": "/anubis-samples/64d3d25b-74db-5ac0-a47d-f1b1073cca81/trajectories/glm-5.3/run_3",
+    "install_only": false,
+    "timeout_multiplier": 1.0,
+    "agent_timeout_multiplier": null,
+    "verifier_timeout_multiplier": null,
+    "agent_setup_timeout_multiplier": 3.0,
+    "environment_build_timeout_multiplier": null,
+    "agent": {
+      "name": "openhands-sdk",
+      "import_path": null,
+      "model_name": "glm-5.3",
+      "n_concurrent": null,
+      "concurrency_group": null,
+      "skills": [],
+      "override_timeout_sec": null,
+      "override_setup_timeout_sec": null,
+      "max_timeout_sec": null,
+      "resume_trajectory": false,
+      "load_trajectory": null,
+      "extra_allowed_hosts": [
+        "172.17.0.1"
+      ],
+      "kwargs": {},
+      "env": {
+        "LLM_MODEL": "anthropic/glm-5.3",
+        "LLM_TEMPERATURE": "1.0",
+        "LLM_MAX_OUTPUT_TOKENS": "****",
+        "MAX_ITERATIONS": "350"
+      },
+      "mcp_servers": []
+    },
+    "environment": {
+      "type": "docker",
+      "import_path": null,
+      "force_build": false,
+      "delete": true,
+      "cpu_enforcement_policy": "auto",
+      "memory_enforcement_policy": "auto",
+      "override_cpus": null,
+      "override_memory_mb": null,
+      "override_storage_mb": null,
+      "override_gpus": null,
+      "override_tpu": null,
+      "mounts": null,
+      "extra_docker_compose": [],
+      "kwargs": {},
+      "extra_allowed_hosts": []
+    },
+    "verifier": {
+      "override_timeout_sec": null,
+      "max_timeout_sec": null,
+      "disable": false
+    },
+    "artifacts": [],
+    "extra_instruction_paths": [],
+    "source_trial": null
+  },
+  "agent_info": {
+    "name": "openhands-sdk",
+    "version": "1.49.4",
+    "model_info": {
+      "name": "glm-5.3",
+      "provider": null
+    }
+  },
+  "agent_result": {
+    "n_input_tokens": 10012830,
+    "n_cache_tokens": 9868480,
+    "n_output_tokens": 131461,
+    "cost_usd": 3.1442332,
+    "rollout_details": null,
+    "metadata": null
+  },
+  "verifier_result": {
+    "rewards": {
+      "reward": 0.3897058823529412
+    }
+  },
+  "verifier_environment_mode": "separate",
+  "exception_info": null,
+  "started_at": "2026-09-23T03:46:18.470026Z",
+  "finished_at": "2026-09-23T04:20:23.882769Z",
+  "environment_setup": {
+    "started_at": "2026-09-23T03:46:18.471376Z",
+    "finished_at": "2026-09-23T03:46:22.793080Z"
+  },
+  "agent_setup": {
+    "started_at": "2026-09-23T03:46:22.793109Z",
+    "finished_at": "2026-09-23T03:46:30.445448Z"
+  },
+  "agent_execution": {
+    "started_at": "2026-09-23T03:46:30.445521Z",
+    "finished_at": "2026-09-23T04:19:47.046921Z"
+  },
+  "verifier": {
+    "started_at": "2026-09-23T04:20:02.563142Z",
+    "finished_at": "2026-09-23T04:20:23.882757Z"
+  },
+  "step_results": null
+}

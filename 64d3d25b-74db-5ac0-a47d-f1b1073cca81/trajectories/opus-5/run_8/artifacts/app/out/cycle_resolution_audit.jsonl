@@ -1,0 +1,16 @@
+{"from":"OBJ01","kind":"D_RULE","to":"OBJ02","weight":10}
+{"from":"OBJ06","kind":"D_BAYSIZE","to":"OBJ05","weight":129426000000000}
+{"from":"OBJ01","kind":"D_BAYSIZE","to":"OBJ05","weight":130536000000000}
+{"from":"OBJ01","kind":"D_BAYSIZE","to":"OBJ06","weight":130536000000000}
+{"from":"OBJ10","kind":"D_BAYSIZE","to":"OBJ01","weight":21994875000000000}
+{"from":"OBJ10","kind":"D_BAYSIZE","to":"OBJ05","weight":21994875000000000}
+{"from":"OBJ10","kind":"D_BAYSIZE","to":"OBJ06","weight":21994875000000000}
+{"from":"OBJ11","kind":"D_BAYSIZE","to":"OBJ01","weight":16416225000000000}
+{"from":"OBJ11","kind":"D_BAYSIZE","to":"OBJ05","weight":16416225000000000}
+{"from":"OBJ11","kind":"D_BAYSIZE","to":"OBJ06","weight":16416225000000000}
+{"from":"OBJ02","kind":"D_BAYSIZE","to":"OBJ04","weight":160380000000000}
+{"from":"OBJ07","kind":"D_BAYSIZE","to":"OBJ04","weight":146160000000000}
+{"from":"OBJ07","kind":"D_BAYSIZE","to":"OBJ09","weight":146160000000000}
+{"from":"OBJ02","kind":"D_BAYSIZE","to":"OBJ09","weight":160380000000000}
+{"from":"OBJ04","kind":"D_BAYSIZE","to":"OBJ09","weight":100352000000000}
+{"from":"OBJ12","kind":"D_BAYSIZE","to":"OBJ09","weight":16482375000000000}

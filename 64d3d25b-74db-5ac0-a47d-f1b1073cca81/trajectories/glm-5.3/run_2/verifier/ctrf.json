@@ -1,0 +1,399 @@
+{
+  "results": {
+    "tool": {
+      "name": "pytest"
+    },
+    "summary": {
+      "tests": 76,
+      "passed": 36,
+      "failed": 40,
+      "pending": 0,
+      "skipped": 0,
+      "other": 0,
+      "overall_score": 0.375,
+      "weighted_percentage": 37.5
+    },
+    "tests": [
+      {
+        "name": "test_all_declared_artifacts_exist",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_json_artifacts_parse",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_jsonl_artifacts_parse_line_by_line",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_program_is_a_runnable_script",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_jsonl_serialization_is_canonical",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_json_serialization_is_canonical",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_geometry_ratios_are_reduced_fractions",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_placement_codes_in_enum",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_crate_codes_in_enum",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_integrity_manifest_covers_declared_set",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_final_state_has_required_keys",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_objective_tuple_has_five_components",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_canonical_objects_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_normalized_geometry_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_admissibility_matrix_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_bay_candidate_matrix_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_selected_placement_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_rejected_placement_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_conservation_adjusted_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_crate_candidate_matrix_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_crate_capacity_ledger_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_transport_leg_manifest_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_dependency_edges_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_crew_requirement_ledger_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_install_window_table_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_gallery_occupancy_map_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_manifest_digests_match_files",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_final_state_chain_folds_manifest",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_scheduled_objects_have_window",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_displaced_have_contention_row",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_install_order_is_permutation",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_occupancy_matches_placement",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_crate_assignment_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_crate_contention_report_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_cycle_resolution_audit_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_install_order_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_unschedulable_report_match",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_deterministic_audit_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_penalty_summary_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_objective_tuple_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_final_state_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_integrity_manifest_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_visible_repair_actually_happened",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_objective_recomputed_from_raw_outputs",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_conservation_overturned_a_placement",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_hidden_a_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_hidden_b_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_tier_03_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_tier_04_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_tier_05_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_tier_06_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_tier_07_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_tier_08_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_tier_09_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_tier_10_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_tier_11_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_tier_12_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_tier_13_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_tier_14_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_tier_15_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_tier_16_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_tier_17_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_tier_18_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_tier_19_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_tier_20_fullset_match",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_fixture_zero_width_sentinel",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_fixture_single_orientation",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_fixture_exact_bay_boundary",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_fixture_crate_exhaustion",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_fixture_conservation_overturn",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_fixture_cycle_after_conservation",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_fixture_halfway_rounding",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_hardcoded_sample_answers",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_reads_training_corpus_at_runtime",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_filename_dependent_behaviour",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_nondeterministic_output",
+        "status": "failed",
+        "duration": 0
+      }
+    ]
+  }
+}

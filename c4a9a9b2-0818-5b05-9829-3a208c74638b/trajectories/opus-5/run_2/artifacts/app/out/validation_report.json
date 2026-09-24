@@ -1,0 +1,90 @@
+{
+  "artifacts": {
+    "admission_matrix.csv": {
+      "present": true
+    },
+    "class_ordering.tsv": {
+      "present": true
+    },
+    "config.json": {
+      "present": true
+    },
+    "convergence_report.txt": {
+      "present": true
+    },
+    "derivation_audit.xml": {
+      "present": true
+    },
+    "hardening_fold_trace.psv": {
+      "present": true
+    },
+    "input_census.ndjson": {
+      "present": true
+    },
+    "precedence_resolution.properties": {
+      "present": true
+    },
+    "privilege_map.ndjson": {
+      "present": true
+    },
+    "profile_canary.json": {
+      "present": true
+    },
+    "profile_delta_report.json": {
+      "present": true
+    },
+    "profile_enforce.json": {
+      "present": true
+    },
+    "quorum_plan.kv": {
+      "present": true
+    },
+    "rate_limit_plan.ini": {
+      "present": true
+    },
+    "report.json": {
+      "present": true
+    },
+    "reproducibility_manifest.json": {
+      "present": true
+    },
+    "retention_schedule.csv": {
+      "present": true
+    },
+    "risk_ledger.env": {
+      "present": true
+    },
+    "scope_reconciliation.tsv": {
+      "present": true
+    },
+    "seccomp_summary.tsv": {
+      "present": true
+    },
+    "summary.json": {
+      "present": true
+    },
+    "tls_floor.env": {
+      "present": true
+    },
+    "tool.zip": {
+      "present": true
+    },
+    "validation_report.json": {
+      "present": true
+    }
+  },
+  "config_flat": true,
+  "float_keys": [],
+  "forbidden_keys_present": [],
+  "missing_artifacts": [],
+  "missing_keys": [],
+  "non_scalar_keys": [],
+  "ok": true,
+  "oversize_artifacts": [],
+  "profiles_checked": [
+    "canary",
+    "enforce"
+  ],
+  "size_limit_bytes": 1048576,
+  "trailer": "harbor:cli-config:TASK:000000002e552977"
+}

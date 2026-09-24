@@ -1,42 +1,59 @@
 task-ctl convergence report
-profile=TASK control_plane=admission-broker mode=strict-local
-trailer=harbor:cli-config:TASK:000000002e552977
-active_class=1 (budget=50 % span=185)
+=========================
+active enforcement class : 1
+base budget selector     : 50 of span 185
+arithmetic               : exact integer, round-half-even (banker's)
+floating point in graded values : none
 
-ingress: qps=240 burst_permille=1250 scaled=300 step=25 -> rate_limit=300 ; window=3 -> burst_ceiling=900
-scopes: base=list,read,write overlay=exec deny=admin -> effective=exec,list,read,write (count=4)
-privilege: uid_floor=1000 granted=2600,3200,3800,4000 -> privilege_drop_uid=2600
-hardening: fold_score=104 bounds=[40,90] clamped=90 step=5 -> baseline=90
-risk: (100 - 90) * 1000 / 1000 -> risk_index=10
-quorum: voters=5 permille=667 -> threshold=3
-tls_floor_score=80 seccomp_allowed_count=6 audit_retention_days=90
-retry: timeout_ms=2359 retry_limit=6 step=10 -> retry_backoff_base_ms=2060
+resolved graded values
+----------------------
+active_class = 1
+audit_retention_days = 90
+burst_ceiling = 900
+checksum = crc32
+control_plane = admission-broker
+effective_scope_count = 4
+enforcement_profile = main
+hardening_baseline = 85
+image_runtime = oci-runc
+ingress_rate_limit_qps = 300
+max_concurrent_sessions = 96
+mode = strict-local
+nonce_window_ms = 500
+privilege_drop_uid = 2600
+profile = TASK
+quorum_threshold = 3
+retry_backoff_base_ms = 2060
+risk_index = 15
+seccomp_allowed_count = 6
+session_ttl_seconds = 3000
+tls_floor_score = 80
+trailer = harbor:cli-config:TASK:000000002e552977
 
-precedence resolution:
-  session_ttl_seconds default=1800 resolved=3000 source=layer_override pinned=false
-  nonce_window_ms default=400 resolved=500 source=layer_override pinned=false
-  max_concurrent_sessions default=64 resolved=96 source=layer_override pinned=false
+profile deltas
+--------------
+canary: ttl_scale_permille=750 -> session_ttl_seconds=2250, quorum_threshold=4, risk_index=17
+enforce: ttl_scale_permille=1200 -> session_ttl_seconds=3600, quorum_threshold=3, risk_index=14
 
-mirror cross-checks: 20/20 agreed
-  OK bounds_alt.fixed (bounds=(40, 90))
-  OK burst_alt.properties (permille=1250)
-  OK burst_mirror.hex2 (permille=1250)
-  OK controls_alt.psv3 (weight_sum=82)
-  OK gran_mirror.fixed2 (gran=25)
-  OK ingress_alt.jsonl2 (qps=240)
-  OK ingress_mirror.pipe (qps=240)
-  OK privilege_bits.b64 (uid=2600)
-  OK quorum_mirror.rst2 (permille=667)
-  OK retention_alt.kv2 (days=90)
-  OK retention_mirror.psv4 (days=90)
-  OK risk_curve.sexp (permille=1000)
-  OK scope_census.edn ({:class 1 :base 3 :overlay 1 :deny 1 :status "ADOPTED"})
-  OK scopecount_mirror.tsv3 (scopes=4)
-  OK seccomp_allow.tsv (count=6)
-  OK severity_mirror.caret2 (permille=1000)
-  OK tls_mirror.tilde3 (score=80)
-  OK voter_roster.html2 (voters=5)
-  OK voters_mirror.kv4 (voters=5)
-  OK window_mirror.scsv3 (window=3)
+artifact digests
+----------------
+admission_matrix.csv sha256=ec6cb4579684b45cf0bfd0ce2de3a42c9578aed6f32f6d3abf2969d290ffdfdd
+class_ordering.tsv sha256=c38d2693b9d6742aee623a4e5ed07867165318901256c83f09610b2ef61acca3
+config.json sha256=d043bb1de0b75656a6f24be9d05f4a286a739694cd05c905a183a3a559ca8bd9
+hardening_fold_trace.psv sha256=7b127c71dce23527e9edae3c1751c947c8b5fdddf8dc8e9075ac95387e0b6a62
+precedence_resolution.properties sha256=358d7b725a8695cc2d84e4f37b8ff9ea5c0a8800cd9e1bc8effb4d1bd345a2fc
+privilege_map.ndjson sha256=cc1723f66b5d862b13d96df9e4b49711668b3fd483d6099c801e38c23686ee9b
+profile_canary.json sha256=33cf47afca89cae3dd00d7f06d112d84ccf26ac81c447d28bfda16e3263e19b7
+profile_delta_report.json sha256=c302a031f69999479b1ff2e5be7b8bfa14d786823e9a8fd49038e23ad82a6d3a
+profile_enforce.json sha256=36137fcb41e2b2d297857e25ea0beaa74642829f2c391e3e7f0574f41e49ecde
+quorum_plan.kv sha256=11c6067b97d55800e3545818b7ea27b5cabc9cd0205eccee2d985beb735b1c9e
+rate_limit_plan.ini sha256=ca3950730cd43187a2d14d47a2d142bdd96749e4e35d7f0f06f3ec910850fcc4
+report.json sha256=8a1bf2308d1ead5ad44d67509fafb63513faf2d96b280187f8e72ca9ddc76fa6
+retention_schedule.csv sha256=6ebdfaf13f37807f8552a08c37490a3de6f2a8be05dc91cafce4daa07e14b867
+risk_ledger.env sha256=e5cecfb5f7fc06056bc7c19f545658924f0fde576247ff313096532aceb33afe
+scope_reconciliation.tsv sha256=61f258364525c1d49da3bfc18e82f5a1a51bc368f1a5ff37b0bbe99951440e18
+seccomp_summary.tsv sha256=cbc4b5a42e9fbba3d0f264828fd390f99cdef79ce0cd92717a08dfae2163dac9
+tls_floor.env sha256=4995e1e53820cbd49e52b8a381e340de5dbf493de6f439e390fadbd8caa7f0ef
+tool.zip sha256=a2e498eed8979959688a8c3434ca2bac9e221c684d9e9066998fdc87cdfb1b53
 
 status: converged

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<derivation_audit>
+  <active_class>1</active_class>
+  <selector>50</selector>
+  <rounding>half-even</rounding>
+  <fields>
+    <field name="active_class">1</field>
+    <field name="audit_retention_days">90</field>
+    <field name="burst_ceiling">900</field>
+    <field name="checksum">crc32</field>
+    <field name="control_plane">admission-broker</field>
+    <field name="effective_scope_count">4</field>
+    <field name="enforcement_profile">main</field>
+    <field name="hardening_baseline">90</field>
+    <field name="image_runtime">oci-runc</field>
+    <field name="ingress_rate_limit_qps">300</field>
+    <field name="max_concurrent_sessions">96</field>
+    <field name="mode">strict-local</field>
+    <field name="nonce_window_ms">500</field>
+    <field name="privilege_drop_uid">2600</field>
+    <field name="profile">TASK</field>
+    <field name="quorum_threshold">3</field>
+    <field name="retry_backoff_base_ms">330</field>
+    <field name="risk_index">10</field>
+    <field name="seccomp_allowed_count">6</field>
+    <field name="session_ttl_seconds">3000</field>
+    <field name="tls_floor_score">80</field>
+    <field name="trailer">harbor:cli-config:TASK:000000002e552977</field>
+  </fields>
+  <steps>
+    <step name="class_selection">max_records 235 -&gt; selector 50 -&gt; class 1</step>
+    <step name="ingress_rate_limit_qps">rhe(240*1250/1000)=300 quantize 25 -&gt; 300</step>
+    <step name="burst_ceiling">300*3=900</step>
+    <step name="effective_scope_count">(base|overlay)-deny = exec,list,read,write -&gt; 4</step>
+    <step name="privilege_drop_uid">min granted uid 2600 floor 1000 -&gt; 2600</step>
+    <step name="hardening_baseline">carry-aware fold 90 clamp[40,90] quantize 5 -&gt; 90</step>
+    <step name="risk_index">rhe((100-90)*1000/1000)=10</step>
+    <step name="quorum_threshold">rhe(5*667/1000) bounded[1,5] -&gt; 3</step>
+    <step name="tls_floor_score">min enabled adopted suite score -&gt; 80</step>
+    <step name="seccomp_allowed_count">allow 6 minus deny 1 -&gt; 6</step>
+    <step name="audit_retention_days">class retention layer -&gt; 90</step>
+    <step name="session_ttl_seconds">layer_overrides -&gt; 3000</step>
+    <step name="nonce_window_ms">layer_overrides floor 100 -&gt; 500</step>
+    <step name="max_concurrent_sessions">layer_overrides ceiling 512 -&gt; 96</step>
+    <step name="retry_backoff_base_ms">rhe(2359/7)=337 quantize 10 -&gt; 330</step>
+  </steps>
+  <trailer>harbor:cli-config:TASK:000000002e552977</trailer>
+</derivation_audit>

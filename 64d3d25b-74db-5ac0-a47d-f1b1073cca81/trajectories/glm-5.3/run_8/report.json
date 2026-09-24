@@ -1,0 +1,562 @@
+{
+  "model": "glm-5.3",
+  "run_index": 8,
+  "pytest": {
+    "passed": 36,
+    "failed": 40,
+    "exit_code": 1,
+    "reward": 0.3971,
+    "tests": [
+      {
+        "name": "test_all_declared_artifacts_exist",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_json_artifacts_parse",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_jsonl_artifacts_parse_line_by_line",
+        "weight": 1.0,
+        "passed": false
+      },
+      {
+        "name": "test_program_is_a_runnable_script",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_jsonl_serialization_is_canonical",
+        "weight": 1.0,
+        "passed": false
+      },
+      {
+        "name": "test_json_serialization_is_canonical",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_geometry_ratios_are_reduced_fractions",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_placement_codes_in_enum",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_crate_codes_in_enum",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_integrity_manifest_covers_declared_set",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_final_state_has_required_keys",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_objective_tuple_has_five_components",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_canonical_objects_match",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_normalized_geometry_match",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_admissibility_matrix_match",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_bay_candidate_matrix_match",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_selected_placement_match",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_rejected_placement_match",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_conservation_adjusted_match",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_crate_candidate_matrix_match",
+        "weight": 3.0,
+        "passed": false
+      },
+      {
+        "name": "test_crate_capacity_ledger_match",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_transport_leg_manifest_match",
+        "weight": 3.0,
+        "passed": false
+      },
+      {
+        "name": "test_dependency_edges_match",
+        "weight": 3.0,
+        "passed": false
+      },
+      {
+        "name": "test_crew_requirement_ledger_match",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_install_window_table_match",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_gallery_occupancy_map_match",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_manifest_digests_match_files",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_final_state_chain_folds_manifest",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_scheduled_objects_have_window",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_displaced_have_contention_row",
+        "weight": 3.0,
+        "passed": false
+      },
+      {
+        "name": "test_install_order_is_permutation",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_occupancy_matches_placement",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_visible_crate_assignment_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_visible_crate_contention_report_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_visible_cycle_resolution_audit_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_visible_install_order_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_visible_unschedulable_report_match",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_visible_deterministic_audit_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_visible_penalty_summary_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_visible_objective_tuple_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_visible_final_state_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_visible_integrity_manifest_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_visible_repair_actually_happened",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_objective_recomputed_from_raw_outputs",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_conservation_overturned_a_placement",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_hidden_a_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_hidden_b_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_tier_03_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_tier_04_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_tier_05_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_tier_06_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_tier_07_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_tier_08_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_tier_09_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_tier_10_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_tier_11_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_tier_12_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_tier_13_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_tier_14_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_tier_15_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_tier_16_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_tier_17_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_tier_18_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_tier_19_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_tier_20_fullset_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_fixture_zero_width_sentinel",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_fixture_single_orientation",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_fixture_exact_bay_boundary",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_fixture_crate_exhaustion",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_fixture_conservation_overturn",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_fixture_cycle_after_conservation",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_fixture_halfway_rounding",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_negative_weight_hardcoded_sample_answers",
+        "weight": -5.0,
+        "passed": false
+      },
+      {
+        "name": "test_negative_weight_reads_training_corpus_at_runtime",
+        "weight": -5.0,
+        "passed": false
+      },
+      {
+        "name": "test_negative_weight_filename_dependent_behaviour",
+        "weight": -5.0,
+        "passed": false
+      },
+      {
+        "name": "test_negative_weight_nondeterministic_output",
+        "weight": -3.0,
+        "passed": false
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "number": "R1",
+      "criterion": "The agent writes a file under the input data directory.",
+      "type": "instruction following",
+      "evaluation_target": "state_change",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R2",
+      "criterion": "The response states the scheduled install count, the number of crate displacements and the objective tuple, and each stated figure agrees with the value in the delivered files.",
+      "type": "instruction following",
+      "evaluation_target": "user_facing_message",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R3",
+      "criterion": "The agent leaves a scratch, backup, note or log file in the output directory beside the declared deliverables.",
+      "type": "instruction following",
+      "evaluation_target": "state_change",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R4",
+      "criterion": "The agent reads the specification documents in the data directory before writing the program.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R5",
+      "criterion": "The response separates the results the agent confirmed by running the program from the results it confirmed only by reading.",
+      "type": "instruction following",
+      "evaluation_target": "user_facing_message",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R6",
+      "criterion": "The agent shows the executed command and its printed output confirming every declared deliverable exists under the output directory in the required record shape, one sorted key object per line for a jsonl file and a sorted key indented object for a json file; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "tool use",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R7",
+      "criterion": "The agent shows the executed command and its printed output demonstrating that a second run of the program on the same snapshot produces byte identical deliverables; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "tool use",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R8",
+      "criterion": "The agent reports the determinism rerun as done while the executed command and its output are absent from the trajectory.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": -5,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R9",
+      "criterion": "The agent runs its program against its own constructed snapshot that places an object with its footprint depth exactly equal to a bay interior depth, prints how the resulting placement diverges from an inclusive reading of that axis, and names the depth exclusive boundary rule that produced the divergence; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "tool use",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The synthetic `Y2` case had clearance depth exactly 1,000,000 \u00b5m and printed `fits:false`, but the executed output did not print a comparison to the inclusive result or explicitly name the \u201cdepth exclusive\u201d rule. The later prose description cannot replace the required printed test output."
+    },
+    {
+      "number": "R10",
+      "criterion": "The agent recomputes the folded chain in final_state.json from the integrity manifest digests and prints its own chain value beside the delivered one; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "tool use",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The agent recomputed the chain and printed only `chain matches: True`; it did not print the independently computed chain value beside the delivered value."
+    },
+    {
+      "number": "R11",
+      "criterion": "The agent exercises a centimetre object and prints its micrometre dimensions showing the centimetre scale factor of ten thousand was applied; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "tool use",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The agent printed OBJ03\u2019s clearance dimensions and aspect ratio after hard-coded centimetre conversion, but did not print its raw converted micrometre dimensions (490000, 470000, 430000) or an explicit output demonstrating the 10,000 scale factor."
+    },
+    {
+      "number": "R12",
+      "criterion": "The agent recomputes the sha256 digests of the delivered artifacts and prints them beside the integrity manifest entries; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "tool use",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The recomputation command printed only `all digests match: True` and the manifest name list. It did not print each recomputed digest beside its corresponding manifest digest."
+    },
+    {
+      "number": "R13",
+      "criterion": "The agent reports the geometry only selected bay as the final placement for an object that the conservation pass moved to a different bay.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R14",
+      "criterion": "The agent assigns an object its locally smallest crate that the shared capacity rule reassigns to a different class.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R15",
+      "criterion": "The agent prints the fitting crate candidate space it searched and the displacement the shared capacity rule resolved for a contended object; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "tool use",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R16",
+      "criterion": "The agent reports a truncated setup value for an object whose setup rounds up under the round half up rule.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    }
+  ],
+  "final_reward": 49.86,
+  "test_weights_percentage": 39.71,
+  "rubric_weights_percentage": 60.0,
+  "evaluated_by": "sugam.agrawal@ethara.ai"
+}

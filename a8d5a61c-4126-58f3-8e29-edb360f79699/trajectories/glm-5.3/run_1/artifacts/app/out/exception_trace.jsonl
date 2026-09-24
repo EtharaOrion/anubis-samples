@@ -10,8 +10,8 @@
 {"code":"B_UNIT_ROUND_TIE","ref":"S14"}
 {"code":"B_FLOOR_BIND","ref":"PH1"}
 {"code":"B_FLOOR_BIND","ref":"PH2"}
-{"code":"B_CAP_BIND","ref":"PH2"}
 {"code":"B_FLOOR_BIND","ref":"PH3"}
+{"code":"B_CAP_BIND","ref":"PH2"}
 {"code":"B_CYCLE_BREAK","ref":"E3"}
 {"code":"B_GLOBAL_CLAWBACK","ref":"S04"}
 {"code":"B_GLOBAL_CLAWBACK","ref":"S08"}

@@ -1,0 +1,163 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "task-ctl",
+        "init",
+        "--schema",
+        "/app/data/config_schema.json",
+        "--out",
+        "/app/out/config.json"
+      ],
+      "exit_code": 0,
+      "stdout": "initialized"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "derive",
+        "--schema",
+        "/app/data/config_schema.json",
+        "--out",
+        "/app/out/config.json"
+      ],
+      "exit_code": 0,
+      "stdout": "derived"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "init",
+        "--schema",
+        "/app/data/config_schema.json",
+        "--out",
+        "/tmp/taskctl-scratch/scratch_config.json"
+      ],
+      "exit_code": 0,
+      "note": "scratch copy used to demonstrate repaired scalar coercion",
+      "stdout": "initialized"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/tmp/taskctl-scratch/scratch_config.json",
+        "--key",
+        "RISK_INDEX",
+        "--value",
+        "12"
+      ],
+      "exit_code": 0,
+      "note": "scratch copy; key lower-cased and value coerced to an integer scalar",
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "validate",
+        "--schema",
+        "/app/data/config_schema.json",
+        "--config",
+        "/tmp/taskctl-scratch/scratch_config.json"
+      ],
+      "exit_code": 1,
+      "note": "scratch copy is intentionally incomplete: only scalar coercion is demonstrated",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "validate",
+        "--schema",
+        "/app/data/config_schema.json",
+        "--config",
+        "/app/out/config.json"
+      ],
+      "exit_code": 0,
+      "stdout": "ok"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "profile",
+        "--name",
+        "canary",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/profile_canary.json"
+      ],
+      "exit_code": 0,
+      "stdout": "profiled"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "profile",
+        "--name",
+        "enforce",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/profile_enforce.json"
+      ],
+      "exit_code": 0,
+      "stdout": "profiled"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "artifacts",
+        "--outdir",
+        "/app/out",
+        "--commands",
+        "/tmp/taskctl-scratch/commands.json"
+      ],
+      "exit_code": 0,
+      "stdout": "artifacts"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "export-report",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/report.json",
+        "--commands",
+        "/tmp/taskctl-scratch/commands.json"
+      ],
+      "exit_code": 0,
+      "stdout": "reported"
+    }
+  ],
+  "config": {
+    "active_class": 0,
+    "audit_retention_days": 30,
+    "burst_ceiling": 400,
+    "checksum": "crc32",
+    "control_plane": "admission-broker",
+    "effective_scope_count": 3,
+    "enforcement_profile": "main",
+    "hardening_baseline": 85,
+    "image_runtime": "oci-runc",
+    "ingress_rate_limit_qps": 200,
+    "max_concurrent_sessions": 40,
+    "mode": "strict-local",
+    "nonce_window_ms": 300,
+    "privilege_drop_uid": 3600,
+    "profile": "TASK",
+    "quorum_threshold": 2,
+    "retry_backoff_base_ms": 2060,
+    "risk_index": 12,
+    "seccomp_allowed_count": 5,
+    "session_ttl_seconds": 2100,
+    "tls_floor_score": 70,
+    "trailer": "harbor:cli-config:TASK:000000002e552977"
+  },
+  "config_sha256": "51a8b493e8f33b8a013d14b17899d53c98f25ac3c46fe6352b76f7408d8e78be",
+  "ok": true,
+  "rounding": "round-half-even exact integer arithmetic",
+  "trailer": "harbor:cli-config:TASK:000000002e552977"
+}

@@ -1,16 +1,16 @@
 {
-  "id": "5ef5a53a-e1f5-4baa-b905-0ae014086d14",
+  "id": "ba78fa04-065f-4ebf-bd24-8e30d895e9f0",
   "task_name": "terminal-bench/c4a9a9b2-0818-5b05-9829-3a208c74638b",
-  "trial_name": "c4a9a9b2-0818-5b05-9829-3a208c74__yXNHySv",
-  "trial_uri": "file:///Users/macbookpro/Desktop/Anubis_QC_22_Sept/anubis-samples/c4a9a9b2-0818-5b05-9829-3a208c74638b/trajectories/glm-5.3/run_1/c4a9a9b2-0818-5b05-9829-3a208c74__yXNHySv",
+  "trial_name": "c4a9a9b2-0818-5b05-9829-3a208c74__HWpUh8i",
+  "trial_uri": "file:///anubis-samples/c4a9a9b2-0818-5b05-9829-3a208c74638b/trajectories/glm-5.3/run_1/c4a9a9b2-0818-5b05-9829-3a208c74__HWpUh8i",
   "task_id": {
-    "path": "/Users/macbookpro/Desktop/Anubis_QC_22_Sept/anubis-samples/c4a9a9b2-0818-5b05-9829-3a208c74638b"
+    "path": "/anubis-samples/c4a9a9b2-0818-5b05-9829-3a208c74638b"
   },
   "source": null,
-  "task_checksum": "e0180ad06eb1263d1e6900d896efc69bd22e1731f1676004e71c44f52a0b596d",
+  "task_checksum": "17467f7a343df49c0fbc6d5d78af17350f17b7858089259379b7da43fdf4ee8a",
   "config": {
     "task": {
-      "path": "/Users/macbookpro/Desktop/Anubis_QC_22_Sept/anubis-samples/c4a9a9b2-0818-5b05-9829-3a208c74638b",
+      "path": "/anubis-samples/c4a9a9b2-0818-5b05-9829-3a208c74638b",
       "git_url": null,
       "git_commit_id": null,
       "name": null,
@@ -19,13 +19,13 @@
       "download_dir": null,
       "source": null
     },
-    "trial_name": "c4a9a9b2-0818-5b05-9829-3a208c74__yXNHySv",
-    "trials_dir": "/Users/macbookpro/Desktop/Anubis_QC_22_Sept/anubis-samples/c4a9a9b2-0818-5b05-9829-3a208c74638b/trajectories/glm-5.3/run_1",
+    "trial_name": "c4a9a9b2-0818-5b05-9829-3a208c74__HWpUh8i",
+    "trials_dir": "/anubis-samples/c4a9a9b2-0818-5b05-9829-3a208c74638b/trajectories/glm-5.3/run_1",
     "install_only": false,
     "timeout_multiplier": 1.0,
     "agent_timeout_multiplier": null,
     "verifier_timeout_multiplier": null,
-    "agent_setup_timeout_multiplier": null,
+    "agent_setup_timeout_multiplier": 3.0,
     "environment_build_timeout_multiplier": null,
     "agent": {
       "name": "openhands-sdk",
@@ -44,7 +44,6 @@
       ],
       "kwargs": {},
       "env": {
-        "LLM_NUM_RETRIES": "8",
         "LLM_MODEL": "anthropic/glm-5.3",
         "LLM_TEMPERATURE": "1.0",
         "LLM_MAX_OUTPUT_TOKENS": "****",
@@ -87,10 +86,10 @@
     }
   },
   "agent_result": {
-    "n_input_tokens": 11408128,
-    "n_cache_tokens": 11229248,
-    "n_output_tokens": 76052,
-    "cost_usd": 3.25423328,
+    "n_input_tokens": 10671999,
+    "n_cache_tokens": 10490816,
+    "n_output_tokens": 63502,
+    "cost_usd": 3.00702096,
     "rollout_details": null,
     "metadata": null
   },
@@ -101,23 +100,23 @@
   },
   "verifier_environment_mode": "separate",
   "exception_info": null,
-  "started_at": "2026-09-22T17:52:14.002333Z",
-  "finished_at": "2026-09-22T18:10:04.942856Z",
+  "started_at": "2026-09-24T08:42:48.579391Z",
+  "finished_at": "2026-09-24T09:03:19.012136Z",
   "environment_setup": {
-    "started_at": "2026-09-22T17:52:14.036258Z",
-    "finished_at": "2026-09-22T17:52:18.228722Z"
+    "started_at": "2026-09-24T08:42:48.581339Z",
+    "finished_at": "2026-09-24T08:42:52.663172Z"
   },
   "agent_setup": {
-    "started_at": "2026-09-22T17:52:18.228770Z",
-    "finished_at": "2026-09-22T17:52:25.718577Z"
+    "started_at": "2026-09-24T08:42:52.663200Z",
+    "finished_at": "2026-09-24T08:43:00.578899Z"
   },
   "agent_execution": {
-    "started_at": "2026-09-22T17:52:25.718684Z",
-    "finished_at": "2026-09-22T18:09:30.316964Z"
+    "started_at": "2026-09-24T08:43:00.578977Z",
+    "finished_at": "2026-09-24T09:02:44.557086Z"
   },
   "verifier": {
-    "started_at": "2026-09-22T18:09:44.673046Z",
-    "finished_at": "2026-09-22T18:10:04.942843Z"
+    "started_at": "2026-09-24T09:02:59.492478Z",
+    "finished_at": "2026-09-24T09:03:19.012125Z"
   },
   "step_results": null
 }

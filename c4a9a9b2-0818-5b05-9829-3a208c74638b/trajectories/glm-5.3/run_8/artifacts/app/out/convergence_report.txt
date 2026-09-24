@@ -1,0 +1,20 @@
+convergence report
+==================
+active_class=4
+selector=1410
+ingress_rate_limit_qps=875
+burst_ceiling=8750
+effective_scope_count=5
+privilege_drop_uid=1200
+hardening_baseline=95
+risk_index=10
+quorum_threshold=6
+tls_floor_score=95
+seccomp_allowed_count=3
+audit_retention_days=365
+session_ttl_seconds=720
+nonce_window_ms=800
+max_concurrent_sessions=16
+retry_backoff_base_ms=16510
+trailer=harbor:cli-config:TASK:000000002e552977
+status=converged

@@ -1,0 +1,93 @@
+{
+  "checks": [
+    {
+      "check": "required_keys_present",
+      "detail": [],
+      "ok": true
+    },
+    {
+      "check": "configuration_flat",
+      "detail": [],
+      "ok": true
+    },
+    {
+      "check": "no_forbidden_keys",
+      "detail": [],
+      "ok": true
+    },
+    {
+      "check": "trailer_canonical",
+      "detail": [],
+      "ok": true
+    },
+    {
+      "check": "trailer_in_profiles",
+      "detail": [],
+      "ok": true
+    },
+    {
+      "check": "scope_count_matches_reconciliation",
+      "detail": [],
+      "ok": true
+    },
+    {
+      "check": "privilege_map_line_count",
+      "detail": [],
+      "ok": true
+    },
+    {
+      "check": "privilege_uid_at_or_above_floor",
+      "detail": [],
+      "ok": true
+    },
+    {
+      "check": "privilege_uid_is_floored_minimum",
+      "detail": [],
+      "ok": true
+    },
+    {
+      "check": "privilege_uid_witness_agrees",
+      "detail": [],
+      "ok": true
+    },
+    {
+      "check": "hardening_within_bounds",
+      "detail": [],
+      "ok": true
+    },
+    {
+      "check": "quorum_bounded",
+      "detail": [],
+      "ok": true
+    },
+    {
+      "check": "profiles_present",
+      "detail": [],
+      "ok": true
+    },
+    {
+      "check": "profiles_keep_flat",
+      "detail": [],
+      "ok": true
+    },
+    {
+      "check": "class_ordering_sorted",
+      "detail": [],
+      "ok": true
+    },
+    {
+      "check": "required_artifacts_written",
+      "detail": [],
+      "ok": true
+    },
+    {
+      "check": "artifacts_within_size_limit",
+      "detail": [],
+      "ok": true
+    }
+  ],
+  "commands": 10,
+  "config_sha256": "9cc30edec97c557654c95fea7d2447d97e0ec9f1e909eacb7899197b38290246",
+  "inputs_hashed": 56,
+  "ok": true
+}

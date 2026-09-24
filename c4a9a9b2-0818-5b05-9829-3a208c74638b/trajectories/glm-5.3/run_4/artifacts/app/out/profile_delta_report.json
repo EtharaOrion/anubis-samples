@@ -1,0 +1,59 @@
+{
+  "profiles": {
+    "canary": {
+      "deltas": {
+        "enforcement_profile": {
+          "base": "main",
+          "profile": "canary"
+        },
+        "profile": {
+          "base": "TASK",
+          "profile": "canary"
+        },
+        "quorum_threshold": {
+          "base": 2,
+          "delta": 1,
+          "profile": 3
+        },
+        "risk_index": {
+          "base": 8,
+          "delta": 2,
+          "profile": 10
+        },
+        "session_ttl_seconds": {
+          "base": 2100,
+          "delta": -525,
+          "profile": 1575
+        }
+      },
+      "quorum_delta": 1,
+      "risk_delta": 2,
+      "ttl_scale_permille": 750
+    },
+    "enforce": {
+      "deltas": {
+        "enforcement_profile": {
+          "base": "main",
+          "profile": "enforce"
+        },
+        "profile": {
+          "base": "TASK",
+          "profile": "enforce"
+        },
+        "risk_index": {
+          "base": 8,
+          "delta": -1,
+          "profile": 7
+        },
+        "session_ttl_seconds": {
+          "base": 2100,
+          "delta": 420,
+          "profile": 2520
+        }
+      },
+      "quorum_delta": 0,
+      "risk_delta": -1,
+      "ttl_scale_permille": 1200
+    }
+  }
+}

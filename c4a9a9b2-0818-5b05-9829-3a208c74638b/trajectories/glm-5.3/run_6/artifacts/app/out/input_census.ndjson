@@ -1,0 +1,25 @@
+{"layer": "defaults.json", "role": "base budget, contract strings, precedence defaults", "rows_read": 18, "status": "ADOPTED"}
+{"layer": "class_index.tsv2", "role": "active class selector ranges", "rows_read": 205, "status": "ADOPTED"}
+{"layer": "ingress_rate.tsv", "role": "per-class throughput", "rows_read": 210, "status": "ADOPTED"}
+{"layer": "burst_multiplier.ini", "role": "burst factor and window", "rows_read": 40, "status": "ADOPTED"}
+{"layer": "window_seconds.conf", "role": "per-class window cross-check", "rows_read": 209, "status": "ADOPTED"}
+{"layer": "rate_gran.caret", "role": "rate quantisation step", "rows_read": 205, "status": "ADOPTED"}
+{"layer": "scope_base.jsonl", "role": "base scope grants", "rows_read": 205, "status": "ADOPTED"}
+{"layer": "scope_overlay.ndjson", "role": "overlay scope grants", "rows_read": 205, "status": "ADOPTED"}
+{"layer": "scope_deny.psv", "role": "deny scope revocations", "rows_read": 210, "status": "ADOPTED"}
+{"layer": "uid_map.env", "role": "scope uid map", "rows_read": 203, "status": "ADOPTED"}
+{"layer": "uid_floor.hex", "role": "privilege-drop uid floor", "rows_read": 205, "status": "ADOPTED"}
+{"layer": "baseline_controls.scsv", "role": "ordered hardening controls", "rows_read": 210, "status": "ADOPTED"}
+{"layer": "hardening_bounds.toml", "role": "hardening clamp bounds", "rows_read": 40, "status": "ADOPTED"}
+{"layer": "risk_const.env2", "role": "risk constants", "rows_read": 209, "status": "ADOPTED"}
+{"layer": "severity_weight.kv", "role": "per-class severity weight", "rows_read": 209, "status": "ADOPTED"}
+{"layer": "voter_health.ndjson", "role": "voter health", "rows_read": 210, "status": "ADOPTED"}
+{"layer": "quorum_permille.tilde", "role": "quorum permille", "rows_read": 205, "status": "ADOPTED"}
+{"layer": "tls_matrix.csv", "role": "tls floor suites", "rows_read": 210, "status": "ADOPTED"}
+{"layer": "seccomp_allow.tsv", "role": "seccomp allowlist", "rows_read": 210, "status": "ADOPTED"}
+{"layer": "retention.ini", "role": "audit retention days", "rows_read": 30, "status": "ADOPTED"}
+{"layer": "layer_overrides.json", "role": "precedence override layer", "rows_read": 28, "status": "ADOPTED"}
+{"layer": "pinned_overrides.json", "role": "precedence pinned layer", "rows_read": 33, "status": "ADOPTED"}
+{"layer": "profile_deltas.json", "role": "canary/enforce deltas", "rows_read": 13, "status": "ADOPTED"}
+{"layer": "retry_backoff.psv2", "role": "retry backoff quantisation step", "rows_read": 205, "status": "ADOPTED"}
+{"layer": "effective_scope_set", "role": "base union overlay minus deny for the active class", "rows_read": 4, "status": "RECONCILED"}

@@ -1,0 +1,177 @@
+[
+  {
+    "source": "/logs/artifacts",
+    "destination": "artifacts/logs/artifacts",
+    "type": "directory",
+    "status": "empty",
+    "service": null
+  },
+  {
+    "source": "/app/out/config.json",
+    "destination": "artifacts/app/out/config.json",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/report.json",
+    "destination": "artifacts/app/out/report.json",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/tool.zip",
+    "destination": "artifacts/app/out/tool.zip",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/validation_report.json",
+    "destination": "artifacts/app/out/validation_report.json",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/summary.json",
+    "destination": "artifacts/app/out/summary.json",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/profile_canary.json",
+    "destination": "artifacts/app/out/profile_canary.json",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/profile_enforce.json",
+    "destination": "artifacts/app/out/profile_enforce.json",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/profile_delta_report.json",
+    "destination": "artifacts/app/out/profile_delta_report.json",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/admission_matrix.csv",
+    "destination": "artifacts/app/out/admission_matrix.csv",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/rate_limit_plan.ini",
+    "destination": "artifacts/app/out/rate_limit_plan.ini",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/scope_reconciliation.tsv",
+    "destination": "artifacts/app/out/scope_reconciliation.tsv",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/hardening_fold_trace.psv",
+    "destination": "artifacts/app/out/hardening_fold_trace.psv",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/quorum_plan.kv",
+    "destination": "artifacts/app/out/quorum_plan.kv",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/risk_ledger.env",
+    "destination": "artifacts/app/out/risk_ledger.env",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/precedence_resolution.properties",
+    "destination": "artifacts/app/out/precedence_resolution.properties",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/privilege_map.ndjson",
+    "destination": "artifacts/app/out/privilege_map.ndjson",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/seccomp_summary.tsv",
+    "destination": "artifacts/app/out/seccomp_summary.tsv",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/tls_floor.env",
+    "destination": "artifacts/app/out/tls_floor.env",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/retention_schedule.csv",
+    "destination": "artifacts/app/out/retention_schedule.csv",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/derivation_audit.xml",
+    "destination": "artifacts/app/out/derivation_audit.xml",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/convergence_report.txt",
+    "destination": "artifacts/app/out/convergence_report.txt",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/reproducibility_manifest.json",
+    "destination": "artifacts/app/out/reproducibility_manifest.json",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/input_census.ndjson",
+    "destination": "artifacts/app/out/input_census.ndjson",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/class_ordering.tsv",
+    "destination": "artifacts/app/out/class_ordering.tsv",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  }
+]

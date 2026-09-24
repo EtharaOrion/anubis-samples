@@ -1,0 +1,5 @@
+layer	class	status	count	scopes
+base	1	ADOPTED	3	list read write
+overlay	1	ADOPTED	1	exec
+deny	1	ADOPTED	1	admin
+effective	1	RECONCILED	4	exec list read write

@@ -1,0 +1,281 @@
+{
+  "baseline": "/app/out/config.json",
+  "profiles": [
+    {
+      "changed_fields": [
+        "enforcement_profile",
+        "profile",
+        "quorum_threshold",
+        "risk_index",
+        "session_ttl_seconds"
+      ],
+      "config": "/app/out/profile_canary.json",
+      "delta": [
+        {
+          "delta": 0,
+          "field": "active_class",
+          "main": 1,
+          "profile": 1
+        },
+        {
+          "delta": 0,
+          "field": "audit_retention_days",
+          "main": 90,
+          "profile": 90
+        },
+        {
+          "delta": 0,
+          "field": "burst_ceiling",
+          "main": 900,
+          "profile": 900
+        },
+        {
+          "field": "checksum",
+          "main": "crc32",
+          "profile": "crc32"
+        },
+        {
+          "field": "control_plane",
+          "main": "admission-broker",
+          "profile": "admission-broker"
+        },
+        {
+          "delta": 0,
+          "field": "effective_scope_count",
+          "main": 4,
+          "profile": 4
+        },
+        {
+          "field": "enforcement_profile",
+          "main": "main",
+          "profile": "canary"
+        },
+        {
+          "delta": 0,
+          "field": "hardening_baseline",
+          "main": 90,
+          "profile": 90
+        },
+        {
+          "field": "image_runtime",
+          "main": "oci-runc",
+          "profile": "oci-runc"
+        },
+        {
+          "delta": 0,
+          "field": "ingress_rate_limit_qps",
+          "main": 300,
+          "profile": 300
+        },
+        {
+          "delta": 0,
+          "field": "max_concurrent_sessions",
+          "main": 96,
+          "profile": 96
+        },
+        {
+          "field": "mode",
+          "main": "strict-local",
+          "profile": "strict-local"
+        },
+        {
+          "delta": 0,
+          "field": "nonce_window_ms",
+          "main": 500,
+          "profile": 500
+        },
+        {
+          "delta": 0,
+          "field": "privilege_drop_uid",
+          "main": 2600,
+          "profile": 2600
+        },
+        {
+          "field": "profile",
+          "main": "TASK",
+          "profile": "canary"
+        },
+        {
+          "delta": 1,
+          "field": "quorum_threshold",
+          "main": 3,
+          "profile": 4
+        },
+        {
+          "delta": 0,
+          "field": "retry_backoff_base_ms",
+          "main": 2060,
+          "profile": 2060
+        },
+        {
+          "delta": 2,
+          "field": "risk_index",
+          "main": 10,
+          "profile": 12
+        },
+        {
+          "delta": 0,
+          "field": "seccomp_allowed_count",
+          "main": 6,
+          "profile": 6
+        },
+        {
+          "delta": -750,
+          "field": "session_ttl_seconds",
+          "main": 3000,
+          "profile": 2250
+        },
+        {
+          "delta": 0,
+          "field": "tls_floor_score",
+          "main": 80,
+          "profile": 80
+        },
+        {
+          "field": "trailer",
+          "main": "harbor:cli-config:TASK:000000002e552977",
+          "profile": "harbor:cli-config:TASK:000000002e552977"
+        }
+      ],
+      "profile": "canary"
+    },
+    {
+      "changed_fields": [
+        "enforcement_profile",
+        "profile",
+        "risk_index",
+        "session_ttl_seconds"
+      ],
+      "config": "/app/out/profile_enforce.json",
+      "delta": [
+        {
+          "delta": 0,
+          "field": "active_class",
+          "main": 1,
+          "profile": 1
+        },
+        {
+          "delta": 0,
+          "field": "audit_retention_days",
+          "main": 90,
+          "profile": 90
+        },
+        {
+          "delta": 0,
+          "field": "burst_ceiling",
+          "main": 900,
+          "profile": 900
+        },
+        {
+          "field": "checksum",
+          "main": "crc32",
+          "profile": "crc32"
+        },
+        {
+          "field": "control_plane",
+          "main": "admission-broker",
+          "profile": "admission-broker"
+        },
+        {
+          "delta": 0,
+          "field": "effective_scope_count",
+          "main": 4,
+          "profile": 4
+        },
+        {
+          "field": "enforcement_profile",
+          "main": "main",
+          "profile": "enforce"
+        },
+        {
+          "delta": 0,
+          "field": "hardening_baseline",
+          "main": 90,
+          "profile": 90
+        },
+        {
+          "field": "image_runtime",
+          "main": "oci-runc",
+          "profile": "oci-runc"
+        },
+        {
+          "delta": 0,
+          "field": "ingress_rate_limit_qps",
+          "main": 300,
+          "profile": 300
+        },
+        {
+          "delta": 0,
+          "field": "max_concurrent_sessions",
+          "main": 96,
+          "profile": 96
+        },
+        {
+          "field": "mode",
+          "main": "strict-local",
+          "profile": "strict-local"
+        },
+        {
+          "delta": 0,
+          "field": "nonce_window_ms",
+          "main": 500,
+          "profile": 500
+        },
+        {
+          "delta": 0,
+          "field": "privilege_drop_uid",
+          "main": 2600,
+          "profile": 2600
+        },
+        {
+          "field": "profile",
+          "main": "TASK",
+          "profile": "enforce"
+        },
+        {
+          "delta": 0,
+          "field": "quorum_threshold",
+          "main": 3,
+          "profile": 3
+        },
+        {
+          "delta": 0,
+          "field": "retry_backoff_base_ms",
+          "main": 2060,
+          "profile": 2060
+        },
+        {
+          "delta": -1,
+          "field": "risk_index",
+          "main": 10,
+          "profile": 9
+        },
+        {
+          "delta": 0,
+          "field": "seccomp_allowed_count",
+          "main": 6,
+          "profile": 6
+        },
+        {
+          "delta": 600,
+          "field": "session_ttl_seconds",
+          "main": 3000,
+          "profile": 3600
+        },
+        {
+          "delta": 0,
+          "field": "tls_floor_score",
+          "main": 80,
+          "profile": 80
+        },
+        {
+          "field": "trailer",
+          "main": "harbor:cli-config:TASK:000000002e552977",
+          "profile": "harbor:cli-config:TASK:000000002e552977"
+        }
+      ],
+      "profile": "enforce"
+    }
+  ],
+  "source": "profile_deltas.json"
+}

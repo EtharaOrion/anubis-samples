@@ -1,0 +1,22 @@
+convergence report for active enforcement class 1
+
+adopted_controls primary=[["c-seccomp", 25, 0], ["c-nonroot", 20, 0], ["c-readonly", 15, 1], ["c-caps", 22, 0]] mirrors=[[["c-seccomp", 25, 0], ["c-nonroot", 20, 0], ["c-readonly", 15, 1], ["c-caps", 22, 0]]] converged=yes
+audit_retention_days primary=90 mirrors=[90, 90] converged=yes
+burst_permille primary=1250 mirrors=[1250, 1250] converged=yes
+effective_scope_count primary=4 mirrors=[4] converged=yes
+hardening_bounds primary=[40, 90] mirrors=[[40, 90]] converged=yes
+healthy_voters primary=5 mirrors=[5, 5] converged=yes
+ingress_qps primary=240 mirrors=[240, 240] converged=yes
+privilege_drop_uid primary=2600 mirrors=[2600] converged=yes
+quorum_permille primary=667 mirrors=[667] converged=yes
+rate_granularity primary=25 mirrors=[25] converged=yes
+retry_step primary=10 mirrors=[10] converged=yes
+scope_layer_sizes primary=[3, 1, 1] mirrors=[[3, 1, 1]] converged=yes
+seccomp_allow_set primary=["brk", "close", "mmap", "openat", "read", "write"] mirrors=[["brk", "close", "mmap", "openat", "read", "write"]] converged=yes
+severity_permille primary=1000 mirrors=[1000, 1000] converged=yes
+tls_floor_score primary=80 mirrors=[80, 80] converged=yes
+window_seconds primary=3 mirrors=[3] converged=yes
+
+converged_quantities=16
+total_quantities=16
+all_converged=yes

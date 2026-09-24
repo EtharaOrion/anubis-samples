@@ -1,0 +1,45 @@
+{
+  "checks": {
+    "all_integer_scalars": true,
+    "canary_validated": true,
+    "config_validated_by_tool": true,
+    "enforce_validated": true,
+    "quorum_in_bounds": true,
+    "scope_lines_match_count": true,
+    "trailer_carried": true
+  },
+  "config": "/app/out/config.json",
+  "flat": true,
+  "forbidden_keys_present": [],
+  "missing_keys": [],
+  "ok": true,
+  "profiles": [
+    "/app/out/profile_canary.json",
+    "/app/out/profile_enforce.json"
+  ],
+  "required_keys": [
+    "active_class",
+    "audit_retention_days",
+    "burst_ceiling",
+    "checksum",
+    "control_plane",
+    "effective_scope_count",
+    "enforcement_profile",
+    "hardening_baseline",
+    "image_runtime",
+    "ingress_rate_limit_qps",
+    "max_concurrent_sessions",
+    "mode",
+    "nonce_window_ms",
+    "privilege_drop_uid",
+    "profile",
+    "quorum_threshold",
+    "retry_backoff_base_ms",
+    "risk_index",
+    "seccomp_allowed_count",
+    "session_ttl_seconds",
+    "tls_floor_score",
+    "trailer"
+  ],
+  "schema": "/app/tool/schema.json"
+}

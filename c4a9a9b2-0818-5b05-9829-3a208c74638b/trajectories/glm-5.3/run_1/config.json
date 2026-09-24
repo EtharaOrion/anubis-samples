@@ -1,9 +1,9 @@
 {
   "task": {
-    "path": "/Users/macbookpro/Desktop/Anubis_QC_22_Sept/anubis-samples/c4a9a9b2-0818-5b05-9829-3a208c74638b"
+    "path": "/anubis-samples/c4a9a9b2-0818-5b05-9829-3a208c74638b"
   },
-  "trial_name": "c4a9a9b2-0818-5b05-9829-3a208c74__yXNHySv",
-  "trials_dir": "/Users/macbookpro/Desktop/Anubis_QC_22_Sept/anubis-samples/c4a9a9b2-0818-5b05-9829-3a208c74638b/trajectories/glm-5.3/run_1",
+  "trial_name": "c4a9a9b2-0818-5b05-9829-3a208c74__HWpUh8i",
+  "trials_dir": "/anubis-samples/c4a9a9b2-0818-5b05-9829-3a208c74638b/trajectories/glm-5.3/run_1",
   "agent": {
     "name": "openhands-sdk",
     "model_name": "glm-5.3",
@@ -11,7 +11,6 @@
       "172.17.0.1"
     ],
     "env": {
-      "LLM_NUM_RETRIES": "8",
       "LLM_MODEL": "anthropic/glm-5.3",
       "LLM_TEMPERATURE": "1.0",
       "LLM_MAX_OUTPUT_TOKENS": "****",

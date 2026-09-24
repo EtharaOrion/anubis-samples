@@ -1,0 +1,5 @@
+layer	scopes	count
+base	list,read,write	3
+overlay	exec	1
+deny	admin	1
+effective	exec,list,read,write	4

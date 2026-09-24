@@ -1,0 +1,71 @@
+{
+  "base": {
+    "enforcement_profile": "main",
+    "trailer": "harbor:cli-config:TASK:000000002e552977"
+  },
+  "profiles": {
+    "canary": {
+      "changed_keys": [
+        "enforcement_profile",
+        "quorum_threshold",
+        "risk_index",
+        "session_ttl_seconds"
+      ],
+      "signed_deltas": {
+        "active_class": 0,
+        "audit_retention_days": 0,
+        "burst_ceiling": 0,
+        "effective_scope_count": 0,
+        "hardening_baseline": 0,
+        "ingress_rate_limit_qps": 0,
+        "max_concurrent_sessions": 0,
+        "nonce_window_ms": 0,
+        "privilege_drop_uid": 0,
+        "quorum_threshold": 1,
+        "retry_backoff_base_ms": 0,
+        "risk_index": 2,
+        "seccomp_allowed_count": 0,
+        "session_ttl_seconds": -750,
+        "tls_floor_score": 0
+      },
+      "string_changes": {
+        "enforcement_profile": {
+          "from": "main",
+          "to": "canary"
+        }
+      },
+      "trailer": "harbor:cli-config:TASK:000000002e552977"
+    },
+    "enforce": {
+      "changed_keys": [
+        "enforcement_profile",
+        "risk_index",
+        "session_ttl_seconds"
+      ],
+      "signed_deltas": {
+        "active_class": 0,
+        "audit_retention_days": 0,
+        "burst_ceiling": 0,
+        "effective_scope_count": 0,
+        "hardening_baseline": 0,
+        "ingress_rate_limit_qps": 0,
+        "max_concurrent_sessions": 0,
+        "nonce_window_ms": 0,
+        "privilege_drop_uid": 0,
+        "quorum_threshold": 0,
+        "retry_backoff_base_ms": 0,
+        "risk_index": -1,
+        "seccomp_allowed_count": 0,
+        "session_ttl_seconds": 600,
+        "tls_floor_score": 0
+      },
+      "string_changes": {
+        "enforcement_profile": {
+          "from": "main",
+          "to": "enforce"
+        }
+      },
+      "trailer": "harbor:cli-config:TASK:000000002e552977"
+    }
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "results": {
+    "tool": {
+      "name": "pytest",
+      "version": "8.3.4"
+    },
+    "summary": {
+      "tests": 33,
+      "passed": 16,
+      "failed": 17,
+      "pending": 0,
+      "skipped": 0,
+      "other": 0,
+      "overall_score": 0.5243,
+      "weighted_percentage": 52.4272
+    },
+    "tests": [
+      {
+        "name": "test_artifacts_exist",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_outputs_are_world_readable_regular_files",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_canonical_trailer_present",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_class_ordering_sorted_by_risk",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_input_census_covers_data_layers",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_reproducibility_manifest_is_stable",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_summary_lists_inputs_and_artifacts",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_rate_limit_plan_matches_config",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_hardening_fold_trace_matches_running_score",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_quorum_and_risk_ledgers_match_config",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_precedence_resolution_reports_layers",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_privilege_and_seccomp_and_tls_sidecars",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_validation_report_ok_and_complete",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_config_is_flat_json_object",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_config_identity_fields_match_schema",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_active_class_selection_is_correct",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_rate_limit_and_burst_chain_consistent",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_privilege_drop_uid_is_min_granted",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_hardening_baseline_uses_carry_fold",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_risk_and_quorum_thresholds_correct",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_precedence_layers_resolved",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_tls_seccomp_retention_correct",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_report_records_real_cli_commands",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_report_is_deterministic_and_truthful",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_config_round_trips_through_cli_validator",
+        "status": "passed",
+        "duration": 0
+      },
+      {
+        "name": "test_cli_requires_subcommand_and_runs_real_commands",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_profile_canary_matches_reference",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_profile_enforce_matches_reference",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_profile_delta_report_is_correct",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_hardcoded_sample_answers",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_nested_or_dynamic_config",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_fake_cli_transcript",
+        "status": "failed",
+        "duration": 0
+      },
+      {
+        "name": "test_negative_weight_network_or_secret_material",
+        "status": "failed",
+        "duration": 0
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<derivation_audit>
+  <active_class>1</active_class>
+  <selector base_budget="235" value="50" span="185"/>
+  <field name="active_class" value="1" rule="adopted class_index range covering max_records mod span"/>
+  <field name="audit_retention_days" value="90" rule="retention.ini class block within bounds"/>
+  <field name="burst_ceiling" value="900" rule="ingress_rate_limit_qps * window_seconds"/>
+  <field name="effective_scope_count" value="4" rule="|(base union overlay) minus deny|"/>
+  <field name="hardening_baseline" value="80" rule="quantize(clamp(carry_fold, floor, ceil), 5)"/>
+  <field name="ingress_rate_limit_qps" value="300" rule="quantize(rhe(qps * burst_permille, 1000), gran)"/>
+  <field name="max_concurrent_sessions" value="96" rule="precedence(defaults, overrides, pinned) capped by abs_ceil"/>
+  <field name="nonce_window_ms" value="500" rule="precedence(defaults, overrides, pinned) floored by nonce floor"/>
+  <field name="privilege_drop_uid" value="2600" rule="max(min(uid of effective scopes), uid_floor)"/>
+  <field name="quorum_threshold" value="3" rule="clamp(rhe(healthy_voters * permille, 1000), 1, healthy_voters)"/>
+  <field name="retry_backoff_base_ms" value="330" rule="quantize(rhe(timeout_ms, retry_limit + 1), step)"/>
+  <field name="risk_index" value="20" rule="rhe((complement - hardening_baseline) * severity_permille, divisor)"/>
+  <field name="seccomp_allowed_count" value="6" rule="|allow minus deny|"/>
+  <field name="session_ttl_seconds" value="3000" rule="precedence(defaults, overrides, pinned)"/>
+  <field name="tls_floor_score" value="80" rule="max adopted enabled suite score within bounds"/>
+  <input name="burst_permille" value="1250"/>
+  <input name="fold_score" value="83"/>
+  <input name="hardening_ceil" value="90"/>
+  <input name="hardening_floor" value="40"/>
+  <input name="healthy_voters" value="5"/>
+  <input name="ingress_qps" value="240"/>
+  <input name="quorum_permille" value="667"/>
+  <input name="rate_granularity" value="25"/>
+  <input name="retry_step" value="10"/>
+  <input name="severity_permille" value="1000"/>
+  <input name="uid_floor" value="1000"/>
+  <input name="window_seconds" value="3"/>
+  <trailer>harbor:cli-config:TASK:000000002e552977</trailer>
+</derivation_audit>

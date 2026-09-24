@@ -1,0 +1,32 @@
+{
+  "active_class": 0,
+  "audit_retention_days": 30,
+  "burst_ceiling": 350,
+  "class_selector": 24,
+  "effective_scope_count": 3,
+  "hardening_baseline": 85,
+  "ingress_rate_limit_qps": 175,
+  "max_concurrent_sessions": 40,
+  "nonce_window_ms": 300,
+  "ok": true,
+  "privilege_drop_uid": 3600,
+  "profiles": {
+    "canary": {
+      "quorum_threshold": 3,
+      "risk_index": 14,
+      "session_ttl_seconds": 1575
+    },
+    "enforce": {
+      "quorum_threshold": 2,
+      "risk_index": 11,
+      "session_ttl_seconds": 2520
+    }
+  },
+  "quorum_threshold": 2,
+  "retry_backoff_base_ms": 16510,
+  "risk_index": 12,
+  "seccomp_allowed_count": 5,
+  "session_ttl_seconds": 2100,
+  "tls_floor_score": 70,
+  "trailer": "harbor:cli-config:TASK:000000002e552977"
+}

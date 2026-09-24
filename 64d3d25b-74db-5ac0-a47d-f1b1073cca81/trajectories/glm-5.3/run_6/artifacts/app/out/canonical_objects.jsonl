@@ -1,0 +1,12 @@
+{"declared_value_cents":13800000,"lender_id":"LDR_ALPHA","mass_g":79000,"material_code":"MAT_OIL","object_id":"OBJ01","version":2}
+{"declared_value_cents":13000000,"lender_id":"LDR_BETA","mass_g":85000,"material_code":"MAT_BRONZE","object_id":"OBJ02","version":2}
+{"declared_value_cents":4400000,"lender_id":"LDR_GAMMA","mass_g":83000,"material_code":"MAT_PAPER","object_id":"OBJ03","version":2}
+{"declared_value_cents":17200000,"lender_id":"LDR_ALPHA","mass_g":102000,"material_code":"MAT_CERAMIC","object_id":"OBJ04","version":2}
+{"declared_value_cents":10400000,"lender_id":"LDR_BETA","mass_g":49000,"material_code":"MAT_TEXTILE","object_id":"OBJ05","version":2}
+{"declared_value_cents":12600000,"lender_id":"LDR_GAMMA","mass_g":43000,"material_code":"MAT_OIL","object_id":"OBJ06","version":2}
+{"declared_value_cents":13900000,"lender_id":"LDR_ALPHA","mass_g":61000,"material_code":"MAT_BRONZE","object_id":"OBJ07","version":2}
+{"declared_value_cents":4300000,"lender_id":"LDR_BETA","mass_g":53000,"material_code":"MAT_PAPER","object_id":"OBJ08","version":2}
+{"declared_value_cents":10000000,"lender_id":"LDR_GAMMA","mass_g":36005,"material_code":"MAT_FRAGILE","object_id":"OBJ09","version":2}
+{"declared_value_cents":10000000,"lender_id":"LDR_ALPHA","mass_g":40000,"material_code":"MAT_CERAMIC","object_id":"OBJ10","version":2}
+{"declared_value_cents":10000000,"lender_id":"LDR_BETA","mass_g":40000,"material_code":"MAT_CERAMIC","object_id":"OBJ11","version":2}
+{"declared_value_cents":10000000,"lender_id":"LDR_GAMMA","mass_g":40000,"material_code":"MAT_CERAMIC","object_id":"OBJ12","version":2}

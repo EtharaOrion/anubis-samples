@@ -1,0 +1,16 @@
+class,key,value
+1,active_class,1
+1,audit_retention_days,90
+1,burst_ceiling,900
+1,effective_scope_count,4
+1,hardening_baseline,90
+1,ingress_rate_limit_qps,300
+1,max_concurrent_sessions,96
+1,nonce_window_ms,500
+1,privilege_drop_uid,2600
+1,quorum_threshold,3
+1,retry_backoff_base_ms,2060
+1,risk_index,10
+1,seccomp_allowed_count,6
+1,session_ttl_seconds,3000
+1,tls_floor_score,80

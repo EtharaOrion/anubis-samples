@@ -1,0 +1,16 @@
+field,class,value,source
+active_class,1,1,class_index.tsv2
+audit_retention_days,1,90,retention.ini
+burst_ceiling,1,900,burst_multiplier.ini+window_seconds.conf
+effective_scope_count,1,4,scope_base.jsonl+scope_overlay.ndjson+scope_deny.psv
+hardening_baseline,1,80,baseline_controls.scsv+hardening_bounds.toml
+ingress_rate_limit_qps,1,300,ingress_rate.tsv+burst_multiplier.ini+rate_gran.caret
+max_concurrent_sessions,1,96,defaults.json+layer_overrides.json+pinned_overrides.json
+nonce_window_ms,1,500,defaults.json+layer_overrides.json+pinned_overrides.json
+privilege_drop_uid,1,2600,uid_map.env+uid_floor.hex
+quorum_threshold,1,3,voter_health.ndjson+quorum_permille.tilde
+retry_backoff_base_ms,1,330,defaults.json+retry_backoff.psv2
+risk_index,1,20,risk_const.env2+severity_weight.kv
+seccomp_allowed_count,1,6,seccomp_allow.tsv+seccomp_deny.psv
+session_ttl_seconds,1,3000,defaults.json+layer_overrides.json+pinned_overrides.json
+tls_floor_score,1,80,tls_matrix.csv

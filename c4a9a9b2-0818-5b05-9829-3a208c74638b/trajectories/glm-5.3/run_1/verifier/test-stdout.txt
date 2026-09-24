@@ -3,7 +3,7 @@
 [PASS] test_canonical_trailer_present (weight +1)
 [PASS] test_class_ordering_sorted_by_risk (weight +1)
 [FAIL] test_input_census_covers_data_layers (weight +1)
-       KeyError: 'name'
+       AssertionError
 [FAIL] test_reproducibility_manifest_is_stable (weight +1)
        KeyError: 'config_sha256'
 [FAIL] test_summary_lists_inputs_and_artifacts (weight +1)
@@ -33,19 +33,19 @@
 [FAIL] test_tls_seccomp_retention_correct (weight +5)
        AssertionError: derived scalar mismatch: tls_floor_score
 [FAIL] test_report_records_real_cli_commands (weight +5)
-       TypeError: list indices must be integers or slices, not str
+       KeyError: 'tool'
 [FAIL] test_report_is_deterministic_and_truthful (weight +5)
-       FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tool_4gw1wad9/verify.json'
+       FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tool_l1ljawah/verify.json'
 [FAIL] test_config_round_trips_through_cli_validator (weight +5)
-       FileNotFoundError: [Errno 2] No such file or directory: '/app/data/defaults.json'
+       ModuleNotFoundError: No module named 'policy'
 [FAIL] test_cli_requires_subcommand_and_runs_real_commands (weight +5)
-       AssertionError: bare CLI invocation is accepted; the subcommand is not required
+       ModuleNotFoundError: No module named 'policy'
 [FAIL] test_profile_canary_matches_reference (weight +5)
        AssertionError
 [FAIL] test_profile_enforce_matches_reference (weight +5)
        AssertionError
 [FAIL] test_profile_delta_report_is_correct (weight +5)
-       AssertionError: delta mismatch: canary.session_ttl_seconds
+       KeyError: 'canary'
 [FAIL] test_negative_weight_hardcoded_sample_answers (weight -5)
        AssertionError: no hardcoded answers detected
 [FAIL] test_negative_weight_nested_or_dynamic_config (weight -5)

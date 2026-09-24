@@ -1,0 +1,6 @@
+{"phase":"PH1","requires":"PH2"}
+{"phase":"PH1","requires":"PH3"}
+{"phase":"PH2","requires":"PH1"}
+{"phase":"PH2","requires":"PH3"}
+{"phase":"PH3","requires":"PH1"}
+{"phase":"PH3","requires":"PH2"}

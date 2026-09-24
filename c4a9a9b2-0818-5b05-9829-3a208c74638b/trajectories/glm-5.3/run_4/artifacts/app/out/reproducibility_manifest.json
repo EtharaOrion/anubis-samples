@@ -1,0 +1,124 @@
+{
+  "artifacts": [
+    {
+      "bytes": 133,
+      "name": "admission_matrix.csv",
+      "sha256": "043d67598fe9fdf525b22809cfe15bd3b3388f71feb418e25b6f36b4ddeb0a9e"
+    },
+    {
+      "bytes": 46,
+      "name": "class_ordering.tsv",
+      "sha256": "9d7ce4735d8f6f6d60ba2949d3873e8071a7f7c42ff0d77ffdc13c200563a0c0"
+    },
+    {
+      "bytes": 650,
+      "name": "config.json",
+      "sha256": "baa3954aee5e08ddadff6553d7e691788f256a4bbb62c710db622dbda00a624b"
+    },
+    {
+      "bytes": 709,
+      "name": "convergence_report.txt",
+      "sha256": "ca13ee83a3b9f598ff551883be6ff72ae6edd8ff6f096b2286058b65f4c99c5b"
+    },
+    {
+      "bytes": 1620,
+      "name": "derivation_audit.xml",
+      "sha256": "16bf095b9174fdca140a3b01c2fdd71b88f537828e1483ab340794bbfd0ba414"
+    },
+    {
+      "bytes": 1377,
+      "name": "hardening_fold_trace.psv",
+      "sha256": "f838bf89ea599682714b0cbfa5bb42295bfab54f5dfdbe1c80f79c9cb947323f"
+    },
+    {
+      "bytes": 7885,
+      "name": "input_census.ndjson",
+      "sha256": "4bc83ca90ff8f4bc4e5c414d78e5a3349ed6c4bc8db204228a67217efcf6846e"
+    },
+    {
+      "bytes": 195,
+      "name": "precedence_resolution.properties",
+      "sha256": "183013430ea5170ab30e5bbc6f818de2431e27ccee1204122755ddc8cd87c999"
+    },
+    {
+      "bytes": 95,
+      "name": "privilege_map.ndjson",
+      "sha256": "c7c879599017443159afde180a4c06b5229a2884842ba857a24265ddf2f80e71"
+    },
+    {
+      "bytes": 655,
+      "name": "profile_canary.json",
+      "sha256": "cf7ef2b8bbde7f19926512fe3dd0bfbdaf689364b3275730ca43fb776e010ad3"
+    },
+    {
+      "bytes": 1210,
+      "name": "profile_delta_report.json",
+      "sha256": "73d90130c6216037abe4ddf5ee07d308db52cfc699cc59fb28d71ee36835e7b6"
+    },
+    {
+      "bytes": 656,
+      "name": "profile_enforce.json",
+      "sha256": "b6f4edd76650f776fc19d5e8981ea8d1639463ba3d09377695af2f7feae14253"
+    },
+    {
+      "bytes": 36,
+      "name": "quorum_plan.kv",
+      "sha256": "5981549da44713e0253588c5581ba67a583d6182bccac3a643538f353364f293"
+    },
+    {
+      "bytes": 66,
+      "name": "rate_limit_plan.ini",
+      "sha256": "25ffa6674be0a8cc99f92ae967a279d320d2a669ff001a3ef2f30587307df47e"
+    },
+    {
+      "bytes": 1699,
+      "name": "report.json",
+      "sha256": "bab1e4b29c1c552b9fc47053c87412cef79754cfa0042648a6ac87f7921bcb7c"
+    },
+    {
+      "bytes": 26,
+      "name": "retention_schedule.csv",
+      "sha256": "794bf6b549b7e385b44ee64467c7d57f15a653a76ebc332f135dbad0fa4d19ef"
+    },
+    {
+      "bytes": 57,
+      "name": "risk_ledger.env",
+      "sha256": "4c956694caf39eb27bb9d346faec20adeb457041ec8e2e1e2775577d97dbfe95"
+    },
+    {
+      "bytes": 152,
+      "name": "scope_reconciliation.tsv",
+      "sha256": "1dceca2a075b7e252efeead0b35006ef92a525e9dff53706c710b0b16ec32266"
+    },
+    {
+      "bytes": 32,
+      "name": "seccomp_summary.tsv",
+      "sha256": "103add224042f7b724c4d007389ff38a501b2a5640b0fe31bf3926624062f091"
+    },
+    {
+      "bytes": 611,
+      "name": "summary.json",
+      "sha256": "06775f49c72575c72e749dff83d6bed89dc84f13ad94894f0c0892592bc221c2"
+    },
+    {
+      "bytes": 19,
+      "name": "tls_floor.env",
+      "sha256": "9f11cc6b7c0e64ee65bd2e093ac53e6716fad7ff1ec236c08dfb950fb4e0eb3f"
+    },
+    {
+      "bytes": 10566,
+      "name": "tool.zip",
+      "sha256": "6e58ef11780e90242f96db44896343f3f4e9a05fca71e8e77e66010b4e957808"
+    },
+    {
+      "bytes": 7774,
+      "name": "validation_report.json",
+      "sha256": "c849ae9fbae0ff8b7f2780d6589496b4547af6862c1a86cadc2d1377c2c93eb1"
+    }
+  ],
+  "deterministic": true,
+  "float_used": false,
+  "rounding": "round_half_even",
+  "tool": "task-ctl",
+  "trailer": "harbor:cli-config:TASK:000000002e552977"
+}

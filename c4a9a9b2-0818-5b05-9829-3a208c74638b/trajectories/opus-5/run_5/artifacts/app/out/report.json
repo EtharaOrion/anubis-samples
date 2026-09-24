@@ -1,0 +1,265 @@
+{
+  "command_count": 17,
+  "commands": [
+    {
+      "argv": [
+        "task-ctl",
+        "init",
+        "--schema",
+        "/app/tool/schema.json",
+        "--out",
+        "/app/out/config.json"
+      ],
+      "exit_code": 0,
+      "stdout": "initialized"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "derive",
+        "--schema",
+        "/app/tool/schema.json",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/config.json"
+      ],
+      "exit_code": 0,
+      "stdout": "derived class=1"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "enforcement_profile",
+        "--value",
+        "main"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "validate",
+        "--schema",
+        "/app/tool/schema.json",
+        "--config",
+        "/app/out/config.json"
+      ],
+      "exit_code": 0,
+      "stdout": "ok"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "profile",
+        "--name",
+        "canary",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/profile_canary.json"
+      ],
+      "exit_code": 0,
+      "stdout": "profiled canary"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "profile",
+        "--name",
+        "enforce",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/profile_enforce.json"
+      ],
+      "exit_code": 0,
+      "stdout": "profiled enforce"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "delta-report",
+        "--config",
+        "/app/out/config.json",
+        "--canary",
+        "/app/out/profile_canary.json",
+        "--enforce",
+        "/app/out/profile_enforce.json",
+        "--out",
+        "/app/out/profile_delta_report.json"
+      ],
+      "exit_code": 0,
+      "stdout": "delta-report"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "sidecars",
+        "--config",
+        "/app/out/config.json",
+        "--outdir",
+        "/app/out"
+      ],
+      "exit_code": 0,
+      "stdout": "sidecars"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "class-ordering",
+        "--config",
+        "/app/out/config.json",
+        "--canary",
+        "/app/out/profile_canary.json",
+        "--enforce",
+        "/app/out/profile_enforce.json",
+        "--out",
+        "/app/out/class_ordering.tsv"
+      ],
+      "exit_code": 0,
+      "stdout": "class-ordering"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "audit",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/derivation_audit.xml"
+      ],
+      "exit_code": 0,
+      "stdout": "audit"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "convergence",
+        "--out",
+        "/app/out/convergence_report.txt"
+      ],
+      "exit_code": 0,
+      "stdout": "convergence"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "census",
+        "--out",
+        "/app/out/input_census.ndjson"
+      ],
+      "exit_code": 0,
+      "stdout": "census"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "package",
+        "--src",
+        "/app/tool",
+        "--out",
+        "/app/out/tool.zip"
+      ],
+      "exit_code": 0,
+      "stdout": "packaged"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "summary",
+        "--config",
+        "/app/out/config.json",
+        "--canary",
+        "/app/out/profile_canary.json",
+        "--enforce",
+        "/app/out/profile_enforce.json",
+        "--outdir",
+        "/app/out",
+        "--out",
+        "/app/out/summary.json"
+      ],
+      "exit_code": 0,
+      "stdout": "summary"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "validation-report",
+        "--schema",
+        "/app/tool/schema.json",
+        "--config",
+        "/app/out/config.json",
+        "--outdir",
+        "/app/out",
+        "--out",
+        "/app/out/validation_report.json"
+      ],
+      "exit_code": 0,
+      "stdout": "ok"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "manifest",
+        "--outdir",
+        "/app/out",
+        "--tool",
+        "/app/tool/cli.py",
+        "--out",
+        "/app/out/reproducibility_manifest.json"
+      ],
+      "exit_code": 0,
+      "stdout": "manifest"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "export-report",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/report.json",
+        "--digest",
+        "eca4b09dd179dda6c58808f34ca10f6e40af2041937a39ef622de18c7e24acee",
+        "--commands",
+        "/tmp/task-ctl-commands.json"
+      ],
+      "exit_code": 0,
+      "stdout": "reported"
+    }
+  ],
+  "config": {
+    "active_class": 1,
+    "audit_retention_days": 90,
+    "burst_ceiling": 900,
+    "checksum": "crc32",
+    "control_plane": "admission-broker",
+    "effective_scope_count": 4,
+    "enforcement_profile": "main",
+    "hardening_baseline": 80,
+    "image_runtime": "oci-runc",
+    "ingress_rate_limit_qps": 300,
+    "max_concurrent_sessions": 96,
+    "mode": "strict-local",
+    "nonce_window_ms": 500,
+    "privilege_drop_uid": 2600,
+    "profile": "TASK",
+    "quorum_threshold": 3,
+    "retry_backoff_base_ms": 330,
+    "risk_index": 20,
+    "seccomp_allowed_count": 6,
+    "session_ttl_seconds": 3000,
+    "tls_floor_score": 80,
+    "trailer": "harbor:cli-config:TASK:000000002e552977"
+  },
+  "config_sha256": "eca4b09dd179dda6c58808f34ca10f6e40af2041937a39ef622de18c7e24acee",
+  "ok": true,
+  "tool": "task-ctl",
+  "trailer": "harbor:cli-config:TASK:000000002e552977"
+}

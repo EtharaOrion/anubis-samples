@@ -1,0 +1,56 @@
+[PASS] test_artifacts_exist (weight +1)
+[PASS] test_outputs_are_world_readable_regular_files (weight +1)
+[PASS] test_canonical_trailer_present (weight +1)
+[PASS] test_class_ordering_sorted_by_risk (weight +1)
+[FAIL] test_input_census_covers_data_layers (weight +1)
+       KeyError: 'name'
+[FAIL] test_reproducibility_manifest_is_stable (weight +1)
+       KeyError: 'config_sha256'
+[FAIL] test_summary_lists_inputs_and_artifacts (weight +1)
+       KeyError: 'input_count'
+[PASS] test_rate_limit_plan_matches_config (weight +3)
+[FAIL] test_hardening_fold_trace_matches_running_score (weight +3)
+       AssertionError: fold trace running total does not match the carry-aware fold
+[PASS] test_quorum_and_risk_ledgers_match_config (weight +3)
+[PASS] test_precedence_resolution_reports_layers (weight +3)
+[PASS] test_privilege_and_seccomp_and_tls_sidecars (weight +3)
+[FAIL] test_validation_report_ok_and_complete (weight +3)
+       KeyError: 'all_artifacts_present'
+[PASS] test_config_is_flat_json_object (weight +5)
+[PASS] test_config_identity_fields_match_schema (weight +3)
+[FAIL] test_active_class_selection_is_correct (weight +5)
+       AssertionError
+[FAIL] test_rate_limit_and_burst_chain_consistent (weight +5)
+       AssertionError
+[FAIL] test_privilege_drop_uid_is_min_granted (weight +5)
+       AssertionError
+[FAIL] test_hardening_baseline_uses_carry_fold (weight +5)
+       AssertionError
+[FAIL] test_risk_and_quorum_thresholds_correct (weight +5)
+       AssertionError
+[FAIL] test_precedence_layers_resolved (weight +5)
+       AssertionError: precedence mismatch: session_ttl_seconds
+[FAIL] test_tls_seccomp_retention_correct (weight +5)
+       AssertionError: derived scalar mismatch: tls_floor_score
+[FAIL] test_report_records_real_cli_commands (weight +5)
+       AssertionError: missing command: init
+[FAIL] test_report_is_deterministic_and_truthful (weight +5)
+       AssertionError: report digest not reproducible
+[PASS] test_config_round_trips_through_cli_validator (weight +5)
+[FAIL] test_cli_requires_subcommand_and_runs_real_commands (weight +5)
+       AssertionError: bare CLI invocation is accepted; the subcommand is not required
+[FAIL] test_profile_canary_matches_reference (weight +5)
+       AssertionError
+[FAIL] test_profile_enforce_matches_reference (weight +5)
+       AssertionError
+[FAIL] test_profile_delta_report_is_correct (weight +5)
+       KeyError: 'canary'
+[FAIL] test_negative_weight_hardcoded_sample_answers (weight -5)
+       AssertionError: no hardcoded answers detected
+[FAIL] test_negative_weight_nested_or_dynamic_config (weight -5)
+       AssertionError: config is flat and static
+[FAIL] test_negative_weight_fake_cli_transcript (weight -3)
+       AssertionError: cli transcript is genuine
+[FAIL] test_negative_weight_network_or_secret_material (weight -3)
+       AssertionError: no network or secret material present
+[grade] raw=+29 positive_total=103 reward=+0.281553

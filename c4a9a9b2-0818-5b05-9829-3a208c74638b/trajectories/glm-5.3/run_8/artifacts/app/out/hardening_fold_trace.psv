@@ -1,0 +1,8 @@
+order|control_id|weight|carry|status|running
+0|c-seccomp|35|0|ADOPTED|35
+1|c-nonroot|30|0|ADOPTED|65
+2|c-readonly|25|1|ADOPTED|105
+3|c-caps|33|0|ADOPTED|138
+4|c-apparmor|20|1|ADOPTED|174
+5|c-nonet|18|0|ADOPTED|192
+6|c-fsverity|15|1|ADOPTED|216

@@ -1,0 +1,25 @@
+convergence report
+active_class=0
+selector=24
+ingress_rate_limit_qps=175
+burst_ceiling=350
+effective_scope_count=3
+privilege_drop_uid=3600
+hardening_baseline=85
+risk_index=12
+quorum_threshold=2
+tls_floor_score=70
+seccomp_allowed_count=5
+audit_retention_days=30
+session_ttl_seconds=2100
+nonce_window_ms=300
+max_concurrent_sessions=40
+retry_backoff_base_ms=16510
+trailer=harbor:cli-config:TASK:000000002e552977
+profile.canary.session_ttl_seconds=1575
+profile.canary.quorum_threshold=3
+profile.canary.risk_index=14
+profile.enforce.session_ttl_seconds=2520
+profile.enforce.quorum_threshold=2
+profile.enforce.risk_index=11
+converged=true

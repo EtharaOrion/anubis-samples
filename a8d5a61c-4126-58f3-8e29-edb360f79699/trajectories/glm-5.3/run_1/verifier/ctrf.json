@@ -1,18 +1,17 @@
 {
   "results": {
     "tool": {
-      "name": "pytest",
-      "version": "unknown"
+      "name": "pytest"
     },
     "summary": {
       "tests": 75,
-      "passed": 38,
-      "failed": 37,
+      "passed": 36,
+      "failed": 39,
       "pending": 0,
       "skipped": 0,
       "other": 0,
-      "overall_score": 0.4494,
-      "weighted_percentage": 44.9438
+      "overall_score": 0.412,
+      "weighted_percentage": 41.1985
     },
     "tests": [
       {
@@ -142,7 +141,7 @@
       },
       {
         "name": "test_hidden_a_exception_trace_match",
-        "status": "passed",
+        "status": "failed",
         "duration": 0
       },
       {
@@ -342,7 +341,7 @@
       },
       {
         "name": "test_visible_exception_trace_match",
-        "status": "passed",
+        "status": "failed",
         "duration": 0
       },
       {

@@ -1,16 +1,16 @@
 {
-  "input_tokens": 7145186,
-  "output_tokens": 131404,
-  "cache_read_tokens": 7004096,
-  "cache_write_tokens": 141090,
-  "cost_usd": 2.399243,
+  "input_tokens": 3783753,
+  "output_tokens": 94506,
+  "cache_read_tokens": 3696960,
+  "cache_write_tokens": 86793,
+  "cost_usd": 1.377036,
   "sources": {
     "agent": {
-      "input_tokens": 7145186,
-      "output_tokens": 131404,
-      "cache_read_tokens": 7004096,
-      "cache_write_tokens": 141090,
-      "cost_usd": 2.3992425600000002
+      "input_tokens": 3783753,
+      "output_tokens": 94506,
+      "cache_read_tokens": 3696960,
+      "cache_write_tokens": 86793,
+      "cost_usd": 1.377036
     }
   },
   "notes": [

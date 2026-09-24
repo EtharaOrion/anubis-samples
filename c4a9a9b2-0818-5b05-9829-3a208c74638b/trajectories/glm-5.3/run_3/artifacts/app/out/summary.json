@@ -1,0 +1,65 @@
+{
+  "active_class": 0,
+  "artifacts": [
+    "admission_matrix.csv",
+    "class_ordering.tsv",
+    "config.json",
+    "convergence_report.txt",
+    "derivation_audit.xml",
+    "hardening_fold_trace.psv",
+    "input_census.ndjson",
+    "precedence_resolution.properties",
+    "privilege_map.ndjson",
+    "profile_canary.json",
+    "profile_delta_report.json",
+    "profile_enforce.json",
+    "quorum_plan.kv",
+    "rate_limit_plan.ini",
+    "report.json",
+    "reproducibility_manifest.json",
+    "retention_schedule.csv",
+    "risk_ledger.env",
+    "scope_reconciliation.tsv",
+    "seccomp_summary.tsv",
+    "summary.json",
+    "tls_floor.env",
+    "tool.zip",
+    "validation_report.json"
+  ],
+  "commands": 10,
+  "config_sha256": "9cc30edec97c557654c95fea7d2447d97e0ec9f1e909eacb7899197b38290246",
+  "enforcement_profile": "main",
+  "inputs": 56,
+  "profiles": {
+    "canary": {
+      "enforcement_profile": "canary",
+      "quorum_threshold": 3,
+      "risk_index": 14,
+      "session_ttl_seconds": 1575
+    },
+    "enforce": {
+      "enforcement_profile": "enforce",
+      "quorum_threshold": 2,
+      "risk_index": 11,
+      "session_ttl_seconds": 2520
+    }
+  },
+  "risk_ordering": [
+    {
+      "profile": "enforce",
+      "risk_index": 11
+    },
+    {
+      "profile": "main",
+      "risk_index": 12
+    },
+    {
+      "profile": "canary",
+      "risk_index": 14
+    }
+  ],
+  "rounding": "round-half-even exact integer arithmetic",
+  "selector": 24,
+  "trailer": "harbor:cli-config:TASK:000000002e552977",
+  "validation_ok": true
+}

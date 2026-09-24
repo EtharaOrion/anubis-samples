@@ -4,7 +4,7 @@ Maintainer notes for the task bundle. Never shown to the agent.
 
 ## Task Metadata
 
-- Difficulty: hard
+- Difficulty: medium
 - Category: Data Processing
 - Tags: derivation, precedence, determinism, geometry, integrity
 - Expert time: 480 minutes

@@ -2,7 +2,7 @@
 
 ## Task Metadata
 
-- **Difficulty:** `easy`
+- **Difficulty:** `medium`
 - **Category:** `Security`
 - **Tags:** ["python", "cli", "configuration", "security", "admission-control", "hardening", "derivation"]
 - **Expert time:** 8 hours (480.0 min)

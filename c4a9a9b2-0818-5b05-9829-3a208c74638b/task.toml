@@ -30,10 +30,10 @@ artifacts = [
 name = "terminal-bench/c4a9a9b2-0818-5b05-9829-3a208c74638b"
 description = "Repair a broken offline container-image admission-control hardening compiler and derive a deterministic hardened admission configuration for the active enforcement class from interacting numeric policy layers, emitting a flat configuration plus a full derivation audit."
 keywords = ["python", "cli", "configuration", "security", "admission-control", "hardening", "derivation"]
-authors = [{ name = "Aniket Datta", email = "aniket.dattaint17@ethara.ai" }]
+authors = [{ name = "Aniket Datta", email = "aniket.dattaint17@ethara.ai" }, { name = "Dinshi Jain", email = "dinshi.jain@ethara.ai" }]
 
 [metadata]
-difficulty = "easy"
+difficulty = "medium"
 category = "Security"
 tags = ["python", "cli", "configuration", "security", "admission-control", "hardening", "derivation"]
 estimated_duration_sec = 7200.0

@@ -1,0 +1,547 @@
+{
+  "model": "opus-5",
+  "run_index": 3,
+  "pytest": {
+    "passed": 38,
+    "failed": 37,
+    "exit_code": 1,
+    "reward": 0.4494,
+    "tests": [
+      {
+        "name": "test_all_declared_artifacts_exist",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_all_final_batches_have_members",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_canonical_sources_match",
+        "weight": 3.0,
+        "passed": false
+      },
+      {
+        "name": "test_carry_state_ledger_match",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_demand_score_ledger_match",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_eligibility_codes_in_enum",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_eligibility_ledger_match",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_eval_cycle_and_carry_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_eval_final_allocation_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_eval_remaining_artifacts_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_eval_objective_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_eval_summaries_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_every_binding_event_has_single_phase",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_exception_codes_in_enum",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_final_alloc_sums_to_source_summary",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_final_state_chain_folds_manifest",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_final_state_has_required_keys",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_fixture_alloc_equals_cap",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_fixture_cycle_len2",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_fixture_empty_group",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_fixture_floor_over_cap",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_fixture_lang_excluded",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_fixture_single_example",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_fixture_zero_denom",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_hidden_a_carry_state_match",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_hidden_a_exception_trace_match",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_hidden_a_final_allocation_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_hidden_a_microbatch_manifest_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_hidden_a_objective_and_state_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_hidden_b_capacity_binding_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_hidden_b_demand_and_eligibility_match",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_hidden_b_final_allocation_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_hidden_b_fixed_point_weights_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_hidden_b_reconciliation_trace_match",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_integrity_manifest_covers_declared_set",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_json_artifacts_parse",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_json_serialization_is_canonical",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_jsonl_artifacts_parse_line_by_line",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_jsonl_serialization_is_canonical",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_language_allocation_summary_match",
+        "weight": 3.0,
+        "passed": false
+      },
+      {
+        "name": "test_manifest_digests_match_files",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_negative_weight_filename_dependent_behaviour",
+        "weight": -5.0,
+        "passed": false
+      },
+      {
+        "name": "test_negative_weight_hardcoded_sample_answers",
+        "weight": -5.0,
+        "passed": false
+      },
+      {
+        "name": "test_negative_weight_nondeterministic_output",
+        "weight": -3.0,
+        "passed": false
+      },
+      {
+        "name": "test_negative_weight_reads_training_corpus_at_runtime",
+        "weight": -5.0,
+        "passed": false
+      },
+      {
+        "name": "test_objective_recomputed_from_raw_outputs",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_objective_tuple_has_five_components",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_phase_membership_match",
+        "weight": 3.0,
+        "passed": false
+      },
+      {
+        "name": "test_phase_token_totals_match",
+        "weight": 3.0,
+        "passed": false
+      },
+      {
+        "name": "test_phase_totals_respect_effective_cap",
+        "weight": 3.0,
+        "passed": false
+      },
+      {
+        "name": "test_pre_reconciliation_ledger_match",
+        "weight": 3.0,
+        "passed": false
+      },
+      {
+        "name": "test_precedence_closure_match",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_program_is_a_runnable_script",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_proportional_allocation_match",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_protected_floor_ledger_match",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_rational_example_weights_match",
+        "weight": 3.0,
+        "passed": false
+      },
+      {
+        "name": "test_rational_weights_are_reduced_fractions",
+        "weight": 1.0,
+        "passed": true
+      },
+      {
+        "name": "test_rounding_residual_ledger_match",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_safety_allocation_summary_match",
+        "weight": 3.0,
+        "passed": false
+      },
+      {
+        "name": "test_source_allocation_summary_match",
+        "weight": 3.0,
+        "passed": false
+      },
+      {
+        "name": "test_source_summary_within_supply",
+        "weight": 3.0,
+        "passed": true
+      },
+      {
+        "name": "test_visible_binding_actually_happened",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_visible_capacity_binding_trace_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_visible_cycle_break_decisions_match",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_visible_cycle_report_match",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_visible_exception_trace_match",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_visible_final_allocation_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_visible_final_state_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_visible_fixed_point_weights_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_visible_global_reconciliation_trace_match",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_visible_integrity_manifest_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_visible_invariant_report_match",
+        "weight": 5.0,
+        "passed": true
+      },
+      {
+        "name": "test_visible_microbatch_manifest_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_visible_objective_tuple_match",
+        "weight": 5.0,
+        "passed": false
+      },
+      {
+        "name": "test_visible_precedence_overturn_trace_match",
+        "weight": 5.0,
+        "passed": true
+      }
+    ]
+  },
+  "rubric": [
+    {
+      "number": "R1",
+      "criterion": "The agent shows one executed command whose printed output lists every declared deliverable at its required absolute path under the output directory and displays one delivered record in the required sorted key object per line shape; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The final `/app/out` listing command printed all 29 names and `final_state.json`, but the names were relative rather than their required absolute `/app/out/...` paths. No single executed command printed every deliverable at its absolute path together with a JSONL record."
+    },
+    {
+      "number": "R2",
+      "criterion": "The agent shows the executed command and its printed output demonstrating that a second run on the same manifests produces byte identical deliverables; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R3",
+      "criterion": "The agent writes a file under the input data directory.",
+      "type": "instruction following",
+      "evaluation_target": "state_change",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R4",
+      "criterion": "The response states the total allocated tokens, the global clawback count, the cycle edge removal count and the final objective tuple, and each stated figure equals the value in the delivered files.",
+      "type": "instruction following",
+      "evaluation_target": "user_facing_message",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R5",
+      "criterion": "The agent reports the determinism rerun as done while the executed command and its output are absent from the trajectory.",
+      "type": "instruction following",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": -5,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R6",
+      "criterion": "The agent runs its program against a constructed manifest set whose protected floors alone exceed a phase capacity, prints the resulting capacity binding trace, and names the ranked displacement precedence that produced it; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "task completion",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": false,
+      "justification": "The `/tmp/edge_data` run printed a capacity trace containing `floor_cut` rows and demonstrated floors exceeding PH2 capacity. However, the trace/output did not explicitly name the full ranked precedence\u2014ascending stratum displacement rank, worst priority first, then source ID\u2014that produced those rows."
+    },
+    {
+      "number": "R7",
+      "criterion": "The agent recomputes from the raw manifest the canonical token count of a source whose unit conversion lands on an exact half and prints its own round half even value beside the shipped canonical sources value; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "task completion",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": 5,
+      "is_positive": true,
+      "passed": false,
+      "justification": "Raw manifests and `canonical_sources.jsonl` were printed, and exact-half rows were visible, but no executed independent recomputation printed its result beside the delivered canonical value."
+    },
+    {
+      "number": "R8",
+      "criterion": "The agent exercises a two node curriculum cycle and prints the cycle break decision row showing the single edge the hardness ranking removed; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "task completion",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R9",
+      "criterion": "The agent recomputes the integrity manifest digests over the delivered artifacts and prints the folded chain beside the value in final state; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "tool use",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": false,
+      "justification": "`/tmp/verify.py` recomputed the digests and chain, but its output only printed `CHECKS: ALL PASS`. It did not print the independently folded chain beside the chain read from `final_state.json`."
+    },
+    {
+      "number": "R10",
+      "criterion": "The agent presents the final objective tuple while the supporting derivation is absent from the trajectory.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "critically_important",
+      "score": -5,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R11",
+      "criterion": "The agent reports a proportional share truncated toward zero while the round half even quantization the specification fixes is absent.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R12",
+      "criterion": "The agent reports a capacity bound plan that scales every source down proportionally while the ranked displacement the specification fixes is absent.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R13",
+      "criterion": "The agent derives the example weights from the pre reconciliation allocation while the reconciled final allocation is absent.",
+      "type": "factuality and hallucination",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    },
+    {
+      "number": "R14",
+      "criterion": "The agent runs its program on a second reseeded manifest set and prints the two exception traces showing the quiet branches that fired on each snapshot; credit requires the executed command and its printed output to be present and complete in the trajectory, so a described result on its own leaves this criterion unmet.",
+      "type": "tool use",
+      "evaluation_target": "trajectory",
+      "importance": "important",
+      "score": 3,
+      "is_positive": true,
+      "passed": true
+    },
+    {
+      "number": "R15",
+      "criterion": "The agent leaves a file in the output directory beyond the twenty nine declared deliverables.",
+      "type": "agent behavior",
+      "evaluation_target": "state_change",
+      "importance": "important",
+      "score": -3,
+      "is_positive": false,
+      "passed": true
+    }
+  ],
+  "final_reward": 42.47,
+  "test_weights_percentage": 44.94,
+  "rubric_weights_percentage": 40.0,
+  "evaluated_by": "poonam.chourey@ethara.ai"
+}

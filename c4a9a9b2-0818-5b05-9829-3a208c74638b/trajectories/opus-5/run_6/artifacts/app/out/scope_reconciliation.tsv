@@ -1,0 +1,6 @@
+scope	in_base	in_overlay	in_deny	effective	uid
+admin	no	no	yes	no	1200
+exec	no	yes	no	yes	2600
+list	yes	no	no	yes	3800
+read	yes	no	no	yes	4000
+write	yes	no	no	yes	3200

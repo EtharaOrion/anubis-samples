@@ -1,0 +1,29 @@
+{"binding": "ADOPTED", "kind": "base_budget", "layer": "defaults.json", "max_records": 235, "retry_limit": 6, "timeout_ms": 2359}
+{"active_class": 4, "binding": "ADOPTED", "kind": "class_selector", "layer": "class_index.tsv2", "selector": 1410}
+{"active_class": 4, "binding": "ADOPTED", "kind": "throughput", "layer": "ingress_rate.tsv", "qps": 800}
+{"active_class": 4, "binding": "ADOPTED", "burst_multiplier_permille": 1100, "kind": "burst_window", "layer": "burst_multiplier.ini", "window_seconds": 10}
+{"active_class": 4, "binding": "ADOPTED", "kind": "rate_step", "layer": "rate_gran.caret", "rate_step": 25}
+{"active_class": 4, "binding": "ADOPTED", "count": 5, "kind": "scope_base", "layer": "scope_base.jsonl"}
+{"active_class": 4, "binding": "ADOPTED", "count": 1, "kind": "scope_overlay", "layer": "scope_overlay.ndjson"}
+{"active_class": 4, "binding": "ADOPTED", "count": 1, "kind": "scope_deny", "layer": "scope_deny.psv"}
+{"binding": "SCOPE_", "kind": "scope_uid_map", "layer": "uid_map.env", "privilege_drop_uid": 1200}
+{"active_class": 4, "binding": "ADOPTED", "kind": "uid_floor", "layer": "uid_floor.hex", "uid_floor": 1000}
+{"active_class": 4, "adopted": 7, "binding": "ADOPTED", "kind": "hardening_controls", "layer": "baseline_controls.scsv", "raw": 216}
+{"active_class": 4, "binding": "ADOPTED", "ceil": 95, "floor": 50, "kind": "hardening_bounds", "layer": "hardening_bounds.toml"}
+{"baseline_complement": 100, "binding": "ADOPTED", "kind": "risk_constants", "layer": "risk_const.env2", "risk_divisor": 1000}
+{"active_class": 4, "binding": "ADOPTED", "kind": "severity_weight", "layer": "severity_weight.kv", "severity_permille": 2000}
+{"active_class": 4, "binding": "ADOPTED", "healthy_voters": 9, "kind": "voter_health", "layer": "voter_health.ndjson"}
+{"active_class": 4, "binding": "ADOPTED", "kind": "quorum_permille", "layer": "quorum_permille.tilde", "permille": 667}
+{"active_class": 4, "binding": "ADOPTED", "kind": "tls_floor", "layer": "tls_matrix.csv", "tls_floor_score": 95}
+{"active_class": 4, "binding": "ADOPTED", "kind": "seccomp_allow", "layer": "seccomp_allow.tsv", "seccomp_allowed_count": 3}
+{"active_class": 4, "binding": "ADOPTED", "denied": 3, "kind": "seccomp_deny", "layer": "seccomp_deny.psv"}
+{"active_class": 4, "audit_retention_days": 365, "binding": "ADOPTED", "kind": "audit_retention", "layer": "retention.ini"}
+{"binding": "class_N", "kind": "precedence_override", "layer": "layer_overrides.json", "pinned_applied": true}
+{"binding": "pinned==true", "kind": "precedence_pinned", "layer": "pinned_overrides.json", "pinned_applied": true}
+{"abs_ceil": 512, "active_class": 4, "binding": "ADOPTED", "kind": "session_cap_ceil", "layer": "sessions_cap.csv2"}
+{"active_class": 4, "binding": "ADOPTED", "floor_ms": 100, "kind": "nonce_floor", "layer": "nonce_bounds.toml2"}
+{"active_class": 4, "binding": "ADOPTED", "kind": "retry_step", "layer": "retry_backoff.psv2", "step": 10}
+{"binding": "DECOY", "kind": "trailer_decoys", "layer": "trailer_registry.txt3", "trailer": "harbor:cli-config:TASK:000000002e552977"}
+{"binding": "ADOPTED", "kind": "profile_roster", "layer": "profile_map.kv3", "profiles": ["canary", "enforce"]}
+{"binding": "ADOPTED", "kind": "profile_deltas", "layer": "profile_deltas.json", "profiles": ["canary", "enforce"]}
+{"binding": "ADOPTED", "kind": "field_registry", "layer": "field_registry.ndjson", "required_keys": 22}

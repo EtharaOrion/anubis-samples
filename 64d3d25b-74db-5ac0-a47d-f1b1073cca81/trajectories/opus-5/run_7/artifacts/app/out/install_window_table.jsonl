@@ -1,0 +1,12 @@
+{"bay_id":"BAY_2","code":"S_OK","object_id":"OBJ01","required_days":2,"window_end":14,"window_start":4}
+{"bay_id":"BAY_1","code":"S_OK","object_id":"OBJ02","required_days":3,"window_end":11,"window_start":3}
+{"bay_id":"BAY_3","code":"S_OK","object_id":"OBJ03","required_days":2,"window_end":14,"window_start":4}
+{"bay_id":"BAY_1","code":"S_OK","object_id":"OBJ04","required_days":3,"window_end":11,"window_start":2}
+{"bay_id":"BAY_2","code":"S_OK","object_id":"OBJ05","required_days":1,"window_end":14,"window_start":4}
+{"bay_id":"BAY_2","code":"S_OK","object_id":"OBJ06","required_days":1,"window_end":14,"window_start":4}
+{"bay_id":"BAY_1","code":"S_OK","object_id":"OBJ07","required_days":2,"window_end":11,"window_start":3}
+{"bay_id":"BAY_3","code":"S_OK","object_id":"OBJ08","required_days":1,"window_end":14,"window_start":4}
+{"bay_id":"BAY_1","code":"S_SHORT_WINDOW","object_id":"OBJ09","required_days":2,"window_end":5,"window_start":5}
+{"bay_id":"BAY_2","code":"S_OK","object_id":"OBJ10","required_days":1,"window_end":14,"window_start":2}
+{"bay_id":"BAY_2","code":"S_OK","object_id":"OBJ11","required_days":1,"window_end":14,"window_start":2}
+{"bay_id":"BAY_1","code":"S_OK","object_id":"OBJ12","required_days":1,"window_end":11,"window_start":2}

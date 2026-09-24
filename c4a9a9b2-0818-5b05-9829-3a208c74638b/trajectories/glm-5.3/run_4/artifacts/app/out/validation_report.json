@@ -1,0 +1,363 @@
+{
+  "checks": [
+    {
+      "check": "artifact_present:config.json",
+      "detail": "650",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:report.json",
+      "detail": "1699",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:tool.zip",
+      "detail": "10566",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:validation_report.json",
+      "detail": "140",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:summary.json",
+      "detail": "389",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:profile_canary.json",
+      "detail": "655",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:profile_enforce.json",
+      "detail": "656",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:profile_delta_report.json",
+      "detail": "1210",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:admission_matrix.csv",
+      "detail": "133",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:rate_limit_plan.ini",
+      "detail": "66",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:scope_reconciliation.tsv",
+      "detail": "152",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:hardening_fold_trace.psv",
+      "detail": "1377",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:quorum_plan.kv",
+      "detail": "36",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:risk_ledger.env",
+      "detail": "57",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:precedence_resolution.properties",
+      "detail": "195",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:privilege_map.ndjson",
+      "detail": "95",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:seccomp_summary.tsv",
+      "detail": "32",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:tls_floor.env",
+      "detail": "19",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:retention_schedule.csv",
+      "detail": "26",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:derivation_audit.xml",
+      "detail": "1620",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:convergence_report.txt",
+      "detail": "709",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:reproducibility_manifest.json",
+      "detail": "3101",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:input_census.ndjson",
+      "detail": "7885",
+      "ok": true
+    },
+    {
+      "check": "artifact_present:class_ordering.tsv",
+      "detail": "46",
+      "ok": true
+    },
+    {
+      "check": "emitted_set",
+      "detail": "admission_matrix.csv,class_ordering.tsv,config.json,convergence_report.txt,derivation_audit.xml,hardening_fold_trace.psv,input_census.ndjson,precedence_resolution.properties,privilege_map.ndjson,profile_canary.json,profile_delta_report.json,profile_enforce.json,quorum_plan.kv,rate_limit_plan.ini,report.json,reproducibility_manifest.json,retention_schedule.csv,risk_ledger.env,scope_reconciliation.tsv,seccomp_summary.tsv,summary.json,tls_floor.env,tool.zip,validation_report.json",
+      "ok": true
+    },
+    {
+      "check": "rederive:config",
+      "detail": "matches",
+      "ok": true
+    },
+    {
+      "check": "flat:config",
+      "detail": "scalar_only",
+      "ok": true
+    },
+    {
+      "check": "trailer:config",
+      "detail": "harbor:cli-config:TASK:000000002e552977",
+      "ok": true
+    },
+    {
+      "check": "required_keys:config",
+      "detail": "complete",
+      "ok": true
+    },
+    {
+      "check": "forbidden_keys:config",
+      "detail": "none",
+      "ok": true
+    },
+    {
+      "check": "rederive:canary",
+      "detail": "matches",
+      "ok": true
+    },
+    {
+      "check": "flat:canary",
+      "detail": "scalar_only",
+      "ok": true
+    },
+    {
+      "check": "trailer:canary",
+      "detail": "harbor:cli-config:TASK:000000002e552977",
+      "ok": true
+    },
+    {
+      "check": "required_keys:canary",
+      "detail": "complete",
+      "ok": true
+    },
+    {
+      "check": "forbidden_keys:canary",
+      "detail": "none",
+      "ok": true
+    },
+    {
+      "check": "rederive:enforce",
+      "detail": "matches",
+      "ok": true
+    },
+    {
+      "check": "flat:enforce",
+      "detail": "scalar_only",
+      "ok": true
+    },
+    {
+      "check": "trailer:enforce",
+      "detail": "harbor:cli-config:TASK:000000002e552977",
+      "ok": true
+    },
+    {
+      "check": "required_keys:enforce",
+      "detail": "complete",
+      "ok": true
+    },
+    {
+      "check": "forbidden_keys:enforce",
+      "detail": "none",
+      "ok": true
+    },
+    {
+      "check": "size:config.json",
+      "detail": "650",
+      "ok": true
+    },
+    {
+      "check": "size:report.json",
+      "detail": "1699",
+      "ok": true
+    },
+    {
+      "check": "size:tool.zip",
+      "detail": "10566",
+      "ok": true
+    },
+    {
+      "check": "size:validation_report.json",
+      "detail": "140",
+      "ok": true
+    },
+    {
+      "check": "size:summary.json",
+      "detail": "389",
+      "ok": true
+    },
+    {
+      "check": "size:profile_canary.json",
+      "detail": "655",
+      "ok": true
+    },
+    {
+      "check": "size:profile_enforce.json",
+      "detail": "656",
+      "ok": true
+    },
+    {
+      "check": "size:profile_delta_report.json",
+      "detail": "1210",
+      "ok": true
+    },
+    {
+      "check": "size:admission_matrix.csv",
+      "detail": "133",
+      "ok": true
+    },
+    {
+      "check": "size:rate_limit_plan.ini",
+      "detail": "66",
+      "ok": true
+    },
+    {
+      "check": "size:scope_reconciliation.tsv",
+      "detail": "152",
+      "ok": true
+    },
+    {
+      "check": "size:hardening_fold_trace.psv",
+      "detail": "1377",
+      "ok": true
+    },
+    {
+      "check": "size:quorum_plan.kv",
+      "detail": "36",
+      "ok": true
+    },
+    {
+      "check": "size:risk_ledger.env",
+      "detail": "57",
+      "ok": true
+    },
+    {
+      "check": "size:precedence_resolution.properties",
+      "detail": "195",
+      "ok": true
+    },
+    {
+      "check": "size:privilege_map.ndjson",
+      "detail": "95",
+      "ok": true
+    },
+    {
+      "check": "size:seccomp_summary.tsv",
+      "detail": "32",
+      "ok": true
+    },
+    {
+      "check": "size:tls_floor.env",
+      "detail": "19",
+      "ok": true
+    },
+    {
+      "check": "size:retention_schedule.csv",
+      "detail": "26",
+      "ok": true
+    },
+    {
+      "check": "size:derivation_audit.xml",
+      "detail": "1620",
+      "ok": true
+    },
+    {
+      "check": "size:convergence_report.txt",
+      "detail": "709",
+      "ok": true
+    },
+    {
+      "check": "size:reproducibility_manifest.json",
+      "detail": "3101",
+      "ok": true
+    },
+    {
+      "check": "size:input_census.ndjson",
+      "detail": "7885",
+      "ok": true
+    },
+    {
+      "check": "size:class_ordering.tsv",
+      "detail": "46",
+      "ok": true
+    },
+    {
+      "check": "sidecar_value:rate_limit_plan.ini",
+      "detail": "200",
+      "ok": true
+    },
+    {
+      "check": "sidecar_value:risk_ledger.env",
+      "detail": "8",
+      "ok": true
+    },
+    {
+      "check": "sidecar_value:quorum_plan.kv",
+      "detail": "2",
+      "ok": true
+    },
+    {
+      "check": "sidecar_value:tls_floor.env",
+      "detail": "70",
+      "ok": true
+    },
+    {
+      "check": "class_ordering_ascending",
+      "detail": "[7, 8, 10]",
+      "ok": true
+    },
+    {
+      "check": "class_ordering_rows",
+      "detail": "3",
+      "ok": true
+    },
+    {
+      "check": "privilege_map_lines",
+      "detail": "3",
+      "ok": true
+    }
+  ],
+  "ok": true,
+  "tool": "task-ctl",
+  "trailer": "harbor:cli-config:TASK:000000002e552977",
+  "validated_artifacts": 24
+}

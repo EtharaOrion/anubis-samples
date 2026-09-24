@@ -1,0 +1,5 @@
+layer	class	scopes	count
+base	0	list read	2
+overlay	0	attest	1
+deny	0	write	1
+effective	0	attest list read	3

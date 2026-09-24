@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<derivationAudit>
+  <activeClass selector="50" span="185">1</activeClass>
+  <derivedConfig>
+    <value key="active_class">1</value>
+    <value key="audit_retention_days">90</value>
+    <value key="burst_ceiling">900</value>
+    <value key="checksum"><![CDATA[crc32]]></value>
+    <value key="control_plane"><![CDATA[admission-broker]]></value>
+    <value key="effective_scope_count">4</value>
+    <value key="enforcement_profile"><![CDATA[main]]></value>
+    <value key="hardening_baseline">90</value>
+    <value key="image_runtime"><![CDATA[oci-runc]]></value>
+    <value key="ingress_rate_limit_qps">300</value>
+    <value key="max_concurrent_sessions">96</value>
+    <value key="mode"><![CDATA[strict-local]]></value>
+    <value key="nonce_window_ms">500</value>
+    <value key="privilege_drop_uid">2600</value>
+    <value key="profile"><![CDATA[TASK]]></value>
+    <value key="quorum_threshold">3</value>
+    <value key="retry_backoff_base_ms">2060</value>
+    <value key="risk_index">10</value>
+    <value key="seccomp_allowed_count">6</value>
+    <value key="session_ttl_seconds">3000</value>
+    <value key="tls_floor_score">80</value>
+    <value key="trailer"><![CDATA[harbor:cli-config:TASK:000000002e552977]]></value>
+  </derivedConfig>
+  <rateLimit qps="240" burstPermille="1250" preQuantised="300" step="25" window="3" rate="300" burst="900"/>
+  <scopeReconciliation base="3" overlay="1" deny="1" effective="4" uidFloor="1000" dropUid="2600"/>
+  <hardeningFold raw="97" floor="40" ceiling="90" clamped="90" step="5" baseline="90"/>
+  <riskIndex complement="100" severityPermille="1000" divisor="1000" value="10"/>
+  <quorum healthyVoters="5" permille="667" value="3"/>
+  <precedence pinned="false">
+    <field name="session_ttl_seconds" default="1800" resolved="3000" source="override"/>
+    <field name="nonce_window_ms" default="400" resolved="500" source="override"/>
+    <field name="max_concurrent_sessions" default="64" resolved="96" source="override"/>
+  </precedence>
+  <commandTranscript>
+    <command><![CDATA[task-ctl derive --out config.json]]></command>
+    <command><![CDATA[task-ctl profile --name canary --config config.json --out profile_canary.json]]></command>
+    <command><![CDATA[task-ctl profile --name enforce --config config.json --out profile_enforce.json]]></command>
+    <command><![CDATA[task-ctl delta-report --config config.json --out profile_delta_report.json]]></command>
+    <command><![CDATA[task-ctl emit --artifact admission_matrix.csv --config config.json]]></command>
+    <command><![CDATA[task-ctl emit --artifact hardening_fold_trace.psv --config config.json]]></command>
+    <command><![CDATA[task-ctl emit --artifact precedence_resolution.properties --config config.json]]></command>
+    <command><![CDATA[task-ctl emit --artifact privilege_map.ndjson --config config.json]]></command>
+    <command><![CDATA[task-ctl emit --artifact quorum_plan.kv --config config.json]]></command>
+    <command><![CDATA[task-ctl emit --artifact rate_limit_plan.ini --config config.json]]></command>
+    <command><![CDATA[task-ctl emit --artifact retention_schedule.csv --config config.json]]></command>
+    <command><![CDATA[task-ctl emit --artifact risk_ledger.env --config config.json]]></command>
+    <command><![CDATA[task-ctl emit --artifact scope_reconciliation.tsv --config config.json]]></command>
+    <command><![CDATA[task-ctl emit --artifact seccomp_summary.tsv --config config.json]]></command>
+    <command><![CDATA[task-ctl emit --artifact tls_floor.env --config config.json]]></command>
+    <command><![CDATA[task-ctl class-ordering --config config.json --out class_ordering.tsv]]></command>
+    <command><![CDATA[task-ctl converge --config config.json --out convergence_report.txt]]></command>
+    <command><![CDATA[task-ctl audit --config config.json --out derivation_audit.xml]]></command>
+    <command><![CDATA[task-ctl census --config config.json --out input_census.ndjson]]></command>
+    <command><![CDATA[task-ctl package --out tool.zip]]></command>
+  </commandTranscript>
+</derivationAudit>

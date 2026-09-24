@@ -35,7 +35,7 @@ artifacts = [
 name = "terminal-bench/a8d5a61c-4126-58f3-8e29-edb360f79699"
 description = "Compile a deterministic training mixture allocation certificate from fragmented source manifests, policies, curriculum dependencies, token budgets and a written specification. Canonicalize units into integer tokens under a pervasive round half even rule, project eligibility, score demand, and derive a per source per phase token allocation spine through proportional shares, protected floors, capacity binding displacement, precedence closure with a deterministic cycle break, carry state and a global reconciliation that repairs over allocated sources, then materialize per example integer weights and microbatch manifests, ending in twenty eight byte exact artifacts and a folded chain state."
 keywords = ["python", "allocation", "constraint-compiler", "determinism", "stdlib"]
-authors = [{name = "Harshank Kanungo", email = "harshank.kanungo@ethara.ai"}]
+authors = [{name = "Harshank Kanungo", email = "harshank.kanungo@ethara.ai"}, {name = "Poonam Chourey", email = "poonam.chourey@ethara.ai"}]
 
 [metadata]
 difficulty = "medium"

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<derivation class="1">
+  <field name="active_class" value="1" formula="selector=max_records(235) mod 185=50 inside ADOPTED class_index range"/>
+  <field name="audit_retention_days" value="90" formula="retention.ini [class.1].retention_days"/>
+  <field name="burst_ceiling" value="900" formula="ingress_rate_limit_qps(300)*window_seconds(3)"/>
+  <field name="checksum" value="crc32" formula="fixed contract string"/>
+  <field name="control_plane" value="admission-broker" formula="fixed contract string"/>
+  <field name="effective_scope_count" value="4" formula="count((base union overlay) minus deny)"/>
+  <field name="enforcement_profile" value="main" formula="fixed contract string"/>
+  <field name="hardening_baseline" value="90" formula="quantize_floor(clamp(fold(90),40,90),5)"/>
+  <field name="image_runtime" value="oci-runc" formula="fixed contract string"/>
+  <field name="ingress_rate_limit_qps" value="300" formula="quantize_floor(rhe(qps(240)*permille(1250),1000),25)"/>
+  <field name="max_concurrent_sessions" value="96" formula="precedence(default,override,pinned) capped by abs_ceil"/>
+  <field name="mode" value="strict-local" formula="fixed contract string"/>
+  <field name="nonce_window_ms" value="500" formula="precedence(default,override,pinned) floored by nonce floor"/>
+  <field name="privilege_drop_uid" value="2600" formula="max(min(uid of effective scopes),uid_floor(1000))"/>
+  <field name="profile" value="TASK" formula="fixed contract string"/>
+  <field name="quorum_threshold" value="3" formula="clamp(rhe(healthy(5)*permille(667),1000),1,5)"/>
+  <field name="retry_backoff_base_ms" value="330" formula="quantize_floor(rhe(timeout_ms(2359),retry_limit(6)+1),10)"/>
+  <field name="risk_index" value="10" formula="rhe((100-hardening_baseline)*severity(1000),1000)"/>
+  <field name="seccomp_allowed_count" value="6" formula="count(allow minus deny) over ADOPTED rows"/>
+  <field name="session_ttl_seconds" value="3000" formula="precedence(default,override,pinned)"/>
+  <field name="tls_floor_score" value="80" formula="max score of ADOPTED enabled suites"/>
+  <field name="trailer" value="harbor:cli-config:TASK:000000002e552977" formula="fixed contract string"/>
+</derivation>

@@ -1,0 +1,6 @@
+class	layer	scope	status	effective
+1	base	list	ADOPTED	yes
+1	base	read	ADOPTED	yes
+1	base	write	ADOPTED	yes
+1	overlay	exec	ADOPTED	yes
+1	deny	admin	ADOPTED	no

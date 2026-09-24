@@ -1,0 +1,28 @@
+task-ctl convergence report
+=========================
+active enforcement class: 1
+base budget: max_records=235 retry_limit=6 timeout_ms=2359
+selector rule: class_index.tsv2 ADOPTED band 37..73 contains max_records=235
+
+ingress rate limit: 240 qps x 1250 permille / 1000 -> 300, quantized to step 25 -> 300
+burst ceiling: 300 x window 3 = 900
+effective scopes: (list,read,write) U (exec) - (admin) = exec,list,read,write (count 4)
+privilege drop uid: min granted 2600, floor 1000 -> 2600
+hardening baseline: carry fold 97, clamp [40,90] -> 90, quantize step 5 -> 90
+risk index: (100 - 90) * 1000 / 1000 = 10
+quorum threshold: 5 healthy voters * 667 / 1000 -> 3, clamped to [1,5] -> 3
+tls floor score: 80
+seccomp allowed count: 6
+audit retention days: 90
+session_ttl_seconds: default 1800, override 3000, pinned 9999 (pinned==false) -> 3000
+nonce_window_ms: default 400, override 500, pinned 999 (pinned==false) -> 500
+max_concurrent_sessions: default 64, override 96, pinned 999 (pinned==false) -> 96
+retry backoff base ms: 2359 * 7 / 8 -> 2064, quantized to step 10 -> 2060
+
+profiles: canary ttl=2250 quorum=4 risk=12; enforce ttl=3600 quorum=3 risk=9
+trailer carried: harbor:cli-config:TASK:000000002e552977
+
+converged: yes
+validated by repaired tool: ok
+rounding mode: exact integer round-half-even (banker's); no floating point on graded values
+reproducible: artifacts are byte-stable across repeated runs

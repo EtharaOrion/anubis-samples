@@ -1,0 +1,32 @@
+{
+  "algorithm": "sha256",
+  "artifacts": {
+    "admission_matrix.csv": "41463455777d3189767960fbccb4dd659bfda7c527ced95288b06707c4812a1e",
+    "class_ordering.tsv": "3ffe09e19ddfc2d7c8c3932b4d85b02cfe46aec1fc32f322ef4227772e19e7de",
+    "config.json": "de4e10f0aaabfed99bdd8d57465b3e9e84ed3acb31f331ddd45de3725d368841",
+    "convergence_report.txt": "9d183a99fe28da79faef648e9617316302ef7d362af015568871f18bc1c00f27",
+    "derivation_audit.xml": "c994b9526a65697c845b2d7f1869d894e58d6728c7552db6616b812b06a51ed8",
+    "hardening_fold_trace.psv": "de0760d939f78621906f32e6875d3c3b162719859d503cf1625eea332fc80c21",
+    "input_census.ndjson": "0f8354f26b3aedb499604a46f02c94138795c6ace3bc7b99d33630378dc266c1",
+    "precedence_resolution.properties": "358d7b725a8695cc2d84e4f37b8ff9ea5c0a8800cd9e1bc8effb4d1bd345a2fc",
+    "privilege_map.ndjson": "cc1723f66b5d862b13d96df9e4b49711668b3fd483d6099c801e38c23686ee9b",
+    "profile_canary.json": "aac4b36b4a7e66e52b24cd6761c61251b26885fdb01577128e32522bfd2498d9",
+    "profile_delta_report.json": "ebb0ed541b292f56b4988f2b732ec56c231002062a3b98128ff69c11fa10e808",
+    "profile_enforce.json": "26d925a8ed1a80f0070dedeb053701b382a9cd8af4ddfa518dba724c492bd656",
+    "quorum_plan.kv": "11c6067b97d55800e3545818b7ea27b5cabc9cd0205eccee2d985beb735b1c9e",
+    "rate_limit_plan.ini": "ca3950730cd43187a2d14d47a2d142bdd96749e4e35d7f0f06f3ec910850fcc4",
+    "retention_schedule.csv": "dda0621927f954b1b3030e7b7c1f12f60e9559f3e1e6e491e054d0025592cc5a",
+    "risk_ledger.env": "eeaf7599ded519a209a1624e08de994df44a7dd4acffa6b2acb391788a907aac",
+    "scope_reconciliation.tsv": "f58db343924918e0d9f06a25380b21400de1e6e5b760c97b95cd4c30627f01bb",
+    "seccomp_summary.tsv": "cbc4b5a42e9fbba3d0f264828fd390f99cdef79ce0cd92717a08dfae2163dac9",
+    "tls_floor.env": "4995e1e53820cbd49e52b8a381e340de5dbf493de6f439e390fadbd8caa7f0ef",
+    "tool.zip": "36d5222458098959fb7ac998294ca103576526e33c59cb104c43b4b99cb343af"
+  },
+  "canonical_trailer": "harbor:cli-config:TASK:000000002e552977",
+  "config_digest": "de4e10f0aaabfed99bdd8d57465b3e9e84ed3acb31f331ddd45de3725d368841",
+  "determinism": {
+    "floating_point_used": false,
+    "key_order": "sorted",
+    "rounding": "round-half-even (banker's) on exact integers"
+  }
+}

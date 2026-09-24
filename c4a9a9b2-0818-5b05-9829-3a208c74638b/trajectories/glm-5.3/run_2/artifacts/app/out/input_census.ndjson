@@ -1,0 +1,26 @@
+{"binding": "base_config", "bytes": 532, "file": "defaults.json", "sha256": "edf2bbfbf633ef434491ebe7b1e7538b225adf489b340afa633474abd319ec77", "status": "ADOPTED", "value": "{\"max_records\": 235, \"retry_limit\": 6, \"timeout_ms\": 2359, \"trailer\": \"harbor:cli-config:TASK:000000002e552977\"}"}
+{"binding": "adopted_selector_rows", "bytes": 4114, "file": "class_index.tsv2", "sha256": "2ff73d38d283476b10290fd5e0f614b4260b485cf5b6480c187a890bbcb3512f", "status": "ADOPTED", "value": "5"}
+{"binding": "adopted_rows_for_class", "bytes": 5628, "file": "ingress_rate.tsv", "sha256": "317d84e84bd711d150b094820cde7230a2a8d7b32f66724ac54c917bd2b7c094", "status": "ADOPTED", "value": "1"}
+{"binding": "adopted_rows_for_class", "bytes": 2632, "file": "rate_gran.caret", "sha256": "c28a22f7444fe309d42af1f74f8e14b7087f389d69ebdd51d1cc84e6ae0ab054", "status": "ADOPTED", "value": "1"}
+{"binding": "adopted_blocks_for_class", "bytes": 10112, "file": "burst_multiplier.ini", "sha256": "ae254270055859578be6f21fe457a6f0cb20c0485a8d3fb3f997915c6ba40f7f", "status": "ADOPTED", "value": "1"}
+{"binding": "adopted_rows_for_class", "bytes": 3916, "file": "window_seconds.conf", "sha256": "c79f5e4c1430c6b2101783d0052b398561ab69dbba743b92950348628bd7f1dd", "status": "ADOPTED", "value": "1"}
+{"binding": "adopted_rows_for_class", "bytes": 14829, "file": "scope_base.jsonl", "sha256": "ad2e2e50caa1cd688055b5efef8ae9df63c8da979c0d587b271452bf91f9aae7", "status": "ADOPTED", "value": "3"}
+{"binding": "adopted_rows_for_class", "bytes": 15308, "file": "scope_overlay.ndjson", "sha256": "08e9e6ec3515cf8bcec5f2b459aa5040bc50c49653526fa7fd41f7b6b2ced5fa", "status": "ADOPTED", "value": "1"}
+{"binding": "adopted_rows_for_class", "bytes": 4599, "file": "scope_deny.psv", "sha256": "8a32da4b7925b42992b13656eaaf7a18206d68490a28e5e40672e48a926f8db2", "status": "ADOPTED", "value": "1"}
+{"binding": "scope_uid_entries", "bytes": 6218, "file": "uid_map.env", "sha256": "0a6211a0c040bae119d15b1c61a4e24801e93e6e6b4966aa702a782712c131a5", "status": "ADOPTED", "value": "7"}
+{"binding": "adopted_rows_for_class", "bytes": 2745, "file": "uid_floor.hex", "sha256": "031259362e9ad0784802314564ea9ace85bba706f3345be64a40b0cbece34204", "status": "ADOPTED", "value": "1"}
+{"binding": "class_rows", "bytes": 5311, "file": "baseline_controls.scsv", "sha256": "00f2ab88984c8c6431c2182bb1dbc8a3bceb81316572b666652adb6f6f1f1272", "status": "ADOPTED", "value": "40"}
+{"binding": "adopted_blocks_for_class", "bytes": 7182, "file": "hardening_bounds.toml", "sha256": "5d16bfad30d7151136f9352670cd1580880c4003d879dbd8ec2b052b8d29ae05", "status": "ADOPTED", "value": "1"}
+{"binding": "adopted_rows_for_class", "bytes": 4119, "file": "severity_weight.kv", "sha256": "e35d33f12f67a68aed9fe58ea0e678d232555307c9a80d9f843ac2ec508e0ec8", "status": "ADOPTED", "value": "1"}
+{"binding": "adopted_constants", "bytes": 3751, "file": "risk_const.env2", "sha256": "ababd4a53b131fc39ee25c951c74cf9dfb4e7353479337bd145354edc6438beb", "status": "ADOPTED", "value": "2"}
+{"binding": "adopted_healthy_voters", "bytes": 15516, "file": "voter_health.ndjson", "sha256": "b0d7e34653de9eb1e9dff2826b418d521b02d499f3dad11d113eb67c762b96ad", "status": "ADOPTED", "value": "5"}
+{"binding": "adopted_rows_for_class", "bytes": 2852, "file": "quorum_permille.tilde", "sha256": "b0206d67bfe2cb49f05811c80deb9b9269be46c7d4f33ca0c4eacf1493dfa45d", "status": "ADOPTED", "value": "1"}
+{"binding": "enabled_adopted_max_score", "bytes": 4893, "file": "tls_matrix.csv", "sha256": "4ea00c700b8eeca4fb006b936b635ce0a68a5b8eb8c89998ef0995b3266cac35", "status": "ADOPTED", "value": "80"}
+{"binding": "net_allowed_syscalls", "bytes": 4783, "file": "seccomp_ledger.scsv2", "sha256": "ecb681af710584b80dcfce4989feb7cba6d3b0ed43b02a8c1e4ca8d52f5870c2", "status": "ADOPTED", "value": "6"}
+{"binding": "adopted_blocks_for_class", "bytes": 8100, "file": "retention.ini", "sha256": "1fb9197e697239cdcf0b87fe985712751ab653ea019ce5ec2181bbd2460ed379", "status": "ADOPTED", "value": "1"}
+{"binding": "blocks", "bytes": 736, "file": "layer_overrides.json", "sha256": "845783815595db5e79f95d35ca86fe6c1124659a60359931d9a6087ed1142d77", "status": "ADOPTED", "value": "5"}
+{"binding": "active_blocks", "bytes": 840, "file": "pinned_overrides.json", "sha256": "2c539bafd9625d62d61bfbc4cc00f27f168737902594848ed07bab77aa012ca3", "status": "ADOPTED", "value": "0-pinned-false-for-class-1"}
+{"binding": "adopted_rows_for_class", "bytes": 2996, "file": "retry_backoff.psv2", "sha256": "1c6bfc51d156013995b5b28716336b0eebb35bf84b9427a6f6e54919f424b9c0", "status": "ADOPTED", "value": "1"}
+{"binding": "profiles", "bytes": 453, "file": "profile_deltas.json", "sha256": "23d74fe78fa9f0fdebbb7edf36b7c07622aec1abe78f10fa282946f7b625e079", "status": "ADOPTED", "value": "2"}
+{"binding": "required_keys", "bytes": 702, "file": "config_schema.json", "sha256": "4599cb67d720a180857e6d04c129fd89055580e2401cda633afe504cc8ab335c", "status": "ADOPTED", "value": "22"}
+{"binding": "required_artifacts", "bytes": 827, "file": "validation_rules.json", "sha256": "f46427f575282e5b4b94da942ca4cee0cdb6b2f778bad1c33923a10b0f2b3e4f", "status": "ADOPTED", "value": "23"}

@@ -1,0 +1,34 @@
+convergence report
+arithmetic: exact-integer
+rounding: half-even
+floating_point_used: no
+active_class: 1
+iterations_to_fixed_point: 1
+converged: yes
+deterministic: yes
+fields:
+  active_class = 1
+  audit_retention_days = 90
+  burst_ceiling = 900
+  checksum = crc32
+  control_plane = admission-broker
+  effective_scope_count = 4
+  enforcement_profile = main
+  hardening_baseline = 90
+  image_runtime = oci-runc
+  ingress_rate_limit_qps = 300
+  max_concurrent_sessions = 96
+  mode = strict-local
+  nonce_window_ms = 500
+  privilege_drop_uid = 2600
+  profile = TASK
+  quorum_threshold = 3
+  retry_backoff_base_ms = 330
+  risk_index = 10
+  seccomp_allowed_count = 6
+  session_ttl_seconds = 3000
+  tls_floor_score = 80
+  trailer = harbor:cli-config:TASK:000000002e552977
+profiles:
+  canary session_ttl_seconds=2250 quorum_threshold=4 risk_index=12
+  enforce session_ttl_seconds=3600 quorum_threshold=3 risk_index=9

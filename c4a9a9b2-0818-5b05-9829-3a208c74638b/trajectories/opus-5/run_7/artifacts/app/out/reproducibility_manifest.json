@@ -1,0 +1,104 @@
+{
+  "active_class": 1,
+  "artifact_count": 23,
+  "artifacts": {
+    "admission_matrix.csv": {
+      "bytes": 513,
+      "sha256": "8979397a4a1617797b8a0439c4182b7ba477558530b2ae6025247fb89a71aae7"
+    },
+    "class_ordering.tsv": {
+      "bytes": 47,
+      "sha256": "3ffe09e19ddfc2d7c8c3932b4d85b02cfe46aec1fc32f322ef4227772e19e7de"
+    },
+    "config.json": {
+      "bytes": 650,
+      "sha256": "09895a846a6856c4e731380cc9b307a743a84d8015532e2aca3c12ccf79c5662"
+    },
+    "convergence_report.txt": {
+      "bytes": 318,
+      "sha256": "b623d8b8031e19531a8187028df488918f50f1f73a2de917fb6ef39adc6022b9"
+    },
+    "derivation_audit.xml": {
+      "bytes": 2160,
+      "sha256": "7bce6d4fac72813db4bfba85135cf62f2f416bf38b83c0b8685abc4bd345612b"
+    },
+    "hardening_fold_trace.psv": {
+      "bytes": 1151,
+      "sha256": "b7b4e814e7874b1f7794fa6dcbef1737e14348c8f29efea1acd1196c2e02205e"
+    },
+    "input_census.ndjson": {
+      "bytes": 7707,
+      "sha256": "c26017aceb4cfc5e83cc3b806d5f4522a2bb92e2205ec9bfac4118a2371cd7e4"
+    },
+    "precedence_resolution.properties": {
+      "bytes": 195,
+      "sha256": "358d7b725a8695cc2d84e4f37b8ff9ea5c0a8800cd9e1bc8effb4d1bd345a2fc"
+    },
+    "privilege_map.ndjson": {
+      "bytes": 125,
+      "sha256": "cc1723f66b5d862b13d96df9e4b49711668b3fd483d6099c801e38c23686ee9b"
+    },
+    "profile_canary.json": {
+      "bytes": 652,
+      "sha256": "038788b6e2df9fce9dd782cb1b7f9079339e31382c3dfaad52604f8fc90faf73"
+    },
+    "profile_delta_report.json": {
+      "bytes": 1605,
+      "sha256": "5dddc9609e4ea15986c7de1dcd49cec0e3ee96f3dbb12b22c9d926db631765b4"
+    },
+    "profile_enforce.json": {
+      "bytes": 652,
+      "sha256": "9f3a0799b4d55b3f228be16fb91c2d4df3c9e60127f550f57658ca77d45901ab"
+    },
+    "quorum_plan.kv": {
+      "bytes": 36,
+      "sha256": "11c6067b97d55800e3545818b7ea27b5cabc9cd0205eccee2d985beb735b1c9e"
+    },
+    "rate_limit_plan.ini": {
+      "bytes": 66,
+      "sha256": "ca3950730cd43187a2d14d47a2d142bdd96749e4e35d7f0f06f3ec910850fcc4"
+    },
+    "report.json": {
+      "bytes": 10046,
+      "sha256": "f4408d2ba968932f6dc60e81dca0fd3390826329779d436bd8802cc21fd4462b"
+    },
+    "retention_schedule.csv": {
+      "bytes": 32,
+      "sha256": "6ebdfaf13f37807f8552a08c37490a3de6f2a8be05dc91cafce4daa07e14b867"
+    },
+    "risk_ledger.env": {
+      "bytes": 59,
+      "sha256": "eeaf7599ded519a209a1624e08de994df44a7dd4acffa6b2acb391788a907aac"
+    },
+    "scope_reconciliation.tsv": {
+      "bytes": 101,
+      "sha256": "8a4bf1c9fceadcaa978fc3f70972feef0ccdc1b78e380aad35e7109e7e39e4af"
+    },
+    "seccomp_summary.tsv": {
+      "bytes": 32,
+      "sha256": "cbc4b5a42e9fbba3d0f264828fd390f99cdef79ce0cd92717a08dfae2163dac9"
+    },
+    "summary.json": {
+      "bytes": 3647,
+      "sha256": "e65a144fdaddd333fb71b8f7eab2104c6088b8810d82b4065c921c43c8193909"
+    },
+    "tls_floor.env": {
+      "bytes": 19,
+      "sha256": "4995e1e53820cbd49e52b8a381e340de5dbf493de6f439e390fadbd8caa7f0ef"
+    },
+    "tool.zip": {
+      "bytes": 11388,
+      "sha256": "51e9001699845b8f336fd0442d3eb70c5283f61ac69a9ee55f59249492004bbb"
+    },
+    "validation_report.json": {
+      "bytes": 2943,
+      "sha256": "7eba529df525517268cc61e1cb7bf9871c4a23b0bf02f2a495ca131fa137efdb"
+    }
+  },
+  "config_digest": "09895a846a6856c4e731380cc9b307a743a84d8015532e2aca3c12ccf79c5662",
+  "deterministic": true,
+  "inputs_root": "/app/data",
+  "rounding": "round-half-even",
+  "tool": "task-ctl",
+  "trailer": "harbor:cli-config:TASK:000000002e552977"
+}

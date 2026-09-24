@@ -1,0 +1,2 @@
+class,selector,ingress_qps,burst_permille,rate_step,ingress_rate_limit_qps,burst_ceiling
+0,24,120,1600,25,175,350

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<derivationAudit>
+  <configuration>
+    <field name="active_class" value="0"/>
+    <field name="audit_retention_days" value="30"/>
+    <field name="burst_ceiling" value="350"/>
+    <field name="checksum" value="crc32"/>
+    <field name="control_plane" value="admission-broker"/>
+    <field name="effective_scope_count" value="3"/>
+    <field name="enforcement_profile" value="main"/>
+    <field name="hardening_baseline" value="85"/>
+    <field name="image_runtime" value="oci-runc"/>
+    <field name="ingress_rate_limit_qps" value="175"/>
+    <field name="max_concurrent_sessions" value="40"/>
+    <field name="mode" value="strict-local"/>
+    <field name="nonce_window_ms" value="300"/>
+    <field name="privilege_drop_uid" value="3600"/>
+    <field name="profile" value="TASK"/>
+    <field name="quorum_threshold" value="2"/>
+    <field name="retry_backoff_base_ms" value="16510"/>
+    <field name="risk_index" value="12"/>
+    <field name="seccomp_allowed_count" value="5"/>
+    <field name="session_ttl_seconds" value="2100"/>
+    <field name="tls_floor_score" value="70"/>
+    <field name="trailer" value="harbor:cli-config:TASK:000000002e552977"/>
+  </configuration>
+  <provenance>
+    <context name="baseline_complement" value="100"/>
+    <context name="bounds_ceil" value="90"/>
+    <context name="bounds_floor" value="40"/>
+    <context name="burst_permille" value="1600"/>
+    <context name="burst_window" value="2"/>
+    <context name="fold_clamped" value="87"/>
+    <context name="fold_total" value="87"/>
+    <context name="hardening_step" value="5"/>
+    <context name="max_records" value="235"/>
+    <context name="pinned" value="True"/>
+    <context name="qps" value="120"/>
+    <context name="quorum_permille" value="667"/>
+    <context name="rate_step" value="25"/>
+    <context name="retry_limit" value="6"/>
+    <context name="retry_step" value="10"/>
+    <context name="risk_divisor" value="1000"/>
+    <context name="scaled_qps" value="192"/>
+    <context name="selector" value="24"/>
+    <context name="severity_permille" value="800"/>
+    <context name="timeout_ms" value="2359"/>
+    <context name="uid_floor" value="1000"/>
+    <context name="voters" value="3"/>
+  </provenance>
+  <transcript>
+    <command>task-ctl derive --schema config_schema.json --out config.json</command>
+    <command>task-ctl profile --name canary --config config.json --out profile_canary.json</command>
+    <command>task-ctl profile --name enforce --config config.json --out profile_enforce.json</command>
+    <command>task-ctl validate --schema config_schema.json --config config.json</command>
+    <command>task-ctl export-report --config config.json --out report.json</command>
+    <command>task-ctl build --schema config_schema.json --outdir /app/out</command>
+  </transcript>
+</derivationAudit>

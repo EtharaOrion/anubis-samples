@@ -1,0 +1,184 @@
+[
+  {
+    "source": "/logs/artifacts",
+    "destination": "artifacts/logs/artifacts",
+    "type": "directory",
+    "status": "empty",
+    "service": null
+  },
+  {
+    "source": "/app/out/plan.py",
+    "destination": "artifacts/app/out/plan.py",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/canonical_objects.jsonl",
+    "destination": "artifacts/app/out/canonical_objects.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/normalized_geometry.jsonl",
+    "destination": "artifacts/app/out/normalized_geometry.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/admissibility_matrix.jsonl",
+    "destination": "artifacts/app/out/admissibility_matrix.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/bay_candidate_matrix.jsonl",
+    "destination": "artifacts/app/out/bay_candidate_matrix.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/selected_placement.jsonl",
+    "destination": "artifacts/app/out/selected_placement.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/rejected_placement.jsonl",
+    "destination": "artifacts/app/out/rejected_placement.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/conservation_adjusted.jsonl",
+    "destination": "artifacts/app/out/conservation_adjusted.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/crate_candidate_matrix.jsonl",
+    "destination": "artifacts/app/out/crate_candidate_matrix.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/crate_assignment.jsonl",
+    "destination": "artifacts/app/out/crate_assignment.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/crate_capacity_ledger.jsonl",
+    "destination": "artifacts/app/out/crate_capacity_ledger.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/crate_contention_report.jsonl",
+    "destination": "artifacts/app/out/crate_contention_report.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/transport_leg_manifest.jsonl",
+    "destination": "artifacts/app/out/transport_leg_manifest.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/dependency_edges.jsonl",
+    "destination": "artifacts/app/out/dependency_edges.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/cycle_resolution_audit.jsonl",
+    "destination": "artifacts/app/out/cycle_resolution_audit.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/install_order.jsonl",
+    "destination": "artifacts/app/out/install_order.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/crew_requirement_ledger.jsonl",
+    "destination": "artifacts/app/out/crew_requirement_ledger.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/install_window_table.jsonl",
+    "destination": "artifacts/app/out/install_window_table.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/unschedulable_report.jsonl",
+    "destination": "artifacts/app/out/unschedulable_report.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/gallery_occupancy_map.jsonl",
+    "destination": "artifacts/app/out/gallery_occupancy_map.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/deterministic_audit.jsonl",
+    "destination": "artifacts/app/out/deterministic_audit.jsonl",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/penalty_summary.json",
+    "destination": "artifacts/app/out/penalty_summary.json",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/objective_tuple.json",
+    "destination": "artifacts/app/out/objective_tuple.json",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/integrity_manifest.json",
+    "destination": "artifacts/app/out/integrity_manifest.json",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  },
+  {
+    "source": "/app/out/final_state.json",
+    "destination": "artifacts/app/out/final_state.json",
+    "type": "file",
+    "status": "ok",
+    "service": null
+  }
+]

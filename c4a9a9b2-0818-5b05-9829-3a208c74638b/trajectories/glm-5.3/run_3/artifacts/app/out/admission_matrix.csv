@@ -1,0 +1,2 @@
+class,ingress_qps,burst_permille,window_seconds,rate_step,ingress_rate_limit_qps,burst_ceiling,healthy_voters,quorum_threshold,hardening_baseline,risk_index,effective_scope_count,privilege_drop_uid,seccomp_allowed_count,tls_floor_score,audit_retention_days,session_ttl_seconds,nonce_window_ms,max_concurrent_sessions,retry_backoff_base_ms
+0,120,1600,2,25,200,400,3,2,85,12,3,3600,5,70,30,2100,300,40,2060

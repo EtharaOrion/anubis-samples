@@ -1,0 +1,18 @@
+{
+  "chain": "df1e2fd75b592bef2cd3c669cd40eee446af013280a4eac186b65ce9612f24f9",
+  "cycle_edges_removed": 16,
+  "displacement_count": 9,
+  "final_cycle_count": 0,
+  "objective": [
+    11,
+    5,
+    24,
+    16,
+    56252300779000000000
+  ],
+  "placed_objects": 11,
+  "repair_converged": true,
+  "total_insurance_cents": 488871,
+  "total_setup_seconds": 55802,
+  "unschedulable_count": 1
+}

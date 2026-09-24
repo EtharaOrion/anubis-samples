@@ -1,18 +1,17 @@
 {
   "results": {
     "tool": {
-      "name": "pytest",
-      "version": "unknown"
+      "name": "pytest"
     },
     "summary": {
       "tests": 76,
-      "passed": 37,
-      "failed": 39,
+      "passed": 35,
+      "failed": 41,
       "pending": 0,
       "skipped": 0,
       "other": 0,
-      "overall_score": 0.4081,
-      "weighted_percentage": 40.8088
+      "overall_score": 0.3787,
+      "weighted_percentage": 37.8676
     },
     "tests": [
       {
@@ -87,7 +86,7 @@
       },
       {
         "name": "test_admissibility_matrix_match",
-        "status": "passed",
+        "status": "failed",
         "duration": 0
       },
       {
@@ -347,7 +346,7 @@
       },
       {
         "name": "test_fixture_single_orientation",
-        "status": "passed",
+        "status": "failed",
         "duration": 0
       },
       {

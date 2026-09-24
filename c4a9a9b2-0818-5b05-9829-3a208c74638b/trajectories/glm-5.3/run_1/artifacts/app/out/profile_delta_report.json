@@ -1,11 +1,29 @@
 {
-  "canary": {
-    "quorum_threshold": 1,
-    "risk_index": 2,
-    "session_ttl_seconds": -750
-  },
-  "enforce": {
-    "risk_index": -1,
-    "session_ttl_seconds": 600
+  "main_digest": "d043bb1de0b75656a6f24be9d05f4a286a739694cd05c905a183a3a559ca8bd9",
+  "profiles": {
+    "canary": {
+      "quorum_after": 4,
+      "quorum_before": 3,
+      "quorum_delta": 1,
+      "risk_delta": 2,
+      "risk_index_after": 17,
+      "risk_index_before": 15,
+      "session_ttl_after": 2250,
+      "session_ttl_before": 3000,
+      "session_ttl_delta": -750,
+      "ttl_scale_permille": 750
+    },
+    "enforce": {
+      "quorum_after": 3,
+      "quorum_before": 3,
+      "quorum_delta": 0,
+      "risk_delta": -1,
+      "risk_index_after": 14,
+      "risk_index_before": 15,
+      "session_ttl_after": 3600,
+      "session_ttl_before": 3000,
+      "session_ttl_delta": 600,
+      "ttl_scale_permille": 1200
+    }
   }
 }

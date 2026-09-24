@@ -1,0 +1,4 @@
+{"holds":true,"invariant":"phase_within_cap"}
+{"holds":true,"invariant":"source_within_supply"}
+{"holds":true,"invariant":"materialized_sums_match"}
+{"holds":true,"invariant":"batches_respect_seq_cap"}

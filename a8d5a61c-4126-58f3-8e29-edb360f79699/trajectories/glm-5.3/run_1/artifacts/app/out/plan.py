@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """TrainMix allocation compiler.
 
-Derives the reproducible allocation certificate for a fine tune data mixture
-from a directory of manifests, following the fourteen stage chain defined by
-the specification documents shipped alongside those manifests. All arithmetic
-is integer or exact rational with half to even quantization at every stage; no
-floating point value is produced, compared or serialized anywhere.
+Derives the reproducible allocation certificate from the manifests in a data
+directory:  plan.py <DATA_DIR> <OUT_DIR>
 
-Usage: python3 plan.py <DATA_DIR> <OUT_DIR>
+Every number is an integer or an exact rational.  No floating point value is
+produced, compared or serialized anywhere.  The pipeline follows the fourteen
+stages of compiler_spec.md together with scoring_rules.md,
+allocation_rules.md, weight_rules.md, serialization_rules.md,
+artifact_contract.md and reason_codes.md.
 """
 
 import csv
@@ -18,7 +19,7 @@ import shutil
 import sys
 from fractions import Fraction
 
-PHASES = ["PH1", "PH2", "PH3"]
+# Domain to phase mapping is fixed by the specification (stage 4).
 DOMAIN_PHASES = {
     "maint": ("PH1",),
     "manual": ("PH1", "PH2"),
@@ -28,858 +29,1027 @@ DOMAIN_PHASES = {
     "synthetic": ("PH3",),
     "reg": ("PH2",),
 }
-INITIAL_CHAIN = "0" * 64
+
+# Quiet branch codes keyed by their reason_codes.md listing order, so that the
+# exception trace lists each activation under its code in stage order.
+BRANCH_ORDER = [
+    "B_UNIT_ROUND_TIE",
+    "B_FLOOR_BIND",
+    "B_CAP_BIND",
+    "B_FLOOR_OVER_CAP",
+    "B_CYCLE_BREAK",
+    "B_PRECEDENCE_OVERTURN",
+    "B_CARRY_DEBT",
+    "B_GLOBAL_CLAWBACK",
+    "B_EMPTY_GROUP",
+]
+
+JSON_FILES = ("objective_tuple.json", "integrity_manifest.json", "final_state.json")
+
+# Every derived lines file except integrity_manifest.json and final_state.json,
+# which are sealed after the others, in the order they are produced.
+LINES_FILES = [
+    "canonical_sources.jsonl",
+    "eligibility_ledger.jsonl",
+    "demand_score_ledger.jsonl",
+    "phase_membership.jsonl",
+    "proportional_allocation.jsonl",
+    "protected_floor_ledger.jsonl",
+    "capacity_binding_trace.jsonl",
+    "precedence_closure.jsonl",
+    "cycle_report.jsonl",
+    "cycle_break_decisions.jsonl",
+    "precedence_overturn_trace.jsonl",
+    "carry_state_ledger.jsonl",
+    "pre_reconciliation_ledger.jsonl",
+    "global_reconciliation_trace.jsonl",
+    "final_allocation.jsonl",
+    "language_allocation_summary.jsonl",
+    "safety_allocation_summary.jsonl",
+    "source_allocation_summary.jsonl",
+    "rational_example_weights.jsonl",
+    "fixed_point_weights.jsonl",
+    "rounding_residual_ledger.jsonl",
+    "microbatch_manifest.jsonl",
+    "phase_token_totals.jsonl",
+    "invariant_report.jsonl",
+    "exception_trace.jsonl",
+]
+
+OBJECTIVE_ORDER = [
+    "total_tokens",
+    "global_clawbacks",
+    "cycle_edges_removed",
+    "capacity_displacements",
+    "microbatches",
+]
 
 
-# ---------------------------------------------------------------- utilities
+# --------------------------------------------------------------------------
+# exact arithmetic
+# --------------------------------------------------------------------------
 
-def div_round_half_even(p, q):
-    """round_half_even(p, q) for integer p over positive integer q."""
-    if q <= 0:
-        raise ZeroDivisionError("quantization needs a positive denominator")
-    neg = p < 0
-    p = -p if neg else p
-    quot, rem = divmod(p, q)
-    if 2 * rem > q or (2 * rem == q and quot % 2 == 1):
-        quot += 1
-    return -quot if neg else quot
-
-
-def csv_dicts(path):
-    with open(path, newline="", encoding="utf-8") as fh:
-        return [dict(row) for row in csv.DictReader(fh)]
+def round_half_even(num, den):
+    """Quantize num/den with a positive denominator, half to even."""
+    if den < 0:
+        num, den = -num, -den
+    quot, rem = divmod(num, den)
+    twice = 2 * rem
+    if twice > den:
+        return quot + 1
+    if twice < den:
+        return quot
+    return quot if quot % 2 == 0 else quot + 1
 
 
-def sif(obj):
-    """Compact JSON object text with sorted keys, no trailing newline."""
-    return json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+def qfrac(value):
+    """Quantize an exact rational, half to even."""
+    return round_half_even(value.numerator, value.denominator)
 
 
-def jif(obj):
-    """Indented JSON document text with sorted keys and one trailing newline."""
-    return json.dumps(obj, sort_keys=True, indent=2, ensure_ascii=False) + "\n"
+def to_rational(text):
+    if isinstance(text, bool):
+        return Fraction(int(text))
+    if isinstance(text, int):
+        return Fraction(text)
+    text = str(text or "").strip()
+    if not text:
+        return Fraction(0)
+    return Fraction(text)
 
 
-def sha256_bytes(data):
-    return hashlib.sha256(data).hexdigest()
+def to_int(text):
+    value = to_rational(text)
+    if value.denominator != 1:
+        raise ValueError("expected an integer, got %s" % text)
+    return value.numerator
 
 
-# ---------------------------------------------------------------- stage 1
-
-def stage1_canonicalize(sources_rows, unit_rules):
-    canonical = []
-    for row in sources_rows:
-        raw_amount = int(row["raw_amount"])
-        unit = row["raw_unit"]
-        conv = unit_rules["units"][unit]
-        numerator = raw_amount * int(conv["num"])
-        denominator = int(conv["den"])
-        tokens = div_round_half_even(numerator, denominator)
-        tie = numerator >= 0 and denominator > 0 and 2 * (numerator % denominator) == denominator
-        canonical.append({
-            "source_id": row["source_id"],
-            "raw_amount": raw_amount,
-            "raw_unit": unit,
-            "canonical_tokens": tokens,
-            "rounding_tie": tie,
-        })
-    return canonical
+def reduce_fraction(num, den):
+    """Fully reduced fraction with a positive denominator, as a tuple."""
+    if den < 0:
+        num, den = -num, -den
+    if num == 0:
+        return 0, 1
+    g = _gcd(abs(num), abs(den))
+    return num // g, den // g
 
 
-# ---------------------------------------------------------------- stage 2
-
-def stage2_eligibility(sources_rows, canonical, quality_rows, quality_policy,
-                       language_policy, safety_policy):
-    quality = {row["source_id"]: row for row in quality_rows}
-    tokens = {row["source_id"]: row["canonical_tokens"] for row in canonical}
-    min_q_num = int(quality_policy["min_quality"]["num"])
-    min_q_den = int(quality_policy["min_quality"]["den"])
-    blocked = quality_policy["blocked_domains"]
-    languages = language_policy["languages"]
-    strata = safety_policy["strata"]
-    ledger = []
-    for row in sources_rows:
-        sid = row["source_id"]
-        q = quality.get(sid)
-        q_num = int(q["q_num"]) if q else 0
-        q_den = int(q["q_den"]) if q else 0
-        if q_den == 0 or q_num * min_q_den < min_q_num * q_den:
-            code = "E_LOW_QUALITY"
-        elif row["language"] not in languages:
-            code = "E_LANG_EXCLUDED"
-        elif row["safety_stratum"] not in strata:
-            code = "E_STRATUM_UNKNOWN"
-        elif row["domain"] in blocked:
-            code = "E_DOMAIN_BLOCKED"
-        elif tokens.get(sid, 0) <= 0:
-            code = "E_EMPTY_TOKENS"
-        else:
-            code = "E_OK"
-        ledger.append({"source_id": sid, "eligible": code == "E_OK", "code": code})
-    return ledger
+def _gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a or 1
 
 
-# ---------------------------------------------------------------- stage 3
+# --------------------------------------------------------------------------
+# manifest loading
+# --------------------------------------------------------------------------
 
-def stage3_demand_scores(eligible_ids, sources_rows, canonical, quality_rows,
-                         freshness_rows, scoring_weights, language_policy):
-    info = {row["source_id"]: row for row in sources_rows}
-    quality = {row["source_id"]: row for row in quality_rows}
-    fresh = {row["source_id"]: row for row in freshness_rows}
-    tokens = {row["source_id"]: row["canonical_tokens"] for row in canonical}
-    scale = int(scoring_weights["scale"])
-    half_life = int(scoring_weights["half_life_days"])
-    weights = scoring_weights["priority_weights"]
-    ledger = []
-    for sid in eligible_ids:
-        row = info[sid]
-        q = quality[sid]
-        f = fresh.get(sid)
-        age_days = int(f["age_days"]) if f else 0
-        quality_bp = div_round_half_even(int(q["q_num"]) * scale, int(q["q_den"]))
-        fresh_bp = div_round_half_even(half_life * scale, half_life + age_days)
-        priority_factor = int(weights[str(row["priority"])])
-        lang_balance_bp = int(language_policy["languages"][row["language"]]["balance_bp"])
-        s1 = div_round_half_even(tokens[sid] * quality_bp, scale)
-        s2 = div_round_half_even(s1 * fresh_bp, scale)
-        s3 = s2 * priority_factor
-        demand_score = div_round_half_even(s3 * lang_balance_bp, scale)
-        ledger.append({
-            "source_id": sid,
-            "quality_bp": quality_bp,
-            "fresh_bp": fresh_bp,
-            "priority_factor": priority_factor,
-            "lang_balance_bp": lang_balance_bp,
-            "demand_score": demand_score,
-        })
-    return ledger, {row["source_id"]: row["demand_score"] for row in ledger}
+def read_json(data_dir, name):
+    path = os.path.join(data_dir, name)
+    if not os.path.isfile(path):
+        return {}
+    with open(path, "r", encoding="utf-8") as handle:
+        return json.load(handle)
 
 
-# ---------------------------------------------------------------- stages 7 and 8
-
-def build_closure(phases, edges):
-    """reach[p] is every phase reachable from p over one or more edges."""
-    succ = {p: set() for p in phases}
-    for e in edges:
-        if e["from"] in succ and e["to"] in succ:
-            succ[e["from"]].add(e["to"])
-    reach = {p: set(succ[p]) for p in phases}
-    for _ in range(len(phases) + 1):
-        changed = False
-        for p in phases:
-            new = set(reach[p])
-            for nxt in reach[p]:
-                new |= succ[nxt]
-            if new != reach[p]:
-                reach[p] = new
-                changed = True
-        if not changed:
-            break
-    return reach
-
-
-def topo_order(phases, edges, banned):
-    nodes = list(phases)
-    active = [e for e in edges if e["edge_id"] not in banned]
-    indeg = {p: 0 for p in nodes}
-    succ = {p: [] for p in nodes}
-    for e in active:
-        succ[e["from"]].append(e["to"])
-        indeg[e["to"]] += 1
-    ready = sorted(p for p in nodes if indeg[p] == 0)
-    order = []
-    while ready:
-        node = ready.pop(0)
-        order.append(node)
-        for nxt in succ[node]:
-            indeg[nxt] -= 1
-            if indeg[nxt] == 0:
-                ready.append(nxt)
-        ready.sort()
-    if len(order) < len(nodes):
-        raise RuntimeError("curriculum graph is not acyclic after cycle breaking")
-    return order
-
-
-def edge_rank_key(e):
-    """Hardness with soft below hard, then from, then to, then edge id."""
-    return (0 if e["hardness"] == "soft" else 1, e["from"], e["to"], e["edge_id"])
-
-
-def stage8_break_cycles(phases, edges):
-    """Remove lowest ranked edges, one at a time, until the graph is acyclic."""
-    removed = []
-    banned = set()
-    while True:
-        active = [e for e in edges if e["edge_id"] not in banned]
-        reach = build_closure(phases, active)
-        cyc = sorted(p for p in phases if p in reach[p])
-        if not cyc:
-            break
-        cyc_set = set(cyc)
-        candidates = [e for e in active if e["from"] in cyc_set and e["to"] in cyc_set]
-        if not candidates:
-            break
-        pick = min(candidates, key=edge_rank_key)
-        banned.add(pick["edge_id"])
-        removed.append(pick)
-    return removed, banned
-
-
-# ---------------------------------------------------------------- stages 4 to 6
-
-def displacement_order(members, source_info, stratum_rank):
-    def key(sid):
-        row = source_info[sid]
-        return (int(stratum_rank[row["safety_stratum"]]), -int(row["priority"]), sid)
-
-    return sorted(members, key=key)
-
-
-def run_binding(phase, members, floored, floors, eff_cap, source_info, stratum_rank,
-                allocation, trace):
-    excess = sum(floored[s] for s in members) - eff_cap
-    if excess <= 0:
-        for s in members:
-            allocation[(phase, s)] = floored[s]
-        return 0
-    order = displacement_order(members, source_info, stratum_rank)
-    for sid in order:
-        if excess <= 0:
-            break
-        room = floored[sid] - floors[(phase, sid)]
-        if room <= 0:
-            continue
-        take = min(room, excess)
-        before = floored[sid]
-        floored[sid] = before - take
-        excess -= take
-        trace.append({
-            "phase": phase,
-            "source_id": sid,
-            "before": before,
-            "after": floored[sid],
-            "displaced": take,
-            "kind": "above_floor" if floored[sid] >= floors[(phase, sid)] else "floor_cut",
-        })
-    if excess > 0:
-        for sid in order:
-            if excess <= 0:
-                break
-            if floored[sid] <= 0:
+def read_csv(data_dir, name):
+    path = os.path.join(data_dir, name)
+    if not os.path.isfile(path):
+        return []
+    with open(path, "r", encoding="utf-8", newline="") as handle:
+        rows = []
+        for row in csv.DictReader(handle):
+            clean = {
+                (k.strip() if isinstance(k, str) else k):
+                    (v.strip() if isinstance(v, str) else v)
+                for k, v in row.items()
+            }
+            first = clean.get("source_id") or clean.get("phase") or clean.get("example_id")
+            if not first:
                 continue
-            before = floored[sid]
-            take = min(before, excess)
-            floored[sid] = before - take
-            excess -= take
-            trace.append({
-                "phase": phase,
-                "source_id": sid,
-                "before": before,
-                "after": floored[sid],
-                "displaced": take,
-                "kind": "floor_cut",
-            })
-    for sid in members:
-        allocation[(phase, sid)] = floored[sid]
+            rows.append(clean)
+        return rows
 
 
-# ---------------------------------------------------------------- stage 11 and 12
-
-def largest_remainder_split(total, keys, weights):
-    """Split integer total across keys in proportion to positive weights."""
-    weight_sum = sum(weights[k] for k in keys)
-    if total <= 0 or weight_sum <= 0:
-        return {k: 0 for k in keys}, {k: 0 for k in keys}
-    base = {}
-    rem = {}
-    for k in keys:
-        numerator = total * weights[k]
-        base[k] = numerator // weight_sum
-        rem[k] = numerator % weight_sum
-    leftover = total - sum(base.values())
-    for k in sorted(keys, key=lambda x: (-rem[x], x))[:leftover]:
-        base[k] += 1
-    return base, rem
+def unique_in_order(rows, key="source_id"):
+    """Keep each row by first appearance of its key."""
+    seen = set()
+    ordered = []
+    for row in rows:
+        value = row.get(key)
+        if value in seen:
+            continue
+        seen.add(value)
+        ordered.append(row)
+    return ordered
 
 
-# ---------------------------------------------------------------- packing
+class Manifest(object):
+    def __init__(self, data_dir):
+        self.data_dir = data_dir
+        unit_rules = read_json(data_dir, "unit_rules.json")
+        self.scale = to_int(unit_rules.get("scale", 10000))
+        self.units = {
+            name: (to_int(spec["num"]), to_int(spec["den"]))
+            for name, spec in (unit_rules.get("units") or {}).items()
+        }
+        self.languages = read_json(data_dir, "language_policy.json").get("languages") or {}
+        self.strata = read_json(data_dir, "safety_policy.json").get("strata") or {}
+        quality_policy = read_json(data_dir, "quality_policy.json")
+        min_quality = quality_policy.get("min_quality") or {"num": 0, "den": 1}
+        self.min_quality = (to_int(min_quality["num"]), to_int(min_quality["den"]))
+        self.blocked_domains = list(quality_policy.get("blocked_domains") or [])
+        weights = read_json(data_dir, "scoring_weights.json")
+        self.half_life = to_int(weights.get("half_life_days", 0))
+        self.priority_weights = {
+            key: to_int(value) for key, value in (weights.get("priority_weights") or {}).items()
+        }
+        order = read_json(data_dir, "priority_order.json")
+        self.stratum_rank = {
+            key: to_int(value)
+            for key, value in (order.get("stratum_displacement_rank") or {}).items()
+        }
+        batch = read_json(data_dir, "batch_rules.json")
+        self.max_seq_tokens = to_int(batch.get("max_seq_tokens", 0))
+        self.adjacency_limit = to_int(batch.get("adjacency_limit", 0))
 
-def build_microbatches(phase_order, members_by_phase, materialized, adjacency_limit,
-                       max_seq_tokens):
-    rows = []
-    batch_id = 0
-    for phase in phase_order:
-        items = []
-        for sid in members_by_phase[phase]:
-            for ex in materialized.get(sid, []):
-                if ex["materialized_tokens"] > 0:
-                    items.append((sid, ex["example_id"], ex["materialized_tokens"]))
-        current = []
-        run_total = 0
-        run_source = None
-        run_len = 0
+        curriculum = read_json(data_dir, "curriculum.json")
+        self.curriculum_phases = [str(p) for p in curriculum.get("phases") or []]
+        self.edges = [
+            {
+                "edge_id": str(edge["edge_id"]),
+                "from": str(edge["from"]),
+                "to": str(edge["to"]),
+                "hardness": str(edge.get("hardness", "soft")),
+            }
+            for edge in curriculum.get("edges") or []
+        ]
 
-        def flush():
-            nonlocal current, run_total, run_source, run_len, batch_id
-            if not current:
+        self.sources = unique_in_order(read_csv(data_dir, "sources.csv"))
+        self.quality = {row["source_id"]: row
+                        for row in unique_in_order(read_csv(data_dir, "quality.csv"))}
+        self.freshness = {row["source_id"]: row
+                          for row in unique_in_order(read_csv(data_dir, "freshness.csv"))}
+        self.examples = unique_in_order(read_csv(data_dir, "examples.csv"), "example_id")
+        self.capacity = {row["phase"]: row for row in read_csv(data_dir, "capacity.csv")}
+        self.carry = {row["phase"]: row for row in read_csv(data_dir, "carry_state.csv")}
+
+
+# --------------------------------------------------------------------------
+# compiler
+# --------------------------------------------------------------------------
+
+class Compiler(object):
+    def __init__(self, manifest):
+        self.m = manifest
+        self.example_source = {
+            row["example_id"]: row.get("source_id") for row in manifest.examples
+        }
+        self.exceptions = []           # (code, ref)
+        self.canonical = {}            # sid -> canonical tokens
+        self.ties = {}                 # sid -> rounding tie
+        self.eligible = {}             # sid -> bool
+        self.eligibility_code = {}     # sid -> code
+        self.demand = {}               # sid -> score
+        self.factors = {}              # sid -> dict of factors
+        self.membership = {}           # phase -> [sid]
+        self.phases = []
+        self.phase_set = set()
+        self.phase_order = []
+        self.topo_order = []
+        self.target = {}               # (phase, sid) -> tokens
+        self.share = {}                # (phase, sid) -> (num, den)
+        self.floors = {}               # (phase, sid) -> floor
+        self.floor_parts = {}          # (phase, sid) -> (safety, language)
+        self.bound = {}                # (phase, sid) -> stage 6 allocation
+        self.effective_cap = {}        # phase -> effective capacity
+        self.carry_rows = []
+        self.carry_out = {}
+        self.final = {}                # (phase, sid) -> reconciled tokens
+        self.materialized = {}         # example id -> tokens
+        self.batches = []
+        self.counters = {
+            "global_clawbacks": 0,
+            "cycle_edges_removed": 0,
+            "capacity_displacements": 0,
+            "precedence_overturns": 0,
+        }
+
+    # -- stage 0 helpers ---------------------------------------------------
+
+    def phases_of(self, domain):
+        return list(DOMAIN_PHASES.get(domain, ()))
+
+    def note(self, code, ref):
+        """Record a quiet branch activation once per code and reference."""
+        ref = str(ref)
+        for known in self.exceptions:
+            if known == (code, ref):
                 return
-            batch_id += 1
-            rows.append({
-                "batch_id": "BATCH%04d" % batch_id,
-                "phase": phase,
-                "members": [ex for _, ex, _ in current],
-                "seq_tokens": run_total,
-            })
-            current = []
-            run_total = 0
-            run_source = None
-            run_len = 0
+        self.exceptions.append((code, ref))
 
-        for sid, ex, tok in items:
-            if current and (run_total + tok > max_seq_tokens
-                            or (sid == run_source and run_len >= adjacency_limit)):
-                flush()
-            if not current:
-                run_source = sid
-                run_len = 1
+    # -- stage 1 -----------------------------------------------------------
+
+    def stage1_canonicalize(self):
+        for row in self.m.sources:
+            sid = row["source_id"]
+            unit = row.get("raw_unit", "tok")
+            num, den = self.m.units.get(unit, (1, 1))
+            amount = to_rational(row.get("raw_amount", "0"))
+            value = amount * Fraction(num, den)
+            self.canonical[sid] = qfrac(value)
+            _, rem = divmod(value.numerator, value.denominator)
+            tie = 2 * rem == value.denominator
+            self.ties[sid] = tie
+            if tie:
+                self.note("B_UNIT_ROUND_TIE", sid)
+
+    # -- stage 2 -----------------------------------------------------------
+
+    def stage2_eligibility(self):
+        mq_num, mq_den = self.m.min_quality
+        if mq_den == 0:
+            # The explicit zero denominator rule covers quality.csv only; a
+            # policy with no usable minimum imposes no quality constraint.
+            mq_num, mq_den = 0, 1
+        for row in self.m.sources:
+            sid = row["source_id"]
+            qrow = self.m.quality.get(sid) or {}
+            q_num = to_int(qrow.get("q_num", "0"))
+            q_den = to_int(qrow.get("q_den", "1"))
+            tokens = self.canonical[sid]
+            if q_den == 0 or q_num * mq_den < mq_num * q_den:
+                code = "E_LOW_QUALITY"
+            elif row.get("language") not in self.m.languages:
+                code = "E_LANG_EXCLUDED"
+            elif row.get("safety_stratum") not in self.m.strata:
+                code = "E_STRATUM_UNKNOWN"
+            elif row.get("domain") in self.m.blocked_domains:
+                code = "E_DOMAIN_BLOCKED"
+            elif tokens <= 0:
+                code = "E_EMPTY_TOKENS"
             else:
-                if sid == run_source:
-                    run_len += 1
-                else:
-                    run_source = sid
-                    run_len = 1
-            current.append((sid, ex, tok))
-            run_total += tok
-        flush()
-    return rows
+                code = "E_OK"
+            self.eligibility_code[sid] = code
+            self.eligible[sid] = code == "E_OK"
 
+    # -- stage 3 -----------------------------------------------------------
 
-# ---------------------------------------------------------------- writing
-
-class Writer:
-    def __init__(self, out_dir):
-        self.out_dir = out_dir
-        self.buffers = {}
-
-    def add_jsonl(self, name, rows):
-        self.buffers[name] = "".join(sif(r) + "\n" for r in rows)
-
-    def add_json(self, name, obj):
-        self.buffers[name] = jif(obj)
-
-    def write(self):
-        for name, text in self.buffers.items():
-            with open(os.path.join(self.out_dir, name), "w", encoding="utf-8",
-                      newline="\n") as fh:
-                fh.write(text)
-
-
-# ---------------------------------------------------------------- main chain
-
-def compile_plan(data_dir, out_dir):
-    spec_dir = data_dir
-    sources_rows = csv_dicts(os.path.join(spec_dir, "sources.csv"))
-    quality_rows = csv_dicts(os.path.join(spec_dir, "quality.csv"))
-    freshness_rows = csv_dicts(os.path.join(spec_dir, "freshness.csv"))
-    examples_rows = csv_dicts(os.path.join(spec_dir, "examples.csv"))
-    capacity_rows = csv_dicts(os.path.join(spec_dir, "capacity.csv"))
-    carry_rows = csv_dicts(os.path.join(spec_dir, "carry_state.csv"))
-    curriculum = json.load(open(os.path.join(spec_dir, "curriculum.json"),
-                                encoding="utf-8"))
-    unit_rules = json.load(open(os.path.join(spec_dir, "unit_rules.json"),
-                               encoding="utf-8"))
-    quality_policy = json.load(open(os.path.join(spec_dir, "quality_policy.json"),
-                                    encoding="utf-8"))
-    safety_policy = json.load(open(os.path.join(spec_dir, "safety_policy.json"),
-                                   encoding="utf-8"))
-    language_policy = json.load(open(os.path.join(spec_dir, "language_policy.json"),
-                                     encoding="utf-8"))
-    scoring_weights = json.load(open(os.path.join(spec_dir, "scoring_weights.json"),
-                                     encoding="utf-8"))
-    priority_order_cfg = json.load(open(os.path.join(spec_dir, "priority_order.json"),
-                                        encoding="utf-8"))
-    batch_rules = json.load(open(os.path.join(spec_dir, "batch_rules.json"),
-                                 encoding="utf-8"))
-
-    phases = list(curriculum.get("phases") or PHASES)
-    # artifacts are emitted in canonical phase order regardless of manifest order
-    phases = sorted(set(phases))
-    edges = curriculum["edges"]
-    scale = int(unit_rules["scale"])
-    strata = safety_policy["strata"]
-    languages = language_policy["languages"]
-    stratum_rank = priority_order_cfg["stratum_displacement_rank"]
-    adjacency_limit = int(batch_rules["adjacency_limit"])
-    max_seq_tokens = int(batch_rules["max_seq_tokens"])
-
-    # capacity and carry lookups by phase, independent of row order
-    capacity_by_phase = {row["phase"]: row for row in capacity_rows}
-    carry_by_phase = {row["phase"]: row for row in carry_rows}
-
-    # stage 1
-    canonical = stage1_canonicalize(sources_rows, unit_rules)
-    unit_tie_exceptions = [{"code": "B_UNIT_ROUND_TIE", "ref": row["source_id"]}
-                           for row in canonical if row["rounding_tie"]]
-    canonical_tokens = {row["source_id"]: row["canonical_tokens"] for row in canonical}
-
-    # stage 2
-    eligibility = stage2_eligibility(sources_rows, canonical, quality_rows,
-                                    quality_policy, language_policy, safety_policy)
-    eligible_ids = [r["source_id"] for r in eligibility if r["eligible"]]
-
-    # stage 3
-    demand_rows, demand_scores = stage3_demand_scores(
-        eligible_ids, sources_rows, canonical, quality_rows, freshness_rows,
-        scoring_weights, language_policy)
-
-    source_info = {row["source_id"]: row for row in sources_rows}
-
-    # stage 4
-    members_by_phase = {p: [] for p in phases}
-    for row in canonical:
-        sid = row["source_id"]
-        if sid not in eligible_ids:
-            continue
-        domain = source_info[sid]["domain"]
-        for phase in DOMAIN_PHASES.get(domain, ()):
-            members_by_phase[phase].append(sid)
-    for phase in phases:
-        members_by_phase[phase].sort()
-
-    proportional_rows = []
-    targets = {}
-    for phase in phases:
-        members = members_by_phase[phase]
-        scored = [s for s in members if demand_scores.get(s, 0) > 0]
-        demand_sum = sum(demand_scores[s] for s in scored)
-        budget = int(capacity_by_phase[phase]["budget_tokens"])
-        for sid in members:
-            score = demand_scores.get(sid, 0)
-            share_num = score * budget
-            share_den = demand_sum if demand_sum > 0 else 0
-            target = div_round_half_even(share_num, share_den) if share_den > 0 else 0
-            targets[(phase, sid)] = target
-            proportional_rows.append({
-                "phase": phase,
-                "source_id": sid,
-                "target_tokens": target,
-                "share_num": share_num,
-                "share_den": share_den,
-            })
-
-    # stage 5
-    floor_rows = []
-    floors = {}
-    for phase in phases:
-        for sid in members_by_phase[phase]:
-            safety_floor = int(strata[source_info[sid]["safety_stratum"]]["floor_tokens"])
-            language_floor = int(languages[source_info[sid]["language"]]["floor_tokens"])
-            floor = max(safety_floor, language_floor)
-            floors[(phase, sid)] = floor
-            floor_rows.append({
-                "phase": phase,
-                "source_id": sid,
-                "safety_floor": safety_floor,
-                "language_floor": language_floor,
-                "floor": floor,
-            })
-
-    # stages 7 and 8 first, so the carry chain has its topological order
-    reach = build_closure(phases, edges)
-    cycle_nodes = sorted(p for p in phases if p in reach[p])
-    closure_rows = []
-    for phase in phases:
-        for req in sorted(reach[phase]):
-            closure_rows.append({"phase": phase, "requires": req})
-    removed_edges, banned = stage8_break_cycles(phases, edges)
-    cycle_break_exceptions = [{"code": "B_CYCLE_BREAK", "ref": e["edge_id"]}
-                              for e in removed_edges]
-    order = topo_order(phases, edges, banned)
-
-    # stage 6 in topological order, carrying credit and debt
-    allocation = {}
-    binding_trace = []
-    carry_rows_out = []
-    carry_credit = {p: int(carry_by_phase[p]["initial_credit"]) for p in phases}
-    carry_debt = {p: int(carry_by_phase[p]["initial_debt"]) for p in phases}
-    stage6_exceptions = []
-    for idx, phase in enumerate(order):
-        members = members_by_phase[phase]
-        credit_in = carry_credit[phase]
-        debt_in = carry_debt[phase]
-        cap = int(capacity_by_phase[phase]["cap_tokens"])
-        eff_cap = cap + credit_in - debt_in
-        floored = {s: max(targets[(phase, s)], floors[(phase, s)]) for s in members}
-        floor_bound = any(floored[s] > targets[(phase, s)] for s in members)
-        total_floors = sum(floors[(phase, s)] for s in members)
-        floored_total = sum(floored.values())
-        # displacement only exists when there are tokens to remove
-        excess = floored_total - eff_cap if floored_total > 0 else 0
-        floor_over_cap = excess > 0 and total_floors > eff_cap
-        if excess > 0:
-            run_binding(phase, members, floored, floors, eff_cap, source_info,
-                        stratum_rank, allocation, binding_trace)
-        else:
-            for s in members:
-                allocation[(phase, s)] = floored[s]
-        if floor_bound:
-            stage6_exceptions.append({"code": "B_FLOOR_BIND", "ref": phase})
-        if excess > 0:
-            stage6_exceptions.append({"code": "B_CAP_BIND", "ref": phase})
-            if floor_over_cap:
-                stage6_exceptions.append(
-                    {"code": "B_FLOOR_OVER_CAP", "ref": phase})
-        allocated_sum = sum(allocation[(phase, s)] for s in members)
-        credit_out = eff_cap - allocated_sum
-        debt_out = sum(max(0, floors[(phase, s)] - allocation[(phase, s)])
-                       for s in members)
-        carry_rows_out.append({
-            "phase": phase,
-            "credit_in": credit_in,
-            "debt_in": debt_in,
-            "credit_out": credit_out,
-            "debt_out": debt_out,
-        })
-        if idx + 1 < len(order):
-            nxt = order[idx + 1]
-            carry_credit[nxt] += credit_out
-            carry_debt[nxt] += debt_out
-    # stage 8 precedence overturns, judged on the stage 6 matrix
-    overturns = []
-    for phase in phases:
-        for sid in members_by_phase[phase]:
-            if allocation.get((phase, sid), 0) <= 0:
+    def stage3_scoring(self):
+        scale = self.m.scale
+        for row in self.m.sources:
+            sid = row["source_id"]
+            if not self.eligible[sid]:
                 continue
-            for req in sorted(reach[phase]):
-                if req == phase:
+            qrow = self.m.quality.get(sid) or {}
+            q_num = to_int(qrow.get("q_num", "0"))
+            q_den = to_int(qrow.get("q_den", "1"))
+            frow = self.m.freshness.get(sid) or {}
+            age = to_int(frow.get("age_days", "0"))
+            half_life = self.m.half_life
+            quality_bp = round_half_even(q_num * scale, q_den)
+            fresh_den = half_life + age
+            fresh_bp = round_half_even(half_life * scale, fresh_den) if fresh_den > 0 else 0
+            priority_key = row.get("priority", "")
+            priority_factor = self.m.priority_weights.get(str(priority_key), 1)
+            lang = self.m.languages[row["language"]]
+            balance_bp = to_int(lang.get("balance_bp", scale))
+            s1 = round_half_even(self.canonical[sid] * quality_bp, scale)
+            s2 = round_half_even(s1 * fresh_bp, scale)
+            s3 = s2 * priority_factor
+            score = round_half_even(s3 * balance_bp, scale)
+            self.factors[sid] = {
+                "quality_bp": quality_bp,
+                "fresh_bp": fresh_bp,
+                "priority_factor": priority_factor,
+                "lang_balance_bp": balance_bp,
+            }
+            self.demand[sid] = score
+
+    # -- stages 4 and 5 ----------------------------------------------------
+
+    def phase_sort_key(self, phase):
+        """Natural phase order, so PH2 sorts before PH10."""
+        head = phase.rstrip("0123456789")
+        tail = phase[len(head):]
+        return (head, int(tail) if tail else 0, phase)
+
+    def ordered_phases(self):
+        """Declared curriculum phase order first, then any extra phase."""
+        declared = [p for p in self.m.curriculum_phases if p in self.phase_set]
+        extras = sorted(self.phase_set - set(declared), key=self.phase_sort_key)
+        return declared + extras
+
+    def stage45_membership_targets_floors(self):
+        self.phase_set = set(self.m.curriculum_phases) | set(self.m.capacity)
+        for row in self.m.sources:
+            if self.eligible[row["source_id"]]:
+                self.phase_set.update(self.phases_of(row.get("domain")))
+        self.phases = self.ordered_phases()
+        for phase in self.phases:
+            members = [
+                row["source_id"]
+                for row in self.m.sources
+                if self.eligible[row["source_id"]]
+                and phase in self.phases_of(row.get("domain"))
+            ]
+            self.membership[phase] = members
+            budget = self.phase_budget(phase)
+            scored = [sid for sid in members if self.demand.get(sid, 0) > 0]
+            demand_sum = sum(self.demand[sid] for sid in scored)
+            for sid in members:
+                if self.demand.get(sid, 0) > 0 and demand_sum > 0:
+                    num = self.demand[sid] * budget
+                    self.share[(phase, sid)] = (num, demand_sum)
+                    self.target[(phase, sid)] = round_half_even(num, demand_sum)
+                else:
+                    # Zero demand score or zero demand sum: target zero, and the
+                    # recorded denominator stays the phase demand sum as it is.
+                    self.share[(phase, sid)] = (0, demand_sum)
+                    self.target[(phase, sid)] = 0
+            for sid in members:
+                row = self.source_row(sid)
+                safety_floor = to_int(self.m.strata[row["safety_stratum"]].get("floor_tokens", 0))
+                language_floor = to_int(self.m.languages[row["language"]].get("floor_tokens", 0))
+                floor = max(safety_floor, language_floor)
+                self.floor_parts[(phase, sid)] = (safety_floor, language_floor)
+                self.floors[(phase, sid)] = floor
+                if floor > self.target[(phase, sid)]:
+                    self.note("B_FLOOR_BIND", phase)
+
+    def source_row(self, sid):
+        for row in self.m.sources:
+            if row["source_id"] == sid:
+                return row
+        return {}
+
+    def phase_budget(self, phase):
+        return to_int(self.m.capacity.get(phase, {}).get("budget_tokens", "0"))
+
+    def phase_cap(self, phase):
+        return to_int(self.m.capacity.get(phase, {}).get("cap_tokens", "0"))
+
+    # -- stage 7 -----------------------------------------------------------
+
+    def build_closure(self):
+        adjacency = {}
+        for phase in self.phase_set:
+            adjacency[phase] = []
+        for edge in self.m.edges:
+            adjacency.setdefault(edge["from"], []).append(edge["to"])
+        nodes = sorted(adjacency)
+        reach = {}
+        for node in nodes:
+            seen = set()
+            stack = list(adjacency[node])
+            while stack:
+                nxt = stack.pop()
+                if nxt in seen:
                     continue
-                if sid in members_by_phase.get(req, ()):
-                    if allocation.get((req, sid), 0) == 0:
-                        overturns.append({
-                            "phase": phase,
-                            "prereq_phase": req,
-                            "source_id": sid,
-                        })
-    overturn_exceptions = [{"code": "B_PRECEDENCE_OVERTURN", "ref": row["phase"]}
-                           for row in overturns]
-    carry_debt_exceptions = [{"code": "B_CARRY_DEBT", "ref": row["phase"]}
-                             for row in carry_rows_out if row["debt_out"] > 0]
+                seen.add(nxt)
+                stack.extend(adjacency.get(nxt, ()))
+            reach[node] = seen
+        return reach
 
-    pre_reconciliation = [{"phase": p, "source_id": s,
-                           "tokens": allocation[(p, s)]}
-                          for p in phases for s in members_by_phase[p]]
+    # -- stage 8 -----------------------------------------------------------
 
-    # stage 10 global reconciliation, later phase in topological order first
-    final = dict(allocation)
-    claw_rows = []
-    clawback_exceptions = []
-    for sid in [r["source_id"] for r in canonical]:
-        source_total = sum(final[(p, sid)] for p in phases if (p, sid) in final)
-        supply = canonical_tokens[sid]
-        if source_total > supply:
-            excess = source_total - supply
-            for phase in reversed(order):
+    def stage8_break_cycle(self, reach):
+        cycle_nodes = sorted(node for node in reach if node in reach[node])
+        removed = None
+        if cycle_nodes:
+            node_set = set(cycle_nodes)
+            ranked = sorted(
+                (edge for edge in self.m.edges
+                 if edge["from"] in node_set and edge["to"] in node_set),
+                key=lambda e: (
+                    0 if e["hardness"] == "soft" else 1,
+                    e["from"],
+                    e["to"],
+                    e["edge_id"],
+                ),
+            )
+            if ranked:
+                removed = ranked[0]
+                self.counters["cycle_edges_removed"] = 1
+                self.note("B_CYCLE_BREAK", removed["edge_id"])
+        surviving = [edge for edge in self.m.edges if removed is None or edge is not removed]
+        return cycle_nodes, removed, surviving
+
+    def topological_order(self, edges):
+        nodes = set(self.phases)
+        nodes.update(edge["from"] for edge in edges)
+        nodes.update(edge["to"] for edge in edges)
+        indegree = {node: 0 for node in nodes}
+        adjacency = {node: [] for node in nodes}
+        for edge in edges:
+            adjacency[edge["from"]].append(edge["to"])
+            indegree[edge["to"]] += 1
+        order = []
+        ready = sorted(node for node in nodes if indegree[node] == 0)
+        while ready:
+            node = ready.pop(0)
+            order.append(node)
+            for nxt in sorted(adjacency[node]):
+                indegree[nxt] -= 1
+                if indegree[nxt] == 0:
+                    ready.append(nxt)
+            ready.sort()
+        for node in sorted(nodes):
+            if node not in order:
+                order.append(node)
+        return order
+
+    # -- stages 6 and 9 ----------------------------------------------------
+
+    def stage69_bind_and_carry(self, topo_order):
+        trace = []
+        prev = None
+        for phase in topo_order:
+            carry_row = self.m.carry.get(phase) or {}
+            credit_out_prev = self.carry_out.get(prev, {}).get("credit", 0) if prev else 0
+            debt_out_prev = self.carry_out.get(prev, {}).get("debt", 0) if prev else 0
+            credit_in = to_int(carry_row.get("initial_credit", "0")) + credit_out_prev
+            debt_in = to_int(carry_row.get("initial_debt", "0")) + debt_out_prev
+            effective = self.phase_cap(phase) + credit_in - debt_in
+            self.effective_cap[phase] = effective
+            members = self.membership.get(phase, [])
+            floored = {
+                sid: max(self.target[(phase, sid)], self.floors[(phase, sid)])
+                for sid in members
+            }
+            total = sum(floored.values())
+            alloc = dict(floored)
+            if total > effective:
+                self.note("B_CAP_BIND", phase)
+                excess = total - effective
+                order = sorted(
+                    members,
+                    key=lambda sid: (
+                        self.m.stratum_rank.get(self.source_row(sid).get("safety_stratum"), 0),
+                        -to_int(self.source_row(sid).get("priority", "0")),
+                        sid,
+                    ),
+                )
+                for sid in order:
+                    if excess <= 0:
+                        break
+                    room = alloc[sid] - self.floors[(phase, sid)]
+                    if room > 0:
+                        take = min(room, excess)
+                        before = alloc[sid]
+                        alloc[sid] -= take
+                        excess -= take
+                        after = alloc[sid]
+                        # A displacement that lands on the floor stays in the
+                        # region above it; only a cut strictly below the floor
+                        # is a floor cut.
+                        kind = "floor_cut" if after < self.floors[(phase, sid)] else "above_floor"
+                        trace.append((phase, sid, before, after, take, kind))
+                        self.counters["capacity_displacements"] += 1
+                if excess > 0:
+                    self.note("B_FLOOR_OVER_CAP", phase)
+                    for sid in order:
+                        if excess <= 0:
+                            break
+                        room = alloc[sid]
+                        if room > 0:
+                            take = min(room, excess)
+                            before = alloc[sid]
+                            alloc[sid] -= take
+                            excess -= take
+                            trace.append((phase, sid, before, alloc[sid], take, "floor_cut"))
+                            self.counters["capacity_displacements"] += 1
+            for sid in members:
+                self.bound[(phase, sid)] = alloc[sid]
+            allocated = sum(alloc.values())
+            credit_out = effective - allocated if effective > allocated else 0
+            debt_out = sum(
+                max(0, self.floors[(phase, sid)] - alloc[sid]) for sid in members
+            )
+            if debt_out > 0:
+                self.note("B_CARRY_DEBT", phase)
+            self.carry_out[phase] = {"credit": credit_out, "debt": debt_out}
+            self.carry_rows.append((phase, credit_in, debt_in, credit_out, debt_out))
+            prev = phase
+        return trace
+
+    # -- stage 8b ----------------------------------------------------------
+
+    def stage8b_overturns(self, reach):
+        rows = []
+        for phase in self.phases:
+            for prereq in sorted(reach.get(phase, ())):
+                for sid in self.membership.get(phase, []):
+                    if sid not in self.membership.get(prereq, []):
+                        continue
+                    there = self.bound.get((prereq, sid), 0)
+                    here = self.bound.get((phase, sid), 0)
+                    if there == 0 and here > 0:
+                        rows.append((phase, prereq, sid))
+        for phase, prereq, sid in rows:
+            self.counters["precedence_overturns"] += 1
+            self.note("B_PRECEDENCE_OVERTURN", phase)
+        return rows
+
+    # -- stage 10 ----------------------------------------------------------
+
+    def stage10_reconcile(self, topo_order):
+        rows = []
+        for sid in [row["source_id"] for row in self.m.sources]:
+            supply = self.canonical[sid]
+            for phase in topo_order:
+                self.final[(phase, sid)] = self.bound.get((phase, sid), 0)
+            total = sum(self.bound.get((phase, sid), 0) for phase in topo_order)
+            if total <= supply:
+                continue
+            self.note("B_GLOBAL_CLAWBACK", sid)
+            excess = total - supply
+            for phase in reversed(topo_order):
                 if excess <= 0:
                     break
-                if (phase, sid) not in final:
+                before = self.final[(phase, sid)]
+                if before <= 0:
                     continue
-                cur = final[(phase, sid)]
-                if cur <= 0:
-                    claw = 0
-                else:
-                    claw = min(cur, excess)
-                if claw > 0:
-                    final[(phase, sid)] = cur - claw
-                    excess -= claw
-                    claw_rows.append({
-                        "source_id": sid,
-                        "phase": phase,
-                        "before": cur,
-                        "after": cur - claw,
-                        "clawed": claw,
-                    })
-            clawback_exceptions.append({"code": "B_GLOBAL_CLAWBACK", "ref": sid})
+                take = min(before, excess)
+                after = before - take
+                self.final[(phase, sid)] = after
+                excess -= take
+                rows.append((sid, phase, before, after, take))
+                self.counters["global_clawbacks"] += 1
+        return rows
 
-    final_allocation_rows = [{"phase": p, "source_id": s, "tokens": final[(p, s)]}
-                             for p in phases for s in members_by_phase[p]]
+    # -- stage 11 ----------------------------------------------------------
 
-    # stage 11 rational example weights and stage 12 materialization
-    examples_by_source = {row["source_id"]: [] for row in canonical}
-    for row in examples_rows:
-        examples_by_source.setdefault(row["source_id"], []).append(row)
-    for sid in examples_by_source:
-        examples_by_source[sid].sort(key=lambda r: r["example_id"])
+    def source_examples(self):
+        groups = {}
+        for row in self.m.examples:
+            sid = row.get("source_id")
+            if sid is None:
+                continue
+            groups.setdefault(sid, []).append(row)
+        return groups
 
-    rational_rows = []
-    fixed_rows = []
-    residual_rows = []
-    materialized_by_source = {}
-    empty_group_exceptions = []
-    source_total_final = {row["source_id"]: 0 for row in canonical}
-    for row in final_allocation_rows:
-        source_total_final[row["source_id"]] += row["tokens"]
-    for row in canonical:
-        sid = row["source_id"]
-        total = source_total_final[sid]
-        ex_rows = examples_by_source.get(sid, [])
-        group_den = sum(int(r["token_length"]) for r in ex_rows)
-        if ex_rows and group_den == 0:
-            empty_group_exceptions.append({"code": "B_EMPTY_GROUP", "ref": sid})
-        keys = [r["example_id"] for r in ex_rows]
-        weights = {r["example_id"]: int(r["token_length"]) for r in ex_rows}
-        base, rem = largest_remainder_split(total, keys, weights)
-        if total > 0 and group_den > 0:
-            for r in ex_rows:
-                wnum = total * int(r["token_length"])
-                wden = group_den
-                g = Fraction(wnum, wden)
-                rational_rows.append({
-                    "example_id": r["example_id"],
-                    "source_id": sid,
-                    "w_num": g.numerator,
-                    "w_den": g.denominator,
+    def stage11_rational_weights(self, token_totals):
+        groups = self.source_examples()
+        rows = []
+        for row in self.m.sources:
+            sid = row["source_id"]
+            examples = sorted(groups.get(sid, []), key=lambda r: r["example_id"])
+            if not examples:
+                continue
+            denominator = sum(to_int(ex.get("token_length", "0")) for ex in examples)
+            if denominator == 0:
+                self.note("B_EMPTY_GROUP", sid)
+                continue
+            total = token_totals.get(sid, 0)
+            for ex in examples:
+                length = to_int(ex.get("token_length", "0"))
+                num, den = reduce_fraction(total * length, denominator)
+                rows.append((ex["example_id"], sid, num, den))
+        return rows
+
+    # -- stage 12 ----------------------------------------------------------
+
+    def stage12_materialize(self, token_totals):
+        groups = self.source_examples()
+        weight_rows = []
+        residual_rows = []
+        for row in self.m.sources:
+            sid = row["source_id"]
+            examples = sorted(groups.get(sid, []), key=lambda r: r["example_id"])
+            total = token_totals.get(sid, 0)
+            lengths = {ex["example_id"]: to_int(ex.get("token_length", "0")) for ex in examples}
+            denominator = sum(lengths.values())
+            materialized = {ex["example_id"]: 0 for ex in examples}
+            if examples and denominator > 0 and total > 0:
+                bases = {}
+                remainders = {}
+                for ex in examples:
+                    eid = ex["example_id"]
+                    product = total * lengths[eid]
+                    bases[eid] = product // denominator
+                    remainders[eid] = product - bases[eid] * denominator
+                leftover = total - sum(bases.values())
+                order = sorted(examples, key=lambda ex: (-remainders[ex["example_id"]],
+                                                         ex["example_id"]))
+                winners = {ex["example_id"] for ex in order[:leftover]}
+                for ex in examples:
+                    eid = ex["example_id"]
+                    materialized[eid] = bases[eid]
+                    if eid in winners:
+                        materialized[eid] += 1
+                        residual_rows.append((eid, sid, bases[eid], 1))
+            for ex in examples:
+                self.materialized[ex["example_id"]] = materialized[ex["example_id"]]
+                weight_rows.append((ex["example_id"], sid, materialized[ex["example_id"]]))
+        return weight_rows, residual_rows
+
+    # -- stage 13 ----------------------------------------------------------
+
+    def stage13_microbatches(self):
+        """Pack examples into batches; each batch carries its phase."""
+        limit = self.m.adjacency_limit
+        cap = self.m.max_seq_tokens
+        batches = []
+        state = {"members": [], "tokens": 0, "source": None, "run": 0}
+
+        def close():
+            if state["members"]:
+                batches.append((state["phase"], list(state["members"]), state["tokens"]))
+            state["members"] = []
+            state["tokens"] = 0
+            state["source"] = None
+            state["run"] = 0
+
+        for phase in self.phases:
+            state["phase"] = phase
+            members = [
+                sid for sid in self.membership.get(phase, [])
+                if self.final.get((phase, sid), 0) > 0
+            ]
+            for sid in sorted(members):
+                eids = sorted(
+                    eid for eid, src in self.example_source.items()
+                    if src == sid and self.materialized.get(eid, 0) > 0
+                )
+                for eid in eids:
+                    tokens = self.materialized[eid]
+                    if not state["members"]:
+                        state.update(members=[eid], tokens=tokens, source=sid, run=1)
+                        continue
+                    same = sid == state["source"]
+                    next_run = state["run"] + 1 if same else 1
+                    if state["tokens"] + tokens <= cap and next_run <= limit:
+                        state["members"].append(eid)
+                        state["tokens"] += tokens
+                        state["source"] = sid
+                        state["run"] = next_run
+                    else:
+                        close()
+                        state["phase"] = phase
+                        state.update(members=[eid], tokens=tokens, source=sid, run=1)
+            close()
+        return batches
+
+    # -- stage 14 ----------------------------------------------------------
+
+    def run(self):
+        self.stage1_canonicalize()
+        self.stage2_eligibility()
+        self.stage3_scoring()
+        self.stage45_membership_targets_floors()
+        reach = self.build_closure()
+        cycle_nodes, removed, surviving = self.stage8_break_cycle(reach)
+        topo_order = self.topological_order(surviving)
+        self.topo_order = topo_order
+        trace = self.stage69_bind_and_carry(topo_order)
+        overturns = self.stage8b_overturns(reach)
+        clawbacks = self.stage10_reconcile(topo_order)
+
+        token_totals = {}
+        for row in self.m.sources:
+            sid = row["source_id"]
+            token_totals[sid] = sum(
+                self.final.get((phase, sid), 0) for phase in topo_order
+            )
+        rational_rows = self.stage11_rational_weights(token_totals)
+        weight_rows, residual_rows = self.stage12_materialize(token_totals)
+        batches = self.stage13_microbatches()
+
+        total_tokens = sum(token_totals.values())
+        examples_placed = sum(len(members) for _, members, _ in batches)
+
+        invariants = self.check_invariants(batches)
+
+        objective = [
+            total_tokens,
+            self.counters["global_clawbacks"],
+            self.counters["cycle_edges_removed"],
+            len(trace),
+            len(batches),
+        ]
+
+        artifacts = {}
+        artifacts["canonical_sources.jsonl"] = [
+            {"source_id": row["source_id"], "raw_amount": to_int(row.get("raw_amount", "0")),
+             "raw_unit": row.get("raw_unit", ""), "canonical_tokens": self.canonical[row["source_id"]],
+             "rounding_tie": self.ties[row["source_id"]]}
+            for row in self.m.sources
+        ]
+        artifacts["eligibility_ledger.jsonl"] = [
+            {"source_id": row["source_id"], "eligible": self.eligible[row["source_id"]],
+             "code": self.eligibility_code[row["source_id"]]}
+            for row in self.m.sources
+        ]
+        artifacts["demand_score_ledger.jsonl"] = [
+            {"source_id": sid, "quality_bp": self.factors[sid]["quality_bp"],
+             "fresh_bp": self.factors[sid]["fresh_bp"],
+             "priority_factor": self.factors[sid]["priority_factor"],
+             "lang_balance_bp": self.factors[sid]["lang_balance_bp"],
+             "demand_score": self.demand[sid]}
+            for sid in [r["source_id"] for r in self.m.sources if self.eligible[r["source_id"]]]
+        ]
+        membership_rows = []
+        for phase in self.phases:
+            for sid in self.membership.get(phase, []):
+                membership_rows.append({"phase": phase, "source_id": sid})
+        artifacts["phase_membership.jsonl"] = membership_rows
+        proportional_rows = []
+        floor_rows = []
+        for phase in self.phases:
+            for sid in self.membership.get(phase, []):
+                num, den = self.share[(phase, sid)]
+                proportional_rows.append({
+                    "phase": phase, "source_id": sid,
+                    "target_tokens": self.target[(phase, sid)],
+                    "share_num": num, "share_den": den,
                 })
-        mats = []
-        for r in ex_rows:
-            fixed_rows.append({
-                "example_id": r["example_id"],
-                "source_id": sid,
-                "materialized_tokens": base[r["example_id"]],
+                safety_floor, language_floor = self.floor_parts[(phase, sid)]
+                floor_rows.append({
+                    "phase": phase, "source_id": sid,
+                    "safety_floor": safety_floor, "language_floor": language_floor,
+                    "floor": self.floors[(phase, sid)],
+                })
+        artifacts["proportional_allocation.jsonl"] = proportional_rows
+        artifacts["protected_floor_ledger.jsonl"] = floor_rows
+        artifacts["capacity_binding_trace.jsonl"] = [
+            {"phase": phase, "source_id": sid, "before": before, "after": after,
+             "displaced": displaced, "kind": kind}
+            for phase, sid, before, after, displaced, kind in trace
+        ]
+        closure_rows = []
+        for phase in sorted(reach):
+            for requires in sorted(reach[phase]):
+                closure_rows.append({"phase": phase, "requires": requires})
+        artifacts["precedence_closure.jsonl"] = closure_rows
+        artifacts["cycle_report.jsonl"] = (
+            [{"cycle_nodes": cycle_nodes}] if cycle_nodes else []
+        )
+        artifacts["cycle_break_decisions.jsonl"] = (
+            [{"edge_id": removed["edge_id"], "from": removed["from"], "to": removed["to"],
+              "hardness": removed["hardness"]}] if removed else []
+        )
+        artifacts["precedence_overturn_trace.jsonl"] = [
+            {"phase": phase, "prereq_phase": prereq, "source_id": sid}
+            for phase, prereq, sid in overturns
+        ]
+        artifacts["carry_state_ledger.jsonl"] = [
+            {"phase": phase, "credit_in": credit_in, "debt_in": debt_in,
+             "credit_out": credit_out, "debt_out": debt_out}
+            for phase, credit_in, debt_in, credit_out, debt_out in self.carry_rows
+        ]
+        artifacts["pre_reconciliation_ledger.jsonl"] = [
+            {"phase": phase, "source_id": sid, "tokens": self.bound[(phase, sid)]}
+            for phase in self.phases for sid in self.membership.get(phase, [])
+        ]
+        artifacts["global_reconciliation_trace.jsonl"] = [
+            {"source_id": sid, "phase": phase, "before": before, "after": after,
+             "clawed": clawed}
+            for sid, phase, before, after, clawed in clawbacks
+        ]
+        artifacts["final_allocation.jsonl"] = [
+            {"phase": phase, "source_id": sid, "tokens": self.final[(phase, sid)]}
+            for phase in self.phases for sid in self.membership.get(phase, [])
+        ]
+        scale = self.m.scale
+        language_rows = []
+        for language in sorted(self.m.languages):
+            spec = self.m.languages[language]
+            tokens = sum(
+                token_totals[row["source_id"]]
+                for row in self.m.sources if row.get("language") == language
+            )
+            language_rows.append({
+                "language": language, "tokens": tokens,
+                "min_required": round_half_even(to_int(spec.get("min_share_bp", 0)) * total_tokens, scale),
+                "max_allowed": round_half_even(to_int(spec.get("max_share_bp", 0)) * total_tokens, scale),
             })
-            mats.append({"example_id": r["example_id"],
-                         "materialized_tokens": base[r["example_id"]]})
-            quotient = (total * int(r["token_length"])) // group_den if group_den else 0
-            if base[r["example_id"]] == quotient + 1:
-                residual_rows.append({
-                    "example_id": r["example_id"],
-                    "source_id": sid,
-                    "base_tokens": quotient,
-                    "residual_unit": 1,
-                })
-        materialized_by_source[sid] = mats
+        artifacts["language_allocation_summary.jsonl"] = language_rows
+        safety_rows = []
+        for stratum in sorted(self.m.strata):
+            tokens = sum(
+                token_totals[row["source_id"]]
+                for row in self.m.sources if row.get("safety_stratum") == stratum
+            )
+            safety_rows.append({
+                "stratum": stratum, "tokens": tokens,
+                "floor": to_int(self.m.strata[stratum].get("floor_tokens", 0)),
+            })
+        artifacts["safety_allocation_summary.jsonl"] = safety_rows
+        artifacts["source_allocation_summary.jsonl"] = [
+            {"source_id": row["source_id"], "tokens": token_totals[row["source_id"]],
+             "canonical_tokens": self.canonical[row["source_id"]]}
+            for row in self.m.sources
+        ]
+        artifacts["rational_example_weights.jsonl"] = [
+            {"example_id": eid, "source_id": sid, "w_num": num, "w_den": den}
+            for eid, sid, num, den in rational_rows
+        ]
+        artifacts["fixed_point_weights.jsonl"] = [
+            {"example_id": eid, "source_id": sid, "materialized_tokens": tokens}
+            for eid, sid, tokens in weight_rows
+        ]
+        artifacts["rounding_residual_ledger.jsonl"] = [
+            {"example_id": eid, "source_id": sid, "base_tokens": base, "residual_unit": unit}
+            for eid, sid, base, unit in residual_rows
+        ]
+        artifacts["microbatch_manifest.jsonl"] = [
+            {"batch_id": "BATCH%04d" % index, "phase": phase, "members": members,
+             "seq_tokens": seq}
+            for index, (phase, members, seq) in enumerate(batches, 1)
+        ]
+        artifacts["phase_token_totals.jsonl"] = [
+            {"phase": phase,
+             "allocated": sum(self.final.get((phase, sid), 0)
+                              for sid in self.membership.get(phase, [])),
+             "cap": self.phase_cap(phase),
+             "budget": self.phase_budget(phase)}
+            for phase in self.phases
+        ]
+        artifacts["invariant_report.jsonl"] = [
+            {"invariant": name, "holds": bool(value)} for name, value in invariants
+        ]
+        artifacts["exception_trace.jsonl"] = [
+            {"code": code, "ref": ref} for code, ref in self.ordered_exceptions()
+        ]
 
-    # stage 13 microbatches, member sources with a positive final allocation
-    members_positive = {p: [s for s in members_by_phase[p]
-                            if final.get((p, s), 0) > 0]
-                        for p in phases}
-    batch_rows = build_microbatches(phases, members_positive, materialized_by_source,
-                                    adjacency_limit, max_seq_tokens)
+        return artifacts, objective, {
+            "total_tokens": total_tokens,
+            "examples_placed": examples_placed,
+            "invariants_hold": all(bool(value) for _, value in invariants),
+        }
 
-    # summaries
-    total_tokens = sum(row["tokens"] for row in final_allocation_rows)
-    lang_tokens = {lang: 0 for lang in sorted(languages)}
-    for row in final_allocation_rows:
-        lang = source_info[row["source_id"]]["language"]
-        lang_tokens[lang] = lang_tokens.get(lang, 0) + row["tokens"]
-    lang_rows = []
-    for lang in sorted(languages):
-        min_required = div_round_half_even(
-            int(languages[lang]["min_share_bp"]) * total_tokens, scale)
-        max_allowed = div_round_half_even(
-            int(languages[lang]["max_share_bp"]) * total_tokens, scale)
-        lang_rows.append({
-            "language": lang,
-            "tokens": lang_tokens.get(lang, 0),
-            "min_required": min_required,
-            "max_allowed": max_allowed,
-        })
+    def ordered_exceptions(self):
+        rank = {code: index for index, code in enumerate(BRANCH_ORDER)}
+        groups = {}
+        for code, ref in self.exceptions:
+            groups.setdefault(code, []).append((code, ref))
+        ordered = []
+        for code in sorted(groups, key=lambda c: rank.get(c, len(BRANCH_ORDER))):
+            ordered.extend(groups[code])
+        return ordered
 
-    stratum_tokens = {name: 0 for name in sorted(strata)}
-    for row in final_allocation_rows:
-        st = source_info[row["source_id"]]["safety_stratum"]
-        stratum_tokens[st] = stratum_tokens.get(st, 0) + row["tokens"]
-    safety_rows = []
-    for name in sorted(strata):
-        safety_rows.append({
-            "stratum": name,
-            "tokens": stratum_tokens.get(name, 0),
-            "floor": int(strata[name]["floor_tokens"]),
-        })
-
-    source_summary_rows = [{
-        "source_id": row["source_id"],
-        "tokens": source_total_final[row["source_id"]],
-        "canonical_tokens": row["canonical_tokens"],
-    } for row in canonical]
-
-    phase_total_rows = []
-    for phase in phases:
-        phase_total_rows.append({
-            "phase": phase,
-            "allocated": sum(final[(phase, s)] for s in members_by_phase[phase]),
-            "cap": int(capacity_by_phase[phase]["cap_tokens"]),
-            "budget": int(capacity_by_phase[phase]["budget_tokens"]),
-        })
-
-    # invariants
-    inv_phase_within_cap = True
-    inv_source_within_supply = True
-    inv_materialized_sums_match = True
-    inv_batches_respect_seq_cap = True
-    for phase in phases:
-        phase_alloc = sum(final[(phase, s)] for s in members_by_phase[phase])
-        cap = int(capacity_by_phase[phase]["cap_tokens"])
-        credit_in = row_credit_in(carry_rows_out, phase)
-        debt_in = row_debt_in(carry_rows_out, phase)
-        if phase_alloc > cap + credit_in - debt_in:
-            inv_phase_within_cap = False
-    for row in canonical:
-        if source_total_final[row["source_id"]] > row["canonical_tokens"]:
-            inv_source_within_supply = False
-    for row in canonical:
-        sid = row["source_id"]
-        ex_rows = examples_by_source.get(sid, [])
-        group_den = sum(int(r["token_length"]) for r in ex_rows)
-        if ex_rows and group_den > 0:
-            if sum(m["materialized_tokens"] for m in materialized_by_source[sid]) != \
-                    source_total_final[sid]:
-                inv_materialized_sums_match = False
-    for row in batch_rows:
-        if row["seq_tokens"] > max_seq_tokens and len(row["members"]) != 1:
-            inv_batches_respect_seq_cap = False
-
-    invariant_rows = [
-        {"invariant": "phase_within_cap", "holds": inv_phase_within_cap},
-        {"invariant": "source_within_supply", "holds": inv_source_within_supply},
-        {"invariant": "materialized_sums_match", "holds": inv_materialized_sums_match},
-        {"invariant": "batches_respect_seq_cap", "holds": inv_batches_respect_seq_cap},
-    ]
-
-    objective = [total_tokens, len(claw_rows), len(removed_edges),
-                 len(binding_trace), len(batch_rows)]
-    objective_order = ["total_tokens", "global_clawbacks", "cycle_edges_removed",
-                       "capacity_displacements", "microbatches"]
-
-    # exception trace, in the order the stages activate the branches
-    exceptions = []
-    exceptions.extend(unit_tie_exceptions)
-    exceptions.extend(stage6_exceptions)
-    exceptions.extend(cycle_break_exceptions)
-    exceptions.extend(overturn_exceptions)
-    exceptions.extend(carry_debt_exceptions)
-    exceptions.extend(clawback_exceptions)
-    exceptions.extend(empty_group_exceptions)
-
-    # write everything
-    writer = Writer(out_dir)
-    writer.add_jsonl("canonical_sources.jsonl", canonical)
-    writer.add_jsonl("eligibility_ledger.jsonl", eligibility)
-    writer.add_jsonl("demand_score_ledger.jsonl", demand_rows)
-    writer.add_jsonl("phase_membership.jsonl",
-                     [{"phase": p, "source_id": s} for p in phases
-                      for s in members_by_phase[p]])
-    writer.add_jsonl("proportional_allocation.jsonl", proportional_rows)
-    writer.add_jsonl("protected_floor_ledger.jsonl", floor_rows)
-    writer.add_jsonl("capacity_binding_trace.jsonl", binding_trace)
-    writer.add_jsonl("precedence_closure.jsonl", closure_rows)
-    writer.add_jsonl("cycle_report.jsonl",
-                     [{"cycle_nodes": cycle_nodes}] if cycle_nodes else [])
-    writer.add_jsonl("cycle_break_decisions.jsonl",
-                     [{"edge_id": e["edge_id"], "from": e["from"], "to": e["to"],
-                       "hardness": e["hardness"]} for e in removed_edges])
-    writer.add_jsonl("precedence_overturn_trace.jsonl", overturns)
-    writer.add_jsonl("carry_state_ledger.jsonl", carry_rows_out)
-    writer.add_jsonl("pre_reconciliation_ledger.jsonl", pre_reconciliation)
-    writer.add_jsonl("global_reconciliation_trace.jsonl", claw_rows)
-    writer.add_jsonl("final_allocation.jsonl", final_allocation_rows)
-    writer.add_jsonl("language_allocation_summary.jsonl", lang_rows)
-    writer.add_jsonl("safety_allocation_summary.jsonl",
-                     sorted(safety_rows, key=lambda r: r["stratum"]))
-    writer.add_jsonl("source_allocation_summary.jsonl", source_summary_rows)
-    writer.add_jsonl("rational_example_weights.jsonl", rational_rows)
-    writer.add_jsonl("fixed_point_weights.jsonl", fixed_rows)
-    writer.add_jsonl("rounding_residual_ledger.jsonl", residual_rows)
-    writer.add_jsonl("microbatch_manifest.jsonl", batch_rows)
-    writer.add_jsonl("phase_token_totals.jsonl", phase_total_rows)
-    writer.add_jsonl("invariant_report.jsonl", invariant_rows)
-    writer.add_jsonl("exception_trace.jsonl", exceptions)
-    writer.add_json("objective_tuple.json",
-                    {"objective": objective, "order": objective_order})
-
-    writer.write()
-
-    # program copy, then digests over the final bytes on disk
-    program_path = os.path.abspath(__file__)
-    target = os.path.join(out_dir, "plan.py")
-    if os.path.abspath(target) != program_path:
-        shutil.copyfile(program_path, target)
-    manifest = {}
-    derived = sorted(list(writer.buffers.keys()))
-    for name in derived + ["plan.py"]:
-        with open(os.path.join(out_dir, name), "rb") as fh:
-            manifest[name] = sha256_bytes(fh.read())
-    with open(os.path.join(out_dir, "integrity_manifest.json"), "w",
-              encoding="utf-8", newline="\n") as fh:
-        fh.write(jif(manifest))
-
-    chain = INITIAL_CHAIN
-    for name in sorted(manifest):
-        chain = sha256_bytes((chain + manifest[name]).encode("utf-8"))
-
-    overturn_phases = sorted({r["phase"] for r in overturns})
-    final_state = {
-        "chain": chain,
-        "total_tokens": total_tokens,
-        "global_clawbacks": len(claw_rows),
-        "capacity_displacements": len(binding_trace),
-        "cycle_edges_removed": len(removed_edges),
-        "precedence_overturns": len(overturns),
-        "microbatches": len(batch_rows),
-        "examples_placed": sum(len(r["members"]) for r in batch_rows),
-        "quiet_branches": len(exceptions),
-        "objective": objective,
-        "invariants_hold": all(r["holds"] for r in invariant_rows),
-    }
-    with open(os.path.join(out_dir, "final_state.json"), "w", encoding="utf-8",
-              newline="\n") as fh:
-        fh.write(jif(final_state))
-
-    return {
-        "final_state": final_state,
-        "total_tokens": total_tokens,
-        "clawbacks": len(claw_rows),
-        "removed_edges": [e["edge_id"] for e in removed_edges],
-        "displacements": len(binding_trace),
-        "batches": len(batch_rows),
-        "exceptions": exceptions,
-    }
+    def check_invariants(self, batches):
+        within_cap = True
+        for phase in self.phases:
+            allocated = sum(self.final.get((phase, sid), 0)
+                            for sid in self.membership.get(phase, []))
+            if allocated > self.effective_cap.get(phase, 0):
+                within_cap = False
+        within_supply = True
+        for row in self.m.sources:
+            sid = row["source_id"]
+            total = sum(self.final.get((phase, sid), 0) for phase in self.phases)
+            if total > self.canonical[sid]:
+                within_supply = False
+        groups = self.source_examples()
+        materialized_match = True
+        for row in self.m.sources:
+            sid = row["source_id"]
+            examples = groups.get(sid, [])
+            if not examples:
+                continue
+            # An empty group (zero total token length) materializes zero by
+            # the stage 12 rule, so it is not a checkable split.
+            if sum(to_int(ex.get("token_length", "0")) for ex in examples) == 0:
+                continue
+            total = sum(self.final.get((phase, sid), 0) for phase in self.phases)
+            placed = sum(self.materialized.get(ex["example_id"], 0) for ex in examples)
+            if placed != total:
+                materialized_match = False
+        cap = self.m.max_seq_tokens
+        batches_ok = True
+        for _, members, seq in batches:
+            if len(members) > 1 and seq > cap:
+                batches_ok = False
+        return [
+            ("phase_within_cap", within_cap),
+            ("source_within_supply", within_supply),
+            ("materialized_sums_match", materialized_match),
+            ("batches_respect_seq_cap", batches_ok),
+        ]
 
 
-def row_credit_in(rows, phase):
-    for row in rows:
-        if row["phase"] == phase:
-            return row["credit_in"]
-    return 0
+# --------------------------------------------------------------------------
+# serialization
+# --------------------------------------------------------------------------
+
+def dump_lines(rows):
+    if not rows:
+        return ""
+    return "".join(
+        json.dumps(row, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n"
+        for row in rows
+    )
 
 
-def row_debt_in(rows, phase):
-    for row in rows:
-        if row["phase"] == phase:
-            return row["debt_in"]
-    return 0
+def dump_object(value):
+    return json.dumps(value, sort_keys=True, indent=2, ensure_ascii=False) + "\n"
+
+
+def digest_bytes(data):
+    return hashlib.sha256(data).hexdigest()
 
 
 def main(argv):
     if len(argv) != 3:
         sys.stderr.write("usage: plan.py <DATA_DIR> <OUT_DIR>\n")
         return 2
-    data_dir = argv[1]
-    out_dir = argv[2]
+    data_dir, out_dir = argv[1], argv[2]
     if not os.path.isdir(data_dir):
         sys.stderr.write("data directory not found: %s\n" % data_dir)
-        return 1
-    if not os.path.isdir(out_dir):
-        os.makedirs(out_dir, exist_ok=True)
-    result = compile_plan(data_dir, out_dir)
-    fs = result["final_state"]
-    sys.stdout.write(
-        "total_tokens=%d clawbacks=%d cycle_edges_removed=%d "
-        "capacity_displacements=%d microbatches=%d\n"
-        % (fs["total_tokens"], fs["global_clawbacks"], fs["cycle_edges_removed"],
-           fs["capacity_displacements"], fs["microbatches"]))
-    sys.stdout.write("objective=%s\n" % (result["final_state"]["objective"],))
-    sys.stdout.write("chain=%s\n" % fs["chain"])
+        return 2
+    os.makedirs(out_dir, exist_ok=True)
+
+    manifest = Manifest(data_dir)
+    compiler = Compiler(manifest)
+    artifacts, objective, summary = compiler.run()
+
+    payloads = {}
+    for name in LINES_FILES:
+        payloads[name] = dump_lines(artifacts[name])
+
+    program_source = os.path.abspath(__file__)
+    delivered = os.path.join(out_dir, "plan.py")
+    if os.path.abspath(delivered) != program_source:
+        shutil.copyfile(program_source, delivered)
+    with open(delivered, "rb") as handle:
+        program_bytes = handle.read()
+
+    payloads["objective_tuple.json"] = dump_object({
+        "objective": objective,
+        "order": list(OBJECTIVE_ORDER),
+    })
+
+    manifest_map = {}
+    for name in LINES_FILES:
+        manifest_map[name] = digest_bytes(payloads[name].encode("utf-8"))
+    manifest_map["objective_tuple.json"] = digest_bytes(
+        payloads["objective_tuple.json"].encode("utf-8"))
+    manifest_map["plan.py"] = digest_bytes(program_bytes)
+    payloads["integrity_manifest.json"] = dump_object(manifest_map)
+
+    chain = "0" * 64
+    for name in sorted(manifest_map):
+        chain = digest_bytes((chain + manifest_map[name]).encode("utf-8"))
+    payloads["final_state.json"] = dump_object({
+        "chain": chain,
+        "total_tokens": summary["total_tokens"],
+        "global_clawbacks": compiler.counters["global_clawbacks"],
+        "capacity_displacements": len(artifacts["capacity_binding_trace.jsonl"]),
+        "cycle_edges_removed": compiler.counters["cycle_edges_removed"],
+        "precedence_overturns": compiler.counters["precedence_overturns"],
+        "microbatches": len(artifacts["microbatch_manifest.jsonl"]),
+        "examples_placed": summary["examples_placed"],
+        "quiet_branches": len(artifacts["exception_trace.jsonl"]),
+        "objective": objective,
+        "invariants_hold": summary["invariants_hold"],
+    })
+
+    for name in LINES_FILES + list(JSON_FILES):
+        with open(os.path.join(out_dir, name), "w", encoding="utf-8", newline="\n") as handle:
+            handle.write(payloads[name])
     return 0
 
 

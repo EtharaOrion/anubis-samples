@@ -1,0 +1,3 @@
+{"scope": "attest", "uid": 3600}
+{"scope": "list", "uid": 3800}
+{"scope": "read", "uid": 4000}

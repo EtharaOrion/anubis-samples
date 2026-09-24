@@ -1,0 +1,120 @@
+{
+  "active_class": 1,
+  "artifacts_present": [
+    "admission_matrix.csv",
+    "class_ordering.tsv",
+    "config.json",
+    "convergence_report.txt",
+    "derivation_audit.xml",
+    "hardening_fold_trace.psv",
+    "input_census.ndjson",
+    "precedence_resolution.properties",
+    "privilege_map.ndjson",
+    "profile_canary.json",
+    "profile_delta_report.json",
+    "profile_enforce.json",
+    "quorum_plan.kv",
+    "rate_limit_plan.ini",
+    "report.json",
+    "reproducibility_manifest.json",
+    "retention_schedule.csv",
+    "risk_ledger.env",
+    "scope_reconciliation.tsv",
+    "seccomp_summary.tsv",
+    "summary.json",
+    "tls_floor.env",
+    "tool.zip",
+    "validation_report.json"
+  ],
+  "checks": [
+    {
+      "check": "artifact_size_bounded",
+      "detail": "all artifacts within 1048576 bytes",
+      "pass": true
+    },
+    {
+      "check": "config_flat",
+      "detail": "every value is a scalar",
+      "pass": true
+    },
+    {
+      "check": "derivation_matches_config",
+      "detail": "config equals the repaired-tool derivation",
+      "pass": true
+    },
+    {
+      "check": "hardening_within_bounds",
+      "detail": "hardening baseline inside per-class bounds",
+      "pass": true
+    },
+    {
+      "check": "no_float_values",
+      "detail": "no floating-point values reach graded keys",
+      "pass": true
+    },
+    {
+      "check": "no_forbidden_keys",
+      "detail": "forbidden keys absent",
+      "pass": true
+    },
+    {
+      "check": "privilege_uid_matches_mirror",
+      "detail": "privilege_drop_uid agrees with the privilege-bit mirror",
+      "pass": true
+    },
+    {
+      "check": "profile_canary_flat",
+      "detail": "profile is flat",
+      "pass": true
+    },
+    {
+      "check": "profile_canary_matches_deltas",
+      "detail": "profile canary follows the documented deltas",
+      "pass": true
+    },
+    {
+      "check": "profile_canary_trailer",
+      "detail": "trailer carried",
+      "pass": true
+    },
+    {
+      "check": "profile_enforce_flat",
+      "detail": "profile is flat",
+      "pass": true
+    },
+    {
+      "check": "profile_enforce_matches_deltas",
+      "detail": "profile enforce follows the documented deltas",
+      "pass": true
+    },
+    {
+      "check": "profile_enforce_trailer",
+      "detail": "trailer carried",
+      "pass": true
+    },
+    {
+      "check": "quorum_within_bounds",
+      "detail": "1 <= quorum_threshold <= healthy voters",
+      "pass": true
+    },
+    {
+      "check": "required_artifacts_present",
+      "detail": "24/24 artifacts present",
+      "pass": true
+    },
+    {
+      "check": "required_keys_present",
+      "detail": "22/22 required keys present",
+      "pass": true
+    },
+    {
+      "check": "trailer_intact",
+      "detail": "harbor:cli-config:TASK:000000002e552977",
+      "pass": true
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 17,
+  "ok": true,
+  "trailer": "harbor:cli-config:TASK:000000002e552977"
+}

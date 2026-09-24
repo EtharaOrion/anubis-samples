@@ -1,0 +1,6 @@
+scope	in_base	in_overlay	in_deny	effective
+admin	0	0	1	0
+exec	0	1	0	1
+list	1	0	0	1
+read	1	0	0	1
+write	1	0	0	1

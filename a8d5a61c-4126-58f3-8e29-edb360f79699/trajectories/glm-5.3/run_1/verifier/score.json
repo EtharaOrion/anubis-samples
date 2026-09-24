@@ -11,7 +11,7 @@
       "score": 5,
       "is_positive": true,
       "passed": false,
-      "justification": "The final `ls -la /app/out` command printed all filenames only as relative names, not every required absolute path, and it did not display a JSONL record in that same command output. Other commands displayed records separately, so the specifically required combined demonstration is absent."
+      "justification": "The agent printed all 29 names with `ls -A /app/out`, and separately printed JSONL records, but the listing contained relative filenames rather than every required absolute `/app/out/...` path in one qualifying command output."
     },
     {
       "number": "R2",
@@ -61,8 +61,7 @@
       "importance": "critically_important",
       "score": 5,
       "is_positive": true,
-      "passed": false,
-      "justification": "The `floor_over` constructed case was executed and its full `capacity_binding_trace.jsonl` was printed, including both `above_floor` and `floor_cut` rows. However, the executed output did not explicitly print or name the ranking rule\u2014ascending stratum displacement rank, worse priority first, then source ID\u2014so the complete required demonstration is missing."
+      "passed": true
     },
     {
       "number": "R7",
@@ -73,7 +72,7 @@
       "score": 5,
       "is_positive": true,
       "passed": false,
-      "justification": "The trajectory printed `canonical_sources.jsonl` and discussed half-even arithmetic, but no executed command independently recomputed an exact-half source from raw manifest fields and printed that result beside the delivered canonical value."
+      "justification": "The early recomputation printed exact-half calculations, but its helper incorrectly returned the quotient for every tie\u2014for example, it printed S02 as 31517 while the delivered `canonical_sources.jsonl` correctly contains 31518. It also did not print a recomputed half-even result directly beside the shipped record in one qualifying output."
     },
     {
       "number": "R8",
@@ -94,7 +93,7 @@
       "score": 3,
       "is_positive": true,
       "passed": false,
-      "justification": "Several commands recomputed digests and the folded chain, printing results such as `digests ok chain ok` or `chain verified: ...`. None printed the independently folded chain value directly beside the `final_state.json` chain value as required."
+      "justification": "The agent recomputed artifact digests and later printed `recomputed chain: 3b318...` with `matches file: True`, while other commands printed `final_state.json`. However, the qualifying recomputation output did not print the final-state chain value beside the recomputed value as explicitly required."
     },
     {
       "number": "R10",
@@ -144,8 +143,7 @@
       "importance": "important",
       "score": 3,
       "is_positive": true,
-      "passed": false,
-      "justification": "The agent ran numerous constructed and randomized manifest sets and printed exception traces for some edge cases, but it did not clearly execute an identified second reseeded snapshot and print the two snapshot exception traces as the required paired demonstration."
+      "passed": true
     },
     {
       "number": "R15",
@@ -158,8 +156,8 @@
       "passed": true
     }
   ],
-  "rubric_weights_percentage": 30.0,
-  "test_weights_percentage": 44.94,
-  "final_reward": 37.47,
-  "judge": "human-evaluated"
+  "rubric_weights_percentage": 56.67,
+  "test_weights_percentage": 41.2,
+  "final_reward": 48.94,
+  "evaluated_by": "poonam.chourey@ethara.ai"
 }

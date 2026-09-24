@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<derivationAudit>
+  <activeClass>1</activeClass>
+  <baseBudget maxRecords="235" retryLimit="6" timeoutMs="2359"/>
+  <rule name="active_class_selector" document="class_index.tsv2">ADOPTED band containing base budget 235</rule>
+  <rule name="rate_limit" document="ingress_rate.tsv;burst_multiplier.ini;rate_gran.caret">rate = quantize(qps*burst_permille/1000, step) = 300; burst = rate*window = 900</rule>
+  <rule name="scope_reconciliation" document="scope_base.jsonl;scope_overlay.ndjson;scope_deny.psv">effective = (base U overlay) - deny = exec,list,read,write</rule>
+  <rule name="privilege_drop_uid" document="uid_map.env;uid_floor.hex">min granted uid 2600 raised to floor 1000 = 2600</rule>
+  <rule name="hardening_fold" document="baseline_controls.scsv;hardening_bounds.toml">carry fold 97 clamped to [40,90] = 90 quantized step 5 = 90</rule>
+  <rule name="risk_index" document="severity_weight.kv;risk_const.env2">(100 - 90) * 1000 / 1000 = 10</rule>
+  <rule name="quorum_threshold" document="voter_health.ndjson;quorum_permille.tilde">clamp(5 * 667 / 1000, 1, 5) = 3</rule>
+  <rule name="precedence" document="defaults.json;layer_overrides.json;pinned_overrides.json">pinned==false for class 1 so the class override layer resolves</rule>
+  <rule name="retry_backoff" document="retry_backoff.psv2">quantize(2359 * 7 / 8, 10) = 2060</rule>
+  <controls>
+    <control order="0" id="c-seccomp" weight="25" carry="0" status="ADOPTED" running="25"/>
+    <control order="1" id="c-nonroot" weight="20" carry="0" status="ADOPTED" running="45"/>
+    <control order="2" id="c-readonly" weight="15" carry="1" status="ADOPTED" running="60"/>
+    <control order="3" id="c-caps" weight="22" carry="0" status="ADOPTED" running="97"/>
+    <control order="98" id="c-ghost" weight="40" carry="1" status="DRAFT" running="skip"/>
+    <control order="99" id="c-decoy" weight="50" carry="0" status="SHADOW" running="skip"/>
+    <control order="203" id="c-f3" weight="3" carry="1" status="SHADOW" running="skip"/>
+    <control order="204" id="c-f4" weight="4" carry="0" status="SUPERSEDED" running="skip"/>
+    <control order="209" id="c-f9" weight="9" carry="1" status="SUPERSEDED" running="skip"/>
+    <control order="213" id="c-f13" weight="13" carry="1" status="DRAFT" running="skip"/>
+    <control order="219" id="c-f19" weight="19" carry="1" status="REVOKED" running="skip"/>
+    <control order="226" id="c-f26" weight="26" carry="0" status="SHADOW" running="skip"/>
+    <control order="233" id="c-f33" weight="3" carry="1" status="SHADOW" running="skip"/>
+    <control order="244" id="c-f44" weight="14" carry="0" status="DRAFT" running="skip"/>
+    <control order="248" id="c-f48" weight="18" carry="0" status="REVOKED" running="skip"/>
+    <control order="261" id="c-f61" weight="1" carry="1" status="SUPERSEDED" running="skip"/>
+    <control order="275" id="c-f75" weight="15" carry="1" status="DRAFT" running="skip"/>
+    <control order="277" id="c-f77" weight="17" carry="1" status="DRAFT" running="skip"/>
+    <control order="279" id="c-f79" weight="19" carry="1" status="SHADOW" running="skip"/>
+    <control order="280" id="c-f80" weight="20" carry="0" status="DRAFT" running="skip"/>
+    <control order="284" id="c-f84" weight="24" carry="0" status="REVOKED" running="skip"/>
+    <control order="285" id="c-f85" weight="25" carry="1" status="SUPERSEDED" running="skip"/>
+    <control order="304" id="c-f104" weight="14" carry="0" status="SHADOW" running="skip"/>
+    <control order="306" id="c-f106" weight="16" carry="0" status="DRAFT" running="skip"/>
+    <control order="308" id="c-f108" weight="18" carry="0" status="SUPERSEDED" running="skip"/>
+    <control order="315" id="c-f115" weight="25" carry="1" status="SHADOW" running="skip"/>
+    <control order="319" id="c-f119" weight="29" carry="1" status="REVOKED" running="skip"/>
+    <control order="323" id="c-f123" weight="3" carry="1" status="SHADOW" running="skip"/>
+    <control order="325" id="c-f125" weight="5" carry="1" status="SHADOW" running="skip"/>
+    <control order="326" id="c-f126" weight="6" carry="0" status="REVOKED" running="skip"/>
+    <control order="335" id="c-f135" weight="15" carry="1" status="REVOKED" running="skip"/>
+    <control order="336" id="c-f136" weight="16" carry="0" status="SUPERSEDED" running="skip"/>
+    <control order="341" id="c-f141" weight="21" carry="1" status="DRAFT" running="skip"/>
+    <control order="344" id="c-f144" weight="24" carry="0" status="DRAFT" running="skip"/>
+    <control order="348" id="c-f148" weight="28" carry="0" status="SHADOW" running="skip"/>
+    <control order="350" id="c-f150" weight="0" carry="0" status="SHADOW" running="skip"/>
+    <control order="354" id="c-f154" weight="4" carry="0" status="DRAFT" running="skip"/>
+    <control order="356" id="c-f156" weight="6" carry="0" status="DRAFT" running="skip"/>
+    <control order="367" id="c-f167" weight="17" carry="1" status="DRAFT" running="skip"/>
+    <control order="368" id="c-f168" weight="18" carry="0" status="SHADOW" running="skip"/>
+  </controls>
+  <profiles>
+    <profile name="canary" sessionTtlSeconds="2250" quorumThreshold="4" riskIndex="12"/>
+    <profile name="enforce" sessionTtlSeconds="3600" quorumThreshold="3" riskIndex="9"/>
+  </profiles>
+  <trailer>harbor:cli-config:TASK:000000002e552977</trailer>
+</derivationAudit>

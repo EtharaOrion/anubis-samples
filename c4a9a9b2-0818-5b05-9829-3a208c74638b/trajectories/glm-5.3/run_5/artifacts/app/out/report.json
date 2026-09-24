@@ -1,0 +1,38 @@
+{
+  "active_class": 0,
+  "commands": [
+    "task-ctl derive --schema config_schema.json --out config.json",
+    "task-ctl profile --name canary --config config.json --out profile_canary.json",
+    "task-ctl profile --name enforce --config config.json --out profile_enforce.json",
+    "task-ctl validate --schema config_schema.json --config config.json",
+    "task-ctl export-report --config config.json --out report.json",
+    "task-ctl build --schema config_schema.json --outdir /app/out"
+  ],
+  "config": {
+    "active_class": 0,
+    "audit_retention_days": 30,
+    "burst_ceiling": 350,
+    "checksum": "crc32",
+    "control_plane": "admission-broker",
+    "effective_scope_count": 3,
+    "enforcement_profile": "main",
+    "hardening_baseline": 85,
+    "image_runtime": "oci-runc",
+    "ingress_rate_limit_qps": 175,
+    "max_concurrent_sessions": 40,
+    "mode": "strict-local",
+    "nonce_window_ms": 300,
+    "privilege_drop_uid": 3600,
+    "profile": "TASK",
+    "quorum_threshold": 2,
+    "retry_backoff_base_ms": 16510,
+    "risk_index": 12,
+    "seccomp_allowed_count": 5,
+    "session_ttl_seconds": 2100,
+    "tls_floor_score": 70,
+    "trailer": "harbor:cli-config:TASK:000000002e552977"
+  },
+  "digest": "25ced68cff873edb49d6c965098a2f9abbb3ea4929f9ac87d590b9eb6000b641",
+  "ok": true,
+  "trailer": "harbor:cli-config:TASK:000000002e552977"
+}

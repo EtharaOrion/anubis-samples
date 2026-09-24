@@ -1,0 +1,137 @@
+{
+  "artifacts": {
+    "admission_matrix.csv": {
+      "bytes": 511,
+      "present": true,
+      "within_size_limit": true
+    },
+    "class_ordering.tsv": {
+      "bytes": 47,
+      "present": true,
+      "within_size_limit": true
+    },
+    "config.json": {
+      "bytes": 650,
+      "present": true,
+      "within_size_limit": true
+    },
+    "convergence_report.txt": {
+      "bytes": 274,
+      "present": true,
+      "within_size_limit": true
+    },
+    "derivation_audit.xml": {
+      "bytes": 2025,
+      "present": true,
+      "within_size_limit": true
+    },
+    "hardening_fold_trace.psv": {
+      "bytes": 1151,
+      "present": true,
+      "within_size_limit": true
+    },
+    "input_census.ndjson": {
+      "bytes": 7705,
+      "present": true,
+      "within_size_limit": true
+    },
+    "precedence_resolution.properties": {
+      "bytes": 195,
+      "present": true,
+      "within_size_limit": true
+    },
+    "privilege_map.ndjson": {
+      "bytes": 125,
+      "present": true,
+      "within_size_limit": true
+    },
+    "profile_canary.json": {
+      "bytes": 652,
+      "present": true,
+      "within_size_limit": true
+    },
+    "profile_delta_report.json": {
+      "bytes": 2800,
+      "present": true,
+      "within_size_limit": true
+    },
+    "profile_enforce.json": {
+      "bytes": 652,
+      "present": true,
+      "within_size_limit": true
+    },
+    "quorum_plan.kv": {
+      "bytes": 36,
+      "present": true,
+      "within_size_limit": true
+    },
+    "rate_limit_plan.ini": {
+      "bytes": 66,
+      "present": true,
+      "within_size_limit": true
+    },
+    "report.json": {
+      "bytes": 4628,
+      "present": true,
+      "within_size_limit": true
+    },
+    "reproducibility_manifest.json": {
+      "bytes": 8476,
+      "present": true,
+      "within_size_limit": true
+    },
+    "retention_schedule.csv": {
+      "bytes": 32,
+      "present": true,
+      "within_size_limit": true
+    },
+    "risk_ledger.env": {
+      "bytes": 59,
+      "present": true,
+      "within_size_limit": true
+    },
+    "scope_reconciliation.tsv": {
+      "bytes": 103,
+      "present": true,
+      "within_size_limit": true
+    },
+    "seccomp_summary.tsv": {
+      "bytes": 32,
+      "present": true,
+      "within_size_limit": true
+    },
+    "summary.json": {
+      "bytes": 1154,
+      "present": true,
+      "within_size_limit": true
+    },
+    "tls_floor.env": {
+      "bytes": 19,
+      "present": true,
+      "within_size_limit": true
+    },
+    "tool.zip": {
+      "bytes": 10175,
+      "present": true,
+      "within_size_limit": true
+    },
+    "validation_report.json": {
+      "present": true,
+      "self": true,
+      "within_size_limit": true
+    }
+  },
+  "checks": {
+    "all_required_artifacts_present": true,
+    "artifacts_within_size_limit": true,
+    "config_flat": true,
+    "no_floats": true,
+    "no_forbidden_keys": true,
+    "required_keys_present": true,
+    "trailer_intact": true
+  },
+  "forbidden_keys_present": [],
+  "missing_keys": [],
+  "ok": true,
+  "required_key_count": 22
+}

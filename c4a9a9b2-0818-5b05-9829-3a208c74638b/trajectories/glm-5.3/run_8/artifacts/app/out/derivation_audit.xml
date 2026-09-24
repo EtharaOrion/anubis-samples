@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<derivationAudit>
+  <activeClass>4</activeClass>
+  <selector value="1410" formula="max_records * retry_limit" maxRecords="235" retryLimit="6" source="class_index.tsv2" binding="ADOPTED"/>
+  <ingressRate qps="800" burstPermille="1100" preQuantized="880" rateStep="25" rateLimit="875" windowSeconds="10" burstCeiling="8750"/>
+  <scopeReconciliation base="5" overlay="1" deny="1" effective="5" privilegeDropUid="1200" uidFloor="1000">
+    <effectiveScope name="admin" uid="1200" granted="true"/>
+    <effectiveScope name="exec" uid="2600" granted="true"/>
+    <effectiveScope name="read" uid="4000" granted="true"/>
+    <effectiveScope name="sign" uid="2200" granted="true"/>
+    <effectiveScope name="write" uid="3200" granted="true"/>
+  </scopeReconciliation>
+  <hardeningFold raw="216" floor="50" ceil="95" clamped="95" quantum="5" baseline="95">
+    <control order="0" id="c-seccomp" weight="35" carry="0" status="ADOPTED" running="35"/>
+    <control order="1" id="c-nonroot" weight="30" carry="0" status="ADOPTED" running="65"/>
+    <control order="2" id="c-readonly" weight="25" carry="1" status="ADOPTED" running="105"/>
+    <control order="3" id="c-caps" weight="33" carry="0" status="ADOPTED" running="138"/>
+    <control order="4" id="c-apparmor" weight="20" carry="1" status="ADOPTED" running="174"/>
+    <control order="5" id="c-nonet" weight="18" carry="0" status="ADOPTED" running="192"/>
+    <control order="6" id="c-fsverity" weight="15" carry="1" status="ADOPTED" running="216"/>
+  </hardeningFold>
+  <risk baselineComplement="100" severityPermille="2000" divisor="1000" riskIndex="10"/>
+  <quorum healthyVoters="9" permille="667" threshold="6" lowerBound="1" upperBound="9"/>
+  <tlsFloor score="95" binding="enabled+ADOPTED"/>
+  <seccomp allowedCount="3"/>
+  <auditRetention days="365"/>
+  <precedence field="session_ttl_seconds" default="1800" override="900" pinnedApplied="true" resolved="720"/>
+  <precedence field="nonce_window_ms" default="400" override="700" pinnedApplied="true" resolved="800"/>
+  <precedence field="max_concurrent_sessions" default="64" override="24" pinnedApplied="true" resolved="16"/>
+  <retryBackoff timeoutMs="2359" retryLimit="6" raw="16513" step="10" base="16510"/>
+  <trailer>harbor:cli-config:TASK:000000002e552977</trailer>
+</derivationAudit>

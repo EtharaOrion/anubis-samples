@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<derivation_audit>
+  <class selection="selector_range" budget_index="24" selector_lo="0" selector_hi="36" active_class="0"/>
+  <rate class="0" ingress_qps="120" burst_multiplier_permille="1600" window_seconds="2" rate_step="25" ingress_rate_limit_qps="200" burst_ceiling="400"/>
+  <scopes class="0" base="list,read" overlay="attest" deny="write" effective="attest,list,read" effective_scope_count="3" uid_floor="1000" privilege_drop_uid="3600"/>
+  <hardening class="0" fold_raw="108" floor="40" ceil="90" quant="5" hardening_baseline="90" severity_permille="800" risk_index="8"/>
+  <quorum class="0" healthy_voters="3" permille="667" quorum_threshold="2"/>
+  <tls class="0" tls_floor_score="70"/>
+  <seccomp class="0" seccomp_allowed_count="5" allowed="close,mmap,openat,read,write"/>
+  <retention class="0" audit_retention_days="30"/>
+  <precedence field="session_ttl_seconds" default="1800" overlay_applied="true" pinned="true" source="pinned" resolved="2100"/>
+  <precedence field="nonce_window_ms" default="400" overlay_applied="true" pinned="true" source="pinned" resolved="300"/>
+  <precedence field="max_concurrent_sessions" default="64" overlay_applied="true" pinned="true" source="pinned" resolved="40"/>
+  <retry timeout_ms="2359" retry_limit="6" divide_by="8" quant_step="10" retry_backoff_base_ms="2060"/>
+  <profile name="canary" session_ttl_seconds="1575" quorum_threshold="3" risk_index="10"/>
+  <profile name="enforce" session_ttl_seconds="2520" quorum_threshold="2" risk_index="7"/>
+  <trailer value="harbor:cli-config:TASK:000000002e552977"/>
+</derivation_audit>

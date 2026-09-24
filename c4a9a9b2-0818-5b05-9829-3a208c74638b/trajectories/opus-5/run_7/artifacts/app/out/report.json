@@ -1,0 +1,517 @@
+{
+  "command_count": 35,
+  "commands": [
+    {
+      "argv": [
+        "task-ctl",
+        "init",
+        "--schema",
+        "/app/tool/schema.json",
+        "--out",
+        "/app/out/config.json"
+      ],
+      "exit_code": 0,
+      "stdout": "initialized"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "derive",
+        "--out",
+        "/tmp/task-ctl-derived.json"
+      ],
+      "exit_code": 0,
+      "stdout": "derived"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "active_class",
+        "--value",
+        "1"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "audit_retention_days",
+        "--value",
+        "90"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "burst_ceiling",
+        "--value",
+        "900"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "checksum",
+        "--value",
+        "crc32"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "control_plane",
+        "--value",
+        "admission-broker"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "effective_scope_count",
+        "--value",
+        "4"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "enforcement_profile",
+        "--value",
+        "main"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "hardening_baseline",
+        "--value",
+        "90"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "image_runtime",
+        "--value",
+        "oci-runc"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "ingress_rate_limit_qps",
+        "--value",
+        "300"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "max_concurrent_sessions",
+        "--value",
+        "96"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "mode",
+        "--value",
+        "strict-local"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "nonce_window_ms",
+        "--value",
+        "500"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "privilege_drop_uid",
+        "--value",
+        "2600"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "profile",
+        "--value",
+        "TASK"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "quorum_threshold",
+        "--value",
+        "3"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "retry_backoff_base_ms",
+        "--value",
+        "390"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "risk_index",
+        "--value",
+        "10"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "seccomp_allowed_count",
+        "--value",
+        "6"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "session_ttl_seconds",
+        "--value",
+        "3000"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "tls_floor_score",
+        "--value",
+        "80"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "set",
+        "--config",
+        "/app/out/config.json",
+        "--key",
+        "trailer",
+        "--value",
+        "harbor:cli-config:TASK:000000002e552977"
+      ],
+      "exit_code": 0,
+      "stdout": "set"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "validate",
+        "--schema",
+        "/app/tool/schema.json",
+        "--config",
+        "/app/out/config.json"
+      ],
+      "exit_code": 0,
+      "stdout": "ok"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "profile",
+        "--name",
+        "canary",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/profile_canary.json"
+      ],
+      "exit_code": 0,
+      "stdout": "profiled"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "profile",
+        "--name",
+        "enforce",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/profile_enforce.json"
+      ],
+      "exit_code": 0,
+      "stdout": "profiled"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "profile-delta",
+        "--config",
+        "/app/out/config.json",
+        "--canary",
+        "/app/out/profile_canary.json",
+        "--enforce",
+        "/app/out/profile_enforce.json",
+        "--out",
+        "/app/out/profile_delta_report.json"
+      ],
+      "exit_code": 0,
+      "stdout": "delta-reported"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit-sidecars",
+        "--config",
+        "/app/out/config.json",
+        "--out-dir",
+        "/app/out"
+      ],
+      "exit_code": 0,
+      "stdout": "sidecars"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "class-ordering",
+        "--config",
+        "/app/out/config.json",
+        "--canary",
+        "/app/out/profile_canary.json",
+        "--enforce",
+        "/app/out/profile_enforce.json",
+        "--out",
+        "/app/out/class_ordering.tsv"
+      ],
+      "exit_code": 0,
+      "stdout": "ordered"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit-audit",
+        "--config",
+        "/app/out/config.json",
+        "--out-dir",
+        "/app/out"
+      ],
+      "exit_code": 0,
+      "stdout": "audited"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "package",
+        "--src",
+        "/app/tool",
+        "--out",
+        "/app/out/tool.zip"
+      ],
+      "exit_code": 0,
+      "stdout": "packaged"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit-coverage",
+        "--config",
+        "/app/out/config.json",
+        "--schema",
+        "/app/tool/schema.json",
+        "--out-dir",
+        "/app/out"
+      ],
+      "exit_code": 0,
+      "stdout": "covered"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "export-report",
+        "--config",
+        "/app/out/config.json",
+        "--out",
+        "/app/out/report.json",
+        "--digest",
+        "51e9001699845b8f336fd0442d3eb70c5283f61ac69a9ee55f59249492004bbb",
+        "--commands",
+        "/tmp/task-ctl-commands.json"
+      ],
+      "exit_code": 0,
+      "stdout": "reported"
+    },
+    {
+      "argv": [
+        "task-ctl",
+        "emit-manifest",
+        "--config",
+        "/app/out/config.json",
+        "--out-dir",
+        "/app/out",
+        "--out",
+        "/app/out/reproducibility_manifest.json"
+      ],
+      "exit_code": 0,
+      "stdout": "manifested"
+    }
+  ],
+  "config": {
+    "active_class": 1,
+    "audit_retention_days": 90,
+    "burst_ceiling": 900,
+    "checksum": "crc32",
+    "control_plane": "admission-broker",
+    "effective_scope_count": 4,
+    "enforcement_profile": "main",
+    "hardening_baseline": 90,
+    "image_runtime": "oci-runc",
+    "ingress_rate_limit_qps": 300,
+    "max_concurrent_sessions": 96,
+    "mode": "strict-local",
+    "nonce_window_ms": 500,
+    "privilege_drop_uid": 2600,
+    "profile": "TASK",
+    "quorum_threshold": 3,
+    "retry_backoff_base_ms": 390,
+    "risk_index": 10,
+    "seccomp_allowed_count": 6,
+    "session_ttl_seconds": 3000,
+    "tls_floor_score": 80,
+    "trailer": "harbor:cli-config:TASK:000000002e552977"
+  },
+  "config_digest": "09895a846a6856c4e731380cc9b307a743a84d8015532e2aca3c12ccf79c5662",
+  "config_path": "/app/out/config.json",
+  "digest": "51e9001699845b8f336fd0442d3eb70c5283f61ac69a9ee55f59249492004bbb",
+  "ok": true,
+  "tool": "task-ctl",
+  "trailer": "harbor:cli-config:TASK:000000002e552977"
+}

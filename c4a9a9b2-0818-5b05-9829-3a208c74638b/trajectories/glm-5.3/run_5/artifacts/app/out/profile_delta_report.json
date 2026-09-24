@@ -1,0 +1,28 @@
+{
+  "deltas": [
+    {
+      "base_quorum_threshold": 2,
+      "base_risk_index": 12,
+      "base_session_ttl_seconds": 2100,
+      "profile": "canary",
+      "quorum_threshold_delta": 1,
+      "resolved_quorum_threshold": 3,
+      "resolved_risk_index": 14,
+      "resolved_session_ttl_seconds": 1575,
+      "risk_index_delta": 2,
+      "session_ttl_seconds_delta": -525
+    },
+    {
+      "base_quorum_threshold": 2,
+      "base_risk_index": 12,
+      "base_session_ttl_seconds": 2100,
+      "profile": "enforce",
+      "quorum_threshold_delta": 0,
+      "resolved_quorum_threshold": 2,
+      "resolved_risk_index": 11,
+      "resolved_session_ttl_seconds": 2520,
+      "risk_index_delta": -1,
+      "session_ttl_seconds_delta": 420
+    }
+  ]
+}

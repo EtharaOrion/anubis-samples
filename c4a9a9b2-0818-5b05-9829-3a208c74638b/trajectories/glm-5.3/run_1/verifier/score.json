@@ -11,7 +11,7 @@
       "score": 5,
       "is_positive": true,
       "passed": false,
-      "justification": "The trajectory shows `derive`, `profile`, `finalize`, and `validate` CLI runs, but no invocation of the repaired `set` subcommand for each required key. The configuration was populated wholesale by `cmd_derive`, so this specific action criterion is not met."
+      "justification": "The agent never issued the required sequence of `task-ctl set` commands for all configuration keys. Instead, `cmd_derive` constructed the complete Python dictionary and wrote `config.json` directly, while the only demonstrated `set` calls were isolated tests for `TLS_FLOOR_SCORE`, `trailer`, and invalid/scalar values."
     },
     {
       "number": "R2",
@@ -21,7 +21,8 @@
       "importance": "important",
       "score": 3,
       "is_positive": true,
-      "passed": true
+      "passed": false,
+      "justification": "Although all required final files exist under `/app/out`, the agent repeatedly generated the same requested artifacts at noncanonical locations such as `/tmp/out1`, `/tmp/out2`, `/tmp/outA`, and `/tmp/outB` while testing `task-ctl build`. Therefore the artifacts were not written solely to their canonical paths."
     },
     {
       "number": "R3",
@@ -61,7 +62,8 @@
       "importance": "critically_important",
       "score": 5,
       "is_positive": true,
-      "passed": true
+      "passed": false,
+      "justification": "The implementation checks for dict/list/tuple values and the output is flat, but the reasoning does not explicitly identify and reject a proposed nested admission-container shape before output generation. Much of the discussion merely repeats the brief\u2019s flat-object requirement."
     },
     {
       "number": "R7",
@@ -82,7 +84,7 @@
       "score": 3,
       "is_positive": true,
       "passed": false,
-      "justification": "The broken `cli.py` and schema were inspected before editing, but the first actual `derive` and `profile` executions occurred only after the large source replacement. There is therefore no terminal evidence of probing the failing shipped derive/profile behavior before edits."
+      "justification": "There are pre-edit view calls for `/app/tool/cli.py` and schema files, but no pre-edit terminal run demonstrating failing `derive` or `profile` behavior. The first derive/profile behavior shown occurs only after the tool has been rewritten."
     },
     {
       "number": "R9",
@@ -102,8 +104,7 @@
       "importance": "critically_important",
       "score": 5,
       "is_positive": true,
-      "passed": false,
-      "justification": "Although the agent explicitly rejected first-row selection, its implemented `select_active_class` uses only `max_records % span` and does not use the retry component of the records/retry base. Its own reasoning acknowledged the ambiguity and chose `max_records` alone, so it does not satisfy the stated records/retry-base criterion."
+      "passed": true
     },
     {
       "number": "R11",
@@ -134,7 +135,7 @@
       "score": 5,
       "is_positive": true,
       "passed": false,
-      "justification": "The repaired `fold_controls` does not subtract the previous adopted control's weight; it adds half of the preceding running total when `carry_flag` is set. This produces the trace `25,45,82,104`, so the rubric\u2019s specified carry rule was not implemented."
+      "justification": "The repaired implementation does not subtract the previous adopted control\u2019s weight; it adds a one-bit `carry_in` (`running += weight + carry_in`). The emitted trace therefore runs 25, 45, 60, 83, which does not implement the criterion\u2019s specified subtraction rule."
     },
     {
       "number": "R14",
@@ -155,7 +156,7 @@
       "score": 5,
       "is_positive": true,
       "passed": false,
-      "justification": "The validator does reject nested dict/list/tuple values, but the dispatcher still creates subparsers without `required=True` and merely prints help and returns when no command is supplied. Because the command-required portion was not repaired, the conjunctive criterion is not satisfied."
+      "justification": "The validator does raise for nested containers, but the dispatcher does not require a subcommand: `main()` checks for a missing command, prints help, and returns successfully. The criterion requires both behaviors, so it is not fully satisfied."
     },
     {
       "number": "R16",
@@ -185,7 +186,8 @@
       "importance": "important",
       "score": 3,
       "is_positive": true,
-      "passed": true
+      "passed": false,
+      "justification": "No terminal tool call directly invokes `task-ctl export-report`; the only real CLI invocation is `task-ctl build`, whose Python implementation calls `cmd_export_report` as an internal function. The `export-report` entry in `report.json` is therefore not backed by a matching executed terminal command."
     },
     {
       "number": "R19",
@@ -215,7 +217,8 @@
       "importance": "important",
       "score": 3,
       "is_positive": true,
-      "passed": true
+      "passed": false,
+      "justification": "`report.json` lists separate `task-ctl derive`, `profile`, `validate`, `package`, and `export-report` commands, but the trajectory only executes `task-ctl build`; the listed entries were internally synthesized while direct Python functions were called. Consequently the transcript is not supported command-for-command by matching terminal evidence."
     },
     {
       "number": "R22",
@@ -245,8 +248,7 @@
       "importance": "important",
       "score": 3,
       "is_positive": true,
-      "passed": false,
-      "justification": "The response claims the hardening carry rule was correctly repaired, but the implementation adds half of the prior running total instead of applying the rubric-specified subtraction of the previous adopted weight. It also presents the max-records-only class rule as definitively documented despite the records/retry criterion, so the summary overstates correctness."
+      "passed": true
     },
     {
       "number": "R25",
@@ -279,8 +281,8 @@
       "passed": true
     }
   ],
-  "rubric_weights_percentage": 71.43,
+  "rubric_weights_percentage": 64.84,
   "test_weights_percentage": 20.39,
-  "final_reward": 45.91,
-  "judge": "human-evaluated"
+  "final_reward": 42.62,
+  "evaluated_by": "dinshi.jain@ethara.ai"
 }

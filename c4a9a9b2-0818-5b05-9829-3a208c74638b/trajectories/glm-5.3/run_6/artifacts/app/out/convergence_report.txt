@@ -1,0 +1,22 @@
+convergence report
+=================
+
+active_class: 1
+checks: 14
+failed: 0
+
+check	layer	expected	observed	result
+census_base	scope_census.edn	3	3	ok
+census_overlay	scope_census.edn	1	1	ok
+census_deny	scope_census.edn	1	1	ok
+census_effective	scope_census.edn	4	4	ok
+scope_count_mirror	scopecount_mirror.tsv3	4	4	ok
+voters_mirror	voters_mirror.kv4	5	5	ok
+privilege_mirror	privilege_bits.b64	2600	2600	ok
+quorum_permille_mirror	quorum_mirror.rst2	667	667	ok
+window_mirror	window_mirror.scsv3	3	3	ok
+severity_mirror	severity_mirror.caret2	1000	1000	ok
+rate_granularity_mirror	gran_mirror.fixed2	25	25	ok
+tls_floor_mirror	tls_mirror.tilde3	80	80	ok
+burst_permille_mirror	burst_mirror.hex2	1250	1250	ok
+ingress_qps_mirror	ingress_mirror.pipe	240	240	ok

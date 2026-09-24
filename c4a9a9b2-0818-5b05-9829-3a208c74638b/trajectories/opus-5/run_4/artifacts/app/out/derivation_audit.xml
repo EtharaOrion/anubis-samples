@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<derivation_audit class="1" profile="TASK">
+  <inputs>
+    <input name="max_records" value="235"/>
+    <input name="retry_limit" value="6"/>
+    <input name="selector" value="50"/>
+    <input name="timeout_ms" value="2359"/>
+  </inputs>
+  <steps>
+    <step field="active_class" value="1" rule="max_records mod span -&gt; adopted selector band"/>
+    <step field="ingress_rate_limit_qps" value="300" rule="quantize(half_even(ingress_qps * burst_permille / 1000), rate_step)"/>
+    <step field="burst_ceiling" value="900" rule="ingress_rate_limit_qps * window_seconds"/>
+    <step field="effective_scope_count" value="4" rule="card((base union overlay) minus deny)"/>
+    <step field="privilege_drop_uid" value="2600" rule="max(min(uid of effective scopes), uid_floor)"/>
+    <step field="hardening_baseline" value="90" rule="quantize(clamp(carry_aware_fold, floor, ceil), 5)"/>
+    <step field="risk_index" value="10" rule="half_even((complement - hardening_baseline) * severity_permille / divisor)"/>
+    <step field="quorum_threshold" value="3" rule="clamp(half_even(healthy_voters * quorum_permille / 1000), 1, voter_count)"/>
+    <step field="tls_floor_score" value="80" rule="max score over adopted enabled suites"/>
+    <step field="seccomp_allowed_count" value="6" rule="card(adopted allow minus adopted deny)"/>
+    <step field="audit_retention_days" value="90" rule="adopted retention block"/>
+    <step field="session_ttl_seconds" value="3000" rule="defaults -&gt; overrides -&gt; pinned(pinned=true), quantized to 5"/>
+    <step field="nonce_window_ms" value="500" rule="resolved precedence bounded below by class floor"/>
+    <step field="max_concurrent_sessions" value="96" rule="resolved precedence bounded above by class ceiling"/>
+    <step field="retry_backoff_base_ms" value="390" rule="quantize(half_even(timeout_ms / retry_limit), backoff_step)"/>
+  </steps>
+  <profiles>
+    <profile name="canary" risk_index="12" quorum_threshold="4" session_ttl_seconds="2250"/>
+    <profile name="enforce" risk_index="9" quorum_threshold="3" session_ttl_seconds="3600"/>
+  </profiles>
+  <trailer>harbor:cli-config:TASK:000000002e552977</trailer>
+</derivation_audit>

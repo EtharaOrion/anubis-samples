@@ -1,0 +1,10 @@
+convergence report
+active_class=1
+iterations=3
+derivation_digest=09895a846a6856c4e731380cc9b307a743a84d8015532e2aca3c12ccf79c5662
+config_digest=09895a846a6856c4e731380cc9b307a743a84d8015532e2aca3c12ccf79c5662
+distinct_digests=1
+stable=true
+status=converged
+rounding=round-half-even
+float_operations_on_graded_values=0

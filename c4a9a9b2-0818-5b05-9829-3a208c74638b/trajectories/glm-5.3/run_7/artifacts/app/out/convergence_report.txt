@@ -1,0 +1,21 @@
+task-ctl convergence report
+active_class=1
+ingress_rate_limit_qps=300
+burst_ceiling=900
+effective_scope_count=4
+privilege_drop_uid=2600
+hardening_baseline=90
+risk_index=10
+quorum_threshold=3
+tls_floor_score=80
+seccomp_allowed_count=6
+audit_retention_days=90
+session_ttl_seconds=3000
+nonce_window_ms=500
+max_concurrent_sessions=96
+retry_backoff_base_ms=2060
+profile_canary: session_ttl_seconds=2250 quorum_threshold=4 risk_index=12
+profile_enforce: session_ttl_seconds=3600 quorum_threshold=3 risk_index=9
+validate=ok
+arithmetic=integer round-half-even
+converged=true
