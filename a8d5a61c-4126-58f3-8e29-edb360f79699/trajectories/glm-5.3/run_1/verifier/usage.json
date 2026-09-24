@@ -1,0 +1,19 @@
+{
+  "input_tokens": 8271252,
+  "output_tokens": 103264,
+  "cache_read_tokens": 8135616,
+  "cache_write_tokens": 135636,
+  "cost_usd": 2.569622,
+  "sources": {
+    "agent": {
+      "input_tokens": 8271252,
+      "output_tokens": 103264,
+      "cache_read_tokens": 8135616,
+      "cache_write_tokens": 135636,
+      "cost_usd": 2.56962176
+    }
+  },
+  "notes": [
+    "agent.input_tokens includes its cache_read_tokens (harbor reports one combined prompt figure); agent.cache_write_tokens is derived as input_tokens - cache_read_tokens because harbor does not split the write side"
+  ]
+}
