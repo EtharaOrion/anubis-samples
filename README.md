@@ -497,3 +497,27 @@ marks cannot be re-derived from the corpus.
 MIT © 2026 Ethara.AI – see [LICENSE](LICENSE).
 
 Task content, including the corpora under `environment/data/`, is released under the same terms.
+
+<!-- trinity:lane-index:begin -->
+GENERATED SECTION. DO NOT HAND-EDIT.
+
+## Promoted set
+
+| uuid | task_lane | sealed_at | stream |
+| --- | --- | --- | --- |
+| 64d3d25b-74db-5ac0-a47d-f1b1073cca81 | adopted | unsealed | none |
+| a8d5a61c-4126-58f3-8e29-edb360f79699 | adopted | unsealed | none |
+| c4a9a9b2-0818-5b05-9829-3a208c74638b | adopted | unsealed | none |
+
+## Standing
+
+| uuid | verdict |
+| --- | --- |
+| 64d3d25b-74db-5ac0-a47d-f1b1073cca81 | none |
+| a8d5a61c-4126-58f3-8e29-edb360f79699 | none |
+| c4a9a9b2-0818-5b05-9829-3a208c74638b | none |
+
+## Screening roots
+
+No screening root is recorded by reconcile.
+<!-- trinity:lane-index:end -->
