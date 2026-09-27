@@ -283,5 +283,6 @@
   ],
   "rubric_weights_percentage": 64.84,
   "test_weights_percentage": 20.39,
-  "final_reward": 42.62
+  "final_reward": 42.62,
+  "evaluated_by": "dinshi.jain@ethara.ai"
 }

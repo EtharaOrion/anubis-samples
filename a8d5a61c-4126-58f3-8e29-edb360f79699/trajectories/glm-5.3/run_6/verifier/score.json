@@ -160,5 +160,6 @@
   ],
   "rubric_weights_percentage": 36.67,
   "test_weights_percentage": 42.32,
-  "final_reward": 39.5
+  "final_reward": 39.5,
+  "evaluated_by": "poonam.chourey@ethara.ai"
 }

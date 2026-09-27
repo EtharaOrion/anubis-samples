@@ -170,5 +170,6 @@
   ],
   "rubric_weights_percentage": 50.0,
   "test_weights_percentage": 36.76,
-  "final_reward": 43.38
+  "final_reward": 43.38,
+  "evaluated_by": "sugam.agrawal@ethara.ai"
 }
