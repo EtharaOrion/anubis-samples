@@ -44,11 +44,18 @@ junior_time_estimate_min = 1440.0
 [verifier]
 timeout_sec = 3600.0
 environment_mode = "separate"
-network_mode = "no-network"
+network_mode = "public"
+
+[verifier.env]
+JUDGE_WIRE = "${JUDGE_WIRE:-openai}"
+JUDGE_MODEL = "${JUDGE_MODEL:-}"
+OPENAI_API_KEY = "${OPENAI_API_KEY:-}"
+ANTHROPIC_API_KEY = "${ANTHROPIC_API_KEY:-}"
+GEMINI_API_KEY = "${GEMINI_API_KEY:-}"
 
 [verifier.environment]
-docker_image = "426628337772.dkr.ecr.ap-south-1.amazonaws.com/anubis:64d3d25b-74db-5ac0-a47d-f1b1073cca81-verifier@sha256:ee47614f5c647341b64b1c83b35f053910a2a67855f46629a9db8b36f7a139fa"
-network_mode = "no-network"
+docker_image = "426628337772.dkr.ecr.ap-south-1.amazonaws.com/anubis:64d3d25b-74db-5ac0-a47d-f1b1073cca81-verifier@sha256:bd336ac491ab7104d8efeff64db60696a489745ae9466b92f74a60db98f111f8"
+network_mode = "public"
 
 [agent]
 timeout_sec = 7200.0

@@ -50,7 +50,7 @@ the context samples.
 
 ## Verification explanation
 
-`tests/test_output.py` declares 33 tests (29 positive, four negative). Positive
+`tests/test_outputs.py` declares 33 tests (29 positive, four negative). Positive
 tests cover exact equality of the derived configuration against the integer
 reference, the active-class selection, the rate-limit and burst chain, the
 scope reconciliation and minimum privilege-drop UID, the carry-aware hardening

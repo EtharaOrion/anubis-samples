@@ -48,7 +48,7 @@ recomputed with the snippets in [Reproduction](#reproduction).
 | Channel 1 | weighted pytest over the artifacts in `/app/out` |
 | Channel 2 | judged rubric over the recorded trajectory |
 | Reward | `final_reward`, percentage points in [-100, 100] - mean of the two channels |
-| Rubric reviewer | one named reviewer per task, recorded in `evaluated_by` |
+| Rubric grading | graded once out-of-band; re-judge any run with your own model via `tests/test.sh judge` |
 | Full solves | **0 of 48** - no run passed every required test |
 
 | Cohort figure | `opus-5` | `glm-5.3` |
@@ -217,9 +217,13 @@ task-local. No two tasks share a grader: all three
 │   └── solve.sh           oracle dispatcher
 ├── tests/
 │   ├── Dockerfile         builds the verifier image
-│   ├── test.sh            entrypoint, writes /logs/verifier/reward.json
-│   ├── test_output.py     channel 1 - the weighted pytest grader
-│   ├── test_weights.json  per-test weights, negative for cheat detectors
+│   ├── test.sh            verifier entrypoint; 7-step pipeline ending in reward.json
+│   ├── grade.py           channel A grader - the weighted ledger, the only fatal step
+│   ├── ctrf_pytest_plugin.py  pytest plugin that writes ctrf.json with the same math
+│   ├── _judge/            in-verifier rubric judge CLI (runs when a key is available)
+│   ├── grader.py          re-derives both channels offline, or re-judges with your own model
+│   ├── test_outputs.py    channel 1 - the weighted pytest grader
+│   ├── test_weights.json  component weights and per-test weights, negative for cheat detectors
 │   └── rubric.json        channel 2 - the criteria list
 └── trajectories/          16 recorded rollouts, 8 per model
 ```
@@ -231,7 +235,9 @@ fetches only the agent's own toolchain, never task data, tests or reference answ
 
 Both images are pinned by digest in `task.toml`, under `[environment].docker_image` and
 `[verifier.environment].docker_image`, so a rerun resolves the same bytes rather than rebuilding.
-Both run with `network_mode = "no-network"`.
+The agent environment runs with `network_mode = "no-network"` - the sealed corpus stays sealed.
+The verifier runs with `network_mode = "public"` so that a rubric judge can be reached when a
+judge key is supplied; without one it makes no network calls.
 
 ## Trajectory structure
 
@@ -259,8 +265,8 @@ trajectories/
 ```
 
 `report.json` carries the three numbers this document is built on: `test_weights_percentage`,
-`rubric_weights_percentage`, and `final_reward` - their mean. Its `evaluated_by` field carries the
-email of the reviewer who graded that run's rubric.
+`rubric_weights_percentage`, and `final_reward` - their mean. The per-criterion rubric verdicts
+ship inline in its `rubric[]` entries.
 
 Step counts are derived as `len(trajectory["steps"])`; `final_metrics` records token totals and cost
 but not a step count. `result.json` also carries a reward under `verifier_result.rewards.reward`,
@@ -299,7 +305,7 @@ the binary measure, the success rate on this corpus is zero.
 
 ### Channel 1 – Weighted pytest
 
-`tests/test_output.py` grades the artifacts the agent wrote to `/app/out`. Each test carries a
+`tests/test_outputs.py` grades the artifacts the agent wrote to `/app/out`. Each test carries a
 weight in `tests/test_weights.json`:
 
 ```
@@ -310,6 +316,10 @@ Negative-weight tests are cheat detectors. For those, passing means the detector
 hardcoded answers, a fabricated CLI transcript, a dynamically generated config, or network
 material - and its weight is subtracted. The denominator counts positive weights only, so a run
 that fabricates evidence can score below a run that does nothing.
+
+At runtime the verifier computes the same quantity as channel A of the weighted ledger,
+`max(0, (earned − penalty) / Σ(positive weights))`, in both `tests/grade.py` (authoritative) and
+`ctrf_pytest_plugin.py` (`overall_score` in `ctrf.json`, reporting only); the two always agree.
 
 ### Channel 2 – Judged rubric
 
@@ -322,13 +332,90 @@ rubric_weights_percentage = 100 × [Σ(score of satisfied positive criteria)
 ```
 
 Positive criteria reward evidence of real work - reading the corpus before writing, deriving the
-governing rule, validating output. Negative criteria penalise shortcuts. Every run records its
-rubric reviewer in `evaluated_by`; one reviewer graded all 16 runs of a given task.
+governing rule, validating output. Negative criteria penalise shortcuts. The per-criterion
+verdicts ship with every run, and `tests/test.sh judge` re-grades any recorded trajectory with a
+judge model of your own choosing.
+
+### Two reward conventions
+
+The repository carries two reward conventions, one for history and one for fresh runs.
+
+The **48 recorded runs** are history. Their published figures use the mean of the two channel
+percentages, `final_reward = (test_weights_percentage + rubric_weights_percentage) / 2`, and
+`tests/test.sh recompute` re-derives every one of them from the shipped bytes.
+
+A **fresh Harbor run** writes `/logs/verifier/reward.json` with a weighted ledger instead:
+
+```
+reward = max(0, (wA × channel_A + wB × rubric) / (wA + wB))
+```
+
+over the components that produced a value. The component weights live in
+`tests/test_weights.json`: `traj_tests` carries the mean of the absolute test weights and `rubric`
+the mean of the absolute criterion scores - 3.816 / 3.125 for `64d3d25b`, 3.8 / 3.667 for
+`a8d5a61c`, 3.606 / 3.667 for `c4a9a9b2`. A component that produced no value drops out of both
+sums rather than counting as zero, so with the rubric unscored the reward is channel A alone -
+which is why the reference solution still grades exactly `1.0` and an empty submission exactly
+`0.0`.
 
 ## Reproduction
 
 Every snippet below runs from the repository root with a bare Python 3 interpreter and reads only
-files shipped here.
+files shipped here. The one exception is the `judge` command, which calls a model of your choosing
+and therefore needs a key and a network.
+
+### Three ways the graders run
+
+| invocation | who runs it | key | network | produces |
+| --- | --- | --- | --- | --- |
+| `tests/test.sh`, no arguments | Harbor, inside the pinned verifier image | no | no | `/logs/verifier/reward.json` - the weighted ledger (channel A; the rubric component is unscored in-band, see below) |
+| `tests/test.sh recompute <path>` | you, on this checkout | no | no | both channels and their mean, each checked against the published value |
+| `tests/test.sh judge <run-dir>` | you, on this checkout | yes | yes | fresh rubric verdicts from your judge, rescored identically |
+
+`test.sh` inspects its first argument before doing anything else. Harbor passes none, so it falls
+through to the verifier pipeline: it rebuilds the agent trajectory from `/logs/agent`, judges the
+rubric in-verifier when a judge key is reachable, runs the weighted pytest channel under
+`ctrf_pytest_plugin.py` (reporting only, `ctrf.json` and `junit.xml`), then runs `tests/grade.py` -
+the authoritative weighted ledger and the only step that can fail the verifier - and reduces its
+`reward_channel_a.json` into `reward.json`. The two reproduction commands hand off to
+`tests/grader.py` without touching the reward files Harbor reads. `grader.py` can also be called
+directly; `test.sh` is only a convenience entry point.
+
+Inside Harbor the rubric channel is normally unscored, for two reasons. First, the judge keys in
+`[verifier.env]` are host-templated (`${OPENAI_API_KEY:-}`), so unless one of `OPENAI_API_KEY`,
+`ANTHROPIC_API_KEY` or `GEMINI_API_KEY` is exported on the machine launching the run, the verifier
+receives an empty string and `/judge/rubric_judge_cli.py` is skipped. Second, Harbor does not mount
+the agent log into a separate verifier container - the pipeline reports
+`[1/7 trajectory] 0 steps from NO AGENT LOG` - so even with a key the in-verifier judge would see
+an empty trajectory. In both cases the reward degrades gracefully to channel A alone: an unscored
+component drops out of both the numerator and the denominator - it is never treated as zero.
+Rubric judging is therefore best run as a separate step against this checkout, where the recorded
+trajectories are available (`tests/test.sh judge <run-dir>`).
+
+**Check every published figure for one task, offline and without a key:**
+
+```bash
+bash 64d3d25b-74db-5ac0-a47d-f1b1073cca81/tests/test.sh \
+     recompute 64d3d25b-74db-5ac0-a47d-f1b1073cca81 | tail -3
+```
+
+Each line reports the run, the channel-1 reward, both channel percentages and their mean, and ends
+`OK` when all three match what is published. The command exits non-zero if any figure disagrees, and
+`--json` emits the same numbers machine-readably.
+
+**Re-judge one recorded rollout with your own model:**
+
+```bash
+export OPENAI_API_KEY="sk-..."
+bash 64d3d25b-74db-5ac0-a47d-f1b1073cca81/tests/test.sh \
+     judge 64d3d25b-74db-5ac0-a47d-f1b1073cca81/trajectories/opus-5/run_1 \
+     --wire openai --model gpt-5.6-sol
+```
+
+This sends the recorded trajectory to your judge, rescores with the same arithmetic, and lists
+the criteria where your judge disagreed with the shipped marks. Use `--wire anthropic` with
+`ANTHROPIC_API_KEY`, or `--wire gemini` with `GEMINI_API_KEY`; any OpenAI-compatible gateway works by
+setting `OPENAI_BASE_URL`. `--model` is required, because no judge model is assumed.
 
 **Re-derive each task's difficulty from its recorded runs:**
 
@@ -355,26 +442,25 @@ for u in sorted(d for d in os.listdir('.') if os.path.isdir(d) and len(d) == 36 
 
 ```bash
 python3 -c "
-import json,glob,collections
+import json,glob,collections,math
 by=collections.defaultdict(list)
-for p in glob.glob('*/trajectories/*/run_*/report.json'):
+for p in sorted(glob.glob('*/trajectories/*/run_*/report.json')):
     r=json.load(open(p)); by[r['model']].append(r['final_reward'])
 for m,v in sorted(by.items()):
-    print(m,{'runs':len(v),'pass_rate':round(sum(v)/len(v),2)})"
+    print(m,{'runs':len(v),'pass_rate':round(math.fsum(v)/len(v),2)})"
 # -> glm-5.3 {'runs': 24, 'pass_rate': 42.95}
 # -> opus-5 {'runs': 24, 'pass_rate': 43.79}
 ```
 
-**Count the grid, the full solves, and the rubric reviewers:**
+**Count the grid and the full solves:**
 
 ```bash
 python3 -c "
 import json,glob
 R=[json.load(open(p)) for p in glob.glob('*/trajectories/*/run_*/report.json')]
 print({'runs':len(R),
-       'solved':sum(r['pytest']['reward']>=1.0 for r in R),
-       'reviewers':sorted({r['evaluated_by'] for r in R})})"
-# -> {'runs': 48, 'solved': 0, 'reviewers': ['dinshi.jain@ethara.ai', 'poonam.chourey@ethara.ai', 'sugam.agrawal@ethara.ai']}
+       'solved':sum(r['pytest']['reward']>=1.0 for r in R)})"
+# -> {'runs': 48, 'solved': 0}
 ```
 
 **Verify the composition `final_reward = (pytest + rubric) / 2`:**
@@ -428,7 +514,7 @@ print({'runs':len(M),'usd':round(sum(x['final_metrics']['total_cost_usd'] for x 
 ```bash
 python3 -c "
 import json,glob,hashlib
-w=[json.load(open(p)) for p in glob.glob('*/tests/test_weights.json')]
+w=[json.load(open(p))['components']['traj_tests']['tests'] for p in glob.glob('*/tests/test_weights.json')]
 h={hashlib.sha256(open(p,'rb').read()).hexdigest() for p in glob.glob('*/tests/test_weights.json')}
 print({'tests':sum(len(x) for x in w),
        'negative':sum(1 for x in w for v in x.values() if v<0),
@@ -444,7 +530,7 @@ import json,glob,collections
 c=collections.Counter()
 for p in glob.glob('*/tests/test_weights.json'):
     u=p.split('/')[0]
-    neg={k for k,v in json.load(open(p)).items() if v<0}
+    neg={k for k,v in json.load(open(p))['components']['traj_tests']['tests'].items() if v<0}
     for q in glob.glob(u+'/trajectories/*/run_*/report.json'):
         for t in json.load(open(q))['pytest']['tests']:
             if t['name'] in neg and t['passed']: c[(u[:8],t['name'])]+=1
@@ -486,11 +572,11 @@ so the temperature is matched across them, but no seed is recorded and provider-
 that knob is not guaranteed identical. Re-running will not reproduce these trajectories token for
 token.
 
-**The rubric channel was graded once.** Each run names its reviewer in `evaluated_by`. No second
-pass and no inter-rater agreement were recorded, so the rubric scores carry the biases of a single
-grading pass. The channel percentage is recomputable from the shipped `rubric[]` entries, but the
-pass/fail marks themselves are judgements rather than measurements, so unlike the pytest channel the
-marks cannot be re-derived from the corpus.
+**The rubric channel was graded once.** No second pass and no inter-rater agreement were
+recorded, so the rubric scores carry the biases of a single grading pass. The channel percentage is
+recomputable from the shipped `rubric[]` entries, but the pass/fail marks themselves are judgements
+rather than measurements, so unlike the pytest channel the marks cannot be re-derived from the
+corpus. `tests/test.sh judge` re-grades any recorded run with a judge model of your choosing.
 
 ## License
 

@@ -3,7 +3,7 @@
 
 This solver is written independently from the verifier: it works forward from
 the task contract in instruction.md and the layer files under /app/data, rather
-than mirroring tests/test_output.py. It repairs the broken task-ctl compiler,
+than mirroring tests/test_outputs.py. It repairs the broken task-ctl compiler,
 resolves the active enforcement class, folds every numeric policy layer with
 integer round-half-even arithmetic, and writes the complete derivation audit.
 """

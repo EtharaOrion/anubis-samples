@@ -65,9 +65,9 @@ program into a scratch directory to confirm byte identical output.
 
 ## Verification explanation
 
-Channel A is seventy six tests in tests/test_output.py, twelve at weight one, twenty at
+Channel A is seventy six tests in tests/test_outputs.py, twelve at weight one, twenty at
 weight three, forty at weight five, and four negative probes. The positive total is 272.
-The verifier owns its corpora: test_output.py rebuilds the shipped sample tier from its
+The verifier owns its corpora: test_outputs.py rebuilds the shipped sample tier from its
 seed and generates twenty further reseeded tiers plus seven hand built fixtures at grade
 time in temporary directories, so nothing under tests/ ever reads /app/data, which does
 not exist in the verifier container. The delivered program is only ever executed as a
@@ -101,6 +101,6 @@ produced figure, so there is no observable a test and a criterion both read.
 ## Additional Notes
 
 To regenerate the twenty two generated input files, run
-`python3 tests/test_output.py environment` from the bundle root; it writes them byte for
+`python3 tests/test_outputs.py environment` from the bundle root; it writes them byte for
 byte. The five specification documents under environment/data/ are maintained by hand. The
 reseeded rerun tiers and the fixtures never leave tests/.

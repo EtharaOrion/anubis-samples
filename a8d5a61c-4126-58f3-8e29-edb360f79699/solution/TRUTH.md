@@ -99,7 +99,7 @@ propagates into many downstream figures.
 
 ## Measured gates
 
-- Oracle 1.000000, empty 0.000000 on the grader logic in tests/test_output.py. A
+- Oracle 1.000000, empty 0.000000 on the grader logic in tests/test_outputs.py. A
   structurally clean but numerically partial attempt stays far below the passing
   range, well under the 72 / 267 = 0.270 easy ceiling.
 - The reference oracle in solution/solve.py is an independent implementation written

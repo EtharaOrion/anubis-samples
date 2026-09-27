@@ -75,9 +75,9 @@ scratch directory to confirm byte identical output.
 
 ## Verification explanation
 
-Channel A is seventy five tests in tests/test_output.py, twelve at weight one, twenty
+Channel A is seventy five tests in tests/test_outputs.py, twelve at weight one, twenty
 at weight three, thirty nine at weight five, and four negative probes. The positive
-total is 267. The verifier owns its corpora: test_output.py rebuilds the shipped
+total is 267. The verifier owns its corpora: test_outputs.py rebuilds the shipped
 sample tier from SAMPLE_SEED and generates three further reseeded tiers plus seven
 hand built fixtures at grade time in temporary directories, so nothing under tests/
 ever reads /app/data, which does not exist in the verifier container. The delivered
@@ -115,7 +115,7 @@ test enumerates.
 ## Additional Notes
 
 The fourteen generated input files are reproduced byte for byte by
-`python3 tests/test_output.py environment` run from the bundle root, which is how the
+`python3 tests/test_outputs.py environment` run from the bundle root, which is how the
 shipped bytes were produced. The eight specification documents under environment/data/
 are authored by hand and are not regenerated. Seeds: SAMPLE_SEED reproduces the
 shipped snapshot; the reseeded rerun tiers and the fixtures never leave tests/.
