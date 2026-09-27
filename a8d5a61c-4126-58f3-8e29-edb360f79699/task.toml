@@ -58,7 +58,7 @@ ANTHROPIC_API_KEY = "${ANTHROPIC_API_KEY:-}"
 GEMINI_API_KEY = "${GEMINI_API_KEY:-}"
 
 [verifier.environment]
-docker_image = "426628337772.dkr.ecr.ap-south-1.amazonaws.com/anubis:a8d5a61c-4126-58f3-8e29-edb360f79699-verifier@sha256:7d0c1a54b213da40db8d7c46dfc73ecca2a42aef3d9a36854f7bae383f403422"
+docker_image = "426628337772.dkr.ecr.ap-south-1.amazonaws.com/anubis:a8d5a61c-4126-58f3-8e29-edb360f79699-verifier@sha256:ca9cb7dc82a4eb337c4f76bee764a222e8eafb783b24eec4e076f037b1ce6ecc"
 network_mode = "public"
 
 [agent]

@@ -7,7 +7,6 @@ RUN apt-get update \
     && useradd --system --uid 10001 --create-home submitter
 RUN pip install --no-cache-dir "pytest==9.1.1"
 COPY _judge/ /judge/
-ENV GRADER_HEADROOM_ENABLED=false
 COPY . /tests/
 RUN chmod -R go-rwx /tests && chmod +x /tests/*.sh
 RUN mkdir -p /app/out /logs/verifier /logs/artifacts /logs/agent
