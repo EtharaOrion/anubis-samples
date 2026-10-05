@@ -593,16 +593,16 @@ GENERATED SECTION. DO NOT HAND-EDIT.
 | --- | --- |
 | Bundles | 3 of 30 |
 | Sealed | 0 of 3 |
-| Registrations | adopted (3) |
+| Registrations | unregistered (3) |
 | Audit verdicts | none (3) |
 | Harbor schema | 1.4 (3) |
 | Difficulty | measured by the signed pilot alone, never declared in a bundle |
 
 | Bundle | Task | Keywords | Registration | Sealed at |
 | --- | --- | --- | --- | --- |
-| [`64d3d25b-74db-5ac0-a47d-f1b1073cca81`](64d3d25b-74db-5ac0-a47d-f1b1073cca81/) | `terminal-bench/64d3d25b-74db-5ac0-a47d-f1b1073cca81` | derivation, precedence, python, state-machine, stdlib | adopted | unsealed |
-| [`a8d5a61c-4126-58f3-8e29-edb360f79699`](a8d5a61c-4126-58f3-8e29-edb360f79699/) | `terminal-bench/a8d5a61c-4126-58f3-8e29-edb360f79699` | allocation, constraint-compiler, determinism, python, stdlib | adopted | unsealed |
-| [`c4a9a9b2-0818-5b05-9829-3a208c74638b`](c4a9a9b2-0818-5b05-9829-3a208c74638b/) | `terminal-bench/c4a9a9b2-0818-5b05-9829-3a208c74638b` | admission-control, cli, configuration, derivation, hardening, python, security | adopted | unsealed |
+| [`64d3d25b-74db-5ac0-a47d-f1b1073cca81`](64d3d25b-74db-5ac0-a47d-f1b1073cca81/) | `terminal-bench/64d3d25b-74db-5ac0-a47d-f1b1073cca81` | derivation, precedence, python, state-machine, stdlib | unregistered | unsealed |
+| [`a8d5a61c-4126-58f3-8e29-edb360f79699`](a8d5a61c-4126-58f3-8e29-edb360f79699/) | `terminal-bench/a8d5a61c-4126-58f3-8e29-edb360f79699` | allocation, constraint-compiler, determinism, python, stdlib | unregistered | unsealed |
+| [`c4a9a9b2-0818-5b05-9829-3a208c74638b`](c4a9a9b2-0818-5b05-9829-3a208c74638b/) | `terminal-bench/c4a9a9b2-0818-5b05-9829-3a208c74638b` | admission-control, cli, configuration, derivation, hardening, python, security | unregistered | unsealed |
 
 ## Standing
 
