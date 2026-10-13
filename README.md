@@ -60,11 +60,11 @@ The verdict is the audit outcome recorded at the sealed digest, and `none` means
 
 ## Dataset structure
 
-| Bundle | Task | Keywords | Registration | Sealed at |
-| --- | --- | --- | --- | --- |
-| [`64d3d25b-74db-5ac0-a47d-f1b1073cca81`](64d3d25b-74db-5ac0-a47d-f1b1073cca81/) | `terminal-bench/64d3d25b-74db-5ac0-a47d-f1b1073cca81` | derivation, precedence, python, state-machine, stdlib | unregistered | unsealed |
-| [`a8d5a61c-4126-58f3-8e29-edb360f79699`](a8d5a61c-4126-58f3-8e29-edb360f79699/) | `terminal-bench/a8d5a61c-4126-58f3-8e29-edb360f79699` | allocation, constraint-compiler, determinism, python, stdlib | unregistered | unsealed |
-| [`c4a9a9b2-0818-5b05-9829-3a208c74638b`](c4a9a9b2-0818-5b05-9829-3a208c74638b/) | `terminal-bench/c4a9a9b2-0818-5b05-9829-3a208c74638b` | admission-control, cli, configuration, derivation, hardening, python, security | unregistered | unsealed |
+| Bundle | Task | Keywords | Registration | Sealed at | Tier |
+| --- | --- | --- | --- | --- | --- |
+| [`64d3d25b-74db-5ac0-a47d-f1b1073cca81`](64d3d25b-74db-5ac0-a47d-f1b1073cca81/) | `terminal-bench/64d3d25b-74db-5ac0-a47d-f1b1073cca81` | derivation, precedence, python, state-machine, stdlib | unregistered | unsealed | - |
+| [`a8d5a61c-4126-58f3-8e29-edb360f79699`](a8d5a61c-4126-58f3-8e29-edb360f79699/) | `terminal-bench/a8d5a61c-4126-58f3-8e29-edb360f79699` | allocation, constraint-compiler, determinism, python, stdlib | unregistered | unsealed | - |
+| [`c4a9a9b2-0818-5b05-9829-3a208c74638b`](c4a9a9b2-0818-5b05-9829-3a208c74638b/) | `terminal-bench/c4a9a9b2-0818-5b05-9829-3a208c74638b` | admission-control, cli, configuration, derivation, hardening, python, security | unregistered | unsealed | - |
 
 ```mermaid
 %%{init: {"theme":"base","themeVariables":{"primaryColor":"#131a33","primaryTextColor":"#e8ecff","primaryBorderColor":"#845EF7","lineColor":"#22d3ee","fontFamily":"monospace"}}}%%
