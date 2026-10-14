@@ -1,5 +1,3 @@
-GENERATED SECTION. DO NOT HAND-EDIT.
-
 <p align="center"><img src="images/hero.svg" alt="Anubis" width="720"></p>
 
 # Anubis: samples
@@ -32,7 +30,7 @@ Difficulty is measured by the signed pilot alone and never declared in a bundle,
 
 ## Evidence status
 
-The verdict is the audit outcome recorded at the sealed digest, and `none` means no verdict has landed for that digest yet. Only a FORGE invocation removes a bundle from this lane, so removal waits for the next one.
+The verdict is the audit outcome recorded at the sealed digest, and `none` means no verdict has landed for that digest yet. Only an authoring run removes a bundle from this lane, so removal waits for the next one.
 
 | uuid | Verdict | Sealed digest | Stream |
 | --- | --- | --- | --- |
